@@ -1,0 +1,33 @@
+{
+  "results": "total results",
+  "person_result": {
+    "people": "People",
+    "description": "Description",
+    "biography": "Biography",
+    "composition": "Composition",
+    "music": "Music",
+    "scores": "Scores",
+    "annotations": "Annotations",
+    "list_of_compositions": "List of compositions",
+    "notes": "Notes",
+    "performances": "Performances"
+  },
+  "composition_result": {
+    "composition": "Compositions"
+  },
+  "video_result": {
+    "video": "Videos"
+  },
+  "article_result": {
+    "article": "Articles"
+  },
+  "organization_result": {
+    "organization": "Organizations"
+  },
+  "product_result": {
+    "product": "Products"
+  },
+  "place_result": {
+    "place": "Places"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "filters": "Filters",
+  "people": "People",
+  "peopleSubFilters": {
+    "composer": "Composer",
+    "musician": "Musician",
+    "conductor": "Conductor"
+  },
+  "compositions": "Compositions",
+  "articles": "Articles",
+  "organizations": "Organizations",
+  "products": "Products",
+  "places": "Places"
+}
