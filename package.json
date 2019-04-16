@@ -1,6 +1,6 @@
 {
-  "name": "ce-digital-score-edition-component-frontend",
-  "author": "Christiaan Scheermeijer <christiaan@videodock.com>",
+  "name": "ce-multimodal-component",
+  "author": "Karel Reitsma <karel@videodock.com>",
   "version": "0.1.0",
   "dependencies": {
     "@material-ui/core": "^3.9.2",

@@ -1,3 +1,3 @@
-# ce-digital-score-edition-component-frontend
+# ce-multimodal-component
 
-This POC demonstrates how to create ControlActions in the CE-API using Apollo.
+TODO
