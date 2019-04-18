@@ -29,7 +29,7 @@ export default ({ breakpoints, spacing }) => ({
   },
   organizationHeader: {
     [breakpoints.down('sm')]: {
-      display: 'flex',
+      display      : 'flex',
       flexDirection: 'column',
     },
     display: 'flex',

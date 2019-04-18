@@ -1,7 +1,7 @@
 export default ({ breakpoints, spacing }) => ({
   header: {
     [breakpoints.down('sm')]: {
-      display: 'flex',
+      display      : 'flex',
       flexDirection: 'column',
     },
     display       : 'flex',
@@ -18,7 +18,7 @@ export default ({ breakpoints, spacing }) => ({
   },
   articleHeader: {
     [breakpoints.down('sm')]: {
-      display: 'flex',
+      display      : 'flex',
       flexDirection: 'column',
     },
     display: 'flex',
