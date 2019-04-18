@@ -19,46 +19,44 @@ class SearchResultOrganization extends Component {
           <Fragment>
             {count !== 0 ? (
               <Fragment>
-                <Fragment>
-                  <div className={classes.header}>
-                    <Typography variant="h5">{t('organization_result.organization')} ({count})</Typography>
-                    {selectedCategory === 'all' ?
-                      <ShowMoreButton onClick={event => setCategory(event, "Organization")} />
-                      : null}
-                  </div>
-                  <div className={classes.organizationResultsContainer}>
-                    {data && data.map(({ identifier, name, description, image, source }) => (
-                      <Paper key={identifier} className={classes.organizationContainer}>
-                        <div className={classes.organizationHeader}>
-                          <Fragment>
-                            {image ? (
-                              <Avatar className={classes.image} src={image} alt="Organization thumbnail" />
-                            ) : (
-                                <Avatar className={classes.image} />
-                              )}
-                          </Fragment>
-                          <div className={classes.organizationInfo}>
-                            <Typography variant="h5" className={classes.name}>{name}</Typography>
-                            <Typography variant="subtitle2">
-                              {source ? <Link href={source} target="_blank">{source}</Link> : 'No source'}
-                            </Typography>
-                            <Typography paragraph className={classes.description}>
-                              {description ? description.substr(0, 250) + (description.length >= 250 ? '...' : '') : 'No description.'}
-                            </Typography>
-                            <Typography paragraph className={classes.links}>
-                              People (x) &bull; Performances (x)
-                            </Typography>
-                          </div>
+                <div className={classes.header}>
+                  <Typography variant="h5">{t('organization_result.organization')} ({count})</Typography>
+                  {selectedCategory === 'all' 
+                    ? <ShowMoreButton onClick={event => setCategory(event, "Organization")} />
+                    : null
+                  }
+                </div>
+                <div className={classes.organizationResultsContainer}>
+                  {data && data.map(({ identifier, name, description, image, source }) => (
+                    <Paper key={identifier} className={classes.organizationContainer}>
+                      <div className={classes.organizationHeader}>
+                        <Fragment>
+                          {image 
+                            ? <Avatar className={classes.image} src={image} alt="Organization thumbnail" />
+                            : <Avatar className={classes.image} />
+                          }
+                        </Fragment>
+                        <div className={classes.organizationInfo}>
+                          <Typography variant="h5" className={classes.name}>{name}</Typography>
+                          <Typography variant="subtitle2">
+                            {source ? <Link href={source} target="_blank">{source}</Link> : 'No source'}
+                          </Typography>
+                          <Typography paragraph className={classes.description}>
+                            {description ? description.substr(0, 250) + (description.length >= 250 ? '...' : '') : 'No description.'}
+                          </Typography>
+                          <Typography paragraph className={classes.links}>
+                            People (x) &bull; Performances (x)
+                          </Typography>
                         </div>
-                      </Paper>
-                    ))}
-                  </div>
-                </Fragment>
+                      </div>
+                    </Paper>
+                  ))}
+                </div>
               </Fragment>
             ) : null}
             {count === 0 && selectedCategory === 'Organization'
               ? <Typography variant="h4">
-                No results for organizations relating to "{searchPhrase}"
+                  No results for organizations relating to "{searchPhrase}"
                 </Typography>
               : null
             }
