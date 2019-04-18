@@ -30,13 +30,13 @@ class SearchResultOrganization extends Component {
                     {data && data.map(({ identifier, name, description, image, source }) => (
                       <Paper key={identifier} className={classes.organizationContainer}>
                         <div className={classes.organizationHeader}>
-                          <div>
+                          <Fragment>
                             {image ? (
                               <Avatar className={classes.image} src={image} alt="Organization thumbnail" />
                             ) : (
                                 <Avatar className={classes.image} />
                               )}
-                          </div>
+                          </Fragment>
                           <div className={classes.organizationInfo}>
                             <Typography variant="h5" className={classes.name}>{name}</Typography>
                             <Typography variant="subtitle2">

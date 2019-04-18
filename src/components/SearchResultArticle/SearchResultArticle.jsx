@@ -23,26 +23,30 @@ class SearchResultArticle extends Component {
                   {selectedCategory === 'all' ?
                     <ShowMoreButton onClick={event => setCategory(event, "Article")} /> : null}
                 </div>
-                {data && data.map(({ identifier, name, description, image }) => (
-                  <Paper key={identifier} className={classes.articleContainer}>
-                    <Fragment>
-                      {image ? (
-                        <Avatar className={classes.image} src={image} alt="Article thumbnail" />
-                      ) : (
-                          <Avatar className={classes.image} />
-                        )}
-                    </Fragment>
-                    <div className={classes.contentContainer}>
-                      <Typography variant="h5">{name}</Typography>
-                      <Typography variant="subtitle1">
-                        Unknown date
+                <div className={classes.articleResultsContainer}>
+                  {data && data.map(({ identifier, name, description, image }) => (
+                    <Paper key={identifier} className={classes.articleContainer}>
+                      <div className={classes.articleHeader}>
+                        <Fragment>
+                          {image ? (
+                            <Avatar className={classes.image} src={image} alt="Article thumbnail" />
+                          ) : (
+                              <Avatar className={classes.image} />
+                            )}
+                        </Fragment>
+                        <div className={classes.contentContainer}>
+                          <Typography variant="h5">{name}</Typography>
+                          <Typography variant="subtitle1">
+                            Unknown date
                       </Typography>
-                      <Typography paragraph className={classes.description}>
-                        {description ? description.substr(0, 250) + (description.length >= 250 ? '...' : '') : 'No description.'}
-                      </Typography>
-                    </div>
-                  </Paper>
-                ))}
+                          <Typography paragraph className={classes.description}>
+                            {description ? description.substr(0, 250) + (description.length >= 250 ? '...' : '') : 'No description.'}
+                          </Typography>
+                        </div>
+                      </div>
+                    </Paper>
+                  ))}
+                </div>
               </Fragment>
             ) : null}
             {count === 0 && selectedCategory === 'Article'

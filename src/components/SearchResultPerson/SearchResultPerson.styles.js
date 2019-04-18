@@ -1,4 +1,4 @@
-export default ({ spacing }) => ({
+export default ({ breakpoints, spacing }) => ({
   personContainer: {
     marginTop: spacing.unit * 2, 
     marginBottom: spacing.unit * 2, 
@@ -8,6 +8,10 @@ export default ({ spacing }) => ({
     display: 'flex',
   },
   header: {
+    [breakpoints.down('sm')]: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
     display: 'flex',
     justifyContent: 'space-between',
     minHeight: 32,

@@ -1,10 +1,20 @@
-export default ({ spacing }) => ({
+export default ({ breakpoints, spacing }) => ({
   header: {
+    [breakpoints.down('sm')]: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
     display       : 'flex',
     justifyContent: 'space-between',
     minHeight     : 32,
   },
   placeResultsContainer: {
+    [breakpoints.down('sm')]: {
+      display      : 'flex',
+      flexDirection: 'column',
+      marginTop    : spacing.unit,
+      marginBottom : spacing.unit,
+    },
     '& $placeContainer:nth-child(3n+3)': {
       marginRight: 0,
     },
@@ -13,6 +23,12 @@ export default ({ spacing }) => ({
     flexWrap     : 'nowrap',
   },
   placeContainer: {
+    [breakpoints.down('sm')]: {
+      width       : '100%',
+      marginRight : 0,
+      marginTop   : spacing.unit,
+      marginBottom: spacing.unit,
+    },
     marginTop   : spacing.unit * 2,
     marginRight : spacing.unit * 2,
     marginBottom: spacing.unit * 2,

@@ -27,32 +27,34 @@ class SearchResultVideo extends Component {
                       <ShowMoreButton onClick={event => setCategory(event, "VideoObject")} />
                       : null}
                   </div>
-                  {data && data.map(({ identifier, name, description, duration, url, image }) => (
-                    <Paper key={identifier} className={classes.videoContainer}>
-                      <Fragment>
-                        {image ? (
-                          <Fragment>
-                            <Avatar className={classes.image} src={image} alt="Video thumbnail" />
-                            <PlayArrow className={classes.playArrow} />
-                          </Fragment>
-                        ) : (
+                  <div className={classes.videoResultsContainer}>
+                    {data && data.map(({ identifier, name, description, duration, url, image }) => (
+                      <Paper key={identifier} className={classes.videoContainer}>
+                        <Fragment>
+                          {image ? (
                             <Fragment>
-                              <Avatar className={classes.image} alt="Video thumbnail" />
+                              <Avatar className={classes.image} src={image} alt="Video thumbnail" />
                               <PlayArrow className={classes.playArrow} />
                             </Fragment>
-                          )}
-                      </Fragment>
-                      <div className={classes.contentContainer}>
-                        <Typography variant="h5" className={classes.name}>{name}</Typography>
-                        <Typography variant="subtitle1">
-                          {url ? <Link href={url} target="_blank">{url}</Link> : 'No source'}
-                        </Typography>
-                        <Typography paragraph className={classes.description}>
-                          Duration - {duration ? duration : 'unknown'}: {description ? description.substr(0, 100) + (description.length >= 100 ? '...' : '') : 'No description.'}
-                        </Typography>
-                      </div>
-                    </Paper>
-                  ))}
+                          ) : (
+                              <Fragment>
+                                <Avatar className={classes.image} alt="Video thumbnail" />
+                                <PlayArrow className={classes.playArrow} />
+                              </Fragment>
+                            )}
+                        </Fragment>
+                        <div className={classes.contentContainer}>
+                          <Typography variant="h5" className={classes.name}>{name}</Typography>
+                          <Typography variant="subtitle1">
+                            {url ? <Link href={url} target="_blank">{url}</Link> : 'No source'}
+                          </Typography>
+                          <Typography paragraph className={classes.description}>
+                            Duration - {duration ? duration : 'unknown'}: {description ? description.substr(0, 100) + (description.length >= 100 ? '...' : '') : 'No description.'}
+                          </Typography>
+                        </div>
+                      </Paper>
+                    ))}
+                  </div>
                 </Fragment>
               </Fragment>
             ) : null}
