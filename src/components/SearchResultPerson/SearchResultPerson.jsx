@@ -9,6 +9,14 @@ import Avatar from '@material-ui/core/Avatar/Avatar';
 import ShowMoreButton from '../../shared/ShowMoreButton';
 
 class SearchResultPerson extends Component {
+  ellipsis = (textSource, maxLength) => {
+    if (textSource.length >= maxLength) {
+      return textSource.substr(0, maxLength) + '...'
+    }
+
+    return textSource;
+  };
+  
   render() {
     const { t, classes, data, count } = this.props;
 
@@ -41,7 +49,7 @@ class SearchResultPerson extends Component {
                             {jobTitle ? jobTitle : 'No job title'}
                           </Typography>
                           <Typography paragraph className={classes.description}>
-                            {description ? description.substr(0, 250) + (description.length >= 250 ? '...' : '') : 'No description.'}
+                            {description ? this.ellipsis(description, 250) : 'No description.'}
                           </Typography>
                         </div>
                       </div>

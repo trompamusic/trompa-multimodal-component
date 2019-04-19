@@ -10,6 +10,14 @@ import Avatar from '@material-ui/core/Avatar/Avatar';
 import { SearchContext } from '../../screens/Search/Search';
 
 class SearchResultOrganization extends Component {
+  ellipsis = (textSource, maxLength) => {
+    if (textSource.length >= maxLength) {
+      return textSource.substr(0, maxLength) + '...'
+    }
+
+    return textSource;
+  };
+  
   render() {
     const { t, classes, data, count } = this.props;
 
@@ -42,7 +50,7 @@ class SearchResultOrganization extends Component {
                             {source ? <Link href={source} target="_blank">{source}</Link> : 'No source'}
                           </Typography>
                           <Typography paragraph className={classes.description}>
-                            {description ? description.substr(0, 250) + (description.length >= 250 ? '...' : '') : 'No description.'}
+                            {description ? this.ellipsis(description, 250) : 'No description.'}
                           </Typography>
                           <Typography paragraph className={classes.links}>
                             People (x) &bull; Performances (x)

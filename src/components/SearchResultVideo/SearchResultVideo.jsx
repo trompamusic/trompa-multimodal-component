@@ -11,6 +11,14 @@ import Avatar from '@material-ui/core/Avatar/Avatar';
 import ShowMoreButton from '../../shared/ShowMoreButton';
 
 class SearchResultVideo extends Component {
+  ellipsis = (textSource, maxLength) => {
+    if (textSource.length >= maxLength) {
+      return textSource.substr(0, maxLength) + '...'
+    }
+
+    return textSource;
+  };
+  
   render() {
     const { t, classes, data, count } = this.props;
 
@@ -22,9 +30,10 @@ class SearchResultVideo extends Component {
               <Fragment>
                 <div className={classes.header}>
                   <Typography variant="h5">{t('video_result.video')} ({count})</Typography>
-                  {selectedCategory === 'all' ?
-                    <ShowMoreButton onClick={event => setCategory(event, "VideoObject")} />
-                    : null}
+                  {selectedCategory === 'all' 
+                    ? <ShowMoreButton onClick={event => setCategory(event, "VideoObject")} />
+                    : null
+                  }
                 </div>
                 <div className={classes.videoResultsContainer}>
                   {data && data.map(({ identifier, name, description, duration, url, image }) => (
@@ -49,7 +58,7 @@ class SearchResultVideo extends Component {
                           {url ? <Link href={url} target="_blank">{url}</Link> : 'No source'}
                         </Typography>
                         <Typography paragraph className={classes.description}>
-                          Duration - {duration ? duration : 'unknown'}: {description ? description.substr(0, 100) + (description.length >= 100 ? '...' : '') : 'No description.'}
+                          Duration - {duration ? duration : 'unknown'}: {description ? this.ellipsis(description, 100) : 'No description.'}
                         </Typography>
                       </div>
                     </Paper>

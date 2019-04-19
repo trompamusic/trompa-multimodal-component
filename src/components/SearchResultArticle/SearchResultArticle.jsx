@@ -9,6 +9,14 @@ import translate from 'react-i18next/dist/commonjs/translate';
 import Avatar from '@material-ui/core/Avatar/Avatar';
 
 class SearchResultArticle extends Component {
+  ellipsis = (textSource, maxLength) => {
+    if (textSource.length >= maxLength) {
+      return textSource.substr(0, maxLength) + '...'
+    }
+
+    return textSource;
+  };
+  
   render() {
     const { t, classes, data, count } = this.props;
 
@@ -37,7 +45,7 @@ class SearchResultArticle extends Component {
                           <Typography variant="h5">{name}</Typography>
                           <Typography variant="subtitle1">Unknown date</Typography>
                           <Typography paragraph className={classes.description}>
-                            {description ? description.substr(0, 250) + (description.length >= 250 ? '...' : '') : 'No description.'}
+                            {description ? this.ellipsis(description, 250) : 'No description.'}
                           </Typography>
                         </div>
                       </div>

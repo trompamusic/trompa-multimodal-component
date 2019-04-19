@@ -10,9 +10,13 @@ import Avatar from '@material-ui/core/Avatar/Avatar';
 import { SearchContext } from '../../screens/Search/Search';
 
 class SearchResultProduct extends Component {
-  static propTypes = {};
+  ellipsis = (textSource, maxLength) => {
+    if (textSource.length >= maxLength) {
+      return textSource.substr(0, maxLength) + '...'
+    }
 
-  static defaultProps = {};
+    return textSource;
+  };
 
   render() {
     const { t, classes, data, count } = this.props;
@@ -32,11 +36,10 @@ class SearchResultProduct extends Component {
                   {data && data.map(({ identifier, source, description, name, image }) => (
                     <Paper key={identifier} className={classes.productContainer}>
                       <Fragment>
-                        {image ? (
-                          <Avatar className={classes.image} src={image} alt="Product thumbnail" />
-                        ) : (
-                            <Avatar className={classes.image} />
-                          )}
+                        {image 
+                          ? <Avatar className={classes.image} src={image} alt="Product thumbnail" />
+                          : <Avatar className={classes.image} />
+                        }
                       </Fragment>
                       <div className={classes.contentContainer}>
                         <Fragment>
@@ -45,7 +48,7 @@ class SearchResultProduct extends Component {
                             {source ? <Link href={source} target="_blank">{source}</Link> : 'No source'}
                           </Typography>
                           <Typography paragraph className={classes.description}>
-                            {description ? description.substr(0, 100) + (description.length >= 100 ? '...' : '') : 'No description'}
+                            {description ? this.ellipsis(description, 250) : 'No description'}
                           </Typography>
                         </Fragment>
                       </div>
