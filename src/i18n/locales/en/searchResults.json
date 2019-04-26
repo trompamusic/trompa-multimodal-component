@@ -29,5 +29,13 @@
   },
   "place_result": {
     "place": "Places"
+  },
+  "empty_results": {
+    "no_job_title": "Unknown job title",
+    "no_description": "No description.",
+    "no_creator": "Unknown creator",
+    "no_title": "Unknown title",
+    "no_source": "Unknown source",
+    "no_duration": "unknown"
   }
 }

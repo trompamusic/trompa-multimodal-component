@@ -1,4 +1,4 @@
-export default ({ breakpoints, spacing }) => ({
+export default ({ breakpoints, spacing, typography }) => ({
   header: {
     [breakpoints.down('sm')]: {
       display      : 'flex',
@@ -43,12 +43,18 @@ export default ({ breakpoints, spacing }) => ({
     },
     width       : 120,
     height      : 'auto',
-    borderRadius: '4px 0px 0px 4px'
+    objectFit   : 'cover',
+    borderRadius: 4,
   },
   contentContainer: {
     padding: spacing.unit * 2,
   },
   links: {
     marginBottom: 0,
+  },
+  noResultsText: {
+    [breakpoints.down('md')]: {
+      fontSize: typography.pxToRem(22),
+    },
   },
 });

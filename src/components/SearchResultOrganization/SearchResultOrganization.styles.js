@@ -1,4 +1,4 @@
-export default ({ breakpoints, spacing }) => ({
+export default ({ breakpoints, spacing, typography }) => ({
   organizationResultsContainer: {
     [breakpoints.down('sm')]: {
       display      : 'flex',
@@ -41,6 +41,7 @@ export default ({ breakpoints, spacing }) => ({
       marginBottom: spacing.unit,
     },
     borderRadius: 4,
+    objectFit   : 'cover',
     width       : 100,
     height      : 100,
   },
@@ -58,5 +59,10 @@ export default ({ breakpoints, spacing }) => ({
   },
   links: {
     marginBottom: 0,
+  },
+  noResultsText: {
+    [breakpoints.down('md')]: {
+      fontSize: typography.pxToRem(22),
+    },
   },
 });

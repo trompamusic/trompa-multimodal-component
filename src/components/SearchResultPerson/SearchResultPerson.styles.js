@@ -1,4 +1,4 @@
-export default ({ breakpoints, spacing }) => ({
+export default ({ breakpoints, spacing, typography }) => ({
   personContainer: {
     marginTop: spacing.unit * 2, 
     marginBottom: spacing.unit * 2, 
@@ -6,6 +6,11 @@ export default ({ breakpoints, spacing }) => ({
   },
   personHeader: {
     display: 'flex',
+  },
+  image: {
+    height   : 50,
+    width    : 50,
+    objectFit: 'cover',
   },
   header: {
     [breakpoints.down('sm')]: {
@@ -21,5 +26,10 @@ export default ({ breakpoints, spacing }) => ({
   },
   links: {
     marginBottom: 0,
+  },
+  noResultsText: {
+    [breakpoints.down('md')]: {
+      fontSize: typography.pxToRem(22),
+    },
   },
 });

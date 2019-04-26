@@ -38,29 +38,28 @@ class SearchResultPerson extends Component {
                       <div className={classes.personHeader}>
                         <Fragment>
                           {image ? (
-                            <Avatar src={image} alt="Person thumbnail" />
-                          ) : <Avatar />}
+                            <Avatar src={image} className={classes.image} alt="Person thumbnail" />
+                          ) : <Avatar className={classes.image} />}
                         </Fragment>
                         <div className={classes.personInfo}>
-                          <Typography variant="h5" className={classes.name}>{name}</Typography>
+                          <Typography variant="h5" className={classes.name}>
+                            {name ? name : t('empty_results.no_title')}
+                          </Typography>
                           <Typography variant="subtitle1" className={jobTitle}>
-                            {jobTitle ? jobTitle : 'No job title'}
+                            {jobTitle ? jobTitle : t('empty_results.no_job_title')}
                           </Typography>
                           <Typography paragraph className={classes.description}>
-                            {description ? this.ellipsis(description, 250) : 'No description.'}
+                            {description ? this.ellipsis(description, 250) : t('empty_results.no_description')}
                           </Typography>
                         </div>
                       </div>
-                      <Typography paragraph className={classes.links}>
-                        Description (x) &bull; Compositions (x) &bull; Scores (x) &bull; Annotations (x)
-                      </Typography>
                     </Paper>
                   ))}
                 </Fragment>
               </Fragment>
             ) : null}
             {count === 0 && selectedCategory === 'Person' ? (
-              <Typography variant="h4">No results for people relating to "{searchPhrase}"</Typography>
+              <Typography className={classes.noResultsText} variant="h4">No results for people relating to "{searchPhrase}"</Typography>
             ) : null}
           </Fragment>
         )}

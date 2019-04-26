@@ -1,16 +1,16 @@
 import i18n from 'i18next';
 import moment from 'moment';
-import nl from './locales/nl';
-import 'moment/locale/nl';
+import en from './locales/en';
+import 'moment/locale/en-gb';
 
 // initialise i18n, get all namespaces from the default language
 i18n
   .init({
-    lng: 'nl',
-    ns: Object.keys(nl),
+    lng: 'en',
+    ns: Object.keys(en),
     defaultNS: 'common',
     resources: {
-      nl,
+      en,
     },
     interpolation: {
       escapeValue: false,

@@ -44,20 +44,21 @@ class SearchResultVideo extends Component {
                             <PlayArrow className={classes.playArrow} />
                           </Fragment>
                         ) : (
-                            <Fragment>
-                              <Avatar className={classes.image} alt="Video thumbnail" />
-                              <PlayArrow className={classes.playArrow} />
-                            </Fragment>
-                          )
-                        }
+                          <Fragment>
+                            <Avatar className={classes.image} alt="Video thumbnail" />
+                            <PlayArrow className={classes.playArrow} />
+                          </Fragment>
+                        )}
                       </Fragment>
                       <div className={classes.contentContainer}>
-                        <Typography variant="h5" className={classes.name}>{name}</Typography>
+                        <Typography variant="h5" className={classes.name}>
+                          {name ? name : t('empty_results.no_title')}
+                        </Typography>
                         <Typography variant="subtitle1">
-                          {url ? <Link href={url} target="_blank">{url}</Link> : 'No source'}
+                          {url ? <Link href={url} target="_blank">{url}</Link> : t('empty_results.no_source')}
                         </Typography>
                         <Typography paragraph className={classes.description}>
-                          Duration - {duration ? duration : 'unknown'}: {description ? this.ellipsis(description, 100) : 'No description.'}
+                          Duration - {duration ? `(${duration})` : t('empty_results.no_duration')}: {description ? this.ellipsis(description, 85) : t('empty_results.no_description')}
                         </Typography>
                       </div>
                     </Paper>
@@ -66,7 +67,7 @@ class SearchResultVideo extends Component {
               </Fragment>
             ) : null}
             {count === 0 && selectedCategory === 'VideoObject' ? (
-              <Typography variant="h4">
+              <Typography className={classes.noResultsText} variant="h4">
                 No results for videos relating to "{searchPhrase}"
               </Typography>
             ) : null}

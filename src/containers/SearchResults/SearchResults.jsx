@@ -59,7 +59,9 @@ class SearchResults extends Component {
       return (
         <Component 
           count={counts[typeName] || 0} 
-          data={selectedCategory === 'all' ? this.filterResults(typeName).slice(0, 3) : this.filterResults(typeName)} />
+          data={selectedCategory === 'all' ? (
+            this.filterResults(typeName).slice(0, 3) 
+          ) : this.filterResults(typeName)} />
         )
     }
 
@@ -94,12 +96,11 @@ class SearchResults extends Component {
             <Grid xs={12} md={10} item className={classes.resultsContainer}>
               <Typography variant="subtitle1" className={classes.resultsTotal}>{searchMetadataText ? searchMetadataText.length : 0} {t('results')}</Typography>
               {this.renderResults(selectedCategory, counts)}
-              {searchMetadataText && searchMetadataText.length === 0 && selectedCategory === 'all'
-                ? <Typography variant="h4">
-                    No results relating to "{searchPhrase}"
-                  </Typography>
-                : null
-              }
+              {searchMetadataText && searchMetadataText.length === 0 && selectedCategory === 'all' ? (
+                <Typography className={classes.noResultsText} variant="h4">
+                  No results relating to "{searchPhrase}"
+                </Typography>
+              ) : null}
             </Grid>
           </Grid>
         )}

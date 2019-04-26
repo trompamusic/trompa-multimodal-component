@@ -28,8 +28,9 @@ class SearchResultArticle extends Component {
               <Fragment>
                 <div className={classes.header}>
                   <Typography variant="h5">{t('article_result.article')} ({count})</Typography>
-                  {selectedCategory === 'all' ?
-                    <ShowMoreButton onClick={event => setCategory(event, "Article")} /> : null}
+                  {selectedCategory === 'all' ? (
+                    <ShowMoreButton onClick={event => setCategory(event, "Article")} /> 
+                  ) : null}
                 </div>
                 <div className={classes.articleResultsContainer}>
                   {data && data.map(({ identifier, name, description, image }) => (
@@ -41,10 +42,11 @@ class SearchResultArticle extends Component {
                           ) : <Avatar className={classes.image} />}
                         </Fragment>
                         <div className={classes.contentContainer}>
-                          <Typography variant="h5">{name}</Typography>
-                          <Typography variant="subtitle1">Unknown date</Typography>
+                          <Typography variant="h5">
+                            {name ? name : t('empty_results.no_title')}
+                          </Typography>
                           <Typography paragraph className={classes.description}>
-                            {description ? this.ellipsis(description, 250) : 'No description.'}
+                            {description ? this.ellipsis(description, 250) : t('empty_results.no_description')}
                           </Typography>
                         </div>
                       </div>
@@ -54,7 +56,7 @@ class SearchResultArticle extends Component {
               </Fragment>
             ) : null}
             {count === 0 && selectedCategory === 'Article' ? (
-              <Typography variant="h4">No results for articles relating to "{searchPhrase}"</Typography>
+              <Typography className={classes.noResultsText} variant="h4">No results for articles relating to "{searchPhrase}"</Typography>
             ) : null}
           </Fragment>
         )}

@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Route as ReactRouterRoute, Switch, withRouter } from 'react-router-dom';
-import Home from '../../screens/Home';
-import Process from '../../screens/Process';
 import Search from '../../screens/Search';
 import NotFound from '../../screens/NotFound';
 import DefaultLayout from '../Layouts/DefaultLayout/DefaultLayout';
@@ -39,9 +37,7 @@ export class Root extends Component {
 
     return (
       <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/search" component={Search} exact />
-        <Route path="/process/:id" component={Process} exact />
+        <Route path="/" component={Search} exact />
         <Route component={NotFound} />
       </Switch>
     );

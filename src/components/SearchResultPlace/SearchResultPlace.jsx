@@ -29,8 +29,9 @@ class SearchResultPlace extends Component {
               <Fragment>
                 <div className={classes.header}>
                   <Typography variant="h5">{t('place_result.place')} ({count})</Typography>
-                  {selectedCategory === 'all' ?
-                    <ShowMoreButton onClick={event => setCategory(event, "Place")} /> : null}
+                  {selectedCategory === 'all' ? (
+                    <ShowMoreButton onClick={event => setCategory(event, "Place")} />
+                  ) : null}
                 </div>
                 <div className={classes.placeResultsContainer}>
                   {data && data.map(({ identifier, description, source, name, image }) => (
@@ -41,18 +42,12 @@ class SearchResultPlace extends Component {
                         ) : <Avatar className={classes.image} />}
                       </Fragment>
                       <div className={classes.contentContainer}>
-                          <Typography paragraph className={classes.locationLinks}>
-                            Continent &bull; Country &bull; City
-                          </Typography>
                           <Typography variant="h5" className={classes.name}>{name}</Typography>
                           <Typography variant="subtitle2">
-                            {source ? <Link href={source} target="_blank">{source}</Link> : 'No source'}
+                            {source ? <Link href={source} target="_blank">{source}</Link> : t('empty_results.no_source')}
                           </Typography>
                           <Typography paragraph className={classes.description}>
-                            {description ? this.ellipsis(description, 100) : 'No description'}
-                          </Typography>
-                          <Typography paragraph className={classes.links}>
-                            People (x) &bull; Performances (x)
+                            {description ? this.ellipsis(description, 100) : t('empty_results.no_description')}
                           </Typography>
                       </div>
                     </Paper>
@@ -61,7 +56,7 @@ class SearchResultPlace extends Component {
               </Fragment>
             ) : null}
             {count === 0 && selectedCategory === 'Place' ? (
-              <Typography variant="h4">
+              <Typography className={classes.noResultsText} variant="h4">
                 No results for places relating to "{searchPhrase}"
               </Typography>
             ) : null}
