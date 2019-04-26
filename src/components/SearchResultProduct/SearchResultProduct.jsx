@@ -36,10 +36,9 @@ class SearchResultProduct extends Component {
                   {data && data.map(({ identifier, source, description, name, image }) => (
                     <Paper key={identifier} className={classes.productContainer}>
                       <Fragment>
-                        {image 
-                          ? <Avatar className={classes.image} src={image} alt="Product thumbnail" />
-                          : <Avatar className={classes.image} />
-                        }
+                        {image ? (
+                          <Avatar className={classes.image} src={image} alt="Product thumbnail" />
+                        ) : <Avatar className={classes.image} />}
                       </Fragment>
                       <div className={classes.contentContainer}>
                         <Fragment>
@@ -57,12 +56,11 @@ class SearchResultProduct extends Component {
                 </div>
               </Fragment>
             ) : null}
-            {count === 0 && selectedCategory === 'Product'
-              ? <Typography variant="h4">
-                  No results for products relating to "{searchPhrase}"
-                </Typography>
-              : null
-            }
+            {count === 0 && selectedCategory === 'Product' ? (
+              <Typography variant="h4">
+                No results for products relating to "{searchPhrase}"
+              </Typography>
+            ) : null}
           </Fragment>
         )}
       </SearchContext.Consumer>

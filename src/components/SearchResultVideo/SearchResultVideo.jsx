@@ -30,10 +30,9 @@ class SearchResultVideo extends Component {
               <Fragment>
                 <div className={classes.header}>
                   <Typography variant="h5">{t('video_result.video')} ({count})</Typography>
-                  {selectedCategory === 'all' 
-                    ? <ShowMoreButton onClick={event => setCategory(event, "VideoObject")} />
-                    : null
-                  }
+                  {selectedCategory === 'all' ? (
+                    <ShowMoreButton onClick={event => setCategory(event, "VideoObject")} />
+                  ) : null}
                 </div>
                 <div className={classes.videoResultsContainer}>
                   {data && data.map(({ identifier, name, description, duration, url, image }) => (
@@ -66,12 +65,11 @@ class SearchResultVideo extends Component {
                 </div>
               </Fragment>
             ) : null}
-            {count === 0 && selectedCategory === 'VideoObject'
-              ? <Typography variant="h4">
-                  No results for videos relating to "{searchPhrase}"
-                </Typography>
-              : null
-            }
+            {count === 0 && selectedCategory === 'VideoObject' ? (
+              <Typography variant="h4">
+                No results for videos relating to "{searchPhrase}"
+              </Typography>
+            ) : null}
           </Fragment>
         )}
       </SearchContext.Consumer>

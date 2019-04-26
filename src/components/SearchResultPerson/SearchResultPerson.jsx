@@ -29,9 +29,9 @@ class SearchResultPerson extends Component {
                 <Fragment>
                   <div className={classes.header}>
                     <Typography variant="h5">{t('person_result.people')} ({count})</Typography>
-                    {selectedCategory === 'all' ?
+                    {selectedCategory === 'all' ? (
                       <ShowMoreButton onClick={event => setCategory(event, "Person")} />
-                      : null}
+                    ) : null}
                   </div>
                   {data && data.map(({ identifier, name, description, image, jobTitle }) => (
                     <Paper key={identifier} className={classes.personContainer}>
@@ -39,9 +39,7 @@ class SearchResultPerson extends Component {
                         <Fragment>
                           {image ? (
                             <Avatar src={image} alt="Person thumbnail" />
-                          ) : (
-                              <Avatar />
-                            )}
+                          ) : <Avatar />}
                         </Fragment>
                         <div className={classes.personInfo}>
                           <Typography variant="h5" className={classes.name}>{name}</Typography>
@@ -61,12 +59,9 @@ class SearchResultPerson extends Component {
                 </Fragment>
               </Fragment>
             ) : null}
-            {count === 0 && selectedCategory === 'Person'
-              ? <Typography variant="h4">
-                  No results for people relating to "{searchPhrase}"
-                </Typography>
-              : null
-            }
+            {count === 0 && selectedCategory === 'Person' ? (
+              <Typography variant="h4">No results for people relating to "{searchPhrase}"</Typography>
+            ) : null}
           </Fragment>
         )}
       </SearchContext.Consumer>

@@ -36,10 +36,9 @@ class SearchResultPlace extends Component {
                   {data && data.map(({ identifier, description, source, name, image }) => (
                     <Paper key={identifier} className={classes.placeContainer}>
                       <Fragment>
-                        {image 
-                          ? <Avatar className={classes.image} src={image} alt="Person thumbnail" />
-                          : <Avatar className={classes.image} />
-                        }
+                        {image ? (
+                          <Avatar className={classes.image} src={image} alt="Person thumbnail" />
+                        ) : <Avatar className={classes.image} />}
                       </Fragment>
                       <div className={classes.contentContainer}>
                           <Typography paragraph className={classes.locationLinks}>
@@ -61,12 +60,11 @@ class SearchResultPlace extends Component {
                 </div>
               </Fragment>
             ) : null}
-            {count === 0 && selectedCategory === 'Place'
-              ? <Typography variant="h4">
-                  No results for places relating to "{searchPhrase}"
-                </Typography>
-              : null
-            }
+            {count === 0 && selectedCategory === 'Place' ? (
+              <Typography variant="h4">
+                No results for places relating to "{searchPhrase}"
+              </Typography>
+            ) : null}
           </Fragment>
         )}
       </SearchContext.Consumer>

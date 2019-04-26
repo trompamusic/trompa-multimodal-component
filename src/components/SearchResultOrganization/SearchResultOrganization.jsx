@@ -29,20 +29,18 @@ class SearchResultOrganization extends Component {
               <Fragment>
                 <div className={classes.header}>
                   <Typography variant="h5">{t('organization_result.organization')} ({count})</Typography>
-                  {selectedCategory === 'all' 
-                    ? <ShowMoreButton onClick={event => setCategory(event, "Organization")} />
-                    : null
-                  }
+                  {selectedCategory === 'all' ? (
+                    <ShowMoreButton onClick={event => setCategory(event, "Organization")} />
+                  ) : null}
                 </div>
                 <div className={classes.organizationResultsContainer}>
                   {data && data.map(({ identifier, name, description, image, source }) => (
                     <Paper key={identifier} className={classes.organizationContainer}>
                       <div className={classes.organizationHeader}>
                         <Fragment>
-                          {image 
-                            ? <Avatar className={classes.image} src={image} alt="Organization thumbnail" />
-                            : <Avatar className={classes.image} />
-                          }
+                          {image ? (
+                            <Avatar className={classes.image} src={image} alt="Organization thumbnail" />
+                          ) : <Avatar className={classes.image} />}
                         </Fragment>
                         <div className={classes.organizationInfo}>
                           <Typography variant="h5" className={classes.name}>{name}</Typography>
@@ -62,12 +60,11 @@ class SearchResultOrganization extends Component {
                 </div>
               </Fragment>
             ) : null}
-            {count === 0 && selectedCategory === 'Organization'
-              ? <Typography variant="h4">
-                  No results for organizations relating to "{searchPhrase}"
-                </Typography>
-              : null
-            }
+            {count === 0 && selectedCategory === 'Organization' ? (
+              <Typography variant="h4">
+                No results for organizations relating to "{searchPhrase}"
+              </Typography>
+            ) : null}
           </Fragment>
         )}
       </SearchContext.Consumer>

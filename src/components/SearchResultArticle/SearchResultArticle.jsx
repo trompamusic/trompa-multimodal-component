@@ -36,10 +36,9 @@ class SearchResultArticle extends Component {
                     <Paper key={identifier} className={classes.articleContainer}>
                       <div className={classes.articleHeader}>
                         <Fragment>
-                          {image 
-                            ? <Avatar className={classes.image} src={image} alt="Article thumbnail" />
-                            : <Avatar className={classes.image} />
-                          }
+                          {image ? (
+                            <Avatar className={classes.image} src={image} alt="Article thumbnail" />
+                          ) : <Avatar className={classes.image} />}
                         </Fragment>
                         <div className={classes.contentContainer}>
                           <Typography variant="h5">{name}</Typography>
@@ -54,10 +53,9 @@ class SearchResultArticle extends Component {
                 </div>
               </Fragment>
             ) : null}
-            {count === 0 && selectedCategory === 'Article'
-              ? <Typography variant="h4">No results for articles relating to "{searchPhrase}"</Typography>
-              : null
-            }
+            {count === 0 && selectedCategory === 'Article' ? (
+              <Typography variant="h4">No results for articles relating to "{searchPhrase}"</Typography>
+            ) : null}
           </Fragment>
         )}
       </SearchContext.Consumer>
