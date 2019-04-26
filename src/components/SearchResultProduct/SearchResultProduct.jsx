@@ -10,9 +10,13 @@ import Avatar from '@material-ui/core/Avatar/Avatar';
 import { SearchContext } from '../../screens/Search/Search';
 
 class SearchResultProduct extends Component {
-  static propTypes = {};
+  ellipsis = (textSource, maxLength) => {
+    if (textSource.length >= maxLength) {
+      return textSource.substr(0, maxLength) + '...'
+    }
 
-  static defaultProps = {};
+    return textSource;
+  };
 
   render() {
     const { t, classes, data, count } = this.props;
@@ -34,9 +38,7 @@ class SearchResultProduct extends Component {
                       <Fragment>
                         {image ? (
                           <Avatar className={classes.image} src={image} alt="Product thumbnail" />
-                        ) : (
-                            <Avatar className={classes.image} />
-                          )}
+                        ) : <Avatar className={classes.image} />}
                       </Fragment>
                       <div className={classes.contentContainer}>
                         <Fragment>
@@ -45,7 +47,7 @@ class SearchResultProduct extends Component {
                             {source ? <Link href={source} target="_blank">{source}</Link> : 'No source'}
                           </Typography>
                           <Typography paragraph className={classes.description}>
-                            {description ? description.substr(0, 100) + (description.length >= 100 ? '...' : '') : 'No description'}
+                            {description ? this.ellipsis(description, 250) : 'No description'}
                           </Typography>
                         </Fragment>
                       </div>
@@ -54,12 +56,11 @@ class SearchResultProduct extends Component {
                 </div>
               </Fragment>
             ) : null}
-            {count === 0 && selectedCategory === 'Product'
-              ? <Typography variant="h4">
-                  No results for products relating to "{searchPhrase}"
-                </Typography>
-              : null
-            }
+            {count === 0 && selectedCategory === 'Product' ? (
+              <Typography variant="h4">
+                No results for products relating to "{searchPhrase}"
+              </Typography>
+            ) : null}
           </Fragment>
         )}
       </SearchContext.Consumer>

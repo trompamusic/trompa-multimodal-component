@@ -1,4 +1,9 @@
-export default ({ spacing }) => ({
+export default ({ breakpoints, spacing }) => ({
+  root: {
+    [breakpoints.down('sm')]: {
+      marginBottom: spacing.unit * 3,
+    },
+  },
   allCategorySelected: {
     height: 36,
   },

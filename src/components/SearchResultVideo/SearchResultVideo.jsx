@@ -11,22 +11,30 @@ import Avatar from '@material-ui/core/Avatar/Avatar';
 import ShowMoreButton from '../../shared/ShowMoreButton';
 
 class SearchResultVideo extends Component {
+  ellipsis = (textSource, maxLength) => {
+    if (textSource.length >= maxLength) {
+      return textSource.substr(0, maxLength) + '...'
+    }
+
+    return textSource;
+  };
+  
   render() {
     const { t, classes, data, count } = this.props;
 
     return (
       <SearchContext.Consumer>
-        {({ searchPhrase , selectedCategory, setCategory }) => (
+        {({ searchPhrase, selectedCategory, setCategory }) => (
           <Fragment>
             {count !== 0 ? (
               <Fragment>
-                <Fragment>
-                  <div className={classes.header}>
-                    <Typography variant="h5">{t('video_result.video')} ({count})</Typography>
-                    {selectedCategory === 'all' ?
-                      <ShowMoreButton onClick={event => setCategory(event, "VideoObject")} />
-                      : null}
-                  </div>
+                <div className={classes.header}>
+                  <Typography variant="h5">{t('video_result.video')} ({count})</Typography>
+                  {selectedCategory === 'all' ? (
+                    <ShowMoreButton onClick={event => setCategory(event, "VideoObject")} />
+                  ) : null}
+                </div>
+                <div className={classes.videoResultsContainer}>
                   {data && data.map(({ identifier, name, description, duration, url, image }) => (
                     <Paper key={identifier} className={classes.videoContainer}>
                       <Fragment>
@@ -40,7 +48,8 @@ class SearchResultVideo extends Component {
                               <Avatar className={classes.image} alt="Video thumbnail" />
                               <PlayArrow className={classes.playArrow} />
                             </Fragment>
-                          )}
+                          )
+                        }
                       </Fragment>
                       <div className={classes.contentContainer}>
                         <Typography variant="h5" className={classes.name}>{name}</Typography>
@@ -48,20 +57,19 @@ class SearchResultVideo extends Component {
                           {url ? <Link href={url} target="_blank">{url}</Link> : 'No source'}
                         </Typography>
                         <Typography paragraph className={classes.description}>
-                          Duration - {duration ? duration : 'unknown'}: {description ? description.substr(0, 100) + (description.length >= 100 ? '...' : '') : 'No description.'}
+                          Duration - {duration ? duration : 'unknown'}: {description ? this.ellipsis(description, 100) : 'No description.'}
                         </Typography>
                       </div>
                     </Paper>
                   ))}
-                </Fragment>
+                </div>
               </Fragment>
             ) : null}
-            {count === 0 && selectedCategory === 'VideoObject'
-              ? <Typography variant="h4">
-                  No results for videos relating to "{searchPhrase}"
-                </Typography>
-              : null
-            }
+            {count === 0 && selectedCategory === 'VideoObject' ? (
+              <Typography variant="h4">
+                No results for videos relating to "{searchPhrase}"
+              </Typography>
+            ) : null}
           </Fragment>
         )}
       </SearchContext.Consumer>
