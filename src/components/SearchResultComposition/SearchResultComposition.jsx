@@ -40,18 +40,19 @@ class SearchResultComposition extends Component {
                       ) : <Avatar className={classes.image} />}
                     </Fragment>
                     <div className={classes.contentContainer}>
-                      <Typography variant="subtitle2">{creator}</Typography>
-                      <Typography variant="h5">{name}</Typography>
-                      <Typography paragraph className={classes.links}>
-                        Scores (x) &bull; Performances (x) &bull; Articles (x)
-                  </Typography>
+                      <Typography variant="subtitle2">
+                        {creator ? creator : t('empty_results.no_creator')}
+                      </Typography>
+                      <Typography variant="h5">
+                        {name ? name : t('empty_results.no_title')}
+                      </Typography>
                     </div>
                   </Paper>
                 ))}
               </Fragment>
             ) : null}
             {count === 0 && selectedCategory === 'MusicComposition' ? (
-              <Typography variant="h4">
+              <Typography className={classes.noResultsText} variant="h4">
                 No results for compositions relating to "{searchPhrase}"
               </Typography>
             ) : null}

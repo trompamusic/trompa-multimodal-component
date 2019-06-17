@@ -29,7 +29,7 @@ class NavBar extends Component {
               </Link>
             </Typography> 
             <Typography variant="h6">
-              <Link className={classes.navLink} component={Routerlink} to="/search" exact>
+              <Link className={classes.navLink} component={Routerlink} to="/" exact>
                 <SearchIcon />
               </Link> 
             </Typography>

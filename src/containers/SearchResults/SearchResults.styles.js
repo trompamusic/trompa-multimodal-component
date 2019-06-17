@@ -1,4 +1,4 @@
-export default ({ breakpoints, spacing, palette }) => ({
+export default ({ breakpoints, spacing, palette, typography }) => ({
   root: {
     [breakpoints.down('sm')]: {
       display      : 'flex',
@@ -23,5 +23,10 @@ export default ({ breakpoints, spacing, palette }) => ({
   },
   resultsTotal: {
     color: palette.common.faintBlack,
+  },
+  noResultsText: {
+    [breakpoints.down('md')]: {
+      fontSize: typography.pxToRem(22),
+    },
   },
 });

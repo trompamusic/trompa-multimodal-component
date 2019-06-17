@@ -43,15 +43,14 @@ class SearchResultOrganization extends Component {
                           ) : <Avatar className={classes.image} />}
                         </Fragment>
                         <div className={classes.organizationInfo}>
-                          <Typography variant="h5" className={classes.name}>{name}</Typography>
+                          <Typography variant="h5" className={classes.name}>
+                            {name ? name : t('empty_results.no_title')}
+                          </Typography>
                           <Typography variant="subtitle2">
-                            {source ? <Link href={source} target="_blank">{source}</Link> : 'No source'}
+                            {source ? <Link href={source} target="_blank">{source}</Link> : t('empty_results.no_source')}
                           </Typography>
                           <Typography paragraph className={classes.description}>
-                            {description ? this.ellipsis(description, 250) : 'No description.'}
-                          </Typography>
-                          <Typography paragraph className={classes.links}>
-                            People (x) &bull; Performances (x)
+                            {description ? this.ellipsis(description, 250) : t('empty_results.no_description')}
                           </Typography>
                         </div>
                       </div>
@@ -61,7 +60,7 @@ class SearchResultOrganization extends Component {
               </Fragment>
             ) : null}
             {count === 0 && selectedCategory === 'Organization' ? (
-              <Typography variant="h4">
+              <Typography className={classes.noResultsText} variant="h4">
                 No results for organizations relating to "{searchPhrase}"
               </Typography>
             ) : null}

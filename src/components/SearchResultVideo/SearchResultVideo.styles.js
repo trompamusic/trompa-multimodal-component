@@ -1,4 +1,4 @@
-export default ({ breakpoints, palette, spacing }) => ({
+export default ({ breakpoints, palette, spacing, typography }) => ({
   header: {
     [breakpoints.down('sm')]: {
       display      : 'flex',
@@ -18,33 +18,38 @@ export default ({ breakpoints, palette, spacing }) => ({
   },
   videoContainer: {
     [breakpoints.down('sm')]: {
-      display      : 'flex',
       flexDirection: 'column',
-      height       : 'auto',
+      width        : 328,
+      height       : 400,
       marginTop    : spacing.unit,
       marginBottom : spacing.unit,
     },
     marginTop   : spacing.unit * 2,
     marginBottom: spacing.unit * 2,
     display     : 'flex',
-    height      : 110,
+    height      : 112.50,
   },
   image: {
     [breakpoints.down('sm')]: {
-      width: '100%',
-      height: 180,
+      width : 328,
+      height: 184.50,
+      borderRadius: '4px 4px 0px 0px',
     },
-    width       : 175,
-    height      : 'auto',
+    width       : 200,
+    height      : 112.50,
+    objectFit   : 'cover',
     borderRadius: '4px 0px 0px 4px'
+  },
+  name: {
+    borderBottom: 0,
   },
   playArrow: {
     [breakpoints.down('sm')]: {
       transform: 'translate(120%, 40%)',
-      fontSize: '600%',
+      fontSize : '600%',
     },
     position : 'absolute',
-    transform: 'translate(80%, 35%)',
+    transform: 'translate(100%, 40%)',
     fontSize : '400%',
     color    : palette.common.white,
   },
@@ -54,5 +59,10 @@ export default ({ breakpoints, palette, spacing }) => ({
   },
   links: {
     marginBottom: 0,
+  },
+  noResultsText: {
+    [breakpoints.down('md')]: {
+      fontSize: typography.pxToRem(22),
+    },
   },
 });

@@ -29,8 +29,9 @@ class SearchResultProduct extends Component {
               <Fragment>
                 <div className={classes.header}>
                   <Typography variant="h5">{t('product_result.product')} ({count})</Typography>
-                  {selectedCategory === 'all' ?
-                    <ShowMoreButton onClick={event => setCategory(event, "Product")} /> : null}
+                  {selectedCategory === 'all' ? (
+                    <ShowMoreButton onClick={event => setCategory(event, "Product")} />
+                  ) : null}
                 </div>
                 <div className={classes.productResultsContainer}>
                   {data && data.map(({ identifier, source, description, name, image }) => (
@@ -42,12 +43,14 @@ class SearchResultProduct extends Component {
                       </Fragment>
                       <div className={classes.contentContainer}>
                         <Fragment>
-                          <Typography variant="h5" className={classes.name}>{name}</Typography>
+                          <Typography variant="h5" className={classes.name}>
+                            {name ? name : t('empty_results.no_title')}
+                          </Typography>
                           <Typography variant="subtitle2">
-                            {source ? <Link href={source} target="_blank">{source}</Link> : 'No source'}
+                            {source ? <Link href={source} target="_blank">{source}</Link> : t('empty_results.no_source')}
                           </Typography>
                           <Typography paragraph className={classes.description}>
-                            {description ? this.ellipsis(description, 250) : 'No description'}
+                            {description ? this.ellipsis(description, 250) : t('empty_results.no_description')}
                           </Typography>
                         </Fragment>
                       </div>
@@ -57,7 +60,7 @@ class SearchResultProduct extends Component {
               </Fragment>
             ) : null}
             {count === 0 && selectedCategory === 'Product' ? (
-              <Typography variant="h4">
+              <Typography className={classes.noResultsText} variant="h4">
                 No results for products relating to "{searchPhrase}"
               </Typography>
             ) : null}

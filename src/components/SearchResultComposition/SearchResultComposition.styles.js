@@ -1,4 +1,4 @@
-export default ({ breakpoints, spacing }) => ({
+export default ({ breakpoints, spacing, typography }) => ({
   header: {
     [breakpoints.down('sm')]: {
       display: 'flex',
@@ -10,16 +10,24 @@ export default ({ breakpoints, spacing }) => ({
   },
   compositionContainer: {
     [breakpoints.down('sm')]: {
-      height: 300,
+      flexDirection: 'column',
+      width        : 328,
+      height       : 300,
     },
     marginTop   : spacing.unit * 2,
     marginBottom: spacing.unit * 2,
     display     : 'flex',
-    height      : 110,
+    height      : 112.50,
   },
   image: {
-    width       : 175,
-    height      : 'auto',
+    [breakpoints.down('sm')]: {
+      width : 328,
+      height: 184.50,
+      borderRadius: '4px 4px 0px 0px',
+    },
+    width       : 200,
+    height      : 112.50,
+    objectFit   : 'cover',
     borderRadius: '4px 0px 0px 4px',
   },
   contentContainer: {
@@ -27,5 +35,10 @@ export default ({ breakpoints, spacing }) => ({
   },
   links: {
     marginBottom: 0,
+  },
+  noResultsText: {
+    [breakpoints.down('md')]: {
+      fontSize: typography.pxToRem(22),
+    },
   },
 });

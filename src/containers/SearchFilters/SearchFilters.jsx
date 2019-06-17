@@ -31,55 +31,6 @@ class SearchFilters extends Component {
     label: 'People',
     icon: PersonIcon,
     value: 'Person',
-    filters: [{
-      label: 'Profession',
-      name: 'profession',
-      options: [{
-        label: 'All',
-        value: ''
-      }, {
-        label: 'Composer',
-        value: 'composer'
-      }, {
-        label: 'Musician',
-        value: 'musician'
-      }, {
-        label: 'Conductor',
-        value: 'conductor'
-      }]
-    }, {
-      label: 'Year',
-      name: 'year',
-      options: [{
-        label: 'All',
-        value: ''
-      }, {
-        label: '1900 - 1910',
-        value: '>=1900 && <=1910'
-      }, {
-        label: '1910 - 1910',
-        value: '>=1910 && <=1910'
-      }, {
-        label: '1920 - 1910',
-        value: '>=1920 && <=1910'
-      }, {
-        label: '1930 - 1910',
-        value: '>=1930 && <=1910'
-      }]
-    }, {
-      label: 'Country',
-      name: 'country',
-      options: [{
-        label: 'All',
-        value: ''
-      }, {
-        label: 'Austria',
-        value: 'austria'
-      }, {
-        label: 'Germany',
-        value: 'germany'
-      }]
-    }]
   }, {
     label: 'Compositions',
     icon: CompositionIcon,
