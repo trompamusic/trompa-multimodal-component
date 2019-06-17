@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import images from '../../theme/images';
-import { withRouter, Link as Routerlink } from 'react-router-dom';
+import { withRouter, Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import { translate } from 'react-i18next';
 import styles from './NavBar.styles';
@@ -24,12 +24,12 @@ class NavBar extends Component {
         <AppBar position="static">
           <Toolbar className={classes.toolbar} variant="dense">
             <Typography variant="h6">
-              <Link className={classes.navLink} component={Routerlink} to="/" exact>
+              <Link className={classes.navLink} component={RouterLink} to="/">
                 <img className={classes.logo} src={images.logo} width="100" alt="logo" />
               </Link>
             </Typography> 
             <Typography variant="h6">
-              <Link className={classes.navLink} component={Routerlink} to="/" exact>
+              <Link className={classes.navLink} component={RouterLink} to="/">
                 <SearchIcon />
               </Link> 
             </Typography>
