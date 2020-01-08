@@ -3,15 +3,16 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar/AppBar';
 import Toolbar from '@material-ui/core/Toolbar/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import SearchIcon from '@material-ui/icons/Search';
+import SearchBar from '../../components/SearchBar'
 import images from '../../theme/images';
 import { withRouter, Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import { translate } from 'react-i18next';
+import { SearchContext } from '../../components/SearchProvider/SearchProvider';
 import styles from './NavBar.styles';
 import { providers } from '../../utils';
 
-class NavBar extends Component {
+export class NavBar extends Component {
   static propTypes = {};
 
   static defaultProps = {};
@@ -20,22 +21,24 @@ class NavBar extends Component {
     const { classes } = this.props;
 
     return (
-      <Fragment>
-        <AppBar position="static">
-          <Toolbar className={classes.toolbar} variant="dense">
+      <AppBar className={classes.root} position="static">
+        <Toolbar className={classes.toolbar} variant="dense">
+          <div>
             <Typography variant="h6">
               <Link className={classes.navLink} component={RouterLink} to="/">
-                <img className={classes.logo} src={images.logo} width="100" alt="logo" />
+                <img className={classes.logo} src={images.logo} alt="logo" />
               </Link>
             </Typography> 
-            <Typography variant="h6">
-              <Link className={classes.navLink} component={RouterLink} to="/">
-                <SearchIcon />
-              </Link> 
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </Fragment>
+          </div>
+          <div className={classes.searchContainer}>
+            <SearchContext.Consumer>
+              {({ searchPhrase, handleSearchSubmit }) => (
+                <SearchBar onSubmit={(event, searchPhrase) => handleSearchSubmit(event, searchPhrase)} />
+              )}
+            </SearchContext.Consumer>
+          </div>
+        </Toolbar>
+      </AppBar>
     );
   }
 }

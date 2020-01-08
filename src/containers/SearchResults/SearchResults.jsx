@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { translate } from 'react-i18next';
 import styles from './SearchResults.styles';
 import { providers } from '../../utils';
-import { SearchContext } from '../../screens/Search/Search';
+import { SearchContext } from '../../components/SearchProvider/SearchProvider';
 import SearchResultPerson from '../../components/SearchResultPerson';
 import SearchResultComposition from '../../components/SearchResultComposition';
 import SearchResultArticle from '../../components/SearchResultArticle';

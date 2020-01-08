@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { SearchContext } from '../../screens/Search/Search'
+import { SearchContext } from '../../components/SearchProvider/SearchProvider';
 import styles from './SearchResultPerson.styles';
 import translate from 'react-i18next/dist/commonjs/translate';
 import Avatar from '@material-ui/core/Avatar/Avatar';

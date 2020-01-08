@@ -15,9 +15,8 @@ export default {
     primary: 'rgba(0, 0, 0, 0.7)',
   },
   primary: {
-    light       : '#6db3b7',
-    main        : '#3c8387',
-    dark        : '#00565a',
+    main        : '#FF8C02',
+    dark        : '#F55831',
     contrastText: '#ffffff',
   },
   secondary: {

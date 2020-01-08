@@ -7,7 +7,7 @@ import styles from './SearchResultOrganization.styles';
 import ShowMoreButton from '../../shared/ShowMoreButton';
 import translate from 'react-i18next/dist/commonjs/translate';
 import Avatar from '@material-ui/core/Avatar/Avatar';
-import { SearchContext } from '../../screens/Search/Search';
+import { SearchContext } from '../../components/SearchProvider/SearchProvider';
 
 class SearchResultOrganization extends Component {
   ellipsis = (textSource, maxLength) => {

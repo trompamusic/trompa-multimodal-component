@@ -3,11 +3,15 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { debounce } from "throttle-debounce";
+import translate from 'react-i18next/dist/commonjs/translate';
+import SearchIcon from '@material-ui/icons/Search';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import styles from './SearchBar.styles';
 
 class SearchBar extends Component {
   state = { searchPhrase: '' };
-  
+
   static propTypes = {
     onSubmit: PropTypes.func,
   };
@@ -29,17 +33,30 @@ class SearchBar extends Component {
   handleSubmitDebounced = debounce(250, this.handleSubmit);
 
   render() {
-    const { classes } = this.props;
+    const { t, classes } = this.props;
 
     return (
       <div className={classes.root}>
         <form onSubmit={this.handleSubmit}>
           <TextField
-            placeholder="Search"
+            placeholder={t('search_placeholder')}
             type="text"
             value={this.state.searchPhrase}
             onChange={this.handleChange}
             className={classes.textField}
+            variant="outlined"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon className={classes.searchIcon} />
+                </InputAdornment>
+              ),
+              classes: {
+                root: classes.cssOutlinedInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+            }}
           />
         </form>
       </div>
@@ -47,4 +64,4 @@ class SearchBar extends Component {
   }
 }
 
-export default withStyles(styles)(SearchBar);
+export default translate('navbar')(withStyles(styles)(SearchBar));

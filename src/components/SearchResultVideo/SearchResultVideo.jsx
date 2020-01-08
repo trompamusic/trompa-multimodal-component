@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Link from '@material-ui/core/Link';
-import { SearchContext } from '../../screens/Search/Search'
+import { SearchContext } from '../../components/SearchProvider/SearchProvider';
 import styles from './SearchResultVideo.styles';
 import translate from 'react-i18next/dist/commonjs/translate';
 import Avatar from '@material-ui/core/Avatar/Avatar';
