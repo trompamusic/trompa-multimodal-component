@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { debounce } from "throttle-debounce";
 import translate from 'react-i18next/dist/commonjs/translate';
 import SearchIcon from '@material-ui/icons/Search';
-import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import styles from './SearchBar.styles';
 

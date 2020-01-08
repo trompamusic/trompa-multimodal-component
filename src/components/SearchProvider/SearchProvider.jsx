@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { providers, setPrerenderReady } from '../../utils';
+import { setPrerenderReady } from '../../utils';
 
 export const SearchContext = React.createContext({
 
