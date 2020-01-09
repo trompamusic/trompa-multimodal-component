@@ -19,13 +19,13 @@ import SearchResultPlace from '../../components/SearchResultPlace';
 import SearchResultVideo from '../../components/SearchResultVideo';
 
 const resultsDict = {
-  Person: SearchResultPerson,
+  Person          : SearchResultPerson,
   MusicComposition: SearchResultComposition,
-  VideoObject: SearchResultVideo,
-  Article: SearchResultArticle,
-  Organization: SearchResultOrganization,
-  Product: SearchResultProduct,
-  Place: SearchResultPlace,
+  VideoObject     : SearchResultVideo,
+  Article         : SearchResultArticle,
+  Organization    : SearchResultOrganization,
+  Product         : SearchResultProduct,
+  Place           : SearchResultPlace,
 };
 
 class SearchResults extends Component {
@@ -115,7 +115,7 @@ export const SEARCH_QUERY = gql`
         substring: $searchPhrase,
         onTypes: $categories
     ) {
-          __typename
+        __typename
         ... on Person {
           identifier
           name

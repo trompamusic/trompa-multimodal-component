@@ -15,9 +15,11 @@ export default {
     primary: 'rgba(0, 0, 0, 0.7)',
   },
   primary: {
-    main        : '#FF8C02',
-    dark        : '#F55831',
-    contrastText: '#ffffff',
+    main           : '#FF8C02',
+    dark           : '#F55831',
+    contrastText   : '#ffffff',
+    transparentMain: 'rgba(255,140,2,0.12)',
+    transparentDark: 'rgba(245,88,49,0.12)',
   },
   secondary: {
     light       : '#ff9261',

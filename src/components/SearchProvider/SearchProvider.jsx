@@ -7,8 +7,9 @@ export const SearchContext = React.createContext({
 
 class SearchProvider extends Component {
   state = {
-    searchPhrase: '',
-    categories: ['Person', 'MusicComposition', 'VideoObject', 'Article', 'Organization', 'Product', 'Place'],
+    searchPhrase    : '',
+    searchTags      : [],
+    categories      : ['Person', 'MusicComposition', 'VideoObject', 'Article', 'Organization', 'Product', 'Place'],
     selectedCategory: 'all',
   }
 
@@ -20,9 +21,10 @@ class SearchProvider extends Component {
     this.setState({ selectedCategory: category });
   };
 
-  handleSearchSubmit = (event, searchPhrase) => {
-    this.setState({ searchPhrase })
-  }
+  handleSearchSubmit = (event, searchPhrase, searchTags) => {
+    this.setState({ searchPhrase });
+    this.setState({ searchTags });
+  };
 
   render() {
     const { children } = this.props;
@@ -31,7 +33,7 @@ class SearchProvider extends Component {
       <SearchContext.Provider value={{ 
         ...this.state, 
         handleSearchSubmit: this.handleSearchSubmit,
-        setCategory       : this.setCategory 
+        setCategory       : this.setCategory,
       }}>
         {children}
       </SearchContext.Provider>

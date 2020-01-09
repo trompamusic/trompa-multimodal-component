@@ -11,15 +11,25 @@ export class Search extends Component {
     setPrerenderReady(true);
   }
 
+  mergeSearchPhraseAndTags = (searchPhrase, searchTags) => {
+    if (searchTags.length > 0) {
+      const searchTagsString = searchTags.join(' ');
+      const mergedString     = searchPhrase + ' ' + searchTagsString;
+
+      return mergedString;
+    }
+    return searchPhrase;
+  }
+
   render() {
     return (
       <SearchContext.Consumer>
-        {({ searchPhrase, categories, filter }) => (
+        {({ searchPhrase, searchTags, categories, filter }) => (
           <React.Fragment>
             <Helmet>
               <title>Search</title>
             </Helmet>
-            <SearchResults searchPhrase={searchPhrase} categories={categories} filter={filter} />
+            <SearchResults searchPhrase={this.mergeSearchPhraseAndTags(searchPhrase, searchTags)} categories={categories} filter={filter} />
           </React.Fragment>
         )}
       </SearchContext.Consumer>
