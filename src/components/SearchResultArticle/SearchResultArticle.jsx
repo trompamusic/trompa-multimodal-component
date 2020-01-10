@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import ShowMoreButton from '../../shared/ShowMoreButton';
 import Typography from '@material-ui/core/Typography';
 import styles from './SearchResultArticle.styles';
-import translate from 'react-i18next/dist/commonjs/translate';
+import { withTranslation } from 'react-i18next';
 import Avatar from '@material-ui/core/Avatar/Avatar';
 
 class SearchResultArticle extends Component {
@@ -65,5 +65,5 @@ class SearchResultArticle extends Component {
   }
 }
 
-export default translate('searchResults')(withStyles(styles)(SearchResultArticle));
+export default withTranslation('searchResults')(withStyles(styles)(SearchResultArticle));
 

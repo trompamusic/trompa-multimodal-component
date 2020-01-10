@@ -4,9 +4,9 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { SearchContext } from '../../components/SearchProvider/SearchProvider';
 import styles from './SearchResultPerson.styles';
-import translate from 'react-i18next/dist/commonjs/translate';
 import Avatar from '@material-ui/core/Avatar/Avatar';
 import ShowMoreButton from '../../shared/ShowMoreButton';
+import { withTranslation } from 'react-i18next';
 
 class SearchResultPerson extends Component {
   ellipsis = (textSource, maxLength) => {
@@ -68,4 +68,4 @@ class SearchResultPerson extends Component {
   }
 }
 
-export default translate('searchResults')(withStyles(styles)(SearchResultPerson));
+export default withTranslation('searchResults')(withStyles(styles)(SearchResultPerson));

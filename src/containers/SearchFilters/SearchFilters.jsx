@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import styles from './SearchFilters.styles';
 import { providers } from '../../utils';
 import { SearchContext } from '../../components/SearchProvider/SearchProvider'
@@ -138,7 +138,7 @@ class SearchFilters extends Component {
 
 export default providers(
   SearchFilters,
-  translate('searchFilters'),
+  withTranslation('searchFilters'),
   withStyles(styles),
   withRouter,
 );

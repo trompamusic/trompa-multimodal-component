@@ -5,9 +5,9 @@ import Link from '@material-ui/core/Link';
 import ShowMoreButton from '../../shared/ShowMoreButton';
 import Typography from '@material-ui/core/Typography';
 import styles from './SearchResultProduct.styles';
-import translate from 'react-i18next/dist/commonjs/translate';
 import Avatar from '@material-ui/core/Avatar/Avatar';
 import { SearchContext } from '../../components/SearchProvider/SearchProvider';
+import { withTranslation } from 'react-i18next';
 
 class SearchResultProduct extends Component {
   ellipsis = (textSource, maxLength) => {
@@ -71,4 +71,4 @@ class SearchResultProduct extends Component {
   }
 }
 
-export default translate('searchResults')(withStyles(styles)(SearchResultProduct));
+export default withTranslation('searchResults')(withStyles(styles)(SearchResultProduct));

@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { debounce } from "throttle-debounce";
-import translate from 'react-i18next/dist/commonjs/translate';
+import { withTranslation } from 'react-i18next';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import styles from './SearchBar.styles';
@@ -98,4 +98,4 @@ class SearchBar extends Component {
   }
 }
 
-export default translate('navbar')(withStyles(styles)(SearchBar));
+export default withTranslation('navbar')(withStyles(styles)(SearchBar));

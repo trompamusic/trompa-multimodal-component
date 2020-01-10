@@ -6,7 +6,7 @@ import PlayArrow from '@material-ui/icons/PlayArrow';
 import Link from '@material-ui/core/Link';
 import { SearchContext } from '../../components/SearchProvider/SearchProvider';
 import styles from './SearchResultVideo.styles';
-import translate from 'react-i18next/dist/commonjs/translate';
+import { withTranslation } from 'react-i18next';
 import Avatar from '@material-ui/core/Avatar/Avatar';
 import ShowMoreButton from '../../shared/ShowMoreButton';
 
@@ -78,4 +78,4 @@ class SearchResultVideo extends Component {
   }
 }
 
-export default translate('searchResults')(withStyles(styles)(SearchResultVideo));
+export default withTranslation('searchResults')(withStyles(styles)(SearchResultVideo));

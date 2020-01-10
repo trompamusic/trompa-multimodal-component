@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withRouter } from 'react-router-dom';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import styles from './SearchResults.styles';
 import { providers } from '../../utils';
 import { SearchContext } from '../../components/SearchProvider/SearchProvider';
@@ -181,7 +181,7 @@ export default providers(
       },
     }),
   }),
-  translate('searchResults'),
+  withTranslation('searchResults'),
   withStyles(styles),
   withRouter,
 );

@@ -15,13 +15,19 @@ export default ({ spacing, palette }) => ({
     color: palette.common.white,
   },
   logo: {
-    height: 29,
-    width: 'auto',
+    height   : 29,
+    width    : 'auto',
     marginTop: 10,
+  },
+  headerContainer: {
+    display       : 'flex',
+    width         : '100%',
+    alignItems    : 'center',
+    justifyContent: 'space-between',
   },
   searchContainer: {
     justifyContent: 'center',
     width         : '100%',
-    padding: `${spacing.unit}px 0px ${spacing.unit * 2}px 0px`,
+    padding       : `${spacing.unit}px 0px ${spacing.unit * 2}px 0px`,
   },
 });
