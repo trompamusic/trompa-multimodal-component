@@ -1,5 +1,14 @@
 {
   "filters": "Filters",
+  "filter": {
+    "all": "All",
+    "people": "People",
+    "compositions": "Compositions",
+    "scores": "Scores",
+    "annotations": "Annotations",
+    "videos": "Videos",
+    "tracks": "Tracks"
+  },
   "people": "People",
   "peopleSubFilters": {
     "composer": "Composer",

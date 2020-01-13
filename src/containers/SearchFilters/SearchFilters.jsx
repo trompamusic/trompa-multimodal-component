@@ -2,62 +2,63 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
+import classNames from 'classnames';
 import styles from './SearchFilters.styles';
 import { providers } from '../../utils';
 import { SearchContext } from '../SearchProvider/SearchProvider'
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import ListItem from '@material-ui/core/ListItem/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon/ListItemIcon';
-import Button from '@material-ui/core/Button/Button';
 import ListItemText from '@material-ui/core/ListItemText/ListItemText';
 import Divider from '@material-ui/core/Divider/Divider';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
-import PersonIcon from '@material-ui/icons/Person';
-import VideoIcon from '@material-ui/icons/OndemandVideo';
-import ArticleIcon from '@material-ui/icons/Book';
-import OrganizationIcon from '@material-ui/icons/Language';
-import ProductIcon from '@material-ui/icons/AddShoppingCart';
-import PlaceIcon from '@material-ui/icons/LocationCity';
-import TrompaIcon from '../../components/Icons/TrompaIcon';
-import CompositionIcon from '../../components/Icons/CompositionIcon';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import VideocamIcon from '@material-ui/icons/Videocam';
+import SearchIcon from '@material-ui/icons/Search';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import MessageIcon from '@material-ui/icons/Message';
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import MusicFileIcon from '../../components/Icons/MusicFileIcon';
 
 class SearchFilters extends Component {
   filters = [{
-    label: 'All',
-    icon: TrompaIcon,
+    label: this.props.t('filter.all'),
+    icon: SearchIcon,
     value: 'all',
-  }, {
-    label: 'People',
-    icon: PersonIcon,
+  }, 
+  {
+    label: this.props.t('filter.people'),
+    icon : AccountCircleIcon,
     value: 'Person',
-  }, {
-    label: 'Compositions',
-    icon: CompositionIcon,
+  }, 
+  {
+    label: this.props.t('filter.compositions'),
+    icon : LibraryMusicIcon,
     value: 'MusicComposition'
-  }, {
-    label: 'Videos',
-    icon: VideoIcon,
+  }, 
+  {
+    label: this.props.t('filter.scores'),
+    icon : MusicFileIcon,
+    value: 'Score'
+  },
+  {
+    label: this.props.t('filter.annotations'),
+    icon : MessageIcon,
+    value: 'Annotation'
+  },
+  {
+    label: this.props.t('filter.videos'),
+    icon : VideocamIcon,
     value: 'VideoObject'
-  },{
-    label: 'Articles',
-    icon: ArticleIcon,
-    value: 'Article'
-  }, {
-    label: 'Organizations',
-    icon: OrganizationIcon,
-    value: 'Organization'
-  }, {
-    label: 'Products',
-    icon: ProductIcon,
-    value: 'Product'
-  }, {
-    label: 'Places',
-    icon: PlaceIcon,
-    value: 'Place'
-  }];
+  },
+  {
+    label: this.props.t('filter.tracks'),
+    icon : MusicNoteIcon,
+    value: 'Track'
+  },
+];
 
-  renderFilters(searchPhrase, selectedCategory, setCategory) {
+  renderFilters(selectedCategory, setCategory) {
     const { classes } = this.props;
 
     if (selectedCategory !== 'all') {
@@ -96,17 +97,21 @@ class SearchFilters extends Component {
           <React.Fragment key={value}>
             <ListItem
               button
-              selected={selectedCategory === value}
+              className={classNames(classes.filter, {
+                [classes.selected]: selectedCategory === value,
+              })}
               onClick={event => setCategory(event, value)}
             >
-              {Icon && (
-                <ListItemIcon>
-                  <Icon />
-                </ListItemIcon>
-              )}
-              <ListItemText primary={label} className={classes.categoryLabel} />
+              <div className={classes.filterContainer}>
+                {Icon && (
+                  <ListItemIcon className={classes.iconContainer}>
+                    <Icon className={classes.icon} />
+                  </ListItemIcon>
+                )}
+                <ListItemText primary={label} className={classes.label} />
+                <Typography className={classes.resultsNumber}>(num)</Typography>
+              </div>
             </ListItem>
-            <Divider />
           </React.Fragment>
         ))}
       </React.Fragment>
@@ -114,21 +119,14 @@ class SearchFilters extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { t, classes } = this.props;
 
     return (
       <SearchContext.Consumer>
-        {({ searchPhrase, selectedCategory, setCategory }) => (
+        {({ selectedCategory, setCategory }) => (
           <div className={classes.root}>
-            {selectedCategory === 'all'
-              ? <Typography variant="h5" className={classes.allCategorySelected}>All</Typography>
-              : <Button 
-                onClick={event => setCategory(event, 'all')}
-                >
-                  <KeyboardArrowLeft /> Back to all
-                </Button>
-              }
-            {this.renderFilters(searchPhrase, selectedCategory, setCategory)}
+            <Typography className={classes.header}>{t('filters')}</Typography>
+            {this.renderFilters(selectedCategory, setCategory)}
           </div>
         )}
       </SearchContext.Consumer >
