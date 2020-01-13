@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './Footer.styles';
@@ -24,4 +24,4 @@ class Footer extends Component {
   }
 }
 
-export default translate('footer')(withStyles(styles)(Footer));
+export default withTranslation('footer')(withStyles(styles)(Footer));

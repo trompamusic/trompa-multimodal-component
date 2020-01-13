@@ -8,6 +8,7 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import theme from './theme';
 import client from './graphql';
 import Root from './components/Root';
+import SearchProvider from './containers/SearchProvider/SearchProvider';
 
 const createClassName = createGenerateClassName({
   dangerouslyUseGlobalCSS: false,
@@ -34,7 +35,9 @@ class App extends Component {
           <MuiThemeProvider theme={theme}>
             <I18nextProvider i18n={i18n}>
               <BrowserRouter forceRefresh={forceRefresh}>
-                <Root error={this.state.error} />
+                <SearchProvider>
+                  <Root error={this.state.error} />
+                </SearchProvider>
               </BrowserRouter>
             </I18nextProvider>
           </MuiThemeProvider>

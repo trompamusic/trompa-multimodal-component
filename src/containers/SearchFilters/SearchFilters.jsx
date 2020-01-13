@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import styles from './SearchFilters.styles';
 import { providers } from '../../utils';
-import { SearchContext } from '../../screens/Search/Search'
+import { SearchContext } from '../SearchProvider/SearchProvider'
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import ListItem from '@material-ui/core/ListItem/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon/ListItemIcon';
@@ -138,7 +138,7 @@ class SearchFilters extends Component {
 
 export default providers(
   SearchFilters,
-  translate('searchFilters'),
+  withTranslation('searchFilters'),
   withStyles(styles),
   withRouter,
 );

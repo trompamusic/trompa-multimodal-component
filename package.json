@@ -30,7 +30,7 @@
     "react-apollo": "^2.5.2",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
-    "react-i18next": "^7.8.1",
+    "react-i18next": "^11.2.7",
     "react-jss": "^8.1.0",
     "react-preloaded": "^1.0.0",
     "react-router-dom": "^4.2.2",

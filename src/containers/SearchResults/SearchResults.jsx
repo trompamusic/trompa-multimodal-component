@@ -5,10 +5,10 @@ import Typography from '@material-ui/core/Typography';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withRouter } from 'react-router-dom';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import styles from './SearchResults.styles';
 import { providers } from '../../utils';
-import { SearchContext } from '../../screens/Search/Search';
+import { SearchContext } from '../SearchProvider/SearchProvider';
 import SearchResultPerson from '../../components/SearchResultPerson';
 import SearchResultComposition from '../../components/SearchResultComposition';
 import SearchResultArticle from '../../components/SearchResultArticle';
@@ -19,13 +19,13 @@ import SearchResultPlace from '../../components/SearchResultPlace';
 import SearchResultVideo from '../../components/SearchResultVideo';
 
 const resultsDict = {
-  Person: SearchResultPerson,
+  Person          : SearchResultPerson,
   MusicComposition: SearchResultComposition,
-  VideoObject: SearchResultVideo,
-  Article: SearchResultArticle,
-  Organization: SearchResultOrganization,
-  Product: SearchResultProduct,
-  Place: SearchResultPlace,
+  VideoObject     : SearchResultVideo,
+  Article         : SearchResultArticle,
+  Organization    : SearchResultOrganization,
+  Product         : SearchResultProduct,
+  Place           : SearchResultPlace,
 };
 
 class SearchResults extends Component {
@@ -115,7 +115,7 @@ export const SEARCH_QUERY = gql`
         substring: $searchPhrase,
         onTypes: $categories
     ) {
-          __typename
+        __typename
         ... on Person {
           identifier
           name
@@ -181,7 +181,7 @@ export default providers(
       },
     }),
   }),
-  translate('searchResults'),
+  withTranslation('searchResults'),
   withStyles(styles),
   withRouter,
 );
