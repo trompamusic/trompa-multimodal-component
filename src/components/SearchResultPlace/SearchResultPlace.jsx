@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import { SearchContext } from '../../components/SearchProvider/SearchProvider';
+import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import ShowMoreButton from '../../shared/ShowMoreButton';

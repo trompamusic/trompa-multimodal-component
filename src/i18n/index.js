@@ -8,14 +8,12 @@ const locales = {
   nl_NL: require('./locales/nl_NL').default,
 };
 
-const getCurrentLng = () => i18n.language || window.localStorage.i18nextLng || 'en_US';
-
-// initialise i18n, get all namespaces from the default language
+// initialize i18n, get all namespaces from the default language
 i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en_US',
-    lng        : getCurrentLng(),
+    lng        : 'en_US',
     ns         : Object.keys(locales.en_US),
     defaultNS  : 'common',
     resources  : locales,

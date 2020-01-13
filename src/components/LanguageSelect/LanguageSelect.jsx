@@ -15,7 +15,7 @@ class LanguageSelect extends Component {
   };
 
   handleChange = (country) => {
-    this.setState({ country: country });
+    this.setState({ country });
     i18next.changeLanguage(country);
     this.setState({ selectOpen: false });
   };
@@ -66,7 +66,7 @@ class LanguageSelect extends Component {
     const { t, classes } = this.props;
 
     return (
-      <div>
+      <React.Fragment>
         <MenuItem className={classes.select} onClick={this.handleOpen}>
           <ListItemIcon className={classes.flagIcon}>
             <img
@@ -84,7 +84,7 @@ class LanguageSelect extends Component {
           </ListItemIcon>
         </MenuItem>
         {this.renderOptions()}
-      </div>
+      </React.Fragment>
     );
   }
 }

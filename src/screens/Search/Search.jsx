@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { providers, setPrerenderReady } from '../../utils';
-import { SearchContext } from '../../components/SearchProvider/SearchProvider';
+import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import styles from './Search.styles';
 import SearchResults from '../../containers/SearchResults';
 

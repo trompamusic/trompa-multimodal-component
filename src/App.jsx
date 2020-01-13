@@ -8,7 +8,7 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import theme from './theme';
 import client from './graphql';
 import Root from './components/Root';
-import SearchProvider from './components/SearchProvider/SearchProvider';
+import SearchProvider from './containers/SearchProvider/SearchProvider';
 
 const createClassName = createGenerateClassName({
   dangerouslyUseGlobalCSS: false,

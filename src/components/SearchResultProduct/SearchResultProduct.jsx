@@ -6,7 +6,7 @@ import ShowMoreButton from '../../shared/ShowMoreButton';
 import Typography from '@material-ui/core/Typography';
 import styles from './SearchResultProduct.styles';
 import Avatar from '@material-ui/core/Avatar/Avatar';
-import { SearchContext } from '../../components/SearchProvider/SearchProvider';
+import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import { withTranslation } from 'react-i18next';
 
 class SearchResultProduct extends Component {

@@ -4,10 +4,9 @@ export default ({ palette, spacing }) => ({
   },
   textField: {
     width: '100%',
-    borderColor: 'green',
   },
   searchIcon: {
-    color: `palette.secondary.contrastText`,
+    color: palette.secondary.contrastText,
   },
   tagsContainer: {
     display: 'flex',

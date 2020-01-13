@@ -8,7 +8,7 @@ import images from '../../theme/images';
 import { withRouter, Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import { withTranslation } from 'react-i18next';
-import { SearchContext } from '../../components/SearchProvider/SearchProvider';
+import { SearchContext } from '../SearchProvider/SearchProvider';
 import styles from './NavBar.styles';
 import { providers } from '../../utils';
 import LanguageSelect from '../../components/LanguageSelect';

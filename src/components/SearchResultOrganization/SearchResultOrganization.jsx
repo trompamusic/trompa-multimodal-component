@@ -6,7 +6,7 @@ import Link from '@material-ui/core/Link';
 import styles from './SearchResultOrganization.styles';
 import ShowMoreButton from '../../shared/ShowMoreButton';
 import Avatar from '@material-ui/core/Avatar/Avatar';
-import { SearchContext } from '../../components/SearchProvider/SearchProvider';
+import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import { withTranslation } from 'react-i18next';
 
 class SearchResultOrganization extends Component {
