@@ -33,25 +33,21 @@ class SearchProvider extends Component {
   };
 
   runQuery = () => {
-    const searchResults = client.query({ query: SEARCH_QUERY, variables: {
+    client.query({ query: SEARCH_QUERY, variables: {
         searchPhrase: this.state.searchPhrase,
         categories  : this.state.categories,
       } 
-    }).then(console.log(searchResults));
-
-    this.setState({ searchResults });
+    }).then((data) => this.setState({ searchResults: data.data.searchMetadataText }));
   }
 
   render() {
     const { children }      = this.props;
-    const { searchResults } = this.state;
 
     return (
       <SearchContext.Provider value={{ 
         ...this.state, 
         handleSearchSubmit: this.handleSearchSubmit,
         setCategory       : this.setCategory,
-        searchResults,
       }}>
         {children}
       </SearchContext.Provider>

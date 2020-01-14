@@ -5,22 +5,9 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
     },
   },
   header: {
-    fontSize    : typography.pxToRem(20),
+    fontSize    : typography.pxToRem(24),
     fontWeight  : 'bold',
     marginBottom: spacing.unit * 1.5,
-  },
-  categoryLabel: {
-    paddingLeft: 0,
-  },
-  filterHeaderItem: {
-    marginTop  : spacing.unit * 2,
-    paddingLeft: 0,
-  },
-  filterCheckbox: {
-    paddingRight: 0,
-  },
-  filterHeaderText: {
-    fontWeight: 800,
   },
   filter: {
     display       : 'flex',
@@ -65,5 +52,33 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
   resultsNumber: { 
     fontSize: typography.pxToRem(12),
     color   : palette.common.darkGrey,
+  },
+  type: {
+    fontSize    : typography.pxToRem(16),
+    marginBottom: spacing.unit * 1.25,
+  },
+  button: {
+    width        : '100%',
+    height       : 36,
+    fontSize     : typography.pxToRem(14),
+    background   : `linear-gradient(to right, ${palette.common.selectedLight}, ${palette.common.selectedDark})`,
+    color        : palette.common.white,
+    textTransform: 'none',
+  },
+  buttonIcon: {
+    fontSize   : typography.pxToRem(24),
+    marginRight: spacing.unit * 1.5,
+  },
+  drawer: {
+    width         : '75vw',
+    height        : '100%',
+    display       : 'flex',
+    flexDirection : 'column',
+    justifyContent: 'space-between',
+    padding       : `${spacing.unit * 2.5}px ${spacing.unit * 2}px`
+  },
+  drawerHeader: {
+    display       : 'flex',
+    justifyContent: 'space-between',
   },
 });

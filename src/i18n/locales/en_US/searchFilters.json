@@ -1,5 +1,8 @@
 {
-  "filters": "Filters",
+  "filterBy": "Filter by",
+  "filterMobile": "Filter",
+  "type": "Type",
+  "resultsLower": "results",
   "filter": {
     "all": "All",
     "people": "People",

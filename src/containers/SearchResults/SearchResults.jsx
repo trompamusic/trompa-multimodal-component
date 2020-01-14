@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid/Grid';
 import Typography from '@material-ui/core/Typography';
-import { withRouter } from 'react-router-dom';
-import { withTranslation } from 'react-i18next';
-import styles from './SearchResults.styles';
 import { providers } from '../../utils';
 import { SearchContext } from '../SearchProvider/SearchProvider';
 import SearchResultPerson from '../../components/SearchResultPerson';
@@ -15,6 +14,7 @@ import SearchResultOrganization from '../../components/SearchResultOrganization'
 import SearchResultProduct from '../../components/SearchResultProduct';
 import SearchResultPlace from '../../components/SearchResultPlace';
 import SearchResultVideo from '../../components/SearchResultVideo';
+import styles from './SearchResults.styles';
 
 const resultsDict = {
   Person          : SearchResultPerson,
@@ -79,7 +79,6 @@ class SearchResults extends Component {
   }
 
   render() {
-    // const { t, data: { searchMetadataText }, classes } = this.props;
     const { t, classes } = this.props;
 
     return (
