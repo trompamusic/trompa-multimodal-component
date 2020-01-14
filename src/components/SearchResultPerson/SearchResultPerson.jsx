@@ -1,12 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ImageIcon from '@material-ui/icons/Image';
+import Avatar from '@material-ui/core/Avatar';
+import Link from '@material-ui/core/Link';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import styles from './SearchResultPerson.styles';
-import Avatar from '@material-ui/core/Avatar/Avatar';
-import ShowMoreButton from '../../shared/ShowMoreButton';
-import { withTranslation } from 'react-i18next';
 
 class SearchResultPerson extends Component {
   ellipsis = (textSource, maxLength) => {
@@ -16,55 +21,82 @@ class SearchResultPerson extends Component {
 
     return textSource;
   };
-  
+
+  renderResults = (data) => {
+    const { classes, t } = this.props;
+
+    return (
+      <div className={classes.results}>
+        {data && data.map(({ identifier, name, jobTitle, source }) => (
+          <Paper key={identifier} className={classes.resultContainer}>
+            <div>
+              <Avatar className={classes.image}>
+                <AccountCircleIcon className={classes.typeIcon} />
+                <Typography className={classes.typeText}>
+                  Person
+                </Typography>
+              </Avatar>
+            </div>
+            <div className={classes.infoContainer}>
+              <div className={classes.infoHeader}>
+                <Typography className={classes.resultRole}>
+                  {jobTitle ? jobTitle : t('emptyResults.noRole')}
+                </Typography>
+                <Hidden smDown>
+                  <Link href={source} className={classes.resultSource}>
+                    <ImageIcon className={classes.sourceIcon} />
+                    <Typography className={classes.source}>
+                      {source ? source : null}
+                    </Typography>
+                  </Link>
+                </Hidden>
+              </div>
+              <Typography className={classes.resultName}>
+                {name ? name : t('emptyResults.noName')}
+              </Typography>
+              <Hidden mdUp>
+                <Link href={source} className={classes.resultSource}>
+                  <ImageIcon className={classes.sourceIcon} />
+                  <Typography className={classes.source}>
+                    {source ? source : null}
+                  </Typography>
+                </Link>
+              </Hidden>
+            </div>
+          </Paper>
+        ))}
+      </div>
+    )
+  }
+
   render() {
     const { t, classes, data, count } = this.props;
 
     return (
       <SearchContext.Consumer>
-        {({ searchPhrase, selectedCategory, setCategory }) => (
-          <Fragment>
-            {count !== 0 ? (
-              <Fragment>
-                <Fragment>
-                  <div className={classes.header}>
-                    <Typography variant="h5">{t('person_result.people')} ({count})</Typography>
-                    {selectedCategory === 'all' ? (
-                      <ShowMoreButton onClick={event => setCategory(event, "Person")} />
-                    ) : null}
-                  </div>
-                  {data && data.map(({ identifier, name, description, image, jobTitle }) => (
-                    <Paper key={identifier} className={classes.personContainer}>
-                      <div className={classes.personHeader}>
-                        <Fragment>
-                          {image ? (
-                            <Avatar src={image} className={classes.image} alt="Person thumbnail" />
-                          ) : <Avatar className={classes.image} />}
-                        </Fragment>
-                        <div className={classes.personInfo}>
-                          <Typography variant="h5" className={classes.name}>
-                            {name ? name : t('empty_results.no_title')}
-                          </Typography>
-                          <Typography variant="subtitle1" className={jobTitle}>
-                            {jobTitle ? jobTitle : t('empty_results.no_job_title')}
-                          </Typography>
-                          <Typography paragraph className={classes.description}>
-                            {description ? this.ellipsis(description, 250) : t('empty_results.no_description')}
-                          </Typography>
-                        </div>
-                      </div>
-                    </Paper>
-                  ))}
-                </Fragment>
-              </Fragment>
+        {({ selectedCategory, setCategory }) => (
+          <div className={classes.root}>
+            {count > 0 ? (
+              <div className={classes.root}>
+                <Typography className={classes.header}>
+                  {t('personResult.people')}
+                  <span className={classes.resultsCount}>({count})</span>
+                </Typography>
+                {this.renderResults(data)}
+                {selectedCategory === 'all' ? (
+                  <Button
+                    className={classes.button} 
+                    onClick={event => setCategory(event, "Person")}
+                  >
+                    {t('showMore')}<ChevronRightIcon className={classes.buttonIcon} />
+                  </Button>
+                ) : null}
+              </div>
             ) : null}
-            {count === 0 && selectedCategory === 'Person' ? (
-              <Typography className={classes.noResultsText} variant="h4">No results for people relating to "{searchPhrase}"</Typography>
-            ) : null}
-          </Fragment>
+          </div>
         )}
       </SearchContext.Consumer>
-    );
+    )
   }
 }
 

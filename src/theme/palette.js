@@ -10,6 +10,8 @@ export default {
     orange    : '#e6982f',
     facebook  : '#3B5998',
     googlePlus: '#F4511E',
+    blue      : '#005AA3',
+    darkGrey  : '#333333',
   },
   text: {
     primary: 'rgba(0, 0, 0, 0.7)',

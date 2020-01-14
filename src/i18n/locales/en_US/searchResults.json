@@ -1,6 +1,6 @@
 {
   "results": "total results",
-  "person_result": {
+  "personResult": {
     "people": "People",
     "description": "Description",
     "biography": "Biography",
@@ -30,12 +30,15 @@
   "place_result": {
     "place": "Places"
   },
-  "empty_results": {
+  "emptyResults": {
     "no_job_title": "Unknown job title",
+    "noRole": "Unknown role",
     "no_description": "No description.",
     "no_creator": "Unknown creator",
-    "no_title": "Unknown title",
+    "noTitle": "Unknown title",
+    "noName": "Unknown name",
     "no_source": "Unknown source",
     "no_duration": "unknown"
-  }
+  },
+  "showMore": "Show more"
 }

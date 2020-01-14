@@ -122,6 +122,7 @@ export const SEARCH_QUERY = gql`
           jobTitle
           description
           image
+          source
         }
         ... on MusicComposition {
           identifier
