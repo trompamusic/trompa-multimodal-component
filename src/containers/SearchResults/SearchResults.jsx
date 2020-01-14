@@ -89,9 +89,11 @@ class SearchResults extends Component {
               <SearchFilters data={searchResults} />
             </Grid>
             <Grid xs={12} md={10} item className={classes.resultsContainer}>
-              <Typography variant="subtitle1" className={classes.resultsTotal}>
-                {searchResults ? searchResults.length : 0} {t('results')}
-              </Typography>
+              <div className={classes.resultsHeader}>
+                <Typography className={classes.resultsTotal}>
+                  {searchResults ? searchResults.length : 0} {t('results')}
+                </Typography>
+              </div>
               {this.renderResults(selectedCategory, this.renderResultCountPerType(searchResults), searchResults)}
               {searchResults && searchResults.length === 0 && selectedCategory === 'all' ? (
                 <Typography className={classes.noResultsText} variant="h4">
