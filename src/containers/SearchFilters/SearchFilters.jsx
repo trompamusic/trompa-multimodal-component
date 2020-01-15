@@ -115,7 +115,7 @@ class SearchFilters extends Component {
                     )}
                     <ListItemText primary={label} className={classes.label} />
                     <Typography className={classes.resultsNumber}>
-                      ({0 || label === 'All' ? searchResults.length : counts[`${value}`] || 0})
+                      ({label === 'All' ? (searchResults ? searchResults.length : 0) : (counts && counts[`${value}`] ? counts[`${value}`] : 0)})
                     </Typography>
                   </div>
                 </ListItem>
@@ -159,7 +159,7 @@ class SearchFilters extends Component {
                 )}
                 <ListItemText primary={label} className={classes.label} />
                 <Typography className={classes.resultsNumber}>
-                  ({0 || label === 'All' ? searchResults.length : counts[`${value}`] || 0})
+                  ({label === 'All' ? (searchResults ? searchResults.length : 0) : (counts && counts[`${value}`] ? counts[`${value}`] : 0)})
                 </Typography>
               </div>
             </ListItem>
