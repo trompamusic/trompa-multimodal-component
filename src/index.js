@@ -1,13 +1,22 @@
-import 'core-js/fn/array/find';
-import 'core-js/fn/object/values';
-import 'core-js/fn/array/every';
-import 'core-js/fn/set';
-import 'core-js/fn/map';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import styles from './styles.css'
 
-registerServiceWorker();
+export default class ExampleComponent extends Component {
+  static propTypes = {
+    text: PropTypes.string
+  }
+
+  render() {
+    const {
+      text
+    } = this.props
+
+    return (
+      <div className={styles.test}>
+        Example Component: {text}
+      </div>
+    )
+  }
+}
