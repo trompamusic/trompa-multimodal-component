@@ -31,37 +31,37 @@ class SearchFilters extends Component {
 
   filters = [
     {
-      label: this.props.t('filter.all'),
+      label: this.props.t('filterMenu.all'),
       icon: SearchIcon,
       value: 'all',
     }, 
     {
-      label: this.props.t('filter.people'),
+      label: this.props.t('filterMenu.people'),
       icon : AccountCircleIcon,
       value: 'Person',
     }, 
     {
-      label: this.props.t('filter.compositions'),
+      label: this.props.t('filterMenu.compositions'),
       icon : LibraryMusicIcon,
       value: 'MusicComposition'
     }, 
     {
-      label: this.props.t('filter.scores'),
+      label: this.props.t('filterMenu.scores'),
       icon : MusicFileIcon,
       value: 'Score'
     },
     {
-      label: this.props.t('filter.annotations'),
+      label: this.props.t('filterMenu.annotations'),
       icon : MessageIcon,
       value: 'Annotation'
     },
     {
-      label: this.props.t('filter.videos'),
+      label: this.props.t('filterMenu.videos'),
       icon : VideocamIcon,
       value: 'VideoObject'
     },
     {
-      label: this.props.t('filter.tracks'),
+      label: this.props.t('filterMenu.tracks'),
       icon : MusicNoteIcon,
       value: 'Track'
     },
@@ -79,7 +79,7 @@ class SearchFilters extends Component {
 
   renderMobileDrawer = (selectedCategory, setCategory, searchResults) => {
     const { classes, t } = this.props;
-    const { open }    = this.state;
+    const { open }       = this.state;
 
     const counts = this.renderResultCountPerType(searchResults);
 
@@ -189,7 +189,7 @@ class SearchFilters extends Component {
                 onClick={() => this.setState({ open: true })}
               >
                 <FilterIcon className={classes.buttonIcon} />
-                {`${t('filterMobile')} ${searchResults.length} ${t('resultsLower')}`}
+                {`${t('filter')} ${searchResults.length} ${t('results')}`}
               </Button>
               {this.renderMobileDrawer(selectedCategory, setCategory, searchResults)}
             </Hidden>

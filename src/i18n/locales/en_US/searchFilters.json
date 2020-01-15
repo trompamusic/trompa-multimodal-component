@@ -1,9 +1,9 @@
 {
   "filterBy": "Filter by",
-  "filterMobile": "Filter",
+  "filter": "Filter",
   "type": "Type",
-  "resultsLower": "results",
-  "filter": {
+  "results": "results",
+  "filterMenu": {
     "all": "All",
     "people": "People",
     "compositions": "Compositions",
