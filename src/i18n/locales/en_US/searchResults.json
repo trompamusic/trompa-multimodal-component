@@ -24,5 +24,11 @@
     "noName": "Unknown name",
     "noSource": "Unknown source"
   },
+  "searchTips": {
+    "searchTips": "Search tips",
+    "doubleCheck": "Please double check your spelling.",
+    "tryAnother": "Try another search word",
+    "lessSpecific": "Be less specific in your wording for a wider search result"
+  },
   "showMore": "Show more"
 }

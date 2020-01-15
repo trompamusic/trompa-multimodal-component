@@ -73,6 +73,28 @@ class SearchResults extends Component {
     )
   }
 
+  renderNoResults(searchPhrase) {
+    const { classes, t } = this.props;
+
+    return (
+      <div className={classes.noResults}>
+        <Typography className={classes.noResultsHeader}>
+          We're sorry! We couldn't finds results for "{searchPhrase}"
+        </Typography>
+        <div>
+          <Typography className={classes.searchTipsHeader}>
+            {t('searchTips.searchTips')}:
+          </Typography>
+          <ul className={classes.searchTips}>
+            <li>{t('searchTips.doubleCheck')}</li>
+            <li>{t('searchTips.tryAnother')}</li>
+            <li>{t('searchTips.lessSpecific')}</li>
+          </ul>
+        </div>
+      </div>
+    )
+  }
+
   render() {
     const { t, data: { searchMetadataText }, classes } = this.props;
     const counts = this.renderResultCountPerType(searchMetadataText)
@@ -88,9 +110,7 @@ class SearchResults extends Component {
               <Typography variant="subtitle1" className={classes.resultsTotal}>{searchMetadataText ? searchMetadataText.length : 0} {t('results')}</Typography>
               {this.renderResults(selectedCategory, counts)}
               {searchMetadataText && searchMetadataText.length === 0 && selectedCategory === 'all' ? (
-                <Typography className={classes.noResultsText} variant="h4">
-                  No results relating to "{searchPhrase}"
-                </Typography>
+                this.renderNoResults(searchPhrase)
               ) : null}
             </Grid>
           </Grid>

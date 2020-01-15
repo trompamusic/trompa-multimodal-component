@@ -24,9 +24,24 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
   resultsTotal: {
     color: palette.common.faintBlack,
   },
-  noResultsText: {
+  noResultsHeader: {
     [breakpoints.down('md')]: {
       fontSize: typography.pxToRem(22),
+    },
+    fontSize  : typography.pxToRem(24),
+    fontWeight: 'bold',
+  },
+  searchTipsHeader: {
+    marginTop : spacing.unit * 3,
+    fontSize  : typography.pxToRem(20),
+    fontWeight: 'bold',
+  },
+  searchTips: {
+    margin : 0,
+    paddingLeft: spacing.unit * 3,
+    '& li': {
+      fontSize:typography.pxToRem(16),
+      fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
     },
   },
 });
