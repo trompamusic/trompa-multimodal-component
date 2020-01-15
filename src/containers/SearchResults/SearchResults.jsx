@@ -11,21 +11,15 @@ import { providers } from '../../utils';
 import { SearchContext } from '../SearchProvider/SearchProvider';
 import SearchResultPerson from '../../components/SearchResultPerson';
 import SearchResultComposition from '../../components/SearchResultComposition';
-import SearchResultArticle from '../../components/SearchResultArticle';
 import SearchFilters from '../SearchFilters';
-import SearchResultOrganization from '../../components/SearchResultOrganization';
-import SearchResultProduct from '../../components/SearchResultProduct';
-import SearchResultPlace from '../../components/SearchResultPlace';
+import SearchResultScore from '../../components/SearchResultScore';
 import SearchResultVideo from '../../components/SearchResultVideo';
 
 const resultsDict = {
   Person          : SearchResultPerson,
   MusicComposition: SearchResultComposition,
+  DigitalDocument : SearchResultScore,
   VideoObject     : SearchResultVideo,
-  Article         : SearchResultArticle,
-  Organization    : SearchResultOrganization,
-  Product         : SearchResultProduct,
-  Place           : SearchResultPlace,
 };
 
 class SearchResults extends Component {
@@ -73,11 +67,8 @@ class SearchResults extends Component {
       <React.Fragment>
         {this.renderResult('Person', selectedCategory, counts)}
         {this.renderResult('MusicComposition', selectedCategory, counts)}
+        {this.renderResult('DigitalDocument', selectedCategory, counts)}
         {this.renderResult('VideoObject', selectedCategory, counts)}
-        {this.renderResult('Article', selectedCategory, counts)}
-        {this.renderResult('Organization', selectedCategory, counts)}
-        {this.renderResult('Product', selectedCategory, counts)}
-        {this.renderResult('Place', selectedCategory, counts)}
       </React.Fragment>
     )
   }
@@ -124,11 +115,19 @@ export const SEARCH_QUERY = gql`
           image
           source
         }
+
         ... on MusicComposition {
           identifier
           name
           creator
           image
+          source
+        }
+
+        ... on DigitalDocument {
+          identifier
+          name
+          creator
           source
         }
 
@@ -139,35 +138,7 @@ export const SEARCH_QUERY = gql`
           description
           duration
           image
-        }
-
-        ... on Article {
-          identifier
-          name
-          description
-          image
-        }
-
-        ... on Organization {
-          identifier
-          name
           source
-          description
-          image
-        }
-
-        ... on Product {
-          identifier
-          name
-          description
-          source
-        }
-        ... on Place {
-          identifier
-          description
-          source
-          image
-          name
         }
     }
   }

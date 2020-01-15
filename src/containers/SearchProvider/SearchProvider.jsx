@@ -9,7 +9,7 @@ class SearchProvider extends Component {
   state = {
     searchPhrase    : '',
     searchTags      : [],
-    categories      : ['Person', 'MusicComposition', 'VideoObject', 'Article', 'Organization', 'Product', 'Place'],
+    categories      : ['Person', 'MusicComposition', 'DigitalDocument', 'VideoObject'],
     selectedCategory: 'all',
   }
 

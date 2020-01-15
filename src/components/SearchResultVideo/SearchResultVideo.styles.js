@@ -15,23 +15,25 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     [breakpoints.down('sm')]: {
       marginTop: spacing.unit,
     },
+    display     : 'flex',
     marginTop   : spacing.unit * 1.5,
     marginBottom: spacing.unit,
   },
   resultContainer: {
     display       : 'flex',
-    marginBottom  : spacing.unit,
+    flexDirection : 'column',
+    marginRight   : spacing.unit,
     '&:last-child': {
-      marginBottom: 0,
+      marginRight: 0,
     },
   },
   image: {
     [breakpoints.down('sm')]: {
       width: '21vw',
     },
-    borderRadius : '4px 0px 0px 4px',
-    height       : '100%',
-    width        : '6.5vw',
+    borderRadius : '4px 0px 4px 0px',
+    height       : 125,
+    width        : '100%',
     display      : 'flex',
     flexDirection: 'column',
   },

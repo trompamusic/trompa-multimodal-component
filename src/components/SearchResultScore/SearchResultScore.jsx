@@ -27,13 +27,13 @@ class SearchResultScore extends Component {
 
     return (
       <div className={classes.results}>
-        {data && data.map(({ identifier, name, creator, source }) => (
+        {data && data.map(({ identifier, name, creator, source, publisher }) => (
           <Paper key={identifier} className={classes.resultContainer}>
             <div>
               <Avatar className={classes.image}>
                 <LibraryMusicIcon className={classes.typeIcon} />
                 <Typography className={classes.typeText}>
-                  {t('compositionResult.composition')}
+                  {t('scoreResult.score')}
                 </Typography>
               </Avatar>
             </div>
@@ -62,6 +62,12 @@ class SearchResultScore extends Component {
                   </Typography>
                 </Link>
               </Hidden>
+              <Typography className={classes.publisher}>
+                {t('publisherInfo')}
+              </Typography>
+              <Typography className={classes.publisherInfo}>
+                {/* {publisher ? publisher : t('noPublisher')} */}
+              </Typography>
             </div>
           </Paper>
         ))}
@@ -72,6 +78,8 @@ class SearchResultScore extends Component {
   render() {
     const { t, classes, data, count } = this.props;
 
+    console.log('Score data:', data)
+
     return (
       <SearchContext.Consumer>
         {({ selectedCategory, setCategory }) => (
@@ -79,14 +87,14 @@ class SearchResultScore extends Component {
             {count > 0 ? (
               <div className={classes.root}>
                 <Typography className={classes.header}>
-                  {t('compositionResult.compositions')}
+                  {t('scoreResult.scores')}
                   <span className={classes.resultsCount}>({count})</span>
                 </Typography>
                 {this.renderResults(data)}
                 {selectedCategory === 'all' && count > 3 ? (
                   <Button
                     className={classes.button} 
-                    onClick={event => setCategory(event, "MusicComposition")}
+                    onClick={event => setCategory(event, "DigitalDocument")}
                   >
                     {t('showMore')}<ChevronRightIcon className={classes.buttonIcon} />
                   </Button>

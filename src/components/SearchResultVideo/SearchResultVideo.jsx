@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ImageIcon from '@material-ui/icons/Image';
-import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import VideocamIcon from '@material-ui/icons/Videocam';
 import Avatar from '@material-ui/core/Avatar';
 import Link from '@material-ui/core/Link';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
@@ -25,23 +25,25 @@ class SearchResultVideo extends Component {
   renderResults = (data) => {
     const { classes, t } = this.props;
 
+    console.log(data)
+
     return (
       <div className={classes.results}>
-        {data && data.map(({ identifier, name, creator, source }) => (
+        {data && data.map(({ identifier, name, source }) => (
           <Paper key={identifier} className={classes.resultContainer}>
             <div>
               <Avatar className={classes.image}>
-                <LibraryMusicIcon className={classes.typeIcon} />
+                <VideocamIcon className={classes.typeIcon} />
                 <Typography className={classes.typeText}>
-                  {t('compositionResult.composition')}
+                  {t('videoResult.video')}
                 </Typography>
               </Avatar>
             </div>
             <div className={classes.infoContainer}>
+              <Typography className={classes.resultName}>
+                {name ? name : t('emptyResults.noName')}
+              </Typography>
               <div className={classes.infoHeader}>
-                <Typography className={classes.resultRole}>
-                  {creator ? creator : t('emptyResults.noComposer')}
-                </Typography>
                 <Hidden smDown>
                   <Link href={source} className={classes.resultSource}>
                     <ImageIcon className={classes.sourceIcon} />
@@ -51,9 +53,6 @@ class SearchResultVideo extends Component {
                   </Link>
                 </Hidden>
               </div>
-              <Typography className={classes.resultName}>
-                {name ? name : t('emptyResults.noName')}
-              </Typography>
               <Hidden mdUp>
                 <Link href={source} className={classes.resultSource}>
                   <ImageIcon className={classes.sourceIcon} />
@@ -83,7 +82,7 @@ class SearchResultVideo extends Component {
                   <span className={classes.resultsCount}>({count})</span>
                 </Typography>
                 {this.renderResults(data)}
-                {selectedCategory === 'all' && count > 3 ? (
+                {selectedCategory === 'all' && count > 4 ? (
                   <Button
                     className={classes.button} 
                     onClick={event => setCategory(event, "VideoObject")}

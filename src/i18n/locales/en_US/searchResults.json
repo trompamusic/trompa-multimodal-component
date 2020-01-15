@@ -2,45 +2,27 @@
   "results": "total results",
   "personResult": {
     "person": "Person",
-    "people": "People",
-    "description": "Description",
-    "biography": "Biography",
-    "composition": "Composition",
-    "music": "Music",
-    "scores": "Scores",
-    "annotations": "Annotations",
-    "list_of_compositions": "List of compositions",
-    "notes": "Notes",
-    "performances": "Performances"
+    "people": "People"
   },
   "compositionResult": {
     "composition": "Composition",
     "compositions": "Compositions"
   },
-  "video_result": {
-    "video": "Videos"
+  "scoreResult": {
+    "score": "Score",
+    "scores": "Scores"
   },
-  "article_result": {
-    "article": "Articles"
-  },
-  "organization_result": {
-    "organization": "Organizations"
-  },
-  "product_result": {
-    "product": "Products"
-  },
-  "place_result": {
-    "place": "Places"
+  "videoResult": {
+    "video": "Video",
+    "videos": "Videos"
   },
   "emptyResults": {
-    "no_job_title": "Unknown job title",
     "noRole": "Unknown role",
-    "no_description": "No description.",
+    "noDescription": "No description.",
     "noComposer": "Unknown composer",
     "noTitle": "Unknown title",
     "noName": "Unknown name",
-    "no_source": "Unknown source",
-    "no_duration": "unknown"
+    "noSource": "Unknown source"
   },
   "showMore": "Show more"
 }
