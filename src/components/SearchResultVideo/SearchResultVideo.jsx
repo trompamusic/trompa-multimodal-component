@@ -1,14 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
-import PlayArrow from '@material-ui/icons/PlayArrow';
+import Button from '@material-ui/core/Button';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ImageIcon from '@material-ui/icons/Image';
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import Avatar from '@material-ui/core/Avatar';
 import Link from '@material-ui/core/Link';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import styles from './SearchResultVideo.styles';
-import { withTranslation } from 'react-i18next';
-import Avatar from '@material-ui/core/Avatar/Avatar';
-import ShowMoreButton from '../../shared/ShowMoreButton';
 
 class SearchResultVideo extends Component {
   ellipsis = (textSource, maxLength) => {
@@ -18,63 +21,82 @@ class SearchResultVideo extends Component {
 
     return textSource;
   };
-  
+
+  renderResults = (data) => {
+    const { classes, t } = this.props;
+
+    return (
+      <div className={classes.results}>
+        {data && data.map(({ identifier, name, creator, source }) => (
+          <Paper key={identifier} className={classes.resultContainer}>
+            <div>
+              <Avatar className={classes.image}>
+                <LibraryMusicIcon className={classes.typeIcon} />
+                <Typography className={classes.typeText}>
+                  {t('compositionResult.composition')}
+                </Typography>
+              </Avatar>
+            </div>
+            <div className={classes.infoContainer}>
+              <div className={classes.infoHeader}>
+                <Typography className={classes.resultRole}>
+                  {creator ? creator : t('emptyResults.noComposer')}
+                </Typography>
+                <Hidden smDown>
+                  <Link href={source} className={classes.resultSource}>
+                    <ImageIcon className={classes.sourceIcon} />
+                    <Typography className={classes.source}>
+                      {source ? source : null}
+                    </Typography>
+                  </Link>
+                </Hidden>
+              </div>
+              <Typography className={classes.resultName}>
+                {name ? name : t('emptyResults.noName')}
+              </Typography>
+              <Hidden mdUp>
+                <Link href={source} className={classes.resultSource}>
+                  <ImageIcon className={classes.sourceIcon} />
+                  <Typography className={classes.source}>
+                    {source ? source : null}
+                  </Typography>
+                </Link>
+              </Hidden>
+            </div>
+          </Paper>
+        ))}
+      </div>
+    )
+  }
+
   render() {
     const { t, classes, data, count } = this.props;
 
     return (
       <SearchContext.Consumer>
-        {({ searchPhrase, selectedCategory, setCategory }) => (
-          <Fragment>
-            {count !== 0 ? (
-              <Fragment>
-                <div className={classes.header}>
-                  <Typography variant="h5">{t('video_result.video')} ({count})</Typography>
-                  {selectedCategory === 'all' ? (
-                    <ShowMoreButton onClick={event => setCategory(event, "VideoObject")} />
-                  ) : null}
-                </div>
-                <div className={classes.videoResultsContainer}>
-                  {data && data.map(({ identifier, name, description, duration, url, image }) => (
-                    <Paper key={identifier} className={classes.videoContainer}>
-                      <Fragment>
-                        {image ? (
-                          <Fragment>
-                            <Avatar className={classes.image} src={image} alt="Video thumbnail" />
-                            <PlayArrow className={classes.playArrow} />
-                          </Fragment>
-                        ) : (
-                          <Fragment>
-                            <Avatar className={classes.image} alt="Video thumbnail" />
-                            <PlayArrow className={classes.playArrow} />
-                          </Fragment>
-                        )}
-                      </Fragment>
-                      <div className={classes.contentContainer}>
-                        <Typography variant="h5" className={classes.name}>
-                          {name ? name : t('empty_results.no_title')}
-                        </Typography>
-                        <Typography variant="subtitle1">
-                          {url ? <Link href={url} target="_blank">{url}</Link> : t('empty_results.no_source')}
-                        </Typography>
-                        <Typography paragraph className={classes.description}>
-                          Duration - {duration ? `(${duration})` : t('empty_results.no_duration')}: {description ? this.ellipsis(description, 85) : t('empty_results.no_description')}
-                        </Typography>
-                      </div>
-                    </Paper>
-                  ))}
-                </div>
-              </Fragment>
+        {({ selectedCategory, setCategory }) => (
+          <div className={classes.root}>
+            {count > 0 ? (
+              <div className={classes.root}>
+                <Typography className={classes.header}>
+                  {t('videoResult.videos')}
+                  <span className={classes.resultsCount}>({count})</span>
+                </Typography>
+                {this.renderResults(data)}
+                {selectedCategory === 'all' && count > 3 ? (
+                  <Button
+                    className={classes.button} 
+                    onClick={event => setCategory(event, "VideoObject")}
+                  >
+                    {t('showMore')}<ChevronRightIcon className={classes.buttonIcon} />
+                  </Button>
+                ) : null}
+              </div>
             ) : null}
-            {count === 0 && selectedCategory === 'VideoObject' ? (
-              <Typography className={classes.noResultsText} variant="h4">
-                No results for videos relating to "{searchPhrase}"
-              </Typography>
-            ) : null}
-          </Fragment>
+          </div>
         )}
       </SearchContext.Consumer>
-    );
+    )
   }
 }
 

@@ -11,9 +11,9 @@ import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import Avatar from '@material-ui/core/Avatar';
 import Link from '@material-ui/core/Link';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
-import styles from './SearchResultComposition.styles';
+import styles from './SearchResultScore.styles';
 
-class SearchResultComposition extends Component {
+class SearchResultScore extends Component {
   ellipsis = (textSource, maxLength) => {
     if (textSource.length >= maxLength) {
       return textSource.substr(0, maxLength) + '...'
@@ -100,4 +100,4 @@ class SearchResultComposition extends Component {
   }
 }
 
-export default withTranslation('searchResults')(withStyles(styles)(SearchResultComposition));
+export default withTranslation('searchResults')(withStyles(styles)(SearchResultScore));

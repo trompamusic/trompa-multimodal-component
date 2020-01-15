@@ -83,7 +83,7 @@ class SearchResultPerson extends Component {
                   <span className={classes.resultsCount}>({count})</span>
                 </Typography>
                 {this.renderResults(data)}
-                {selectedCategory === 'all' ? (
+                {selectedCategory === 'all' && count > 3 ? (
                   <Button
                     className={classes.button} 
                     onClick={event => setCategory(event, "Person")}

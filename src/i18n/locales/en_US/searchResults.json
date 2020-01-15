@@ -1,6 +1,7 @@
 {
   "results": "total results",
   "personResult": {
+    "person": "Person",
     "people": "People",
     "description": "Description",
     "biography": "Biography",
@@ -12,8 +13,9 @@
     "notes": "Notes",
     "performances": "Performances"
   },
-  "composition_result": {
-    "composition": "Compositions"
+  "compositionResult": {
+    "composition": "Composition",
+    "compositions": "Compositions"
   },
   "video_result": {
     "video": "Videos"
@@ -34,7 +36,7 @@
     "no_job_title": "Unknown job title",
     "noRole": "Unknown role",
     "no_description": "No description.",
-    "no_creator": "Unknown creator",
+    "noComposer": "Unknown composer",
     "noTitle": "Unknown title",
     "noName": "Unknown name",
     "no_source": "Unknown source",
