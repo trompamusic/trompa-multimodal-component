@@ -176,7 +176,7 @@ class SearchFilters extends Component {
       <SearchContext.Consumer>
         {({ selectedCategory, setCategory, searchResults }) => (
           <React.Fragment>
-            <Hidden mdDown>
+            <Hidden smDown>
               <div className={classes.root}>
                 <Typography className={classes.header}>{t('filterBy')}</Typography>
                 <Typography className={classes.type}>{t('type')}</Typography>
