@@ -1,6 +1,10 @@
-export default ({ palette, spacing }) => ({
+export default ({ palette, spacing, breakpoints }) => ({
   root: {
-    boxSizing   : 'border-box',
+    [breakpoints.down('md')]: {
+      marginTop   : spacing.unit * 0.5,
+      marginBottom: spacing.unit,
+    },
+    boxSizing: 'border-box',
   },
   textField: {
     width: '100%',

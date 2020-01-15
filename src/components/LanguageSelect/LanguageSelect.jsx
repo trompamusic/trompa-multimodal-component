@@ -76,7 +76,7 @@ class LanguageSelect extends Component {
               alt={t(this.state.country)}
             />
           </ListItemIcon>
-          <ListItemText className={classes.selectText}>
+          <ListItemText className={classes.selectTextSelect}>
             {t(this.state.country)}
           </ListItemText>
           <ListItemIcon className={classes.dropDownIcon}>

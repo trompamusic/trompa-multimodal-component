@@ -45,10 +45,19 @@ class SearchBar extends Component {
     const { searchTags } = this.state;
 
     this.setState({ searchPhrase: event.target.value });
-    if (event.target.value.endsWith(' ')) {
-      this.setState({ searchTags: searchTags.concat(event.target.value.trim())})
-      this.setState({ searchPhrase: '' })
+
+    console.log(event)
+
+    if(event.key === 'Escape') {
+      console.log('Escape pressed!')
+      return this.setState({ searchPhrase: '' });
     }
+
+    if (event.target.value.endsWith(' ')) {
+      this.setState({ searchTags: searchTags.concat(event.target.value.trim())});
+      this.setState({ searchPhrase: '' });
+    }
+
     this.handleSubmitDebounced(event);
   };
 

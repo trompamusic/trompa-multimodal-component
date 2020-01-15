@@ -1,5 +1,8 @@
-export default ({ spacing, palette }) => ({
+export default ({ spacing, palette, breakpoints }) => ({
   select: {
+    [breakpoints.down('md')]: {
+      width: 50,
+    },
     width       : 150,
     borderRadius: 4,
     boxShadow   : '0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2)',
@@ -13,6 +16,16 @@ export default ({ spacing, palette }) => ({
     color      : palette.common.darkBlack,
   },
   selectText: {
+    padding : 0,
+    '& span': {
+      fontSize  : 14,
+      fontWeight: 'bold',
+    },
+  },
+  selectTextSelect: {
+    [breakpoints.down('md')]: {
+      display: 'none',
+    },
     padding : 0,
     '& span': {
       fontSize  : 14,

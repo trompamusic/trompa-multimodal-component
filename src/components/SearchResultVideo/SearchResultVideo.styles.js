@@ -54,7 +54,7 @@ export default ({ breakpoints, palette, spacing, typography }) => ({
     color    : palette.common.white,
   },
   contentContainer: {
-    padding: spacing.unit * 2,
+    padding  : spacing.unit * 2,
     wordBreak: 'break-all',
   },
   links: {
