@@ -1,6 +1,6 @@
 export default ({ palette, spacing }) => ({
   root: {
-    boxSizing   : 'border-box',
+    boxSizing: 'border-box',
   },
   textField: {
     width: '100%',
@@ -25,6 +25,6 @@ export default ({ palette, spacing }) => ({
       borderColor: `linear-gradient: to right, ${palette.primary.main}, ${palette.primary.dark}`,
     },
   },
-  cssFocused: {},
+  cssFocused    : {},
   notchedOutline: {},
 });

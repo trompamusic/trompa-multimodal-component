@@ -1,58 +1,60 @@
-import React, { Component } from 'react'
-import gql from 'graphql-tag'
-import { setPrerenderReady, providers } from '../../utils'
+import React, { Component } from 'react';
+import gql from 'graphql-tag';
+import { setPrerenderReady, providers } from '../../utils';
 
 export const SearchContext = React.createContext({
 
-})
+});
 
 class SearchProvider extends Component {
   state = {
-    searchPhrase: '',
-    searchTags: [],
-    categories: ['Person', 'MusicComposition', 'DigitalDocument', 'VideoObject'],
+    searchPhrase    : '',
+    searchTags      : [],
+    categories      : ['Person', 'MusicComposition', 'DigitalDocument', 'VideoObject'],
     selectedCategory: 'all',
-    searchResults: []
+    searchResults   : [],
   }
 
   componentDidMount() {
-    setPrerenderReady(true)
-    this.runQuery()
+    setPrerenderReady(true);
+    this.runQuery();
   }
 
   setCategory = (event, category) => {
-    this.setState({ selectedCategory: category })
+    this.setState({ selectedCategory: category });
   };
 
   handleSearchSubmit = (event, searchPhrase, searchTags) => {
-    this.setState({ searchPhrase })
-    this.setState({ searchTags })
-    this.runQuery()
+    this.setState({ searchPhrase });
+    this.setState({ searchTags });
+    this.runQuery();
   };
 
   runQuery = () => {
-    const { client } = this.props
+    const { client } = this.props;
 
-    client.query({ query: SEARCH_QUERY,
+    client.query({ query    : SEARCH_QUERY,
       variables: {
         searchPhrase: this.state.searchPhrase,
-        categories: this.state.categories
-      }
-    }).then((data) => this.setState({ searchResults: data.data.searchMetadataText }))
+        categories  : this.state.categories,
+      },
+    }).then(data => this.setState({ searchResults: data.data.searchMetadataText }));
   }
 
   render() {
-    const { children } = this.props
+    const { children } = this.props;
 
     return (
-      <SearchContext.Provider value={{
-        ...this.state,
-        handleSearchSubmit: this.handleSearchSubmit,
-        setCategory: this.setCategory
-      }}>
+      <SearchContext.Provider
+        value={{
+          ...this.state,
+          handleSearchSubmit: this.handleSearchSubmit,
+          setCategory       : this.setCategory,
+        }}
+      >
         {children}
       </SearchContext.Provider>
-    )
+    );
   }
 }
 
@@ -100,8 +102,6 @@ export const SEARCH_QUERY = gql`
         }
     }
   }
-`
+`;
 
-export default providers(
-  SearchProvider
-)
+export default providers(SearchProvider);

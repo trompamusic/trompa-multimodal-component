@@ -11,7 +11,7 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     marginRight: spacing(5),
     display    : 'flex',
     flexWrap   : 'nowrap',
-    minHeight  : '80.75vh'
+    minHeight  : '80.75vh',
   },
   resultsContainer: {
     [breakpoints.down('sm')]: {
@@ -44,10 +44,10 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     fontWeight: 'bold',
   },
   searchTips: {
-    margin : 0,
+    margin     : 0,
     paddingLeft: spacing(3),
-    '& li': {
-      fontSize:typography.pxToRem(16),
+    '& li'     : {
+      fontSize  : typography.pxToRem(16),
       fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
     },
   },

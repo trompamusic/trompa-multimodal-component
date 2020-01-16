@@ -16,21 +16,21 @@ import styles from './SearchResultVideo.styles';
 class SearchResultVideo extends Component {
   ellipsis = (textSource, maxLength) => {
     if (textSource.length >= maxLength) {
-      return textSource.substr(0, maxLength) + '...'
+      return textSource.substr(0, maxLength) + '...';
     }
 
     return textSource;
   };
 
-  renderResults = (data) => {
+  renderResults = data => {
     const { classes, t } = this.props;
 
     return (
       <div className={classes.results}>
         {data && data.map(({ identifier, name, source }) => (
-          <Paper 
-            key={identifier} 
-            className={classes.resultContainer} 
+          <Paper
+            key={identifier}
+            className={classes.resultContainer}
             onClick={name => console.log(`${name} clicked!`)}
           >
             <div>
@@ -67,7 +67,7 @@ class SearchResultVideo extends Component {
           </Paper>
         ))}
       </div>
-    )
+    );
   }
 
   render() {
@@ -86,7 +86,7 @@ class SearchResultVideo extends Component {
                 {this.renderResults(data)}
                 {selectedCategory === 'all' && count > 4 ? (
                   <Button
-                    className={classes.button} 
+                    className={classes.button}
                     onClick={event => setCategory(event, "VideoObject")}
                   >
                     {t('showMore')}<ChevronRightIcon className={classes.buttonIcon} />
@@ -97,7 +97,7 @@ class SearchResultVideo extends Component {
           </div>
         )}
       </SearchContext.Consumer>
-    )
+    );
   }
 }
 

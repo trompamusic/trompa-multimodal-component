@@ -3,9 +3,9 @@ import { withStyles } from '@material-ui/core/styles';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import styles from './LanguageSelect.styles';
 import { MenuItem, ListItemIcon, Menu } from '@material-ui/core';
 import ListItemText from '@material-ui/core/ListItemText';
+import styles from './LanguageSelect.styles';
 
 class LanguageSelect extends Component {
   state = { 
@@ -14,20 +14,20 @@ class LanguageSelect extends Component {
     country   : this.props.i18n.language,
   };
 
-  handleChange = (country) => {
+  handleChange = country => {
     this.setState({ country });
     i18next.changeLanguage(country);
     this.setState({ selectOpen: false });
   };
 
-  handleOpen = (event) => {
+  handleOpen = event => {
     this.setState({ selectOpen: true });
     this.setState({ anchorEl: event.currentTarget });
   };
 
   handleClose = () => {
     this.setState({ selectOpen: false });
-    this.setState({ anchorEl: null});
+    this.setState({ anchorEl: null });
   };
 
   renderOptions = () => {
@@ -42,8 +42,8 @@ class LanguageSelect extends Component {
       >
         {languages && languages.map(languageCode => (
           <MenuItem
-          onClick={() => this.handleChange(languageCode)}
-          selected={this.state.country === languageCode}
+            onClick={() => this.handleChange(languageCode)}
+            selected={this.state.country === languageCode}
           >
             <ListItemIcon className={classes.flagIcon}>
               <img

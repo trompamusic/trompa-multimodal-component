@@ -40,7 +40,7 @@ export default ({ breakpoints, spacing, typography }) => ({
     width       : 'auto',
     objectFit   : 'cover',
     height      : 140,
-    borderRadius: '4px 4px 0px 0px'
+    borderRadius: '4px 4px 0px 0px',
   },
   contentContainer: {
     padding  : spacing(2),

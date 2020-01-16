@@ -8,7 +8,7 @@ export default ({ breakpoints, palette, typography, spacing, mixins }) => ({
       flexDirection: 'column',
       textAlign    : 'center',
     },
-    display: 'flex',
+    display        : 'flex',
     paddingTop     : spacing(),
     paddingBottom  : spacing(),
     color          : palette.common.white,

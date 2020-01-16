@@ -14,7 +14,7 @@ import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import styles from './SearchResultPerson.styles';
 
 class SearchResultPerson extends Component {
-  renderResults = (data) => {
+  renderResults = data => {
     const { classes, t } = this.props;
 
     return (
@@ -62,7 +62,7 @@ class SearchResultPerson extends Component {
           </Paper>
         ))}
       </div>
-    )
+    );
   }
 
   render() {
@@ -92,7 +92,7 @@ class SearchResultPerson extends Component {
           </div>
         )}
       </SearchContext.Consumer>
-    )
+    );
   }
 }
 

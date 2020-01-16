@@ -3,13 +3,13 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar/AppBar';
 import Toolbar from '@material-ui/core/Toolbar/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import SearchBar from '../../components/SearchBar'
-import images from '../../theme/images';
 import { withTranslation } from 'react-i18next';
+import SearchBar from '../../components/SearchBar';
+import images from '../../theme/images';
 import { SearchContext } from '../SearchProvider/SearchProvider';
-import styles from './NavBar.styles';
 import { providers } from '../../utils';
 import LanguageSelect from '../../components/LanguageSelect';
+import styles from './NavBar.styles';
 
 export class NavBar extends Component {
   static propTypes = {};

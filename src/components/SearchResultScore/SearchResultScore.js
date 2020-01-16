@@ -16,13 +16,13 @@ import styles from './SearchResultScore.styles';
 class SearchResultScore extends Component {
   ellipsis = (textSource, maxLength) => {
     if (textSource.length >= maxLength) {
-      return textSource.substr(0, maxLength) + '...'
+      return textSource.substr(0, maxLength) + '...';
     }
 
     return textSource;
   };
 
-  renderResults = (data) => {
+  renderResults = data => {
     const { classes, t } = this.props;
 
     return (
@@ -90,7 +90,7 @@ class SearchResultScore extends Component {
           </Paper>
         ))}
       </div>
-    )
+    );
   }
 
   render() {
@@ -120,7 +120,7 @@ class SearchResultScore extends Component {
           </div>
         )}
       </SearchContext.Consumer>
-    )
+    );
   }
 }
 

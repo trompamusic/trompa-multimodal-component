@@ -15,7 +15,7 @@ class SearchTag extends Component {
         >
           {term}
         </Typography>
-        <CancelIcon className={classes.icon} onClick={(event) => onClickRemove(event, term)} />
+        <CancelIcon className={classes.icon} onClick={event => onClickRemove(event, term)} />
       </div>
     );
   }

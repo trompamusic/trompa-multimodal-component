@@ -14,13 +14,11 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
-import MusicNoteIcon from '@material-ui/icons/MusicNote';
-import MessageIcon from '@material-ui/icons/Message';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import MusicFileIcon from '../../components/Icons/MusicFileIcon';
 import FilterIcon from '../../components/Icons/FilterIcon';
 import { providers } from '../../utils';
-import { SearchContext } from '../SearchProvider/SearchProvider'
+import { SearchContext } from '../SearchProvider/SearchProvider';
 import styles from './SearchFilters.styles';
 
 class SearchFilters extends Component {
@@ -31,7 +29,7 @@ class SearchFilters extends Component {
   filters = [
     {
       label: this.props.t('filterMenu.all'),
-      icon: SearchIcon,
+      icon : SearchIcon,
       value: 'all',
     },
     {
@@ -42,21 +40,21 @@ class SearchFilters extends Component {
     {
       label: this.props.t('filterMenu.compositions'),
       icon : LibraryMusicIcon,
-      value: 'MusicComposition'
+      value: 'MusicComposition',
     },
     {
       label: this.props.t('filterMenu.scores'),
       icon : MusicFileIcon,
-      value: 'Score'
+      value: 'Score',
     },
     {
       label: this.props.t('filterMenu.videos'),
       icon : VideocamIcon,
-      value: 'VideoObject'
+      value: 'VideoObject',
     },
   ];
 
-  renderResultCountPerType = (data) => {
+  renderResultCountPerType = data => {
     return (data || []).reduce((acc, value) => {
       if (typeof acc[value.__typename] === 'undefined') {
         acc[value.__typename] = data.filter(({ __typename }) => __typename === value.__typename).length;
@@ -82,7 +80,7 @@ class SearchFilters extends Component {
           <div>
             <div className={classes.drawerHeader}>
               <Typography className={classes.header}>{t('filterBy')}</Typography>
-              <IconButton onClick={() => this.setState({ open: false })} aria-label='close drawer'>
+              <IconButton onClick={() => this.setState({ open: false })} aria-label="close drawer">
                 <CloseIcon />
               </IconButton>
             </div>
@@ -90,11 +88,11 @@ class SearchFilters extends Component {
             {this.filters.map(({ value, label, icon: Icon }) => (
               <React.Fragment key={value}>
                 <ListItem
-                  button
                   className={classNames(classes.filter, {
                     [classes.selected]: selectedCategory === value,
                   })}
                   onClick={event => setCategory(event, value)}
+                  button
                 >
                   <div className={classes.filterContainer}>
                     {Icon && (
@@ -121,7 +119,7 @@ class SearchFilters extends Component {
           </div>
         </div>
       </SwipeableDrawer>
-    )
+    );
   }
 
   renderFilters(selectedCategory, setCategory, searchResults) {
@@ -134,11 +132,11 @@ class SearchFilters extends Component {
         {this.filters.map(({ value, label, icon: Icon }) => (
           <React.Fragment key={value}>
             <ListItem
-              button
               className={classNames(classes.filter, {
                 [classes.selected]: selectedCategory === value,
               })}
               onClick={event => setCategory(event, value)}
+              button
             >
               <div className={classes.filterContainer}>
                 {Icon && (
@@ -155,7 +153,7 @@ class SearchFilters extends Component {
           </React.Fragment>
         ))}
       </React.Fragment>
-    )
+    );
   }
 
   render() {

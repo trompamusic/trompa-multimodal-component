@@ -20,7 +20,7 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
   },
   selected: {
     background: `linear-gradient(to right, ${palette.common.selectedLight}, ${palette.common.selectedDark})`,
-    '& span': {
+    '& span'  : {
       color: palette.common.white,
     },
     '& svg': {
@@ -45,7 +45,7 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
   label: {
     padding     : 0,
     paddingRight: spacing(0.5),
-    '& span': {
+    '& span'    : {
       fontSize  : typography.pxToRem(14),
       fontWeight: 'bold',
     },
@@ -76,7 +76,7 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
     display       : 'flex',
     flexDirection : 'column',
     justifyContent: 'space-between',
-    padding       : `${spacing(2.5)}px ${spacing(2)}px`
+    padding       : `${spacing(2.5)}px ${spacing(2)}px`,
   },
   drawerHeader: {
     display       : 'flex',

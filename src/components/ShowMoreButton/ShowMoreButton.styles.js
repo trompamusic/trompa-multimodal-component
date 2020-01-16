@@ -4,10 +4,10 @@ export default ({ breakpoints, spacing }) => ({
       margin      : spacing(),
       marginBottom: 0,
     },
-    height: '100%',
+    height         : '100%',
     backgroundColor: '#f5f5f5',
-    textTransform: 'none',
-    paddingLeft: spacing(2),
-    borderRadius: 32,
-  }
+    textTransform  : 'none',
+    paddingLeft    : spacing(2),
+    borderRadius   : 32,
+  },
 });

@@ -2,17 +2,17 @@ import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
-import ShowMoreButton from '../ShowMoreButton';
 import Typography from '@material-ui/core/Typography';
-import styles from './SearchResultProduct.styles';
 import Avatar from '@material-ui/core/Avatar/Avatar';
-import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import { withTranslation } from 'react-i18next';
+import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
+import ShowMoreButton from '../ShowMoreButton';
+import styles from './SearchResultProduct.styles';
 
 class SearchResultProduct extends Component {
   ellipsis = (textSource, maxLength) => {
     if (textSource.length >= maxLength) {
-      return textSource.substr(0, maxLength) + '...'
+      return textSource.substr(0, maxLength) + '...';
     }
 
     return textSource;
@@ -49,7 +49,7 @@ class SearchResultProduct extends Component {
                           <Typography variant="subtitle2">
                             {source ? <Link href={source} target="_blank">{source}</Link> : t('empty_results.no_source')}
                           </Typography>
-                          <Typography paragraph className={classes.description}>
+                          <Typography className={classes.description} paragraph>
                             {description ? this.ellipsis(description, 250) : t('empty_results.no_description')}
                           </Typography>
                         </Fragment>

@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withTranslation } from 'react-i18next';
-import styles from './SearchResults.styles';
 import { providers } from '../../utils';
 import { SearchContext } from '../SearchProvider/SearchProvider';
 import SearchResultPerson from '../../components/SearchResultPerson';
@@ -13,6 +12,7 @@ import SearchResultComposition from '../../components/SearchResultComposition';
 import SearchFilters from '../SearchFilters';
 import SearchResultScore from '../../components/SearchResultScore';
 import SearchResultVideo from '../../components/SearchResultVideo';
+import styles from './SearchResults.styles';
 
 const resultsDict = {
   Person          : SearchResultPerson,
@@ -26,7 +26,7 @@ class SearchResults extends Component {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  filterResults = (type) => {
+  filterResults = type => {
     const { data: { searchMetadataText } } = this.props;
 
     const filteredResult = searchMetadataText ? searchMetadataText.filter(({ __typename }) => __typename === type) : [];
@@ -34,7 +34,7 @@ class SearchResults extends Component {
     return filteredResult;
   };
 
-  renderResultCountPerType = (data) => {
+  renderResultCountPerType = data => {
     return (data || []).reduce((acc, value) => {
       if (typeof acc[value.__typename] === 'undefined') {
         acc[value.__typename] = data.filter(({ __typename }) => __typename === value.__typename).length;
@@ -46,17 +46,19 @@ class SearchResults extends Component {
 
   renderResult(typeName, selectedCategory, counts) {
     const Component   = resultsDict[typeName];
-    const moreResults = ['VideoObject']
+    const moreResults = ['VideoObject'];
 
     if (selectedCategory === 'all' || selectedCategory === typeName) {
       this.scrollToTop();
+
       return (
         <Component
           count={counts[typeName] || 0}
           data={selectedCategory === 'all' ? (
             (moreResults.includes(typeName) ? this.filterResults(typeName).slice(0, 4) : this.filterResults(typeName).slice(0, 3))
-          ) : this.filterResults(typeName)} />
-      )
+          ) : this.filterResults(typeName)}
+        />
+      );
     }
 
     return null;
@@ -70,18 +72,18 @@ class SearchResults extends Component {
         {this.renderResult('DigitalDocument', selectedCategory, counts)}
         {this.renderResult('VideoObject', selectedCategory, counts)}
       </React.Fragment>
-    )
+    );
   }
 
   renderNoResults(searchPhrase, selectedCategory) {
     const { classes, t } = this.props;
 
     const types = {
-      Person: t('personResult.personLower'),
+      Person          : t('personResult.personLower'),
       MusicComposition: t('compositionResult.compositionLower'),
-      DigitalDocument: t('scoreResult.scoreLower'),
-      VideoObject: t('videoResult.videoLower')
-    }
+      DigitalDocument : t('scoreResult.scoreLower'),
+      VideoObject     : t('videoResult.videoLower'),
+    };
 
     return (
       <div className={classes.noResults}>
@@ -104,12 +106,12 @@ class SearchResults extends Component {
           </ul>
         </div>
       </div>
-    )
+    );
   }
 
   render() {
     const { t, data: { searchMetadataText }, classes } = this.props;
-    const counts = this.renderResultCountPerType(searchMetadataText)
+    const counts                                       = this.renderResultCountPerType(searchMetadataText);
 
     return (
       <SearchContext.Consumer>
@@ -118,7 +120,7 @@ class SearchResults extends Component {
             <Grid xs={12} md={2} item>
               <SearchFilters data={searchMetadataText} />
             </Grid>
-            <Grid xs={12} md={10} item className={classes.resultsContainer}>
+            <Grid xs={12} md={10} className={classes.resultsContainer} item>
               <Typography variant="subtitle1" className={classes.resultsTotal}>{searchMetadataText ? searchMetadataText.length : 0} {t('results')}</Typography>
               {this.renderResults(selectedCategory, counts)}
               {searchMetadataText && searchMetadataText.length === 0 ? (
@@ -184,7 +186,7 @@ export default providers(
     options: props => ({
       variables: {
         searchPhrase: props.searchPhrase,
-        categories: props.categories,
+        categories  : props.categories,
       },
     }),
   }),

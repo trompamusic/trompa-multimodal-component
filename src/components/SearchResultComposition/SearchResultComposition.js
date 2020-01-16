@@ -11,26 +11,25 @@ import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import Avatar from '@material-ui/core/Avatar';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import { getUrlHostName } from '../../utils';
-import ShowMoreButton from '../ShowMoreButton';
 import styles from './SearchResultComposition.styles';
 
 class SearchResultComposition extends Component {
   ellipsis = (textSource, maxLength) => {
     if (textSource.length >= maxLength) {
-      return textSource.substr(0, maxLength) + '...'
+      return textSource.substr(0, maxLength) + '...';
     }
 
     return textSource;
   };
 
-  renderResults = (data) => {
+  renderResults = data => {
     const { classes, t } = this.props;
 
     return (
       <div className={classes.results}>
         {data && data.map(({ identifier, name, creator, source }) => (
-          <Paper 
-            key={identifier} 
+          <Paper
+            key={identifier}
             className={classes.resultContainer}
             onClick={name => console.log(`${name} clicked!`)}
           >
@@ -71,7 +70,7 @@ class SearchResultComposition extends Component {
           </Paper>
         ))}
       </div>
-    )
+    );
   }
 
   render() {
@@ -90,7 +89,7 @@ class SearchResultComposition extends Component {
                 {this.renderResults(data)}
                 {selectedCategory === 'all' && count > 3 ? (
                   <Button
-                    className={classes.button} 
+                    className={classes.button}
                     onClick={event => setCategory(event, "MusicComposition")}
                   >
                     {t('showMore')}<ChevronRightIcon className={classes.buttonIcon} />
@@ -101,7 +100,7 @@ class SearchResultComposition extends Component {
           </div>
         )}
       </SearchContext.Consumer>
-    )
+    );
   }
 }
 

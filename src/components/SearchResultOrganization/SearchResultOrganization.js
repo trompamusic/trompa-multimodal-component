@@ -3,16 +3,16 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import styles from './SearchResultOrganization.styles';
-import ShowMoreButton from '../ShowMoreButton';
 import Avatar from '@material-ui/core/Avatar/Avatar';
-import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import { withTranslation } from 'react-i18next';
+import ShowMoreButton from '../ShowMoreButton';
+import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
+import styles from './SearchResultOrganization.styles';
 
 class SearchResultOrganization extends Component {
   ellipsis = (textSource, maxLength) => {
     if (textSource.length >= maxLength) {
-      return textSource.substr(0, maxLength) + '...'
+      return textSource.substr(0, maxLength) + '...';
     }
 
     return textSource;
@@ -49,7 +49,7 @@ class SearchResultOrganization extends Component {
                           <Typography variant="subtitle2">
                             {source ? <Link href={source} target="_blank">{source}</Link> : t('empty_results.no_source')}
                           </Typography>
-                          <Typography paragraph className={classes.description}>
+                          <Typography className={classes.description} paragraph>
                             {description ? this.ellipsis(description, 250) : t('empty_results.no_description')}
                           </Typography>
                         </div>

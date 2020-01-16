@@ -14,7 +14,7 @@ export const providers = (Component, ...wrappers) => {
   let wrappedComponent = wrapComponent(Component);
 
   wrappers.forEach(fn => {
-    wrappedComponent = fn(wrappedComponent);
+    wrappedComponent             = fn(wrappedComponent);
     wrappedComponent.displayName = Component.displayName || Component.name || 'Component';
     delete wrappedComponent.getDisplayName;
   });
@@ -32,4 +32,4 @@ export const getUrlHostName = url => {
   }
 
   return null;
-}
+};

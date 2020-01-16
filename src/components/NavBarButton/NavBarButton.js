@@ -24,7 +24,7 @@ class NavBarButton extends Component {
 
     if (to) {
       Component = NavLink;
-      props = {
+      props     = {
         activeClassName: classes.active,
         exact,
         to,

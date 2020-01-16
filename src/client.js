@@ -5,7 +5,7 @@ import introspectionQueryResultData from './fragmentTypes';
 
 export const getApolloClient = uri => {
   const fragmentMatcher = new IntrospectionFragmentMatcher({
-    introspectionQueryResultData
+    introspectionQueryResultData,
   });
 
   const cache = new InMemoryCache({ fragmentMatcher });
@@ -15,5 +15,5 @@ export const getApolloClient = uri => {
     link: new HttpLink({
       uri,
     }),
-  })
+  });
 };

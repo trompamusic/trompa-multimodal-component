@@ -6,8 +6,8 @@ import { debounce } from "throttle-debounce";
 import { withTranslation } from 'react-i18next';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import styles from './SearchBar.styles';
 import SearchTag from '../SearchTag';
+import styles from './SearchBar.styles';
 
 class SearchBar extends Component {
   state = { 
@@ -37,22 +37,22 @@ class SearchBar extends Component {
   removeSearchTag = (event, searchTag) => {
     const { searchTags } = this.state;
 
-    this.setState({ searchTags: searchTags.filter((item) => searchTag !== item) })
+    this.setState({ searchTags: searchTags.filter(item => searchTag !== item) });
     this.handleSubmitDebounced(event);
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     const { searchTags } = this.state;
 
     this.setState({ searchPhrase: event.target.value });
     if (event.target.value.endsWith(' ')) {
-      this.setState({ searchTags: searchTags.concat(event.target.value.trim())})
-      this.setState({ searchPhrase: '' })
+      this.setState({ searchTags: searchTags.concat(event.target.value.trim()) });
+      this.setState({ searchPhrase: '' });
     }
     this.handleSubmitDebounced(event);
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     const { searchPhrase, searchTags } = this.state;
 
     event.preventDefault();
@@ -86,8 +86,8 @@ class SearchBar extends Component {
                 </InputAdornment>
               ),
               classes: {
-                root: classes.cssOutlinedInput,
-                focused: classes.cssFocused,
+                root          : classes.cssOutlinedInput,
+                focused       : classes.cssFocused,
                 notchedOutline: classes.notchedOutline,
               },
             }}

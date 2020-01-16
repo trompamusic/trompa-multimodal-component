@@ -3,13 +3,13 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     marginBottom: spacing(3),
   },
   header: {
-    fontSize   : typography.pxToRem(20),
-    fontWeight : 'bold',
+    fontSize  : typography.pxToRem(20),
+    fontWeight: 'bold',
   },
   resultsCount: {
-    fontSize   : typography.pxToRem(14),
-    color      : palette.common.darkGrey,
-    marginLeft : spacing(0.5),
+    fontSize  : typography.pxToRem(14),
+    color     : palette.common.darkGrey,
+    marginLeft: spacing(0.5),
   },
   results: {
     [breakpoints.down('sm')]: {
@@ -49,7 +49,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
       flexDirection: 'column',
     },
     width  : '100%',
-    padding: `${spacing(2)}px ${spacing(2)}px ${spacing(1.5)}px ${spacing(2)}px`
+    padding: `${spacing(2)}px ${spacing(2)}px ${spacing(1.5)}px ${spacing(2)}px`,
   },
   infoHeader: {
     display       : 'flex',
@@ -83,7 +83,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     fontSize     : typography.pxToRem(14),
     textTransform: 'none',
     color        : palette.common.blue,
-    padding      : `${spacing()}px ${spacing()}px ${spacing()}px ${spacing(2)}px`
+    padding      : `${spacing()}px ${spacing()}px ${spacing()}px ${spacing(2)}px`,
   },
   buttonIcon: {
     fontSize  : typography.pxToRem(18),

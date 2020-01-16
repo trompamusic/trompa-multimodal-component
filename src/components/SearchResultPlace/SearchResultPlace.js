@@ -1,18 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import ShowMoreButton from '../ShowMoreButton';
-import styles from './SearchResultPlace.styles';
 import Avatar from '@material-ui/core/Avatar/Avatar';
 import { withTranslation } from 'react-i18next';
+import ShowMoreButton from '../ShowMoreButton';
+import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
+import styles from './SearchResultPlace.styles';
 
 class SearchResultPlace extends Component {
   ellipsis = (textSource, maxLength) => {
     if (textSource.length >= maxLength) {
-      return textSource.substr(0, maxLength) + '...'
+      return textSource.substr(0, maxLength) + '...';
     }
 
     return textSource;
@@ -42,13 +42,13 @@ class SearchResultPlace extends Component {
                         ) : <Avatar className={classes.image} />}
                       </Fragment>
                       <div className={classes.contentContainer}>
-                          <Typography variant="h5" className={classes.name}>{name}</Typography>
-                          <Typography variant="subtitle2">
-                            {source ? <Link href={source} target="_blank">{source}</Link> : t('empty_results.no_source')}
-                          </Typography>
-                          <Typography paragraph className={classes.description}>
-                            {description ? this.ellipsis(description, 100) : t('empty_results.no_description')}
-                          </Typography>
+                        <Typography variant="h5" className={classes.name}>{name}</Typography>
+                        <Typography variant="subtitle2">
+                          {source ? <Link href={source} target="_blank">{source}</Link> : t('empty_results.no_source')}
+                        </Typography>
+                        <Typography className={classes.description} paragraph>
+                          {description ? this.ellipsis(description, 100) : t('empty_results.no_description')}
+                        </Typography>
                       </div>
                     </Paper>
                   ))}

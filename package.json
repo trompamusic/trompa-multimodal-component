@@ -17,6 +17,7 @@
     "test:watch": "react-scripts test --env=jsdom",
     "build": "yarn schema && rollup -c",
     "start": "yarn schema && rollup -c -w",
+    "lint": "node_modules/eslint/bin/eslint.js --ext jsx --ext js src",
     "prepare": "yarn schema && yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",

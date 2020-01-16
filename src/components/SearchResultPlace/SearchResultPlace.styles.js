@@ -1,7 +1,7 @@
 export default ({ breakpoints, spacing, typography }) => ({
   header: {
     [breakpoints.down('sm')]: {
-      display: 'flex',
+      display      : 'flex',
       flexDirection: 'column',
     },
     display       : 'flex',
@@ -40,7 +40,7 @@ export default ({ breakpoints, spacing, typography }) => ({
     width       : 100,
     height      : 'auto',
     objectFit   : 'cover',
-    borderRadius: '4px 0px 0px 4px'
+    borderRadius: '4px 0px 0px 4px',
   },
   contentContainer: {
     display      : 'flex',
