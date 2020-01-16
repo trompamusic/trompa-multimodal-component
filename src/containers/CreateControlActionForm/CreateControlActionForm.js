@@ -15,7 +15,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import { withStyles } from '@material-ui/core/styles';
-import { withRouter } from 'react-router-dom';
 import PotentialActionObjects from '../../components/PotentialActionObjects/PotentialActionObjects';
 import { providers } from '../../utils';
 import styles from './CreateControlActionForm.styles';
@@ -251,5 +250,4 @@ export default providers(
     name: 'mutate',
   }),
   withStyles(styles),
-  withRouter,
 );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { MuiThemeProvider } from '@material-ui/core';
+import { ApolloConsumer } from '@apollo/react-hooks';
 import SearchProvider from './containers/SearchProvider';
 import { Search } from './containers/Search';
 import theme from './theme';
@@ -13,9 +14,13 @@ export class MultiModalComponent extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <I18nextProvider i18n={i18n}>
-          <SearchProvider>
-            <Search />
-          </SearchProvider>
+          <ApolloConsumer>
+            {({ client }) => (
+              <SearchProvider client={client}>
+                <Search />
+              </SearchProvider>
+            )}
+          </ApolloConsumer>
         </I18nextProvider>
       </MuiThemeProvider>
     );

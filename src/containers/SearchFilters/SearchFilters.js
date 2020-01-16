@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { withRouter } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import Hidden from '@material-ui/core/Hidden';
@@ -25,7 +24,7 @@ import { SearchContext } from '../SearchProvider/SearchProvider'
 import styles from './SearchFilters.styles';
 
 class SearchFilters extends Component {
-  state = { 
+  state = {
     open: false,
   };
 
@@ -34,17 +33,17 @@ class SearchFilters extends Component {
       label: this.props.t('filterMenu.all'),
       icon: SearchIcon,
       value: 'all',
-    }, 
+    },
     {
       label: this.props.t('filterMenu.people'),
       icon : AccountCircleIcon,
       value: 'Person',
-    }, 
+    },
     {
       label: this.props.t('filterMenu.compositions'),
       icon : LibraryMusicIcon,
       value: 'MusicComposition'
-    }, 
+    },
     {
       label: this.props.t('filterMenu.scores'),
       icon : MusicFileIcon,
@@ -123,13 +122,13 @@ class SearchFilters extends Component {
             ))}
           </div>
           <div>
-            <Button 
+            <Button
               className={classes.button}
               onClick={() => this.setState({ open: false })}
             >
               {`${searchResults.length} ${t('resultsLower')}`}
             </Button>
-          </div> 
+          </div>
         </div>
       </SwipeableDrawer>
     )
@@ -184,7 +183,7 @@ class SearchFilters extends Component {
               </div>
             </Hidden>
             <Hidden mdUp>
-              <Button 
+              <Button
                 className={classes.button}
                 onClick={() => this.setState({ open: true })}
               >
@@ -204,5 +203,4 @@ export default providers(
   SearchFilters,
   withTranslation('searchFilters'),
   withStyles(styles),
-  withRouter,
 );

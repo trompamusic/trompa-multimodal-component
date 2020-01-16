@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
-import client from '../../graphql';
 import { setPrerenderReady } from '../../utils';
 import { providers } from '../../utils';
 
@@ -33,10 +32,10 @@ class SearchProvider extends Component {
   };
 
   runQuery = () => {
-    client.query({ query: SEARCH_QUERY, variables: {
+    this.props.client.query({ query: SEARCH_QUERY, variables: {
         searchPhrase: this.state.searchPhrase,
         categories  : this.state.categories,
-      } 
+      }
     }).then((data) => this.setState({ searchResults: data.data.searchMetadataText }));
   }
 
@@ -44,8 +43,8 @@ class SearchProvider extends Component {
     const { children } = this.props;
 
     return (
-      <SearchContext.Provider value={{ 
-        ...this.state, 
+      <SearchContext.Provider value={{
+        ...this.state,
         handleSearchSubmit: this.handleSearchSubmit,
         setCategory       : this.setCategory,
       }}>

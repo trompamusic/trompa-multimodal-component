@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Fab from '@material-ui/core/Fab';
 import { withStyles } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
-import { withRouter } from 'react-router-dom';
 import { providers } from '../../utils';
 import CreateControlActionForm from '../CreateControlActionForm/CreateControlActionForm';
 import styles from './CreateControlActionButton.styles';
@@ -48,5 +47,4 @@ class CreateControlActionButton extends Component {
 export default providers(
   CreateControlActionButton,
   withStyles(styles),
-  withRouter,
 );

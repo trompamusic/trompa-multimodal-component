@@ -8,7 +8,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
-import { withRouter } from 'react-router-dom';
 import ProcessStatusIcon from '../../components/ProcessStatusIcon/ProcessStatusIcon';
 import { providers } from '../../utils';
 import styles from './ControlActionList.styles';
@@ -77,5 +76,4 @@ export default providers(
   ControlActionList,
   graphql(CONTROL_ACTIONS_QUERY),
   withStyles(styles),
-  withRouter,
 );
