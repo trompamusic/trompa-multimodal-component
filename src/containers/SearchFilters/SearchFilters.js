@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { withRouter } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import styles from './SearchFilters.styles';
 import { providers } from '../../utils';
@@ -122,7 +121,7 @@ class SearchFilters extends Component {
           <div className={classes.root}>
             {selectedCategory === 'all'
               ? <Typography variant="h5" className={classes.allCategorySelected}>All</Typography>
-              : <Button 
+              : <Button
                 onClick={event => setCategory(event, 'all')}
                 >
                   <KeyboardArrowLeft /> Back to all
@@ -140,5 +139,4 @@ export default providers(
   SearchFilters,
   withTranslation('searchFilters'),
   withStyles(styles),
-  withRouter,
 );

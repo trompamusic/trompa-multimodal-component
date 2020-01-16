@@ -8,7 +8,7 @@ import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import styles from './SearchResultVideo.styles';
 import { withTranslation } from 'react-i18next';
 import Avatar from '@material-ui/core/Avatar/Avatar';
-import ShowMoreButton from '../../shared/ShowMoreButton';
+import ShowMoreButton from '../ShowMoreButton';
 
 class SearchResultVideo extends Component {
   ellipsis = (textSource, maxLength) => {
@@ -18,7 +18,7 @@ class SearchResultVideo extends Component {
 
     return textSource;
   };
-  
+
   render() {
     const { t, classes, data, count } = this.props;
 

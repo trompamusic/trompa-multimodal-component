@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import ShowMoreButton from '../../shared/ShowMoreButton';
+import ShowMoreButton from '../ShowMoreButton';
 import styles from './SearchResultComposition.styles';
 import Avatar from '@material-ui/core/Avatar/Avatar';
 import { withTranslation } from 'react-i18next';
@@ -16,7 +16,7 @@ class SearchResultComposition extends Component {
 
     return textSource;
   };
-  
+
   render() {
     const { t, classes, data, count } = this.props;
 
@@ -29,7 +29,7 @@ class SearchResultComposition extends Component {
                 <div className={classes.header}>
                   <Typography variant="h5">{t('composition_result.composition')} ({count})</Typography>
                   {selectedCategory === 'all' ? (
-                    <ShowMoreButton onClick={event => setCategory(event, "MusicComposition")} /> 
+                    <ShowMoreButton onClick={event => setCategory(event, "MusicComposition")} />
                   ) : null}
                 </div>
                 {data && data.map(({ identifier, creator, name, image }) => (

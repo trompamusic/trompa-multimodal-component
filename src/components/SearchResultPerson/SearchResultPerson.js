@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import styles from './SearchResultPerson.styles';
 import Avatar from '@material-ui/core/Avatar/Avatar';
-import ShowMoreButton from '../../shared/ShowMoreButton';
+import ShowMoreButton from '../ShowMoreButton';
 import { withTranslation } from 'react-i18next';
 
 class SearchResultPerson extends Component {
@@ -16,7 +16,7 @@ class SearchResultPerson extends Component {
 
     return textSource;
   };
-  
+
   render() {
     const { t, classes, data, count } = this.props;
 

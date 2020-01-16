@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid/Grid';
 import Typography from '@material-ui/core/Typography';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import { withRouter } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import styles from './SearchResults.styles';
 import { providers } from '../../utils';
@@ -46,7 +45,7 @@ class SearchResults extends Component {
       if (typeof acc[value.__typename] === 'undefined') {
         acc[value.__typename] = data.filter(({ __typename }) => __typename === value.__typename).length;
       }
-      
+
       return acc;
     }, {});
   };
@@ -57,10 +56,10 @@ class SearchResults extends Component {
     if (selectedCategory === 'all' || selectedCategory === typeName) {
       this.scrollToTop();
       return (
-        <Component 
-          count={counts[typeName] || 0} 
+        <Component
+          count={counts[typeName] || 0}
           data={selectedCategory === 'all' ? (
-            this.filterResults(typeName).slice(0, 3) 
+            this.filterResults(typeName).slice(0, 3)
           ) : this.filterResults(typeName)} />
         )
     }
@@ -183,5 +182,4 @@ export default providers(
   }),
   withTranslation('searchResults'),
   withStyles(styles),
-  withRouter,
 );

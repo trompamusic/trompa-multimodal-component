@@ -1,11 +1,11 @@
 import i18n from 'i18next';
-import moment from 'moment';
 import { initReactI18next } from 'react-i18next';
-import 'moment/locale/en-gb';
+import en_US from './locales/en_US';
+import nl_NL from './locales/nl_NL';
 
 const locales = {
-  en_US: require('./locales/en_US').default,
-  nl_NL: require('./locales/nl_NL').default,
+  en_US,
+  nl_NL,
 };
 
 // initialize i18n, get all namespaces from the default language
@@ -18,11 +18,5 @@ i18n
     defaultNS  : 'common',
     resources  : locales,
   });
-
-// change moment language on i18next languageChange event
-i18n.on('languageChanged', language => moment.locale(language));
-
-// set initial moment language
-moment.locale(i18n.language);
 
 export default i18n;

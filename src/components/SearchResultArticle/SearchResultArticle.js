@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import Paper from '@material-ui/core/Paper';
-import ShowMoreButton from '../../shared/ShowMoreButton';
+import ShowMoreButton from '../ShowMoreButton';
 import Typography from '@material-ui/core/Typography';
 import styles from './SearchResultArticle.styles';
 import { withTranslation } from 'react-i18next';
@@ -16,7 +16,7 @@ class SearchResultArticle extends Component {
 
     return textSource;
   };
-  
+
   render() {
     const { t, classes, data, count } = this.props;
 
@@ -29,7 +29,7 @@ class SearchResultArticle extends Component {
                 <div className={classes.header}>
                   <Typography variant="h5">{t('article_result.article')} ({count})</Typography>
                   {selectedCategory === 'all' ? (
-                    <ShowMoreButton onClick={event => setCategory(event, "Article")} /> 
+                    <ShowMoreButton onClick={event => setCategory(event, "Article")} />
                   ) : null}
                 </div>
                 <div className={classes.articleResultsContainer}>

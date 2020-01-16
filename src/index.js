@@ -1,22 +1,23 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import { I18nextProvider } from 'react-i18next';
+import { MuiThemeProvider } from '@material-ui/core';
+import SearchProvider from './containers/SearchProvider';
+import { Search } from './containers/Search';
+import theme from './theme';
+import i18n from './i18n';
 
-import styles from './styles.css'
-
-export default class ExampleComponent extends Component {
-  static propTypes = {
-    text: PropTypes.string
-  }
+export class MultiModalComponent extends Component {
+  static propTypes = {};
 
   render() {
-    const {
-      text
-    } = this.props
-
     return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
+      <MuiThemeProvider theme={theme}>
+        <I18nextProvider i18n={i18n}>
+          <SearchProvider>
+            <Search />
+          </SearchProvider>
+        </I18nextProvider>
+      </MuiThemeProvider>
+    );
   }
 }

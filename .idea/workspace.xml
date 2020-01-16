@@ -2,25 +2,82 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ebe5e48-8f77-4842-baf9-953c7079dba0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/example/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_redirects" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/android-chrome-192x192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/android-chrome-384x384.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/apple-touch-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon-16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mstile-150x150.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/safari-pinned-tab.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/media/flags/de_DE.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/media/flags/en_GB.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/media/flags/en_US.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/media/flags/fr_FR.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/media/flags/lb_LU.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/media/flags/nl_BE.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/media/flags/nl_NL.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/rollup.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.styles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer/Footer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LanguageSelect/LanguageSelect.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Root/Root.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchBar/SearchBar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchBar/SearchBar.stories.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchBar/SearchBar.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultArticle/SearchResultArticle.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultArticle/SearchResultArticle.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultComposition/SearchResultComposition.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultComposition/SearchResultComposition.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultOrganization/SearchResultOrganization.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultOrganization/SearchResultOrganization.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPerson/SearchResultPerson.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPerson/SearchResultPerson.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPlace/SearchResultPlace.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPlace/SearchResultPlace.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultProduct/SearchResultProduct.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultVideo/SearchResultVideo.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultVideo/SearchResultVideo.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchTag/SearchTag.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ControlActionDetails/ControlActionDetails.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ControlActionDetails/ControlActionDetails.stories.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ControlActionDetails/ControlActionDetails.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ControlActionList/ControlActionList.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ControlActionList/ControlActionList.stories.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ControlActionList/ControlActionList.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/CreateControlActionButton/CreateControlActionButton.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/CreateControlActionButton/CreateControlActionButton.stories.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/CreateControlActionButton/CreateControlActionButton.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/CreateControlActionForm/CreateControlActionForm.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/CreateControlActionForm/CreateControlActionForm.stories.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/CreateControlActionForm/CreateControlActionForm.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/CreateControlActionForm/prev.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/NavBar/NavBar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/NavBar/NavBar.stories.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/NavBar/NavBar.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ResourceSelectDialog/ResourceSelectDialog.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ResourceSelectDialog/ResourceSelectDialog.stories.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ResourceSelectDialog/ResourceSelectDialog.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/SearchFilters/SearchFilters.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/SearchFilters/SearchFilters.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/SearchProvider/SearchProvider.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/SearchResults/SearchResults.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/SearchResults/SearchResults.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/fragmentTypes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/locales/en_US/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/locales/en_US/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/locales/nl_NL/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/locales/nl_NL/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/NotFound/NotFound.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/NotFound/NotFound.styles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/NotFound/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Search/Search.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Search/Search.styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Search/Search.styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Search/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Search/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/NavBarButton/NavBarButton.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/NavBarButton/NavBarButton.styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBarButton/NavBarButton.styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/NavBarButton/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBarButton/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ShowMoreButton/ShowMoreButton.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ShowMoreButton/ShowMoreButton.styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowMoreButton/ShowMoreButton.styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ShowMoreButton/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowMoreButton/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme/images.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/images.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme/images/logo.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,21 +97,8 @@
     <fileColor scope="Non-Project Files (Material Lighter)" color="eae8e8" />
     <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>exact</find>
-    </findStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/src</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
-    <option name="width" value="1920" />
-    <option name="height" value="957" />
   </component>
   <component name="ProjectId" id="1WQxmqRMMaeCZCYCnETx2EhKe1y" />
   <component name="PropertiesComponent">
@@ -64,6 +108,13 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src/containers" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -88,7 +139,7 @@
       <option name="presentableId" value="Default" />
       <updated>1560760158217</updated>
       <workItem from="1560760159413" duration="589000" />
-      <workItem from="1579095783453" duration="387000" />
+      <workItem from="1579095783453" duration="13327000" />
     </task>
     <servers />
   </component>

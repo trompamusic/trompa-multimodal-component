@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
+import { MultiModalComponent } from 'trompa-multimodal-component'
 
-import ExampleComponent from 'trompa-multimodal-component'
+const client = new ApolloClient({
+  uri: 'https://api-test.trompamusic.eu/',
+});
 
-export default class App extends Component {
-  render () {
+const App = () => {
     return (
-      <div>
-        <ExampleComponent text='Modern React component module' />
-      </div>
-    )
-  }
-}
+      <ApolloProvider client={client}>
+        <MultiModalComponent text='Modern React component module' />
+      </ApolloProvider>
+    );
+};
+
+export default App;
