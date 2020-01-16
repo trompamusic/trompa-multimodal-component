@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import client from '../../graphql';
 import gql from 'graphql-tag';
+import client from '../../graphql';
 import { setPrerenderReady } from '../../utils';
 import { providers } from '../../utils';
 
@@ -41,7 +41,7 @@ class SearchProvider extends Component {
   }
 
   render() {
-    const { children }      = this.props;
+    const { children } = this.props;
 
     return (
       <SearchContext.Provider value={{ 
