@@ -9,7 +9,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ImageIcon from '@material-ui/icons/Image';
 import Avatar from '@material-ui/core/Avatar';
-import Link from '@material-ui/core/Link';
 import { getUrlHostName } from '../../utils';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import styles from './SearchResultPerson.styles';
@@ -29,7 +28,11 @@ class SearchResultPerson extends Component {
     return (
       <div className={classes.results}>
         {data && data.map(({ identifier, name, jobTitle, source }) => (
-          <Paper key={identifier} className={classes.resultContainer}>
+          <Paper 
+            key={identifier} 
+            className={classes.resultContainer}
+            onClick={name => console.log(`${name} clicked!`)}
+          >
             <div>
               <Avatar className={classes.image}>
                 <AccountCircleIcon className={classes.typeIcon} />
@@ -44,24 +47,24 @@ class SearchResultPerson extends Component {
                   {jobTitle ? jobTitle : t('emptyResults.noRole')}
                 </Typography>
                 <Hidden smDown>
-                  <Link href={source} className={classes.resultSource}>
+                  <div className={classes.resultSource}>
                     <ImageIcon className={classes.sourceIcon} />
                     <Typography className={classes.source}>
                       {source ? getUrlHostName(source)  : null}
                     </Typography>
-                  </Link>
+                  </div>
                 </Hidden>
               </div>
               <Typography className={classes.resultName}>
                 {name ? name : t('emptyResults.noName')}
               </Typography>
               <Hidden mdUp>
-                <Link href={source} className={classes.resultSource}>
+                <div className={classes.resultSource}>
                   <ImageIcon className={classes.sourceIcon} />
                   <Typography className={classes.source}>
                     {source ? getUrlHostName(source)  : null}
                   </Typography>
-                </Link>
+                </div>
               </Hidden>
             </div>
           </Paper>

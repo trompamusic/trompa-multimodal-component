@@ -9,7 +9,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ImageIcon from '@material-ui/icons/Image';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import Avatar from '@material-ui/core/Avatar';
-import Link from '@material-ui/core/Link';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import { getUrlHostName } from '../../utils';
 import styles from './SearchResultComposition.styles';
@@ -29,7 +28,11 @@ class SearchResultComposition extends Component {
     return (
       <div className={classes.results}>
         {data && data.map(({ identifier, name, creator, source }) => (
-          <Paper key={identifier} className={classes.resultContainer}>
+          <Paper 
+            key={identifier} 
+            className={classes.resultContainer}
+            onClick={name => console.log(`${name} clicked!`)}
+          >
             <div>
               <Avatar className={classes.image}>
                 <LibraryMusicIcon className={classes.typeIcon} />
@@ -44,24 +47,24 @@ class SearchResultComposition extends Component {
                   {creator ? creator : t('emptyResults.noComposer')}
                 </Typography>
                 <Hidden smDown>
-                  <Link href={source} className={classes.resultSource}>
+                  <div className={classes.resultSource}>
                     <ImageIcon className={classes.sourceIcon} />
                     <Typography className={classes.source}>
                       {source ? getUrlHostName(source) : null}
                     </Typography>
-                  </Link>
+                  </div>
                 </Hidden>
               </div>
               <Typography className={classes.resultName}>
                 {name ? name : t('emptyResults.noName')}
               </Typography>
               <Hidden mdUp>
-                <Link href={source} className={classes.resultSource}>
+                <div className={classes.resultSource}>
                   <ImageIcon className={classes.sourceIcon} />
                   <Typography className={classes.source}>
                     {source ? getUrlHostName(source) : null}
                   </Typography>
-                </Link>
+                </div>
               </Hidden>
             </div>
           </Paper>
