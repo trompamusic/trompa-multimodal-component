@@ -1,5 +1,17 @@
 {
-  "filters": "Filters",
+  "filterBy": "Filter by",
+  "filter": "Filter",
+  "type": "Type",
+  "results": "results",
+  "filterMenu": {
+    "all": "All",
+    "people": "People",
+    "compositions": "Compositions",
+    "scores": "Scores",
+    "annotations": "Annotations",
+    "videos": "Videos",
+    "tracks": "Tracks"
+  },
   "people": "People",
   "peopleSubFilters": {
     "composer": "Composer",
