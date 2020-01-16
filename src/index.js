@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import * as PropTypes from 'prop-types';
 import { MuiThemeProvider } from '@material-ui/core';
-import { ApolloProvider } from '@apollo/react-hooks';
+import { ApolloProvider } from 'react-apollo';
 import SearchProvider from './containers/SearchProvider';
 import { Search } from './containers/Search';
 import theme from './theme';
