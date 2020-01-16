@@ -50,19 +50,9 @@ class SearchFilters extends Component {
       value: 'Score'
     },
     {
-      label: this.props.t('filterMenu.annotations'),
-      icon : MessageIcon,
-      value: 'Annotation'
-    },
-    {
       label: this.props.t('filterMenu.videos'),
       icon : VideocamIcon,
       value: 'VideoObject'
-    },
-    {
-      label: this.props.t('filterMenu.tracks'),
-      icon : MusicNoteIcon,
-      value: 'Track'
     },
   ];
 

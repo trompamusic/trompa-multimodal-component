@@ -35,6 +35,7 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
     alignItems: 'center',
   },
   iconContainer: {
+    minWidth   : typography.pxToRem(18),
     marginRight: spacing.unit,
   },
   icon: {
