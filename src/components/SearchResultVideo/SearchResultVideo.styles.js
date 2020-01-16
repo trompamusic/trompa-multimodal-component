@@ -7,31 +7,37 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     fontWeight : 'bold',
   },
   resultsCount: {
-    fontSize   : typography.pxToRem(14),
-    color      : palette.common.darkGrey,
-    marginLeft : spacing.unit * 0.5,
+    fontSize  : typography.pxToRem(14),
+    color     : palette.common.darkGrey,
+    marginLeft: spacing.unit * 0.5,
   },
   results: {
     [breakpoints.down('sm')]: {
-      marginTop: spacing.unit,
+      marginTop    : spacing.unit,
+      flexDirection: 'column',
     },
     display     : 'flex',
     marginTop   : spacing.unit * 1.5,
     marginBottom: spacing.unit,
   },
   resultContainer: {
+    [breakpoints.down('sm')]: {
+      marginBottom  : spacing.unit,
+      '&:last-child': {
+        marginBottom: 0,
+      },
+    },
     display       : 'flex',
     flexDirection : 'column',
+    width         : '100%',
+    maxWidth      : '100%',
     marginRight   : spacing.unit,
     '&:last-child': {
       marginRight: 0,
     },
   },
   image: {
-    [breakpoints.down('sm')]: {
-      width: '21vw',
-    },
-    borderRadius : '4px 0px 4px 0px',
+    borderRadius : '4px 4px 0px 0px',
     height       : 125,
     width        : '100%',
     display      : 'flex',

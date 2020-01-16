@@ -47,6 +47,9 @@ class SearchResults extends Component {
 
   renderResult(typeName, selectedCategory, counts) {
     const Component = resultsDict[typeName];
+    const moreResults = ['VideoObject']
+    console.log(typeName)
+    console.log('is it in there?:', moreResults.includes(typeName))
 
     if (selectedCategory === 'all' || selectedCategory === typeName) {
       this.scrollToTop();
@@ -54,7 +57,7 @@ class SearchResults extends Component {
         <Component 
           count={counts[typeName] || 0} 
           data={selectedCategory === 'all' ? (
-            this.filterResults(typeName).slice(0, 3) 
+            (moreResults.includes(typeName) ? this.filterResults(typeName).slice(0, 4) : this.filterResults(typeName).slice(0, 3)) 
           ) : this.filterResults(typeName)} />
         )
     }
