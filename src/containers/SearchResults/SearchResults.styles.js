@@ -21,8 +21,15 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     marginTop : 0,
     marginLeft: spacing.unit * 3,
   },
+  resultsHeader: {
+    marginBottom: spacing.unit * 2.25,
+  },
   resultsTotal: {
-    color: palette.common.faintBlack,
+    color                   : palette.common.darkGrey,
+    fontSize                : typography.pxToRem(14),
+    [breakpoints.down('md')]: {
+      display: 'none',
+    },
   },
   noResultsHeader: {
     [breakpoints.down('md')]: {

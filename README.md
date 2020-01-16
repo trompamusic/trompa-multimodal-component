@@ -1,3 +1,31 @@
-# ce-multimodal-component
+# trompa-multimodal-component
 
-TODO
+> The Multimodal Component for React applications
+
+[![NPM](https://img.shields.io/npm/v/trompa-multimodal-component.svg)](https://www.npmjs.com/package/trompa-multimodal-component) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+## Install
+
+```bash
+npm install --save trompa-multimodal-component
+```
+
+## Usage
+
+```jsx
+import React, { Component } from 'react'
+
+import MyComponent from 'trompa-multimodal-component'
+
+class Example extends Component {
+  render () {
+    return (
+      <MyComponent />
+    )
+  }
+}
+```
+
+## License
+
+MIT © [ChristiaanScheermeijer](https://github.com/ChristiaanScheermeijer)
