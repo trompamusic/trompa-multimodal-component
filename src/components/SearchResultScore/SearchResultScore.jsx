@@ -11,6 +11,7 @@ import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import Avatar from '@material-ui/core/Avatar';
 import Link from '@material-ui/core/Link';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
+import { getUrlHostName } from '../../utils';
 import styles from './SearchResultScore.styles';
 
 class SearchResultScore extends Component {
@@ -58,7 +59,7 @@ class SearchResultScore extends Component {
                   <Link href={source} className={classes.resultSource}>
                     <ImageIcon className={classes.sourceIcon} />
                     <Typography className={classes.source}>
-                      {source ? source : null}
+                      {source ? getUrlHostName(source) : null}
                     </Typography>
                   </Link>
                 </Hidden>
@@ -78,7 +79,7 @@ class SearchResultScore extends Component {
                 <Link href={source} className={classes.resultSource}>
                   <ImageIcon className={classes.sourceIcon} />
                   <Typography className={classes.source}>
-                    {source ? source : null}
+                    {source ? getUrlHostName(source) : null}
                   </Typography>
                 </Link>
               </Hidden>

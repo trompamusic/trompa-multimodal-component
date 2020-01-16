@@ -48,7 +48,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
       flexDirection: 'column',
     },
     width  : '100%',
-    padding: `${spacing.unit * 2}px ${spacing.unit * 2}px ${spacing.unit * 1.5}px ${spacing.unit * 2}px`
+    padding: spacing.unit * 2,
   },
   infoHeader: {
     display       : 'flex',
@@ -97,6 +97,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
       marginTop: spacing.unit * 2,
     },
     display    : 'flex',
+    marginTop  : spacing.unit * 1.75,
     fontSize   : typography.pxToRem(14),
   },
   publisher: {

@@ -46,10 +46,8 @@ class SearchResults extends Component {
   };
 
   renderResult(typeName, selectedCategory, counts) {
-    const Component = resultsDict[typeName];
+    const Component   = resultsDict[typeName];
     const moreResults = ['VideoObject']
-    console.log(typeName)
-    console.log('is it in there?:', moreResults.includes(typeName))
 
     if (selectedCategory === 'all' || selectedCategory === typeName) {
       this.scrollToTop();
@@ -76,19 +74,35 @@ class SearchResults extends Component {
     )
   }
 
-  renderNoResults(searchPhrase) {
+  renderNoResults(searchPhrase, selectedCategory) {
     const { classes, t } = this.props;
+
+    const types = {
+      Person: t('personResult.personLower'),
+      MusicComposition: t('compositionResult.compositionLower'),
+      DigitalDocument: t('scoreResult.scoreLower'),
+      VideoObject: t('videoResult.videoLower')
+    }
+
+    console.log('Selected cat:', selectedCategory)
+    console.log('Not all:', selectedCategory !== 'All')
+    console.log('type is:',)
 
     return (
       <div className={classes.noResults}>
         <Typography className={classes.noResultsHeader}>
-          We're sorry! We couldn't finds results for "{searchPhrase}"
+          {selectedCategory === 'all' ? (t('emptyResults.noResults', { searchPhrase })) : (
+            t('emptyResults.noResultsCategory', { type: types[selectedCategory], searchPhrase })
+          )}:
         </Typography>
         <div>
           <Typography className={classes.searchTipsHeader}>
-            {t('searchTips.searchTips')}:
+            {t('searchTips.searchTips')}
           </Typography>
           <ul className={classes.searchTips}>
+            {selectedCategory !== 'all' ? (
+              <li>{t('searchTips.tryOtherFilter')}</li>
+            ) : null}
             <li>{t('searchTips.doubleCheck')}</li>
             <li>{t('searchTips.tryAnother')}</li>
             <li>{t('searchTips.lessSpecific')}</li>
@@ -112,8 +126,8 @@ class SearchResults extends Component {
             <Grid xs={12} md={10} item className={classes.resultsContainer}>
               <Typography variant="subtitle1" className={classes.resultsTotal}>{searchMetadataText ? searchMetadataText.length : 0} {t('results')}</Typography>
               {this.renderResults(selectedCategory, counts)}
-              {searchMetadataText && searchMetadataText.length === 0 && selectedCategory === 'all' ? (
-                this.renderNoResults(searchPhrase)
+              {searchMetadataText && searchMetadataText.length === 0 ? (
+                this.renderNoResults(searchPhrase, selectedCategory)
               ) : null}
             </Grid>
           </Grid>

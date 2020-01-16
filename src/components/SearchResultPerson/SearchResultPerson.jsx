@@ -10,6 +10,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ImageIcon from '@material-ui/icons/Image';
 import Avatar from '@material-ui/core/Avatar';
 import Link from '@material-ui/core/Link';
+import { getUrlHostName } from '../../utils';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import styles from './SearchResultPerson.styles';
 
@@ -33,7 +34,7 @@ class SearchResultPerson extends Component {
               <Avatar className={classes.image}>
                 <AccountCircleIcon className={classes.typeIcon} />
                 <Typography className={classes.typeText}>
-                  Person
+                  {t('personResult.person')}
                 </Typography>
               </Avatar>
             </div>
@@ -46,7 +47,7 @@ class SearchResultPerson extends Component {
                   <Link href={source} className={classes.resultSource}>
                     <ImageIcon className={classes.sourceIcon} />
                     <Typography className={classes.source}>
-                      {source ? source : null}
+                      {source ? getUrlHostName(source)  : null}
                     </Typography>
                   </Link>
                 </Hidden>
@@ -58,7 +59,7 @@ class SearchResultPerson extends Component {
                 <Link href={source} className={classes.resultSource}>
                   <ImageIcon className={classes.sourceIcon} />
                   <Typography className={classes.source}>
-                    {source ? source : null}
+                    {source ? getUrlHostName(source)  : null}
                   </Typography>
                 </Link>
               </Hidden>
