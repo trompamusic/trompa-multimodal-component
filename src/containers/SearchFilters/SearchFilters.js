@@ -1,93 +1,144 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
-import styles from './SearchFilters.styles';
-import { providers } from '../../utils';
-import { SearchContext } from '../SearchProvider/SearchProvider'
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import classNames from 'classnames';
+import Hidden from '@material-ui/core/Hidden';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import ListItem from '@material-ui/core/ListItem/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon/ListItemIcon';
-import Button from '@material-ui/core/Button/Button';
 import ListItemText from '@material-ui/core/ListItemText/ListItemText';
-import Divider from '@material-ui/core/Divider/Divider';
-import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import PersonIcon from '@material-ui/icons/Person';
-import VideoIcon from '@material-ui/icons/OndemandVideo';
-import ArticleIcon from '@material-ui/icons/Book';
-import OrganizationIcon from '@material-ui/icons/Language';
-import ProductIcon from '@material-ui/icons/AddShoppingCart';
-import PlaceIcon from '@material-ui/icons/LocationCity';
-import TrompaIcon from '../../components/Icons/TrompaIcon';
-import CompositionIcon from '../../components/Icons/CompositionIcon';
+import IconButton from '@material-ui/core/IconButton';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import VideocamIcon from '@material-ui/icons/Videocam';
+import SearchIcon from '@material-ui/icons/Search';
+import CloseIcon from '@material-ui/icons/Close';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import MessageIcon from '@material-ui/icons/Message';
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import MusicFileIcon from '../../components/Icons/MusicFileIcon';
+import FilterIcon from '../../components/Icons/FilterIcon';
+import { providers } from '../../utils';
+import { SearchContext } from '../SearchProvider/SearchProvider'
+import styles from './SearchFilters.styles';
 
 class SearchFilters extends Component {
-  filters = [{
-    label: 'All',
-    icon: TrompaIcon,
-    value: 'all',
-  }, {
-    label: 'People',
-    icon: PersonIcon,
-    value: 'Person',
-  }, {
-    label: 'Compositions',
-    icon: CompositionIcon,
-    value: 'MusicComposition'
-  }, {
-    label: 'Videos',
-    icon: VideoIcon,
-    value: 'VideoObject'
-  },{
-    label: 'Articles',
-    icon: ArticleIcon,
-    value: 'Article'
-  }, {
-    label: 'Organizations',
-    icon: OrganizationIcon,
-    value: 'Organization'
-  }, {
-    label: 'Products',
-    icon: ProductIcon,
-    value: 'Product'
-  }, {
-    label: 'Places',
-    icon: PlaceIcon,
-    value: 'Place'
-  }];
+  state = { 
+    open: false,
+  };
 
-  renderFilters(searchPhrase, selectedCategory, setCategory) {
-    const { classes } = this.props;
+  filters = [
+    {
+      label: this.props.t('filterMenu.all'),
+      icon: SearchIcon,
+      value: 'all',
+    }, 
+    {
+      label: this.props.t('filterMenu.people'),
+      icon : AccountCircleIcon,
+      value: 'Person',
+    }, 
+    {
+      label: this.props.t('filterMenu.compositions'),
+      icon : LibraryMusicIcon,
+      value: 'MusicComposition'
+    }, 
+    {
+      label: this.props.t('filterMenu.scores'),
+      icon : MusicFileIcon,
+      value: 'Score'
+    },
+    {
+      label: this.props.t('filterMenu.annotations'),
+      icon : MessageIcon,
+      value: 'Annotation'
+    },
+    {
+      label: this.props.t('filterMenu.videos'),
+      icon : VideocamIcon,
+      value: 'VideoObject'
+    },
+    {
+      label: this.props.t('filterMenu.tracks'),
+      icon : MusicNoteIcon,
+      value: 'Track'
+    },
+  ];
 
-    if (selectedCategory !== 'all') {
-      const activeFilter = this.filters.find(({ value }) => value === selectedCategory);
+  renderResultCountPerType = (data) => {
+    return (data || []).reduce((acc, value) => {
+      if (typeof acc[value.__typename] === 'undefined') {
+        acc[value.__typename] = data.filter(({ __typename }) => __typename === value.__typename).length;
+      }
 
-      if (activeFilter && activeFilter.filters) {
-        return activeFilter.filters.map(({ value, label, options }) => (
-          <React.Fragment key={value}>
-            <ListItem className={classes.filterHeaderItem}>
-              <ListItemText primary={label} primaryTypographyProps={{ className: classes.filterHeaderText }}  />
-            </ListItem>
-            <Divider />
-            {options.map((option) => (
-              <React.Fragment key={option.name}>
+      return acc;
+    }, {});
+  };
+
+  renderMobileDrawer = (selectedCategory, setCategory, searchResults) => {
+    const { classes, t } = this.props;
+    const { open }       = this.state;
+
+    const counts = this.renderResultCountPerType(searchResults);
+
+    return (
+      <SwipeableDrawer
+        open={open}
+        onOpen={() => this.setState({ open: true })}
+        onClose={() => this.setState({ open: false })}
+      >
+        <div className={classes.drawer}>
+          <div>
+            <div className={classes.drawerHeader}>
+              <Typography className={classes.header}>{t('filterBy')}</Typography>
+              <IconButton onClick={() => this.setState({ open: false })} aria-label='close drawer'>
+                <CloseIcon />
+              </IconButton>
+            </div>
+            <Typography className={classes.type}>{t('type')}</Typography>
+            {this.filters.map(({ value, label, icon: Icon }) => (
+              <React.Fragment key={value}>
                 <ListItem
                   button
+                  className={classNames(classes.filter, {
+                    [classes.selected]: selectedCategory === value,
+                  })}
+                  onClick={event => setCategory(event, value)}
                 >
-                  <Checkbox
-                    checked
-                    tabIndex={-1}
-                    disableRipple
-                    className={classes.filterCheckbox}
-                  />
-                  <ListItemText primary={option.label} />
+                  <div className={classes.filterContainer}>
+                    {Icon && (
+                      <ListItemIcon className={classes.iconContainer}>
+                        <Icon className={classes.icon} />
+                      </ListItemIcon>
+                    )}
+                    <ListItemText primary={label} className={classes.label} />
+                    <Typography className={classes.resultsNumber}>
+                      ({label === 'All' ? (searchResults ? searchResults.length : 0) : (counts && counts[`${value}`] ? counts[`${value}`] : 0)})
+                    </Typography>
+                  </div>
                 </ListItem>
               </React.Fragment>
             ))}
-          </React.Fragment>
-        ))
-      }
-    }
+          </div>
+          <div>
+            <Button 
+              className={classes.button}
+              onClick={() => this.setState({ open: false })}
+            >
+              {`${searchResults.length} ${t('resultsLower')}`}
+            </Button>
+          </div> 
+        </div>
+      </SwipeableDrawer>
+    )
+  }
+
+  renderFilters(selectedCategory, setCategory, searchResults) {
+    const { classes } = this.props;
+
+    const counts = this.renderResultCountPerType(searchResults);
 
     return (
       <React.Fragment>
@@ -95,17 +146,23 @@ class SearchFilters extends Component {
           <React.Fragment key={value}>
             <ListItem
               button
-              selected={selectedCategory === value}
+              className={classNames(classes.filter, {
+                [classes.selected]: selectedCategory === value,
+              })}
               onClick={event => setCategory(event, value)}
             >
-              {Icon && (
-                <ListItemIcon>
-                  <Icon />
-                </ListItemIcon>
-              )}
-              <ListItemText primary={label} className={classes.categoryLabel} />
+              <div className={classes.filterContainer}>
+                {Icon && (
+                  <ListItemIcon className={classes.iconContainer}>
+                    <Icon className={classes.icon} />
+                  </ListItemIcon>
+                )}
+                <ListItemText primary={label} className={classes.label} />
+                <Typography className={classes.resultsNumber}>
+                  ({label === 'All' ? (searchResults ? searchResults.length : 0) : (counts && counts[`${value}`] ? counts[`${value}`] : 0)})
+                </Typography>
+              </div>
             </ListItem>
-            <Divider />
           </React.Fragment>
         ))}
       </React.Fragment>
@@ -113,22 +170,30 @@ class SearchFilters extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { t, classes } = this.props;
 
     return (
       <SearchContext.Consumer>
-        {({ searchPhrase, selectedCategory, setCategory }) => (
-          <div className={classes.root}>
-            {selectedCategory === 'all'
-              ? <Typography variant="h5" className={classes.allCategorySelected}>All</Typography>
-              : <Button
-                onClick={event => setCategory(event, 'all')}
-                >
-                  <KeyboardArrowLeft /> Back to all
-                </Button>
-              }
-            {this.renderFilters(searchPhrase, selectedCategory, setCategory)}
-          </div>
+        {({ selectedCategory, setCategory, searchResults }) => (
+          <React.Fragment>
+            <Hidden smDown>
+              <div className={classes.root}>
+                <Typography className={classes.header}>{t('filterBy')}</Typography>
+                <Typography className={classes.type}>{t('type')}</Typography>
+                {this.renderFilters(selectedCategory, setCategory, searchResults)}
+              </div>
+            </Hidden>
+            <Hidden mdUp>
+              <Button 
+                className={classes.button}
+                onClick={() => this.setState({ open: true })}
+              >
+                <FilterIcon className={classes.buttonIcon} />
+                {`${t('filter')} ${searchResults.length} ${t('results')}`}
+              </Button>
+              {this.renderMobileDrawer(selectedCategory, setCategory, searchResults)}
+            </Hidden>
+          </React.Fragment>
         )}
       </SearchContext.Consumer >
     );
@@ -139,4 +204,5 @@ export default providers(
   SearchFilters,
   withTranslation('searchFilters'),
   withStyles(styles),
+  withRouter,
 );
