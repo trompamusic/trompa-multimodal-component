@@ -8,6 +8,7 @@ import { Search } from './containers/Search';
 import theme from './theme';
 import i18n from './i18n';
 import { getApolloClient } from './client';
+import NavBar from './containers/NavBar';
 
 export class MultiModalComponent extends Component {
   static propTypes = {
@@ -30,6 +31,7 @@ export class MultiModalComponent extends Component {
         <MuiThemeProvider theme={theme}>
           <I18nextProvider i18n={i18n}>
             <SearchProvider client={this.client}>
+              <NavBar />
               <Search />
             </SearchProvider>
           </I18nextProvider>

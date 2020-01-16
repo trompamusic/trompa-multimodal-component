@@ -48,6 +48,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     fontSize: typography.pxToRem(24),
   },
   typeText: {
+    color   : palette.common.darkBlack,
     fontSize: typography.pxToRem(12),
   },
   infoContainer: {
