@@ -1,68 +1,99 @@
-export default ({ breakpoints, palette, spacing, typography }) => ({
+export default ({ spacing, typography, palette, breakpoints }) => ({
+  root: {
+    marginBottom: spacing.unit * 3,
+  },
   header: {
+    fontSize   : typography.pxToRem(20),
+    fontWeight : 'bold',
+  },
+  resultsCount: {
+    fontSize  : typography.pxToRem(14),
+    color     : palette.common.darkGrey,
+    marginLeft: spacing.unit * 0.5,
+  },
+  results: {
     [breakpoints.down('sm')]: {
-      display      : 'flex',
+      marginTop    : spacing.unit,
       flexDirection: 'column',
+    },
+    display     : 'flex',
+    marginTop   : spacing.unit * 1.5,
+    marginBottom: spacing.unit,
+  },
+  resultContainer: {
+    [breakpoints.down('sm')]: {
+      marginBottom  : spacing.unit,
+      '&:last-child': {
+        marginBottom: 0,
+      },
     },
     display       : 'flex',
-    justifyContent: 'space-between',
-    minHeight     : 32,
+    flexDirection : 'column',
+    width         : '100%',
+    maxWidth      : '100%',
+    marginRight   : spacing.unit,
+    '&:last-child': {
+      marginRight: 0,
+    },
   },
-  videoResultsContainer: {
+  image: {
+    borderRadius : '4px 4px 0px 0px',
+    height       : 125,
+    width        : '100%',
+    display      : 'flex',
+    flexDirection: 'column',
+  },
+  typeIcon: {
+    color   : palette.common.darkBlack,
+    fontSize: typography.pxToRem(24),
+  },
+  typeText: {
+    fontSize: typography.pxToRem(12),
+  },
+  infoContainer: {
     [breakpoints.down('sm')]: {
       display      : 'flex',
       flexDirection: 'column',
-      marginTop    : spacing.unit,
-      marginBottom : spacing.unit,
     },
+    width  : '100%',
+    padding: `${spacing.unit * 2}px ${spacing.unit * 2}px ${spacing.unit * 1.5}px ${spacing.unit * 2}px`
   },
-  videoContainer: {
+  infoHeader: {
+    display       : 'flex',
+    justifyContent: 'space-between',
+    width         : '100%',
+  },
+  sourceIcon: {
+    color      : palette.common.darkBlack,
+    fontSize   : typography.pxToRem(18),
+    marginRight: spacing.unit * 0.5,
+  },
+  resultSource: {
     [breakpoints.down('sm')]: {
-      flexDirection: 'column',
-      width        : 328,
-      height       : 400,
-      marginTop    : spacing.unit,
-      marginBottom : spacing.unit,
+      marginTop: spacing.unit * 2,
     },
-    marginTop   : spacing.unit * 2,
-    marginBottom: spacing.unit * 2,
-    display     : 'flex',
-    height      : 112.50,
+    display   : 'flex',
+    alignItems: 'center',
   },
-  image: {
-    [breakpoints.down('sm')]: {
-      width : 328,
-      height: 184.50,
-      borderRadius: '4px 4px 0px 0px',
-    },
-    width       : 200,
-    height      : 112.50,
-    objectFit   : 'cover',
-    borderRadius: '4px 0px 0px 4px'
+  source: {
+    fontSize: typography.pxToRem(16),
   },
-  name: {
-    borderBottom: 0,
+  resultRole: {
+    fontSize  : typography.pxToRem(16),
+    fontWeight: 'bold',
   },
-  playArrow: {
-    [breakpoints.down('sm')]: {
-      transform: 'translate(120%, 40%)',
-      fontSize : '600%',
-    },
-    position : 'absolute',
-    transform: 'translate(100%, 40%)',
-    fontSize : '400%',
-    color    : palette.common.white,
+  resultName: {
+    fontSize  : typography.pxToRem(20),
+    fontWeight: 'bold',
   },
-  contentContainer: {
-    padding: spacing.unit * 2,
-    wordBreak: 'break-all',
+  button: {
+    fontSize     : typography.pxToRem(14),
+    textTransform: 'none',
+    color        : palette.common.blue,
+    padding      : `${spacing.unit}px ${spacing.unit}px ${spacing.unit}px ${spacing.unit * 2}px`
   },
-  links: {
-    marginBottom: 0,
-  },
-  noResultsText: {
-    [breakpoints.down('md')]: {
-      fontSize: typography.pxToRem(22),
-    },
+  buttonIcon: {
+    fontSize  : typography.pxToRem(18),
+    marginLeft: spacing.unit * 0.5,
   },
 });

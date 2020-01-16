@@ -11,10 +11,9 @@ import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import Avatar from '@material-ui/core/Avatar';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import { getUrlHostName } from '../../utils';
-import ShowMoreButton from '../ShowMoreButton';
-import styles from './SearchResultComposition.styles';
+import styles from './SearchResultScore.styles';
 
-class SearchResultComposition extends Component {
+class SearchResultScore extends Component {
   ellipsis = (textSource, maxLength) => {
     if (textSource.length >= maxLength) {
       return textSource.substr(0, maxLength) + '...'
@@ -28,7 +27,7 @@ class SearchResultComposition extends Component {
 
     return (
       <div className={classes.results}>
-        {data && data.map(({ identifier, name, creator, source }) => (
+        {data && data.map(({ identifier, name, creator, source, version, publisher }) => (
           <Paper 
             key={identifier} 
             className={classes.resultContainer}
@@ -38,15 +37,27 @@ class SearchResultComposition extends Component {
               <Avatar className={classes.image}>
                 <LibraryMusicIcon className={classes.typeIcon} />
                 <Typography className={classes.typeText}>
-                  {t('compositionResult.composition')}
+                  {t('scoreResult.score')}
                 </Typography>
               </Avatar>
             </div>
             <div className={classes.infoContainer}>
               <div className={classes.infoHeader}>
-                <Typography className={classes.resultRole}>
-                  {creator ? creator : t('emptyResults.noComposer')}
-                </Typography>
+                <Hidden smDown>
+                  <Typography className={classes.resultRole}>
+                    {creator ? creator : t('emptyResults.noComposer')} &#8226; {name ? name : t('emptyResults.noName')}
+                  </Typography>
+                </Hidden>
+                <Hidden mdUp>
+                  <div className={classes.mobileHeader}>
+                    <Typography className={classes.resultRole}>
+                      {creator ? creator : t('emptyResults.noComposer')} &#8226;
+                    </Typography>
+                    <Typography className={classes.resultRole}>
+                      {name ? name : t('emptyResults.noName')}
+                    </Typography>
+                  </div>
+                </Hidden>
                 <Hidden smDown>
                   <div className={classes.resultSource}>
                     <ImageIcon className={classes.sourceIcon} />
@@ -57,8 +68,16 @@ class SearchResultComposition extends Component {
                 </Hidden>
               </div>
               <Typography className={classes.resultName}>
-                {name ? name : t('emptyResults.noName')}
+                {version ? version : t('emptyResults.noName')}
               </Typography>
+              <div className={classes.publisherHeader}>
+                <Typography className={classes.publisher}>
+                  {t('scoreResult.publisherInfo')}:
+                </Typography>
+                <Typography>
+                  {publisher ? publisher : t('emptyResults.noPublisher')}
+                </Typography>
+              </div>
               <Hidden mdUp>
                 <div className={classes.resultSource}>
                   <ImageIcon className={classes.sourceIcon} />
@@ -84,14 +103,14 @@ class SearchResultComposition extends Component {
             {count > 0 ? (
               <div className={classes.root}>
                 <Typography className={classes.header}>
-                  {t('compositionResult.compositions')}
+                  {t('scoreResult.scores')}
                   <span className={classes.resultsCount}>({count})</span>
                 </Typography>
                 {this.renderResults(data)}
                 {selectedCategory === 'all' && count > 3 ? (
                   <Button
                     className={classes.button} 
-                    onClick={event => setCategory(event, "MusicComposition")}
+                    onClick={event => setCategory(event, "DigitalDocument")}
                   >
                     {t('showMore')}<ChevronRightIcon className={classes.buttonIcon} />
                   </Button>
@@ -105,4 +124,4 @@ class SearchResultComposition extends Component {
   }
 }
 
-export default withTranslation('searchResults')(withStyles(styles)(SearchResultComposition));
+export default withTranslation('searchResults')(withStyles(styles)(SearchResultScore));

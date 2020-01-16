@@ -1,0 +1,28 @@
+{
+  "results": "totale resultaten",
+  "personResult": {
+    "person": "Persoon",
+    "people": "Personen"
+  },
+  "compositionResult": {
+    "composition": "Compositie",
+    "compositions": "Composities"
+  },
+  "scoreResult": {
+    "score": "Partituur",
+    "scores": "Partituren"
+  },
+  "videoResult": {
+    "video": "Video",
+    "videos": "Videos"
+  },
+  "emptyResults": {
+    "noRole": "Unknown role",
+    "noDescription": "Geen descriptie.",
+    "noComposer": "Onbekende componist",
+    "noTitle": "Onbekende titel",
+    "noName": "Onbekende naam",
+    "noSource": "Onbekende bron"
+  },
+  "showMore": "Laat meer zien"
+}

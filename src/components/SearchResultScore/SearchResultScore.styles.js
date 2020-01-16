@@ -48,7 +48,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
       flexDirection: 'column',
     },
     width  : '100%',
-    padding: `${spacing.unit * 2}px ${spacing.unit * 2}px ${spacing.unit * 1.5}px ${spacing.unit * 2}px`
+    padding: spacing.unit * 2,
   },
   infoHeader: {
     display       : 'flex',
@@ -74,6 +74,10 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     fontSize  : typography.pxToRem(16),
     fontWeight: 'bold',
   },
+  mobileHeader: {
+    display      : 'flex',
+    flexDirection: 'column',
+  },
   resultName: {
     fontSize  : typography.pxToRem(20),
     fontWeight: 'bold',
@@ -87,5 +91,17 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
   buttonIcon: {
     fontSize  : typography.pxToRem(18),
     marginLeft: spacing.unit * 0.5,
+  },
+  publisherHeader: {
+    [breakpoints.down('sm')]: {
+      marginTop: spacing.unit * 2,
+    },
+    display    : 'flex',
+    marginTop  : spacing.unit * 1.75,
+    fontSize   : typography.pxToRem(14),
+  },
+  publisher: {
+    fontWeight : 'bold',
+    marginRight: spacing.unit * 0.5,
   },
 });

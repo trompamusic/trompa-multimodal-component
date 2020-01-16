@@ -1,41 +1,43 @@
 {
   "results": "total results",
-  "person_result": {
-    "people": "People",
-    "description": "Description",
-    "biography": "Biography",
+  "personResult": {
+    "person": "Person",
+    "personLower": "person",
+    "people": "People"
+  },
+  "compositionResult": {
     "composition": "Composition",
-    "music": "Music",
+    "compositionLower": "composition",
+    "compositions": "Compositions"
+  },
+  "scoreResult": {
+    "score": "Score",
+    "scoreLower": "score",
     "scores": "Scores",
-    "annotations": "Annotations",
-    "list_of_compositions": "List of compositions",
-    "notes": "Notes",
-    "performances": "Performances"
+    "publisherInfo": "Publisher Info"
   },
-  "composition_result": {
-    "composition": "Compositions"
+  "videoResult": {
+    "video": "Video",
+    "videoLower": "video",
+    "videos": "Videos"
   },
-  "video_result": {
-    "video": "Videos"
+  "emptyResults": {
+    "noResults": "We're sorry! We couldn't find results for \"{{searchPhrase}}\"",
+    "noResultsCategory": "We're sorry! We couldn't find a {{type}} for \"{{searchPhrase}}\"",
+    "noRole": "Unknown role",
+    "noDescription": "No description.",
+    "noComposer": "Unknown composer",
+    "noTitle": "Unknown title",
+    "noName": "Unknown name",
+    "noSource": "Unknown source",
+    "noPublisher": "Unknown source"
   },
-  "article_result": {
-    "article": "Articles"
+  "searchTips": {
+    "searchTips": "Search tips",
+    "tryOtherFilter": "Try another filter",
+    "doubleCheck": "Please double check your spelling.",
+    "tryAnother": "Try another search word",
+    "lessSpecific": "Be less specific in your wording for a wider search result"
   },
-  "organization_result": {
-    "organization": "Organizations"
-  },
-  "product_result": {
-    "product": "Products"
-  },
-  "place_result": {
-    "place": "Places"
-  },
-  "empty_results": {
-    "no_job_title": "Unknown job title",
-    "no_description": "No description.",
-    "no_creator": "Unknown creator",
-    "no_title": "Unknown title",
-    "no_source": "Unknown source",
-    "no_duration": "unknown"
-  }
+  "showMore": "Show more"
 }

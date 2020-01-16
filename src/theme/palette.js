@@ -1,5 +1,5 @@
 export default {
-  common: {
+  common: {   
     white        : '#fff',
     darkBlack    : 'rgba(0, 0, 0, 0.7)',
     darkWhite    : 'rgba(255, 255, 255, 0.7)',
@@ -10,9 +10,10 @@ export default {
     link         : '#51667E',
     orange       : '#e6982f',
     facebook     : '#3B5998',
+    googlePlus   : '#F4511E',
+    blue         : '#005AA3',
     selectedLight: '#0080E8',
     selectedDark : '#005AA3',
-    googlePlus   : '#F4511E',
   },
   text: {
     primary: 'rgba(0, 0, 0, 0.7)',
