@@ -8,29 +8,20 @@ import Button from '@material-ui/core/Button';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ImageIcon from '@material-ui/icons/Image';
+import Avatar from '@material-ui/core/Avatar';
 import { getUrlHostName } from '../../utils';
 import { SearchContext } from '../../containers/SearchProvider/SearchProvider';
 import styles from './SearchResultPerson.styles';
-import Avatar from '@material-ui/core/Avatar/Avatar';
-import { withTranslation } from 'react-i18next';
 
 class SearchResultPerson extends Component {
-  ellipsis = (textSource, maxLength) => {
-    if (textSource.length >= maxLength) {
-      return textSource.substr(0, maxLength) + '...'
-    }
-
-    return textSource;
-  };
-
   renderResults = (data) => {
     const { classes, t } = this.props;
 
     return (
       <div className={classes.results}>
         {data && data.map(({ identifier, name, jobTitle, source }) => (
-          <Paper 
-            key={identifier} 
+          <Paper
+            key={identifier}
             className={classes.resultContainer}
             onClick={name => console.log(`${name} clicked!`)}
           >
@@ -90,7 +81,7 @@ class SearchResultPerson extends Component {
                 {this.renderResults(data)}
                 {selectedCategory === 'all' && count > 3 ? (
                   <Button
-                    className={classes.button} 
+                    className={classes.button}
                     onClick={event => setCategory(event, "Person")}
                   >
                     {t('showMore')}<ChevronRightIcon className={classes.buttonIcon} />
