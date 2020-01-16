@@ -27,7 +27,7 @@ class SearchResultScore extends Component {
 
     return (
       <div className={classes.results}>
-        {data && data.map(({ identifier, name, creator, source, publisher }) => (
+        {data && data.map(({ identifier, name, creator, source, version, publisher }) => (
           <Paper key={identifier} className={classes.resultContainer}>
             <div>
               <Avatar className={classes.image}>
@@ -39,9 +39,21 @@ class SearchResultScore extends Component {
             </div>
             <div className={classes.infoContainer}>
               <div className={classes.infoHeader}>
-                <Typography className={classes.resultRole}>
-                  {creator ? creator : t('emptyResults.noComposer')}
-                </Typography>
+                <Hidden smDown>
+                  <Typography className={classes.resultRole}>
+                    {creator ? creator : t('emptyResults.noComposer')} &#8226; {name ? name : t('emptyResults.noName')}
+                  </Typography>
+                </Hidden>
+                <Hidden mdUp>
+                  <div className={classes.mobileHeader}>
+                    <Typography className={classes.resultRole}>
+                      {creator ? creator : t('emptyResults.noComposer')} &#8226;
+                    </Typography>
+                    <Typography className={classes.resultRole}>
+                      {name ? name : t('emptyResults.noName')}
+                    </Typography>
+                  </div>
+                </Hidden>
                 <Hidden smDown>
                   <Link href={source} className={classes.resultSource}>
                     <ImageIcon className={classes.sourceIcon} />
@@ -52,8 +64,16 @@ class SearchResultScore extends Component {
                 </Hidden>
               </div>
               <Typography className={classes.resultName}>
-                {name ? name : t('emptyResults.noName')}
+                {version ? version : t('emptyResults.noName')}
               </Typography>
+              <div className={classes.publisherHeader}>
+                <Typography className={classes.publisher}>
+                  {t('scoreResult.publisherInfo')}:
+                </Typography>
+                <Typography>
+                  {publisher ? publisher : t('emptyResults.noPublisher')}
+                </Typography>
+              </div>
               <Hidden mdUp>
                 <Link href={source} className={classes.resultSource}>
                   <ImageIcon className={classes.sourceIcon} />
@@ -62,12 +82,6 @@ class SearchResultScore extends Component {
                   </Typography>
                 </Link>
               </Hidden>
-              <Typography className={classes.publisher}>
-                {t('publisherInfo')}
-              </Typography>
-              <Typography className={classes.publisherInfo}>
-                {/* {publisher ? publisher : t('noPublisher')} */}
-              </Typography>
             </div>
           </Paper>
         ))}
@@ -77,8 +91,6 @@ class SearchResultScore extends Component {
 
   render() {
     const { t, classes, data, count } = this.props;
-
-    console.log('Score data:', data)
 
     return (
       <SearchContext.Consumer>

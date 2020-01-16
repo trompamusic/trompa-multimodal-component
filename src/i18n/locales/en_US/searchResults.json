@@ -10,7 +10,8 @@
   },
   "scoreResult": {
     "score": "Score",
-    "scores": "Scores"
+    "scores": "Scores",
+    "publisherInfo": "Publisher Info"
   },
   "videoResult": {
     "video": "Video",
@@ -22,7 +23,8 @@
     "noComposer": "Unknown composer",
     "noTitle": "Unknown title",
     "noName": "Unknown name",
-    "noSource": "Unknown source"
+    "noSource": "Unknown source",
+    "noPublisher": "Unknown source"
   },
   "searchTips": {
     "searchTips": "Search tips",

@@ -149,6 +149,8 @@ export const SEARCH_QUERY = gql`
           name
           creator
           source
+          version
+          publisher
         }
 
         ... on VideoObject {

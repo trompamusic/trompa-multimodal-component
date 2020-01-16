@@ -74,6 +74,10 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     fontSize  : typography.pxToRem(16),
     fontWeight: 'bold',
   },
+  mobileHeader: {
+    display      : 'flex',
+    flexDirection: 'column',
+  },
   resultName: {
     fontSize  : typography.pxToRem(20),
     fontWeight: 'bold',
@@ -87,5 +91,16 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
   buttonIcon: {
     fontSize  : typography.pxToRem(18),
     marginLeft: spacing.unit * 0.5,
+  },
+  publisherHeader: {
+    [breakpoints.down('sm')]: {
+      marginTop: spacing.unit * 2,
+    },
+    display    : 'flex',
+    fontSize   : typography.pxToRem(14),
+  },
+  publisher: {
+    fontWeight : 'bold',
+    marginRight: spacing.unit * 0.5,
   },
 });
