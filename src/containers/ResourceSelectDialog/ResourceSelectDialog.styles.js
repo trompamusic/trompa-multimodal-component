@@ -8,14 +8,14 @@ export default ({ palette, spacing }) => ({
   },
   header: {
     borderBottom: `1px solid ${palette.common.faintBlack}`,
-    padding     : spacing.unit * 6,
+    padding     : spacing(6),
   },
   inputWrapper: {
     display     : 'flex',
     border      : `1px solid ${palette.common.faintBlack}`,
     borderRadius: 24,
     paddingLeft : 24,
-    marginBottom: spacing.unit * 2,
+    marginBottom: spacing(2),
   },
   inputBase: {
     flex: 1,
@@ -24,7 +24,7 @@ export default ({ palette, spacing }) => ({
 
   },
   content: {
-    padding: `0 0 ${spacing.unit * 2}px 0`,
+    padding: `0 0 ${spacing(2)}px 0`,
   },
   result: {
     '&:not($resultSelected)': {
@@ -33,7 +33,7 @@ export default ({ palette, spacing }) => ({
       },
       cursor: 'pointer',
     },
-    padding: `${spacing.unit * 3}px ${spacing.unit * 6}px`,
+    padding: `${spacing(3)}px ${spacing(6)}px`,
     cursor : 'pointer',
   },
   resultSelected: {

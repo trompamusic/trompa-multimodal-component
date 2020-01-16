@@ -4,9 +4,9 @@ export default ({ typography, spacing, palette }) => ({
   // link: {
   //   display: 'inline-block',
   //   position: 'relative',
-  //   minWidth: spacing.unit * 6,
+  //   minWidth: spacing(6),
   //   minHeight: 36,
-  //   padding: `12px ${spacing.unit * 2}px`,
+  //   padding: `12px ${spacing(2)}px`,
   //   fontFamily: typography.fontFamily,
   //   fontWeight: typography.fontWeightRegular,
   //   fontSize: typography.pxToRem(16),

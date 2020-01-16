@@ -1,13 +1,13 @@
 export default ({ breakpoints, spacing, typography, palette }) => ({
   root: {
     [breakpoints.down('sm')]: {
-      marginBottom: spacing.unit * 3,
+      marginBottom: spacing(3),
     },
   },
   header: {
     fontSize    : typography.pxToRem(24),
     fontWeight  : 'bold',
-    marginBottom: spacing.unit * 1.5,
+    marginBottom: spacing(1.5),
   },
   filter: {
     display       : 'flex',
@@ -15,20 +15,20 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
     justifyContent: 'space-between',
     borderRadius  : 4,
     boxShadow     : '0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2)',
-    padding       : `${spacing.unit * 1.25}px ${spacing.unit * 2}px`,
-    marginBottom  : spacing.unit,
+    padding       : `${spacing(1.25)}px ${spacing(2)}px`,
+    marginBottom  : spacing(),
   },
   selected: {
     background: `linear-gradient(to right, ${palette.common.selectedLight}, ${palette.common.selectedDark})`,
     '& span': {
       color: palette.common.white,
-    }, 
+    },
     '& svg': {
       color: palette.common.white,
-    }, 
+    },
     '& p': {
       color: palette.common.darkWhite,
-    }, 
+    },
   },
   filterContainer: {
     display   : 'flex',
@@ -36,7 +36,7 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
   },
   iconContainer: {
     minWidth   : typography.pxToRem(18),
-    marginRight: spacing.unit,
+    marginRight: spacing(),
   },
   icon: {
     fontSize: typography.pxToRem(18),
@@ -44,19 +44,19 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
   },
   label: {
     padding     : 0,
-    paddingRight: spacing.unit * 0.5,
+    paddingRight: spacing(0.5),
     '& span': {
       fontSize  : typography.pxToRem(14),
       fontWeight: 'bold',
     },
   },
-  resultsNumber: { 
+  resultsNumber: {
     fontSize: typography.pxToRem(12),
     color   : palette.common.darkGrey,
   },
   type: {
     fontSize    : typography.pxToRem(16),
-    marginBottom: spacing.unit * 1.25,
+    marginBottom: spacing(1.25),
   },
   button: {
     width        : '100%',
@@ -68,7 +68,7 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
   },
   buttonIcon: {
     fontSize   : typography.pxToRem(24),
-    marginRight: spacing.unit * 1.5,
+    marginRight: spacing(1.5),
   },
   drawer: {
     width         : '75vw',
@@ -76,7 +76,7 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
     display       : 'flex',
     flexDirection : 'column',
     justifyContent: 'space-between',
-    padding       : `${spacing.unit * 2.5}px ${spacing.unit * 2}px`
+    padding       : `${spacing(2.5)}px ${spacing(2)}px`
   },
   drawerHeader: {
     display       : 'flex',

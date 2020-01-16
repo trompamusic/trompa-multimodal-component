@@ -3,12 +3,12 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     [breakpoints.down('sm')]: {
       display      : 'flex',
       flexDirection: 'column',
-      marginLeft   : spacing.unit * 2,
-      marginRight  : spacing.unit * 2,
+      marginLeft   : spacing(2),
+      marginRight  : spacing(2),
     },
-    margin     : spacing.unit * 3,
-    marginLeft : spacing.unit * 5,
-    marginRight: spacing.unit * 5,
+    margin     : spacing(3),
+    marginLeft : spacing(5),
+    marginRight: spacing(5),
     display    : 'flex',
     flexWrap   : 'nowrap',
     minHeight  : '80.75vh'
@@ -17,12 +17,12 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     [breakpoints.down('sm')]: {
       margin: 0,
     },
-    margin    : spacing.unit * 2,
+    margin    : spacing(2),
     marginTop : 0,
-    marginLeft: spacing.unit * 3,
+    marginLeft: spacing(3),
   },
   resultsHeader: {
-    marginBottom: spacing.unit * 2.25,
+    marginBottom: spacing(2.25),
   },
   resultsTotal: {
     color                   : palette.common.darkGrey,
@@ -39,13 +39,13 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     fontWeight: 'bold',
   },
   searchTipsHeader: {
-    marginTop : spacing.unit * 3,
+    marginTop : spacing(3),
     fontSize  : typography.pxToRem(20),
     fontWeight: 'bold',
   },
   searchTips: {
     margin : 0,
-    paddingLeft: spacing.unit * 3,
+    paddingLeft: spacing(3),
     '& li': {
       fontSize:typography.pxToRem(16),
       fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',

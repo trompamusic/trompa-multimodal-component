@@ -1,17 +1,17 @@
 export default ({ spacing }) => ({
   root: {
-    padding: spacing.unit * 2,
+    padding: spacing(2),
   },
   paragraph: {
-    marginBottom: spacing.unit * 2,
+    marginBottom: spacing(2),
   },
   status: {
     display   : 'flex',
     alignItems: 'center',
   },
   propertyValue: {
-    marginBottom: spacing.unit,
-    padding     : spacing.unit,
+    marginBottom: spacing(),
+    padding     : spacing(),
     border      : '1px solid #ccc',
   },
 });

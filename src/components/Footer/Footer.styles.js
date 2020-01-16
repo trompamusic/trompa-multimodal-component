@@ -9,8 +9,8 @@ export default ({ breakpoints, palette, typography, spacing, mixins }) => ({
       textAlign    : 'center',
     },
     display: 'flex',
-    paddingTop     : spacing.unit,
-    paddingBottom  : spacing.unit,
+    paddingTop     : spacing(),
+    paddingBottom  : spacing(),
     color          : palette.common.white,
     fontFamily     : typography.fontFamily,
     fontWeight     : typography.fontWeightRegular,
@@ -20,7 +20,7 @@ export default ({ breakpoints, palette, typography, spacing, mixins }) => ({
   },
   footerCopyright: {
     [breakpoints.only('xs')]: {
-      padding: `${spacing.unit / 2}px 0`,
+      padding: `${spacing(0.5)}px 0`,
     },
     flex    : 1,
     fontSize: '1em',

@@ -3,7 +3,7 @@ export default ({ spacing, palette }) => ({
     backgroundColor: palette.common.white,
   },
   toolbar: {
-    paddingTop   : spacing.unit,
+    paddingTop   : spacing(),
     display      : 'flex',
     flexDirection: 'column',
     alignItems   : 'flex-start',
@@ -28,6 +28,6 @@ export default ({ spacing, palette }) => ({
   searchContainer: {
     justifyContent: 'center',
     width         : '100%',
-    padding       : `${spacing.unit}px 0px ${spacing.unit * 2}px 0px`,
+    padding       : `${spacing()}px 0px ${spacing(2)}px 0px`,
   },
 });

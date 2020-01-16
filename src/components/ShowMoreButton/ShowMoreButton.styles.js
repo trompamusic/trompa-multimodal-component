@@ -1,13 +1,13 @@
 export default ({ breakpoints, spacing }) => ({
   button: {
     [breakpoints.down('sm')]: {
-      margin      : spacing.unit,
+      margin      : spacing(),
       marginBottom: 0,
     },
     height: '100%',
     backgroundColor: '#f5f5f5',
     textTransform: 'none',
-    paddingLeft: spacing.unit * 2,
+    paddingLeft: spacing(2),
     borderRadius: 32,
   }
 });

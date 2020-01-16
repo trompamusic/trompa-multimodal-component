@@ -11,7 +11,7 @@ export default ({ palette, spacing }) => ({
   tagsContainer: {
     display: 'flex',
     '& > *': {
-      margin: `0px ${spacing.unit * 0.5}px`,
+      margin: `0px ${spacing(0.5)}px`,
     },
     '&:first-child': {
       marginLeft: 0,

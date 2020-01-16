@@ -12,8 +12,8 @@ export default ({ breakpoints, spacing, typography }) => ({
     [breakpoints.down('sm')]: {
       display      : 'flex',
       flexDirection: 'column',
-      marginTop    : spacing.unit,
-      marginBottom : spacing.unit,
+      marginTop    : spacing(),
+      marginBottom : spacing(),
     },
   },
   articleHeader: {
@@ -26,11 +26,11 @@ export default ({ breakpoints, spacing, typography }) => ({
   articleContainer: {
     [breakpoints.down('sm')]: {
       height      : 'auto',
-      marginTop   : spacing.unit,
-      marginBottom: spacing.unit,
+      marginTop   : spacing(),
+      marginBottom: spacing(),
     },
-    marginTop   : spacing.unit * 2,
-    marginBottom: spacing.unit * 2,
+    marginTop   : spacing(2),
+    marginBottom: spacing(2),
     display     : 'flex',
     height      : 145,
   },
@@ -39,7 +39,7 @@ export default ({ breakpoints, spacing, typography }) => ({
       height     : 145,
       marginLeft : 'auto',
       marginRight: 'auto',
-      marginTop  : spacing.unit * 2,
+      marginTop  : spacing(2),
     },
     width       : 120,
     height      : 'auto',
@@ -47,7 +47,7 @@ export default ({ breakpoints, spacing, typography }) => ({
     borderRadius: 4,
   },
   contentContainer: {
-    padding: spacing.unit * 2,
+    padding: spacing(2),
   },
   links: {
     marginBottom: 0,

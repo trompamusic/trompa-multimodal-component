@@ -1,6 +1,6 @@
 export default ({ spacing, typography, palette, breakpoints }) => ({
   root: {
-    marginBottom: spacing.unit * 3,
+    marginBottom: spacing(3),
   },
   header: {
     fontSize   : typography.pxToRem(20),
@@ -9,18 +9,18 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
   resultsCount: {
     fontSize   : typography.pxToRem(14),
     color      : palette.common.darkGrey,
-    marginLeft : spacing.unit * 0.5,
+    marginLeft : spacing(0.5),
   },
   results: {
     [breakpoints.down('sm')]: {
-      marginTop: spacing.unit,
+      marginTop: spacing(),
     },
-    marginTop   : spacing.unit * 1.5,
-    marginBottom: spacing.unit,
+    marginTop   : spacing(1.5),
+    marginBottom: spacing(),
   },
   resultContainer: {
     display       : 'flex',
-    marginBottom  : spacing.unit,
+    marginBottom  : spacing(),
     '&:last-child': {
       marginBottom: 0,
     },
@@ -49,7 +49,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
       flexDirection: 'column',
     },
     width  : '100%',
-    padding: `${spacing.unit * 2}px ${spacing.unit * 2}px ${spacing.unit * 1.5}px ${spacing.unit * 2}px`
+    padding: `${spacing(2)}px ${spacing(2)}px ${spacing(1.5)}px ${spacing(2)}px`
   },
   infoHeader: {
     display       : 'flex',
@@ -59,11 +59,11 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
   sourceIcon: {
     color      : palette.common.darkBlack,
     fontSize   : typography.pxToRem(18),
-    marginRight: spacing.unit * 0.5,
+    marginRight: spacing(0.5),
   },
   resultSource: {
     [breakpoints.down('sm')]: {
-      marginTop: spacing.unit * 2,
+      marginTop: spacing(2),
     },
     display   : 'flex',
     alignItems: 'center',
@@ -83,10 +83,10 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     fontSize     : typography.pxToRem(14),
     textTransform: 'none',
     color        : palette.common.blue,
-    padding      : `${spacing.unit}px ${spacing.unit}px ${spacing.unit}px ${spacing.unit * 2}px`
+    padding      : `${spacing()}px ${spacing()}px ${spacing()}px ${spacing(2)}px`
   },
   buttonIcon: {
     fontSize  : typography.pxToRem(18),
-    marginLeft: spacing.unit * 0.5,
+    marginLeft: spacing(0.5),
   },
 });

@@ -12,8 +12,8 @@ export default ({ breakpoints, spacing, typography }) => ({
     [breakpoints.down('sm')]: {
       display      : 'flex',
       flexDirection: 'column',
-      marginTop    : spacing.unit,
-      marginBottom : spacing.unit,
+      marginTop    : spacing(),
+      marginBottom : spacing(),
     },
     '& $productContainer:nth-child(3n+3)': {
       marginRight: 0,
@@ -26,12 +26,12 @@ export default ({ breakpoints, spacing, typography }) => ({
     [breakpoints.down('sm')]: {
       width       : '100%',
       marginRight : 0,
-      marginTop   : spacing.unit,
-      marginBottom: spacing.unit,
+      marginTop   : spacing(),
+      marginBottom: spacing(),
     },
-    marginTop    : spacing.unit * 2,
-    marginRight  : spacing.unit * 2,
-    marginBottom : spacing.unit * 2,
+    marginTop    : spacing(2),
+    marginRight  : spacing(2),
+    marginBottom : spacing(2),
     display      : 'flex',
     flexDirection: 'column',
     width        : '33%',
@@ -43,7 +43,7 @@ export default ({ breakpoints, spacing, typography }) => ({
     borderRadius: '4px 4px 0px 0px'
   },
   contentContainer: {
-    padding  : spacing.unit * 2,
+    padding  : spacing(2),
     wordBreak: 'break-all',
   },
   links: {
