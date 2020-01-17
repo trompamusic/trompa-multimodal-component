@@ -29,9 +29,9 @@ export default {
     postcss({
       modules: true,
     }),
-    image(),
     url(),
     svgr(),
+    image(),
     json(),
     babel({
       exclude: 'node_modules/**',

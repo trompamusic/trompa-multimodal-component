@@ -21,6 +21,9 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     marginTop : 0,
     marginLeft: spacing(3),
   },
+  category: {
+    fontWeight: 'bold',
+  },
   resultsHeader: {
     marginBottom: spacing(2.25),
   },
