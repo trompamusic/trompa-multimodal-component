@@ -42,9 +42,9 @@ class SearchProvider extends Component {
         },
       })
       .then(data => {
-        const searchResults = data.data;
+        const searchResults = data.data || {};
 
-        const counts = Object.keys(searchResults || []).reduce((acc, value) => {
+        const counts = Object.keys(searchResults).reduce((acc, value) => {
           acc[value] = searchResults[value].length;
 
           return acc;

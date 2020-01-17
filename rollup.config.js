@@ -1,33 +1,33 @@
-import babel from 'rollup-plugin-babel'
-import external from 'rollup-plugin-peer-deps-external'
-import postcss from 'rollup-plugin-postcss'
+import babel from 'rollup-plugin-babel';
+import external from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
 import image from '@rollup/plugin-image';
 import json from '@rollup/plugin-json';
-import commonjs from '@rollup/plugin-commonjs'
-import resolve from '@rollup/plugin-node-resolve'
-import url from '@rollup/plugin-url'
-import svgr from '@svgr/rollup'
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import url from '@rollup/plugin-url';
+import svgr from '@svgr/rollup';
 
-import pkg from './package.json'
+import pkg from './package.json';
 
 export default {
-  input: 'src/index.js',
+  input : 'src/index.js',
   output: [
     {
-      file: pkg.main,
-      format: 'cjs',
-      sourcemap: true
+      file     : pkg.main,
+      format   : 'cjs',
+      sourcemap: true,
     },
     {
-      file: pkg.module,
-      format: 'es',
-      sourcemap: true
-    }
+      file     : pkg.module,
+      format   : 'es',
+      sourcemap: true,
+    },
   ],
   plugins: [
     external(),
     postcss({
-      modules: true
+      modules: true,
     }),
     image(),
     url(),
@@ -41,9 +41,9 @@ export default {
     }),
     commonjs({
       namedExports: {
-        'react-is': ['isFragment', 'ForwardRef'],
-        'subscriptions-transport-ws': ['SubscriptionClient']
-      }
-    })
-  ]
-}
+        'react-is'                  : ['isFragment', 'ForwardRef'],
+        'subscriptions-transport-ws': ['SubscriptionClient'],
+      },
+    }),
+  ],
+};
