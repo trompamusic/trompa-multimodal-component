@@ -61,7 +61,6 @@ class SearchResults extends Component {
           icon={VideoCamIcon}
           variant="card"
           type={typeName}
-          heading={item.creator}
           title={item.name}
           source={item.source}
           onClick={() => onResultClick(item)}
