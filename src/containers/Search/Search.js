@@ -18,6 +18,8 @@ export class Search extends Component {
   };
 
   render() {
+    const { onResultClick } = this.props;
+
     return (
       <SearchContext.Consumer>
         {({ searchPhrase, searchTags, categories, filter }) => (
@@ -25,6 +27,7 @@ export class Search extends Component {
             searchPhrase={this.mergeSearchPhraseAndTags(searchPhrase, searchTags)}
             categories={categories}
             filter={filter}
+            onResultClick={onResultClick}
           />
         )}
       </SearchContext.Consumer>

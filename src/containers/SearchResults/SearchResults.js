@@ -16,6 +16,8 @@ import styles from './SearchResults.styles';
 
 class SearchResults extends Component {
   renderTypeResult(typeName, item) {
+    const { onResultClick } = this.props;
+
     switch (typeName) {
     case 'Person':
       return (
@@ -26,6 +28,7 @@ class SearchResults extends Component {
           heading={item.jobTitle}
           title={item.name}
           source={item.source}
+          onClick={() => onResultClick(item)}
         />
       );
     case 'MusicComposition':
@@ -37,6 +40,7 @@ class SearchResults extends Component {
           heading={item.creator}
           title={item.name}
           source={item.source}
+          onClick={() => onResultClick(item)}
         />
       );
     case 'DigitalDocument':
@@ -48,6 +52,7 @@ class SearchResults extends Component {
           heading={item.creator}
           title={item.name}
           source={item.source}
+          onClick={() => onResultClick(item)}
         />
       );
     case 'VideoObject':
@@ -59,6 +64,7 @@ class SearchResults extends Component {
           heading={item.creator}
           title={item.name}
           source={item.source}
+          onClick={() => onResultClick(item)}
         />
       );
     default:
