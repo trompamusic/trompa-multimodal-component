@@ -33,31 +33,29 @@ class SearchProvider extends Component {
   runQuery = () => {
     const { client } = this.props;
 
-    client.query({
-      query    : SEARCH_QUERY,
-      variables: {
-        searchPhrase: this.state.searchPhrase,
-        categories  : this.state.categories,
-      },
-    }).then(data => {
-      const searchResults = data.data.searchMetadataText;
+    client
+      .query({
+        query    : SEARCH_QUERY,
+        variables: {
+          searchPhrase: this.state.searchPhrase,
+          categories  : this.state.categories,
+        },
+      })
+      .then(data => {
+        const searchResults = data.data;
 
-      const counts = (searchResults || []).reduce((acc, value) => {
-        if (typeof acc[value.__typename] === 'undefined') {
-          acc[value.__typename] = searchResults.filter(({ __typename }) => __typename === value.__typename).length;
-        }
+        const counts = Object.keys(searchResults || []).reduce((acc, value) => {
+          acc[value] = searchResults[value].length;
 
-        return acc;
-      }, {});
+          return acc;
+        }, {});
 
-      const searchResultsByType = Object.keys(counts).reduce((acc, value) => {
-        acc[value] = searchResults.filter(({ __typename }) => __typename === value);
+        const total = Object.keys(counts).reduce((acc, value) => {
+          return acc + counts[value];
+        }, 0);
 
-        return acc;
-      }, {});
-
-      this.setState({ searchResults, searchResultsByType, counts });
-    });
+        this.setState({ searchResults, searchResultsByType: searchResults, counts, total });
+      });
   };
 
   render() {
@@ -78,48 +76,44 @@ class SearchProvider extends Component {
 }
 
 export const SEARCH_QUERY = gql`
-  query ($searchPhrase: String!, $categories: [MetadataInterfaceType]) {
-    searchMetadataText(
-      substring: $searchPhrase,
-      onTypes: $categories,
-      first: 500,
-    ) {
-      __typename
-      ... on Person {
-        identifier
-        name
-        jobTitle
-        description
-        image
-        source
-      }
+  fragment thingFields on ThingInterface {
+    __typename
+    identifier
+    name
+    description
+    image
+  }
 
-      ... on MusicComposition {
-        identifier
-        name
-        creator
-        image
-        source
-      }
+  fragment metadataFields on MetadataInterface {
+    creator
+    source
+  }
 
-      ... on DigitalDocument {
-        identifier
-        name
-        creator
-        source
-        version
-        publisher
-      }
+  query ($searchPhrase: String!, $first: Int = 50) {
+    Person (filter: { name_contains: $searchPhrase }, first: $first) {
+      jobTitle
+      ...thingFields
+      ...metadataFields
+    }
 
-      ... on VideoObject {
-        identifier
-        name
-        url
-        description
-        duration
-        image
-        source
-      }
+    MusicComposition (filter: { name_contains: $searchPhrase }, first: $first) {
+      ...thingFields
+      ...metadataFields
+    }
+
+    DigitalDocument (filter: { name_contains: $searchPhrase }, first: $first) {
+      version
+      publisher
+      ...thingFields
+      ...metadataFields
+    }
+
+    VideoObject (filter: { name_contains: $searchPhrase }, first: $first) {
+      url
+      description
+      duration
+      ...thingFields
+      ...metadataFields
     }
   }
 `;
