@@ -16,6 +16,8 @@ import styles from './SearchResults.styles';
 
 class SearchResults extends Component {
   renderTypeResult(typeName, item) {
+    const { onResultClick } = this.props;
+
     switch (typeName) {
     case 'Person':
       return (
@@ -26,6 +28,7 @@ class SearchResults extends Component {
           heading={item.jobTitle ? item.jobTitle : "Unknown role"}
           title={item.name}
           source={item.source}
+          onClick={() => onResultClick(item)}
         />
       );
     case 'MusicComposition':
@@ -37,6 +40,7 @@ class SearchResults extends Component {
           heading={item.creator}
           title={item.name}
           source={item.source}
+          onClick={() => onResultClick(item)}
         />
       );
     case 'DigitalDocument':
@@ -48,6 +52,7 @@ class SearchResults extends Component {
           heading={`${item.creator} • ${item.name}`}
           title={item.name}
           source={item.source}
+          onClick={() => onResultClick(item)}
         />
       );
     case 'VideoObject':
@@ -59,6 +64,7 @@ class SearchResults extends Component {
           heading={item.creator}
           title={item.name}
           source={item.source}
+          onClick={() => onResultClick(item)}
         />
       );
     default:
@@ -66,7 +72,7 @@ class SearchResults extends Component {
     }
   }
 
-  renderTypeResults(typeName, selectedCategory, setCategory, searchResultsByType, counts) {
+  renderTypeResults(typeName, selectedCategory, setCategory, searchResults, counts) {
     const { classes, t } = this.props;
     const count          = counts[typeName] || 0;
 
@@ -83,7 +89,7 @@ class SearchResults extends Component {
           {t(`types.${typeName}`, { count })} <span className={classes.resultsCount}>({count})</span>
         </Typography>
         <Grid spacing={1} container>
-          {searchResultsByType[typeName].slice(0, itemsLimit).map(item => (
+          {searchResults[typeName].slice(0, itemsLimit).map(item => (
             <Grid key={item.identifier} xs={12} sm={grid ? 3 : 12} item>
               {this.renderTypeResult(typeName, item)}
             </Grid>
@@ -143,7 +149,7 @@ class SearchResults extends Component {
 
     return (
       <SearchContext.Consumer>
-        {({ searchPhrase, selectedCategory, setCategory, searchResults, searchResultsByType, counts }) => (
+        {({ searchPhrase, selectedCategory, setCategory, searchResults, counts, total }) => (
           <Grid className={classes.root}>
             <Grid xs={12} md={3} item>
               <SearchFilters data={searchResults} />
@@ -152,13 +158,14 @@ class SearchResults extends Component {
               <Typography
                 variant="subtitle1"
                 className={classes.resultsTotal}
-              >{searchResults ? searchResults.length : 0} {t('results')}
+              >
+                {t('results', { count: total })}
               </Typography>
-              {this.renderTypeResults('Person', selectedCategory, setCategory, searchResultsByType, counts)}
-              {this.renderTypeResults('MusicComposition', selectedCategory, setCategory, searchResultsByType, counts)}
-              {this.renderTypeResults('DigitalDocument', selectedCategory, setCategory, searchResultsByType, counts)}
-              {this.renderTypeResults('VideoObject', selectedCategory, setCategory, searchResultsByType, counts)}
-              {searchResults && searchResults.length === 0 ? (
+              {this.renderTypeResults('Person', selectedCategory, setCategory, searchResults, counts)}
+              {this.renderTypeResults('MusicComposition', selectedCategory, setCategory, searchResults, counts)}
+              {this.renderTypeResults('DigitalDocument', selectedCategory, setCategory, searchResults, counts)}
+              {this.renderTypeResults('VideoObject', selectedCategory, setCategory, searchResults, counts)}
+              {total === 0 ? (
                 this.renderNoResults(searchPhrase, selectedCategory)
               ) : null}
             </Grid>

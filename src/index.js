@@ -12,11 +12,13 @@ import NavBar from './containers/NavBar';
 
 export class MultiModalComponent extends Component {
   static propTypes = {
-    uri: PropTypes.string,
+    uri          : PropTypes.string,
+    onResultClick: PropTypes.func,
   };
 
   static defaultProps = {
-    uri: 'https://api-test.trompamusic.eu',
+    uri          : 'https://api-test.trompamusic.eu',
+    onResultClick: () => true,
   };
 
   constructor(props) {
@@ -32,7 +34,7 @@ export class MultiModalComponent extends Component {
           <I18nextProvider i18n={i18n}>
             <SearchProvider client={this.client}>
               <NavBar />
-              <Search />
+              <Search onResultClick={this.props.onResultClick} />
             </SearchProvider>
           </I18nextProvider>
         </MuiThemeProvider>

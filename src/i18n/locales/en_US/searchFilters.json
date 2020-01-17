@@ -2,7 +2,8 @@
   "filterBy": "Filter by",
   "filter": "Filter",
   "type": "Type",
-  "results": "results",
+  "results": "result",
+  "results_plural": "results",
   "filterMenu": {
     "all": "All",
     "people": "People",

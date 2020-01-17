@@ -1,3 +1,33 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/Videodock/trompa-multimodal-component/compare/v0.3.0...v0.3.1) (2020-01-17)
+
+
+### Bug Fixes
+
+* **project:** fix node engine ([ee5139b](https://github.com/Videodock/trompa-multimodal-component/commit/ee5139b))
+* **search:** add default onResultClick prop ([471cec8](https://github.com/Videodock/trompa-multimodal-component/commit/471cec8))
+
+
+
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/Videodock/trompa-multimodal-component/compare/v0.2.0...v0.3.0) (2020-01-17)
+
+
+### Bug Fixes
+
+* **project:** fix translations ([f7102c5](https://github.com/Videodock/trompa-multimodal-component/commit/f7102c5))
+* **project:** update node versions in package.json ([c7a1340](https://github.com/Videodock/trompa-multimodal-component/commit/c7a1340))
+* **search:** make sure there are results for each type ([dfc8730](https://github.com/Videodock/trompa-multimodal-component/commit/dfc8730))
+* **search:** render source below for VideoObject ([d5e5013](https://github.com/Videodock/trompa-multimodal-component/commit/d5e5013))
+
+
+### Features
+
+* **search:** add onResultClick prop ([6ea4f38](https://github.com/Videodock/trompa-multimodal-component/commit/6ea4f38))
+* **search:** update search results ([e4c2776](https://github.com/Videodock/trompa-multimodal-component/commit/e4c2776))
+
+
+
 <a name="0.2.0"></a>
 # 0.2.0 (2020-01-16)
 

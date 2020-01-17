@@ -45,7 +45,7 @@ class SearchFilters extends Component {
     {
       label: this.props.t('filterMenu.scores'),
       icon : MusicFileIcon,
-      value: 'Score',
+      value: 'DigitalDocument',
     },
     {
       label: this.props.t('filterMenu.videos'),
@@ -54,21 +54,9 @@ class SearchFilters extends Component {
     },
   ];
 
-  renderResultCountPerType = data => {
-    return (data || []).reduce((acc, value) => {
-      if (typeof acc[value.__typename] === 'undefined') {
-        acc[value.__typename] = data.filter(({ __typename }) => __typename === value.__typename).length;
-      }
-
-      return acc;
-    }, {});
-  };
-
-  renderMobileDrawer = (selectedCategory, setCategory, searchResults) => {
+  renderMobileDrawer = (selectedCategory, setCategory, searchResults, counts, total) => {
     const { classes, t } = this.props;
     const { open }       = this.state;
-
-    const counts = this.renderResultCountPerType(searchResults);
 
     return (
       <SwipeableDrawer
@@ -85,36 +73,14 @@ class SearchFilters extends Component {
               </IconButton>
             </div>
             <Typography className={classes.type}>{t('type')}</Typography>
-            {this.filters.map(({ value, label, icon: Icon }) => (
-              <React.Fragment key={value}>
-                <ListItem
-                  className={classNames(classes.filter, {
-                    [classes.selected]: selectedCategory === value,
-                  })}
-                  onClick={event => setCategory(event, value)}
-                  button
-                >
-                  <div className={classes.filterContainer}>
-                    {Icon && (
-                      <ListItemIcon className={classes.iconContainer}>
-                        <Icon className={classes.icon} />
-                      </ListItemIcon>
-                    )}
-                    <ListItemText primary={label} className={classes.label} />
-                    <Typography className={classes.resultsNumber}>
-                      ({label === 'All' ? (searchResults ? searchResults.length : 0) : (counts && counts[`${value}`] ? counts[`${value}`] : 0)})
-                    </Typography>
-                  </div>
-                </ListItem>
-              </React.Fragment>
-            ))}
+            {this.renderFilters(selectedCategory, setCategory, searchResults, counts, total)}
           </div>
           <div>
             <Button
               className={classes.button}
               onClick={() => this.setState({ open: false })}
             >
-              {`${searchResults.length} ${t('resultsLower')}`}
+              {t('results', { count: total })}
             </Button>
           </div>
         </div>
@@ -122,10 +88,8 @@ class SearchFilters extends Component {
     );
   }
 
-  renderFilters(selectedCategory, setCategory, searchResults) {
+  renderFilters(selectedCategory, setCategory, searchResults, counts, total) {
     const { classes } = this.props;
-
-    const counts = this.renderResultCountPerType(searchResults);
 
     return (
       <React.Fragment>
@@ -146,7 +110,7 @@ class SearchFilters extends Component {
                 )}
                 <ListItemText primary={label} className={classes.label} />
                 <Typography className={classes.resultsNumber}>
-                  ({label === 'All' ? (searchResults ? searchResults.length : 0) : (counts && counts[`${value}`] ? counts[`${value}`] : 0)})
+                  ({label === 'All' ? total : counts[value]})
                 </Typography>
               </div>
             </ListItem>
@@ -161,13 +125,13 @@ class SearchFilters extends Component {
 
     return (
       <SearchContext.Consumer>
-        {({ selectedCategory, setCategory, searchResults }) => (
+        {({ selectedCategory, setCategory, searchResults, counts, total }) => (
           <React.Fragment>
             <Hidden smDown>
               <div className={classes.root}>
                 <Typography className={classes.header}>{t('filterBy')}</Typography>
                 <Typography className={classes.type}>{t('type')}</Typography>
-                {this.renderFilters(selectedCategory, setCategory, searchResults)}
+                {this.renderFilters(selectedCategory, setCategory, searchResults, counts, total)}
               </div>
             </Hidden>
             <Hidden mdUp>
@@ -176,9 +140,9 @@ class SearchFilters extends Component {
                 onClick={() => this.setState({ open: true })}
               >
                 <FilterIcon className={classes.buttonIcon} />
-                {`${t('filter')} ${searchResults.length} ${t('results')}`}
+                {`${t('filter')} ${total} ${t('results')}`}
               </Button>
-              {this.renderMobileDrawer(selectedCategory, setCategory, searchResults)}
+              {this.renderMobileDrawer(selectedCategory, setCategory, searchResults, counts, total)}
             </Hidden>
           </React.Fragment>
         )}

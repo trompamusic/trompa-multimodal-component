@@ -5,6 +5,7 @@ const App = () => {
     return (
       <MultiModalComponent
         uri="https://api-test.trompamusic.eu/"
+        onResultClick={(item) => console.log(item)}
       />
     );
 };
