@@ -28,12 +28,7 @@ export class NavBar extends Component {
             </Typography>
             <LanguageSelect
               languages={[
-                'de-DE',
-                'en-GB',
                 'en-US',
-                'fr-FR',
-                'lb-LU',
-                'nl-BE',
                 'nl-NL',
               ]}
             />
