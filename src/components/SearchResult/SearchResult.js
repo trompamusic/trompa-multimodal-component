@@ -7,6 +7,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import ImageIcon from '@material-ui/icons/Image';
 import Avatar from '@material-ui/core/Avatar';
+import Link from '@material-ui/core/Link';
 import { getUrlHostName } from '../../utils';
 import styles from './SearchResult.styles';
 
@@ -23,6 +24,7 @@ class SearchResult extends Component {
       <Paper
         className={rootClassName}
         onClick={onClick}
+        elevation={2}
       >
         <Avatar className={classes.type}>
           {Icon ? <Icon className={classes.typeIcon} /> : null}
@@ -44,24 +46,26 @@ class SearchResult extends Component {
                 </Typography>
               )}
             </div>
-            <Hidden smDown>
-              <div className={classes.resultSource}>
-                <ImageIcon className={classes.sourceIcon} />
-                <Typography className={classes.source}>
-                  {getUrlHostName(source)}
-                </Typography>
-              </div>
-            </Hidden>
+            {source && (
+              <Hidden smDown>
+                <Link className={classes.resultSource} href={source} target="_blank" color="inherit">
+                  <ImageIcon className={classes.sourceIcon} />
+                  <Typography className={classes.source}>
+                    {getUrlHostName(source)}
+                  </Typography>
+                </Link>
+              </Hidden>
+            )}
           </div>
           {body}
           {source && (
             <Hidden mdUp>
-              <div className={classes.resultSource}>
+              <Link className={classes.resultSource} href={source} target="_blank" color="inherit">
                 <ImageIcon className={classes.sourceIcon} />
                 <Typography className={classes.source}>
                   {getUrlHostName(source)}
                 </Typography>
-              </div>
+              </Link>
             </Hidden>
           )}
         </div>

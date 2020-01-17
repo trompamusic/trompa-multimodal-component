@@ -6,14 +6,14 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
         marginBottom: 0,
       },
     },
-    display       : 'flex',
-    flexDirection : 'column',
-    width         : '100%',
-    maxWidth      : '100%',
-    marginRight   : spacing(),
-    '&:last-child': {
-      marginRight: 0,
+    '&:hover': {
+      backgroundColor: palette.common.transparentBlack,
     },
+    display      : 'flex',
+    flexDirection: 'column',
+    width        : '100%',
+    maxWidth     : '100%',
+    cursor       : 'pointer',
   },
   variantDefault: {
     flexDirection: 'row',
@@ -88,6 +88,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     display   : 'flex',
     alignItems: 'center',
     alignSelf : 'flex-start',
+    color     : palette.text.primary,
   },
   source: {
     fontSize: typography.pxToRem(16),

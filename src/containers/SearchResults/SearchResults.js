@@ -82,7 +82,7 @@ class SearchResults extends Component {
         <Typography variant="h6" gutterBottom>
           {t(`types.${typeName}`, { count })} <span className={classes.resultsCount}>({count})</span>
         </Typography>
-        <Grid spacing={2} container>
+        <Grid spacing={1} container>
           {searchResultsByType[typeName].slice(0, itemsLimit).map(item => (
             <Grid key={item.identifier} xs={12} sm={grid ? 3 : 12} item>
               {this.renderTypeResult(typeName, item)}
