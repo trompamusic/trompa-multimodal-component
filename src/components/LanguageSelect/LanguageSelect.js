@@ -5,7 +5,14 @@ import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { MenuItem, ListItemIcon, Menu } from '@material-ui/core';
 import ListItemText from '@material-ui/core/ListItemText';
+import usFlag from '../Icons/flags/en_US.svg';
+import nlFlag from '../Icons/flags/nl_NL.svg';
 import styles from './LanguageSelect.styles';
+
+const flags = {
+  'en-US': usFlag,
+  'nl-NL': nlFlag,
+};
 
 class LanguageSelect extends Component {
   state = {
@@ -48,7 +55,7 @@ class LanguageSelect extends Component {
           >
             <ListItemIcon className={classes.flagIcon}>
               <img
-                src={`${process.env.PUBLIC_URL}/static/media/flags/${languageCode}.svg`}
+                src={flags[languageCode]}
                 width={24}
                 height={20}
                 alt={t(languageCode)}
@@ -71,7 +78,7 @@ class LanguageSelect extends Component {
         <MenuItem className={classes.select} onClick={this.handleOpen}>
           <ListItemIcon className={classes.flagIcon}>
             <img
-              src={`${process.env.PUBLIC_URL}/static/media/flags/${this.state.country}.svg`}
+              src={flags[this.state.country]}
               width={24}
               height={20}
               alt={t(this.state.country)}
