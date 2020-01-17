@@ -27,6 +27,9 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
       width       : '100%',
       borderRadius: '4px 4px 0px 0px',
     },
+    '& $info': {
+      flexDirection: 'column',
+    },
   },
   header: {
     fontSize  : typography.pxToRem(20),
