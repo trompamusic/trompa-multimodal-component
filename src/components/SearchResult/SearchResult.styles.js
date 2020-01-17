@@ -1,6 +1,31 @@
 export default ({ spacing, typography, palette, breakpoints }) => ({
   root: {
-    marginBottom: spacing(3),
+    [breakpoints.down('sm')]: {
+      marginBottom  : spacing(),
+      '&:last-child': {
+        marginBottom: 0,
+      },
+    },
+    display       : 'flex',
+    flexDirection : 'column',
+    width         : '100%',
+    maxWidth      : '100%',
+    marginRight   : spacing(),
+    '&:last-child': {
+      marginRight: 0,
+    },
+  },
+  variantDefault: {
+    flexDirection: 'row',
+    '& $type'    : {
+      width: 75,
+    },
+  },
+  variantCard: {
+    flexDirection: 'column',
+    '& $type'    : {
+      width: '100%',
+    },
   },
   header: {
     fontSize  : typography.pxToRem(20),
@@ -20,25 +45,10 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     marginTop   : spacing(1.5),
     marginBottom: spacing(),
   },
-  resultContainer: {
-    [breakpoints.down('sm')]: {
-      marginBottom  : spacing(),
-      '&:last-child': {
-        marginBottom: 0,
-      },
-    },
-    display       : 'flex',
-    flexDirection : 'column',
-    width         : '100%',
-    maxWidth      : '100%',
-    marginRight   : spacing(),
-    '&:last-child': {
-      marginRight: 0,
-    },
-  },
-  image: {
+  type: {
     borderRadius : '4px 4px 0px 0px',
-    height       : 125,
+    minHeight    : 75,
+    height       : 'auto',
     width        : '100%',
     display      : 'flex',
     flexDirection: 'column',
@@ -59,10 +69,12 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     width  : '100%',
     padding: `${spacing(2)}px ${spacing(2)}px ${spacing(1.5)}px ${spacing(2)}px`,
   },
-  infoHeader: {
-    display       : 'flex',
-    justifyContent: 'space-between',
-    width         : '100%',
+  info: {
+    display      : 'flex',
+    flexDirection: 'row',
+  },
+  infoMeta: {
+    flex: 1,
   },
   sourceIcon: {
     color      : palette.common.darkBlack,
@@ -75,6 +87,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     },
     display   : 'flex',
     alignItems: 'center',
+    alignSelf : 'flex-start',
   },
   source: {
     fontSize: typography.pxToRem(16),

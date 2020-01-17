@@ -31,6 +31,10 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
       display: 'none',
     },
   },
+  resultsCount: {
+    fontSize: typography.pxToRem(14),
+    color   : palette.common.darkGrey,
+  },
   noResultsHeader: {
     [breakpoints.down('md')]: {
       fontSize: typography.pxToRem(22),

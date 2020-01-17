@@ -1,5 +1,15 @@
 {
   "results": "total results",
+  "types": {
+    "Person": "Person",
+    "Person_plural": "People",
+    "MusicComposition": "Composition",
+    "MusicComposition_plural": "Compositions",
+    "DigitalDocument": "Score",
+    "DigitalDocument_plural": "Scores",
+    "VideoObject": "Video",
+    "VideoObject_plural": "Videos"
+  },
   "personResult": {
     "person": "Person",
     "personLower": "person",
