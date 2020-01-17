@@ -28,7 +28,7 @@ class Example extends Component {
   render () {
     return (
       <MultiModalComponent
-        uri
+        uri="http://localhost:4000"
         onResultClick={node => console.log('User has clicked on:', node)}
       />
     )
