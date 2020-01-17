@@ -12,7 +12,7 @@ const locales = {
 i18n
   .use(initReactI18next)
   .init({
-    debug      : true,
+    debug      : process.env.NODE_ENV === 'development',
     fallbackLng: 'en-US',
     lng        : 'en-US',
     ns         : Object.keys(locales['en-US']),

@@ -27,7 +27,7 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
   resultsTotal: {
     color                   : palette.common.darkGrey,
     fontSize                : typography.pxToRem(14),
-    [breakpoints.down('md')]: {
+    [breakpoints.down('sm')]: {
       display: 'none',
     },
   },

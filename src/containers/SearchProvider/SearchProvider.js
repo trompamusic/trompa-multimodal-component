@@ -6,13 +6,13 @@ export const SearchContext = React.createContext({});
 
 class SearchProvider extends Component {
   state = {
-    searchPhrase       : '',
-    searchTags         : [],
-    categories         : ['Person', 'MusicComposition', 'DigitalDocument', 'VideoObject'],
-    selectedCategory   : 'all',
-    searchResults      : [],
-    searchResultsByType: {},
-    counts             : {},
+    searchPhrase    : '',
+    searchTags      : [],
+    categories      : ['Person', 'MusicComposition', 'DigitalDocument', 'VideoObject'],
+    selectedCategory: 'all',
+    searchResults   : {},
+    counts          : {},
+    total           : 0,
   };
 
   componentDidMount() {
@@ -54,7 +54,7 @@ class SearchProvider extends Component {
           return acc + counts[value];
         }, 0);
 
-        this.setState({ searchResults, searchResultsByType: searchResults, counts, total });
+        this.setState({ searchResults, counts, total });
       });
   };
 

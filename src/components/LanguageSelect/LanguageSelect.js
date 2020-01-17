@@ -8,7 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import styles from './LanguageSelect.styles';
 
 class LanguageSelect extends Component {
-  state = { 
+  state = {
     selectOpen: false,
     anchorEl  : null,
     country   : this.props.i18n.language,
@@ -34,7 +34,7 @@ class LanguageSelect extends Component {
     const { t, classes, languages } = this.props;
 
     return (
-      <Menu 
+      <Menu
         open={this.state.selectOpen}
         anchorEl={this.state.anchorEl}
         onClose={this.handleClose}
@@ -44,6 +44,7 @@ class LanguageSelect extends Component {
           <MenuItem
             onClick={() => this.handleChange(languageCode)}
             selected={this.state.country === languageCode}
+            key={languageCode}
           >
             <ListItemIcon className={classes.flagIcon}>
               <img

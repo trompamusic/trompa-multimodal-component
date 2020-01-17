@@ -1,5 +1,6 @@
 {
-  "results": "total results",
+  "results": "{{count}} result",
+  "results_plural": "{{count}} results",
   "types": {
     "Person": "Person",
     "Person_plural": "People",

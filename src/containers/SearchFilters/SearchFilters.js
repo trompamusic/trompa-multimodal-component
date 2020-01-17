@@ -80,7 +80,7 @@ class SearchFilters extends Component {
               className={classes.button}
               onClick={() => this.setState({ open: false })}
             >
-              {`${searchResults.length} ${t('resultsLower')}`}
+              {t('results', { count: total })}
             </Button>
           </div>
         </div>
