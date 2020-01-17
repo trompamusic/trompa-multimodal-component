@@ -82,7 +82,6 @@ export const SEARCH_QUERY = gql`
     searchMetadataText(
       substring: $searchPhrase,
       onTypes: $categories,
-      first: 500,
     ) {
       __typename
       ... on Person {

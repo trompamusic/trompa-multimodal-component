@@ -23,7 +23,7 @@ class SearchResults extends Component {
           icon={AccountCircleIcon}
           variant="default"
           type={typeName}
-          heading={item.jobTitle}
+          heading={item.jobTitle ? item.jobTitle : "Unknown role"}
           title={item.name}
           source={item.source}
         />
@@ -45,7 +45,7 @@ class SearchResults extends Component {
           icon={LibraryMusicIcon}
           variant="default"
           type={typeName}
-          heading={item.creator}
+          heading={`${item.creator} • ${item.name}`}
           title={item.name}
           source={item.source}
         />

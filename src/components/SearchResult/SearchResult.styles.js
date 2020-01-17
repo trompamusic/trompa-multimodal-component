@@ -24,7 +24,8 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
   variantCard: {
     flexDirection: 'column',
     '& $type'    : {
-      width: '100%',
+      width       : '100%',
+      borderRadius: '4px 4px 0px 0px',
     },
   },
   header: {
@@ -46,7 +47,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     marginBottom: spacing(),
   },
   type: {
-    borderRadius : '4px 4px 0px 0px',
+    borderRadius : '4px 0px 0px 4px',
     minHeight    : 75,
     height       : 'auto',
     width        : '100%',
@@ -93,22 +94,12 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
   source: {
     fontSize: typography.pxToRem(16),
   },
-  resultRole: {
+  heading: {
     fontSize  : typography.pxToRem(16),
     fontWeight: 'bold',
   },
-  resultName: {
+  title: {
     fontSize  : typography.pxToRem(20),
     fontWeight: 'bold',
-  },
-  button: {
-    fontSize     : typography.pxToRem(14),
-    textTransform: 'none',
-    color        : palette.common.blue,
-    padding      : `${spacing()}px ${spacing()}px ${spacing()}px ${spacing(2)}px`,
-  },
-  buttonIcon: {
-    fontSize  : typography.pxToRem(18),
-    marginLeft: spacing(0.5),
   },
 });

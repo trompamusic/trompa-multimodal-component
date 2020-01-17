@@ -33,15 +33,20 @@ class SearchResult extends Component {
           </Typography>
         </Avatar>
         <div className={classes.infoContainer}>
-          <div className={classes.info}>
+          <div
+            className={classNames({
+              [classes.info]       : variant === 'default',
+              [classes.variantCard]: variant === 'card',
+            })}
+          >
             <div className={classes.infoMeta}>
               {heading && (
-                <Typography>
+                <Typography className={classes.heading}>
                   {heading}
                 </Typography>
               )}
               {title && (
-                <Typography>
+                <Typography className={classes.title}>
                   {title}
                 </Typography>
               )}
