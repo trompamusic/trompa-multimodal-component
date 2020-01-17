@@ -1,3 +1,14 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/Videodock/trompa-multimodal-component/compare/v0.3.0...v0.3.1) (2020-01-17)
+
+
+### Bug Fixes
+
+* **project:** fix node engine ([ee5139b](https://github.com/Videodock/trompa-multimodal-component/commit/ee5139b))
+* **search:** add default onResultClick prop ([471cec8](https://github.com/Videodock/trompa-multimodal-component/commit/471cec8))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/Videodock/trompa-multimodal-component/compare/v0.2.0...v0.3.0) (2020-01-17)
 
