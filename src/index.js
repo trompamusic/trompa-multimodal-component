@@ -12,11 +12,13 @@ import NavBar from './containers/NavBar';
 
 export class MultiModalComponent extends Component {
   static propTypes = {
-    uri: PropTypes.string,
+    uri          : PropTypes.string,
+    onResultClick: PropTypes.func,
   };
 
   static defaultProps = {
-    uri: 'https://api-test.trompamusic.eu',
+    uri          : 'https://api-test.trompamusic.eu',
+    onResultClick: () => true,
   };
 
   constructor(props) {
