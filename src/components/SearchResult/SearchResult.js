@@ -49,12 +49,12 @@ class SearchResult extends Component {
           <div className={classes.info}>
             <div className={classes.infoMeta}>
               {heading && (
-                <Typography>
+                <Typography className={classes.heading}>
                   {heading}
                 </Typography>
               )}
               {title && (
-                <Typography>
+                <Typography className={classes.title}>
                   {title}
                 </Typography>
               )}

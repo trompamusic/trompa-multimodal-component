@@ -16,7 +16,7 @@ import styles from './SearchResults.styles';
 
 class SearchResults extends Component {
   renderTypeResult(typeName, item) {
-    const { onResultClick } = this.props;
+    const { onResultClick, t } = this.props;
 
     switch (typeName) {
     case 'Person':
@@ -25,7 +25,7 @@ class SearchResults extends Component {
           icon={AccountCircleIcon}
           variant="default"
           type={typeName}
-          heading={item.jobTitle}
+          heading={item.jobTitle ? item.jobTitle : t('emptyResults.noRole')}
           title={item.name}
           source={item.source}
           onClick={() => onResultClick(item)}
@@ -49,7 +49,7 @@ class SearchResults extends Component {
           icon={LibraryMusicIcon}
           variant="default"
           type={typeName}
-          heading={item.creator}
+          heading={`${item.creator} • ${item.name}`}
           title={item.name}
           source={item.source}
           onClick={() => onResultClick(item)}
@@ -61,7 +61,6 @@ class SearchResults extends Component {
           icon={VideoCamIcon}
           variant="card"
           type={typeName}
-          heading={item.creator}
           title={item.name}
           source={item.source}
           onClick={() => onResultClick(item)}

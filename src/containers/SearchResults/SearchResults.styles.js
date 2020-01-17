@@ -55,4 +55,14 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
       fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
     },
   },
+  button: {
+    fontSize     : typography.pxToRem(14),
+    textTransform: 'none',
+    color        : palette.common.blue,
+    padding      : `${spacing()}px ${spacing()}px ${spacing()}px ${spacing(2)}px`,
+  },
+  buttonIcon: {
+    fontSize  : typography.pxToRem(18),
+    marginLeft: spacing(0.5),
+  },
 });
