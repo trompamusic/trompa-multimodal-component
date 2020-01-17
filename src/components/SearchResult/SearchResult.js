@@ -12,6 +12,19 @@ import { getUrlHostName } from '../../utils';
 import styles from './SearchResult.styles';
 
 class SearchResult extends Component {
+  renderSource = () => {
+    const { classes, source } = this.props;
+
+    return (
+      <Link className={classes.resultSource} href={source} target="_blank" color="inherit">
+        <ImageIcon className={classes.sourceIcon} />
+        <Typography className={classes.source}>
+          {getUrlHostName(source)}
+        </Typography>
+      </Link>
+    );
+  };
+
   render() {
     const { classes, variant, type, heading, title, body, source, onClick, icon: Icon, t } = this.props;
 
@@ -46,28 +59,19 @@ class SearchResult extends Component {
                 </Typography>
               )}
             </div>
-            {source && (
+            {source && variant !== 'card' && (
               <Hidden smDown>
-                <Link className={classes.resultSource} href={source} target="_blank" color="inherit">
-                  <ImageIcon className={classes.sourceIcon} />
-                  <Typography className={classes.source}>
-                    {getUrlHostName(source)}
-                  </Typography>
-                </Link>
+                {this.renderSource()}
               </Hidden>
             )}
           </div>
           {body}
-          {source && (
+          {source && variant === 'default' && (
             <Hidden mdUp>
-              <Link className={classes.resultSource} href={source} target="_blank" color="inherit">
-                <ImageIcon className={classes.sourceIcon} />
-                <Typography className={classes.source}>
-                  {getUrlHostName(source)}
-                </Typography>
-              </Link>
+              {this.renderSource()}
             </Hidden>
           )}
+          {source && variant === 'card' && this.renderSource()}
         </div>
       </Paper>
     );
