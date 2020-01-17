@@ -1,15 +1,17 @@
 {
   "name": "trompa-multimodal-component",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "The Multimodal Component for React applications",
   "author": {
     "name": "CodeKarl",
     "url": "http://github.com/CodeKarl"
   },
-  "contributors": [{
-    "name": "ChristiaanScheermeijer",
-    "url": "http://github.com/ChristiaanScheermeijer"
-  }],
+  "contributors": [
+    {
+      "name": "ChristiaanScheermeijer",
+      "url": "http://github.com/ChristiaanScheermeijer"
+    }
+  ],
   "license": "MIT",
   "repository": "https://github.com/Videodock/trompa-multimodal-component",
   "main": "dist/index.js",
