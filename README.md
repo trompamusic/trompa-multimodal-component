@@ -45,4 +45,4 @@ class Example extends Component {
 
 ## License
 
-MIT © [ChristiaanScheermeijer](https://github.com/ChristiaanScheermeijer)
+Apache-2.0 © [ChristiaanScheermeijer](https://github.com/ChristiaanScheermeijer)
