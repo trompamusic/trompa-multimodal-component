@@ -6,6 +6,7 @@ export const SearchContext = React.createContext({});
 
 class SearchProvider extends Component {
   state = {
+    queryString     : '',  
     searchPhrase    : '',
     searchTags      : [],
     categories      : ['Person', 'MusicComposition', 'DigitalDocument', 'VideoObject'],
@@ -31,14 +32,27 @@ class SearchProvider extends Component {
   };
 
   runQuery = () => {
-    const { client } = this.props;
+    const { client }                                            = this.props;
+    const { queryString, searchPhrase, searchTags, categories } = this.state;
+
+    if (searchTags.length === 0 && searchPhrase !== '') {
+      this.setState({ queryString: searchPhrase });
+    } else if (searchTags.length > 0 && searchPhrase === '') {
+      const searchTagsToString = searchTags.join(" ");
+
+      this.setState({ queryString: searchTagsToString });
+    } else if (searchTags.length > 0 && searchPhrase !== '') {
+      const searchTagsToString = searchTags.join(" ");
+
+      this.setState({ queryString: `${searchTagsToString} ${searchPhrase}` });
+    }
 
     client
       .query({
         query    : SEARCH_QUERY,
         variables: {
-          searchPhrase: this.state.searchPhrase,
-          categories  : this.state.categories,
+          searchPhrase: queryString,
+          categories  : categories,
         },
       })
       .then(data => {
