@@ -4,9 +4,9 @@ export default ({ spacing, palette, breakpoints }) => ({
   },
   toolbar: {
     [breakpoints.down('md')]: {
-      padding: `${spacing.unit * 1.5}px ${spacing.unit * 2}px 0px ${spacing.unit * 2}px`,
+      padding: `${spacing(1.5)}px ${spacing(2)}px 0px ${spacing(2)}px`,
     },
-    padding      : `${spacing.unit * 2.25}px ${spacing.unit * 5}px 0px ${spacing.unit * 5}px`,
+    padding      : `${spacing(2.25)}px ${spacing(5)}px 0px ${spacing(5)}px`,
     display      : 'flex',
     flexDirection: 'column',
     alignItems   : 'flex-start',
