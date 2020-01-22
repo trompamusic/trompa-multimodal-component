@@ -84,7 +84,7 @@ class SearchResults extends Component {
 
     return (
       <div style={{ marginBottom: 16 }}>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" className={classes.category} gutterBottom>
           {t(`types.${typeName}`, { count })} <span className={classes.resultsCount}>({count})</span>
         </Typography>
         <Grid spacing={1} container>
