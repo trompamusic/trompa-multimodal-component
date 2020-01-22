@@ -148,7 +148,7 @@ class SearchResults extends Component {
 
     return (
       <SearchContext.Consumer>
-        {({ queryString, searchPhrase, selectedCategory, setCategory, searchResults, counts, total }) => (
+        {({ searchPhrase, searchTags, selectedCategory, setCategory, searchResults, counts, total }) => (
           <Grid className={classes.root}>
             <Grid xs={12} md={3} item>
               <SearchFilters data={searchResults} />
@@ -165,7 +165,7 @@ class SearchResults extends Component {
               {this.renderTypeResults('DigitalDocument', selectedCategory, setCategory, searchResults, counts)}
               {this.renderTypeResults('VideoObject', selectedCategory, setCategory, searchResults, counts)}
               {total === 0 ? (
-                this.renderNoResults(queryString, selectedCategory)
+                this.renderNoResults(searchTags.concat(searchPhrase).join(' '), selectedCategory)
               ) : null}
             </Grid>
           </Grid>
