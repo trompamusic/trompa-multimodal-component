@@ -3,8 +3,7 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     [breakpoints.down('sm')]: {
       display      : 'flex',
       flexDirection: 'column',
-      marginLeft   : spacing(2),
-      marginRight  : spacing(2),
+      margin       : spacing(2),
     },
     margin     : spacing(3),
     marginLeft : spacing(5),

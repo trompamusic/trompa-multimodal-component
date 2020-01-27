@@ -9,7 +9,7 @@ export default ({ palette, spacing }) => ({
   term: {
     fontSize   : 16,
     fontWeight : 'bold',
-    marginRight: spacing(0.75),
+    marginRight: spacing(1.5),
   },
   icon: {
     height: 18,
