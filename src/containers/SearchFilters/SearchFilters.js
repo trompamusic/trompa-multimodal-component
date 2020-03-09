@@ -54,7 +54,7 @@ class SearchFilters extends Component {
     },
   ];
 
-  renderMobileDrawer = (selectedCategory, setCategory, searchResults, counts, total) => {
+  renderMobileDrawer = (selectedCategory, setCategory, searchResults, counts, total, filterTypes) => {
     const { classes, t } = this.props;
     const { open }       = this.state;
 
@@ -73,7 +73,7 @@ class SearchFilters extends Component {
               </IconButton>
             </div>
             <Typography className={classes.type}>{t('type')}</Typography>
-            {this.renderFilters(selectedCategory, setCategory, searchResults, counts, total)}
+            {this.renderFilters(selectedCategory, setCategory, searchResults, counts, total, filterTypes)}
           </div>
           <div>
             <Button
@@ -88,12 +88,21 @@ class SearchFilters extends Component {
     );
   }
 
-  renderFilters(selectedCategory, setCategory, searchResults, counts, total) {
-    const { classes } = this.props;
+  filterOutFilterTypes = filterTypes => {
+    if (filterTypes.length === 1) {
+      return this.filters.filter(filter => filterTypes.includes(filter['value']));
+    }
+
+    return this.filters.filter(filter => filter['value'] === 'all' || filterTypes.includes(filter['value']));
+  }
+
+  renderFilters(selectedCategory, setCategory, searchResults, counts, total, filterTypes) {
+    const { classes }         = this.props;
+    const filteredFiltersList = this.filterOutFilterTypes(filterTypes);
 
     return (
       <React.Fragment>
-        {this.filters.map(({ value, label, icon: Icon }) => (
+        {filteredFiltersList.map(({ value, label, icon: Icon }) => (
           <React.Fragment key={value}>
             <ListItem
               className={classNames(classes.filter, {
@@ -125,13 +134,13 @@ class SearchFilters extends Component {
 
     return (
       <SearchContext.Consumer>
-        {({ selectedCategory, setCategory, searchResults, counts, total }) => (
+        {({ selectedCategory, setCategory, searchResults, counts, total, filterTypes }) => (
           <React.Fragment>
             <Hidden smDown>
               <div className={classes.root}>
                 <Typography className={classes.header}>{t('filterBy')}</Typography>
                 <Typography className={classes.type}>{t('type')}</Typography>
-                {this.renderFilters(selectedCategory, setCategory, searchResults, counts, total)}
+                {this.renderFilters(selectedCategory, setCategory, searchResults, counts, total, filterTypes)}
               </div>
             </Hidden>
             <Hidden mdUp>
@@ -142,7 +151,7 @@ class SearchFilters extends Component {
                 <FilterIcon className={classes.buttonIcon} />
                 {`${t('filter')} ${total} ${t('results')}`}
               </Button>
-              {this.renderMobileDrawer(selectedCategory, setCategory, searchResults, counts, total)}
+              {this.renderMobileDrawer(selectedCategory, setCategory, searchResults, counts, total, filterTypes)}
             </Hidden>
           </React.Fragment>
         )}

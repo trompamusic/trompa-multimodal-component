@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { setPrerenderReady, providers } from '../../utils';
+import { 
+  SEARCH_PERSONS_QUERY,
+  SEARCH_MUSIC_COMPOSITION_QUERY,
+  SEARCH_DIGITAL_DOCUMENT_QUERY,
+  SEARCH_VIDEO_OBJECT_QUERY,
+} from '../../queries/queries';
 
 export const SearchContext = React.createContext({});
 
@@ -8,11 +14,18 @@ class SearchProvider extends Component {
   state = {
     searchPhrase    : '',
     searchTags      : [],
-    categories      : ['Person', 'MusicComposition', 'DigitalDocument', 'VideoObject'],
+    categories      : this.props.filterTypes,
     selectedCategory: 'all',
     searchResults   : {},
     counts          : {},
     total           : 0,
+  };
+
+  categorySearchQueries = {
+    'Person'          : SEARCH_PERSONS_QUERY,
+    'MusicComposition': SEARCH_MUSIC_COMPOSITION_QUERY,
+    'DigitalDocument' : SEARCH_DIGITAL_DOCUMENT_QUERY,
+    'VideoObject'     : SEARCH_VIDEO_OBJECT_QUERY,
   };
 
   componentDidMount() {
@@ -31,11 +44,11 @@ class SearchProvider extends Component {
   };
 
   runQuery = () => {
-    const { client } = this.props;
+    const { client }            = this.props;
 
     client
       .query({
-        query    : SEARCH_QUERY,
+        query    : this.SEARCH_QUERY,
         variables: {
           searchPhrase: this.state.searchPhrase,
           categories  : this.state.categories,
@@ -54,6 +67,10 @@ class SearchProvider extends Component {
           return acc + counts[value];
         }, 0);
 
+        if (this.props.filterTypes.length === 1) {
+          this.setState({ selectedCategory: this.props.filterTypes[0] });
+        }
+
         this.setState({ searchResults, counts, total });
       });
   };
@@ -65,6 +82,7 @@ class SearchProvider extends Component {
       <SearchContext.Provider
         value={{
           ...this.state,
+          filterTypes       : this.props.filterTypes,
           handleSearchSubmit: this.handleSearchSubmit,
           setCategory       : this.setCategory,
         }}
@@ -73,49 +91,12 @@ class SearchProvider extends Component {
       </SearchContext.Provider>
     );
   }
-}
 
-export const SEARCH_QUERY = gql`
-  fragment thingFields on ThingInterface {
-    __typename
-    identifier
-    name
-    description
-    image
-  }
-
-  fragment metadataFields on MetadataInterface {
-    creator
-    source
-  }
-
+  SEARCH_QUERY = gql`
   query ($searchPhrase: String!, $first: Int = 50) {
-    Person (filter: { name_contains: $searchPhrase }, first: $first) {
-      jobTitle
-      ...thingFields
-      ...metadataFields
-    }
-
-    MusicComposition (filter: { name_contains: $searchPhrase }, first: $first) {
-      ...thingFields
-      ...metadataFields
-    }
-
-    DigitalDocument (filter: { name_contains: $searchPhrase }, first: $first) {
-      version
-      publisher
-      ...thingFields
-      ...metadataFields
-    }
-
-    VideoObject (filter: { name_contains: $searchPhrase }, first: $first) {
-      url
-      description
-      duration
-      ...thingFields
-      ...metadataFields
-    }
+    ${this.state.categories.map(category => this.categorySearchQueries[category])}
   }
 `;
+}
 
 export default providers(SearchProvider);

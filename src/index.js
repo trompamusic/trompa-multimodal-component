@@ -13,18 +13,21 @@ import NavBar from './containers/NavBar';
 export class MultiModalComponent extends Component {
   static propTypes = {
     uri          : PropTypes.string,
+    filterTypes  : PropTypes.arrayOf(PropTypes.string),
     onResultClick: PropTypes.func,
   };
 
   static defaultProps = {
     uri          : 'https://api-test.trompamusic.eu',
+    filterTypes  : ['Person', 'MusicComposition', 'DigitalDocument', 'VideoObject'],
     onResultClick: () => true,
   };
 
   constructor(props) {
     super(props);
 
-    this.client = getApolloClient(this.props.uri);
+    this.client      = getApolloClient(this.props.uri);
+    this.filterTypes = this.props.filterTypes;
   }
 
   render() {
@@ -32,7 +35,7 @@ export class MultiModalComponent extends Component {
       <ApolloProvider client={this.client}>
         <MuiThemeProvider theme={theme}>
           <I18nextProvider i18n={i18n}>
-            <SearchProvider client={this.client}>
+            <SearchProvider client={this.client} filterTypes={this.filterTypes}>
               <NavBar />
               <Search onResultClick={this.props.onResultClick} />
             </SearchProvider>
