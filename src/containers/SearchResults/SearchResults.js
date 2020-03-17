@@ -71,7 +71,7 @@ class SearchResults extends Component {
     }
   }
 
-  renderTypeResults(typeName, selectedCategory, setCategory, searchResults, counts) {
+  renderTypeResults(typeName, selectedCategory, setCategory, searchResults, counts, disableFilters) {
     const { classes, t } = this.props;
     const count          = counts[typeName] || 0;
 
@@ -80,13 +80,15 @@ class SearchResults extends Component {
     }
 
     const grid       = typeName === 'VideoObject';
-    const itemsLimit = selectedCategory === 'all' ? grid ? 4 : 3 : count;
+    const itemsLimit = (!disableFilters && selectedCategory === 'all') ? (grid ? 4 : 3) : count;
 
     return (
-      <div style={{ marginBottom: 16 }}>
-        <Typography variant="h6" className={classes.category} gutterBottom>
-          {t(`types.${typeName}`, { count })} <span className={classes.resultsCount}>({count})</span>
-        </Typography>
+      <div style={{ marginBottom: !disableFilters ? 16 : 4 }}>
+        {!disableFilters ? (
+          <Typography variant="h6" className={classes.category} gutterBottom>
+            {t(`types.${typeName}`, { count })} <span className={classes.resultsCount}>({count})</span>
+          </Typography>
+        ) : null}
         <Grid spacing={1} container>
           {searchResults[typeName].slice(0, itemsLimit).map(item => (
             <Grid key={item.identifier} xs={12} sm={grid ? 3 : 12} item>
@@ -94,7 +96,7 @@ class SearchResults extends Component {
             </Grid>
           ))}
         </Grid>
-        {selectedCategory === 'all' && count > 3 ? (
+        {selectedCategory === 'all' && count > 3 && !disableFilters ? (
           <p>
             <Button
               className={classes.button}
@@ -148,11 +150,13 @@ class SearchResults extends Component {
 
     return (
       <SearchContext.Consumer>
-        {({ searchPhrase, selectedCategory, setCategory, searchResults, counts, total }) => (
+        {({ searchPhrase, selectedCategory, setCategory, searchResults, counts, total, disableFilters }) => (
           <Grid className={classes.root}>
-            <Grid xs={12} md={3} item>
-              <SearchFilters data={searchResults} />
-            </Grid>
+            {!disableFilters ? (
+              <Grid xs={12} md={3} item>
+                <SearchFilters data={searchResults} />
+              </Grid>
+            ) : null}
             <Grid xs={12} md={9} className={classes.resultsContainer} item>
               <Typography
                 variant="subtitle1"
@@ -160,10 +164,10 @@ class SearchResults extends Component {
               >
                 {t('results', { count: total })}
               </Typography>
-              {this.renderTypeResults('Person', selectedCategory, setCategory, searchResults, counts)}
-              {this.renderTypeResults('MusicComposition', selectedCategory, setCategory, searchResults, counts)}
-              {this.renderTypeResults('DigitalDocument', selectedCategory, setCategory, searchResults, counts)}
-              {this.renderTypeResults('VideoObject', selectedCategory, setCategory, searchResults, counts)}
+              {this.renderTypeResults('Person', selectedCategory, setCategory, searchResults, counts, disableFilters)}
+              {this.renderTypeResults('MusicComposition', selectedCategory, setCategory, searchResults, counts, disableFilters)}
+              {this.renderTypeResults('DigitalDocument', selectedCategory, setCategory, searchResults, counts, disableFilters)}
+              {this.renderTypeResults('VideoObject', selectedCategory, setCategory, searchResults, counts, disableFilters)}
               {total === 0 ? (
                 this.renderNoResults(searchPhrase, selectedCategory)
               ) : null}

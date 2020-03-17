@@ -82,6 +82,7 @@ class SearchProvider extends Component {
       <SearchContext.Provider
         value={{
           ...this.state,
+          disableFilters    : this.props.disableFilters,
           filterTypes       : this.props.filterTypes,
           handleSearchSubmit: this.handleSearchSubmit,
           setCategory       : this.setCategory,
