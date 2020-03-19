@@ -12,19 +12,22 @@ import NavBar from './containers/NavBar';
 
 export class MultiModalComponent extends Component {
   static propTypes = {
-    uri          : PropTypes.string,
-    onResultClick: PropTypes.func,
+    uri               : PropTypes.string,
+    onResultClick     : PropTypes.func,
+    customGraphQlQuery: PropTypes.string,
   };
 
   static defaultProps = {
-    uri          : 'https://api-test.trompamusic.eu',
-    onResultClick: () => true,
+    uri               : 'https://api-test.trompamusic.eu',
+    onResultClick     : () => true,
+    customGraphQlQuery: '',
   };
 
   constructor(props) {
     super(props);
 
-    this.client = getApolloClient(this.props.uri);
+    this.client             = getApolloClient(this.props.uri);
+    this.customGraphQlQuery = this.props.customGraphQlQuery;
   }
 
   render() {
@@ -32,7 +35,10 @@ export class MultiModalComponent extends Component {
       <ApolloProvider client={this.client}>
         <MuiThemeProvider theme={theme}>
           <I18nextProvider i18n={i18n}>
-            <SearchProvider client={this.client}>
+            <SearchProvider 
+              client={this.client}
+              customGraphQlQuery={this.customGraphQlQuery}
+            >
               <NavBar />
               <Search onResultClick={this.props.onResultClick} />
             </SearchProvider>

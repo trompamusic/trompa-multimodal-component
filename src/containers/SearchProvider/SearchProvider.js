@@ -31,11 +31,13 @@ class SearchProvider extends Component {
   };
 
   runQuery = () => {
-    const { client } = this.props;
+    const { client, customGraphQlQuery } = this.props;
+
+    console.log(customGraphQlQuery ? gql`${customGraphQlQuery}` : SEARCH_QUERY);
 
     client
       .query({
-        query    : SEARCH_QUERY,
+        query    : customGraphQlQuery ? gql`${customGraphQlQuery}` : SEARCH_QUERY,
         variables: {
           searchPhrase: this.state.searchPhrase,
           categories  : this.state.categories,

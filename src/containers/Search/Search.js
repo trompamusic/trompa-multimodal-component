@@ -28,6 +28,7 @@ export class Search extends Component {
             categories={categories}
             filter={filter}
             onResultClick={onResultClick}
+            customGraphQlQuery={this.props.customGraphQlQuery}
           />
         )}
       </SearchContext.Consumer>
