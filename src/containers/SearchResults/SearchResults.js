@@ -15,11 +15,22 @@ import SearchResult from '../../components/SearchResult';
 import styles from './SearchResults.styles';
 
 class SearchResults extends Component {
-  renderTypeResult(typeName, item) {
+  renderTypeResult(typeName, item, renderResult) {
     const { onResultClick, t } = this.props;
+    const customRenderAll      = renderResult.find(render => render.type === 'All');
 
     switch (typeName) {
     case 'Person':
+      const customRenderPerson = renderResult && renderResult.find(render => render.type === 'Person');
+
+      if (customRenderPerson) {
+        return customRenderPerson.renderTemplate(item);
+      }
+    
+      if (customRenderAll) {
+        return customRenderAll.renderTemplate(item);
+      }
+
       return (
         <SearchResult
           icon={AccountCircleIcon}
@@ -32,6 +43,16 @@ class SearchResults extends Component {
         />
       );
     case 'MusicComposition':
+      const customRenderMusicComposition = renderResult.find(render => render.type === 'MusicComposition');
+
+      if (customRenderMusicComposition) {
+        return customRenderMusicComposition.renderTemplate(item);
+      }
+      
+      if (customRenderAll) {
+        return customRenderAll.renderTemplate(item);
+      }
+
       return (
         <SearchResult
           icon={LibraryMusicIcon}
@@ -44,6 +65,16 @@ class SearchResults extends Component {
         />
       );
     case 'DigitalDocument':
+      const customRenderDigitalDocument = renderResult.find(render => render.type === 'DigitalDocument');
+
+      if (customRenderDigitalDocument) {
+        return customRenderDigitalDocument.renderTemplate(item);
+      }
+        
+      if (customRenderAll) {
+        return customRenderAll.renderTemplate(item);
+      }
+
       return (
         <SearchResult
           icon={LibraryMusicIcon}
@@ -56,6 +87,16 @@ class SearchResults extends Component {
         />
       );
     case 'VideoObject':
+      const customRenderVideoObject = renderResult.find(render => render.type === 'VideoObject');
+
+      if (customRenderVideoObject) {
+        return customRenderVideoObject.renderTemplate(item);
+      }
+        
+      if (customRenderAll) {
+        return customRenderAll.renderTemplate(item);
+      }
+
       return (
         <SearchResult
           icon={VideoCamIcon}
@@ -71,7 +112,7 @@ class SearchResults extends Component {
     }
   }
 
-  renderTypeResults(typeName, selectedCategory, setCategory, searchResults, counts, disableFilters) {
+  renderTypeResults(typeName, selectedCategory, setCategory, searchResults, counts, disableFilters, renderResult) {
     const { classes, t } = this.props;
     const count          = counts[typeName] || 0;
 
@@ -92,7 +133,7 @@ class SearchResults extends Component {
         <Grid spacing={1} container>
           {searchResults[typeName].slice(0, itemsLimit).map(item => (
             <Grid key={item.identifier} xs={12} sm={grid ? 3 : 12} item>
-              {this.renderTypeResult(typeName, item)}
+              {this.renderTypeResult(typeName, item, renderResult)}
             </Grid>
           ))}
         </Grid>
@@ -150,7 +191,7 @@ class SearchResults extends Component {
 
     return (
       <SearchContext.Consumer>
-        {({ searchPhrase, selectedCategory, setCategory, searchResults, counts, total, disableFilters }) => (
+        {({ searchPhrase, selectedCategory, setCategory, searchResults, counts, total, disableFilters, renderResult }) => (
           <Grid className={classes.root}>
             {!disableFilters ? (
               <Grid xs={12} md={3} item>
@@ -164,10 +205,10 @@ class SearchResults extends Component {
               >
                 {t('results', { count: total })}
               </Typography>
-              {this.renderTypeResults('Person', selectedCategory, setCategory, searchResults, counts, disableFilters)}
-              {this.renderTypeResults('MusicComposition', selectedCategory, setCategory, searchResults, counts, disableFilters)}
-              {this.renderTypeResults('DigitalDocument', selectedCategory, setCategory, searchResults, counts, disableFilters)}
-              {this.renderTypeResults('VideoObject', selectedCategory, setCategory, searchResults, counts, disableFilters)}
+              {this.renderTypeResults('Person', selectedCategory, setCategory, searchResults, counts, disableFilters, renderResult)}
+              {this.renderTypeResults('MusicComposition', selectedCategory, setCategory, searchResults, counts, disableFilters, renderResult)}
+              {this.renderTypeResults('DigitalDocument', selectedCategory, setCategory, searchResults, counts, disableFilters, renderResult)}
+              {this.renderTypeResults('VideoObject', selectedCategory, setCategory, searchResults, counts, disableFilters, renderResult)}
               {total === 0 ? (
                 this.renderNoResults(searchPhrase, selectedCategory)
               ) : null}

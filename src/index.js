@@ -15,6 +15,7 @@ export class MultiModalComponent extends Component {
     uri           : PropTypes.string,
     disableFilters: PropTypes.bool,
     filterTypes   : PropTypes.arrayOf(PropTypes.string),
+    renderResult  : PropTypes.arrayOf(PropTypes.object),
     onResultClick : PropTypes.func,
   };
 
@@ -22,6 +23,7 @@ export class MultiModalComponent extends Component {
     uri           : 'https://api-test.trompamusic.eu',
     disableFilters: false,
     filterTypes   : ['Person', 'MusicComposition', 'DigitalDocument', 'VideoObject'],
+    renderResult  : [],
     onResultClick : () => true,
   };
 
@@ -31,6 +33,7 @@ export class MultiModalComponent extends Component {
     this.client         = getApolloClient(this.props.uri);
     this.disableFilters = this.props.disableFilters;
     this.filterTypes    = this.props.filterTypes;
+    this.renderResult   = this.props.renderResult;
   }
 
   render() {
@@ -42,6 +45,7 @@ export class MultiModalComponent extends Component {
               client={this.client} 
               disableFilters={this.disableFilters}
               filterTypes={this.filterTypes}
+              renderResult={this.renderResult}
             >
               <NavBar />
               <Search onResultClick={this.props.onResultClick} />
