@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import Hidden from '@material-ui/core/Hidden';
 import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { MenuItem, ListItemIcon, Menu } from '@material-ui/core';
@@ -84,9 +85,11 @@ class LanguageSelect extends Component {
               alt={t(this.state.country)}
             />
           </ListItemIcon>
-          <ListItemText className={classes.selectText}>
-            {t(this.state.country)}
-          </ListItemText>
+          <Hidden smDown>
+            <ListItemText className={classes.selectText}>
+              {t(this.state.country)}
+            </ListItemText>
+          </Hidden>
           <ListItemIcon className={classes.dropDownIcon}>
             <ArrowDropDownIcon />
           </ListItemIcon>

@@ -1,9 +1,12 @@
-export default ({ spacing, palette,typography }) => ({
+export default ({ spacing, palette, typography, breakpoints }) => ({
   select: {
+    [breakpoints.down('sm')]: {
+      width: 80,
+    },
     width       : 175,
     borderRadius: 4,
     boxShadow   : '0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2)',
-    padding     : `${spacing(1.25)}px ${spacing(2)}px`,
+    padding     : `${spacing(0.5)}px ${spacing(2)}px`,
   },
   flagIcon: {
     marginRight: spacing(),
@@ -15,8 +18,12 @@ export default ({ spacing, palette,typography }) => ({
     color      : palette.common.darkBlack,
   },
   selectText: {
+    [breakpoints.down('sm')]: {
+      width: 80,
+    },
     padding : 0,
     color   : palette.common.darkBlack,
+    width   : 175,
     '& span': {
       fontSize  : 14,
       fontWeight: 'bold',

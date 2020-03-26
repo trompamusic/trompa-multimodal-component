@@ -15,6 +15,7 @@ export default {
     blue            : '#005AA3',
     selectedLight   : '#0080E8',
     selectedDark    : '#005AA3',
+    orangeGradient  : 'linear-gradient(to right, tomato, cyan)',
   },
   text: {
     primary: 'rgba(0, 0, 0, 0.7)',
