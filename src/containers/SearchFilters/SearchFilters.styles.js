@@ -1,13 +1,15 @@
-export default ({ breakpoints, spacing, typography, palette }) => ({
+export default ({ breakpoints, spacing, typography, palette, transitions }) => ({
   root: {
     [breakpoints.down('sm')]: {
       marginBottom: spacing(3),
     },
   },
   header: {
-    fontSize    : typography.pxToRem(24),
-    fontWeight  : 'bold',
-    marginBottom: spacing(1.5),
+    [breakpoints.down('sm')]: {
+      fontSize: typography.pxToRem(20),
+    },
+    fontSize  : typography.pxToRem(24),
+    fontWeight: 'bold',
   },
   filter: {
     display       : 'flex',
@@ -15,7 +17,7 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
     justifyContent: 'space-between',
     borderRadius  : 4,
     boxShadow     : '0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2)',
-    padding       : `${spacing(1.25)}px ${spacing(2)}px`,
+    padding       : `${spacing()}px ${spacing(2)}px`,
     marginBottom  : spacing(),
   },
   selected: {
@@ -54,11 +56,17 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
     fontSize: typography.pxToRem(12),
     color   : palette.common.darkGrey,
   },
+  typeHeader: {
+    display       : 'flex',
+    alignItems    : 'center',
+    justifyContent: 'space-between',
+  },
   type: {
     fontSize    : typography.pxToRem(16),
-    marginBottom: spacing(1.25),
+    marginBottom: spacing(),
   },
   button: {
+    marginBottom : spacing(2),
     width        : '100%',
     height       : 36,
     fontSize     : typography.pxToRem(14),
@@ -80,6 +88,27 @@ export default ({ breakpoints, spacing, typography, palette }) => ({
   },
   drawerHeader: {
     display       : 'flex',
+    alignItems    : 'center',
     justifyContent: 'space-between',
+    marginBottom  : spacing(1.5),
+  },
+  close: {
+    '& svg': {
+      color: palette.primary.main,
+    },
+    padding: 0,
+  },
+  expand: {
+    '&:hover': {
+      cursor: 'pointer',
+    },
+    transform : 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: transitions.create('transform', {
+      duration: transitions.duration.shortest,
+    }),
+  },
+  expanded: {
+    transform: 'rotate(180deg)',
   },
 });

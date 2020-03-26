@@ -32,6 +32,10 @@ export default ({ spacing, palette, breakpoints }) => ({
     justifyContent: 'space-between',
   },
   searchContainer: {
+    [breakpoints.down('sm')]: {
+      paddingTop   : spacing(2),
+      paddingBottom: spacing(3),
+    },
     justifyContent: 'center',
     width         : '100%',
     padding       : `${spacing()}px 0px ${spacing(2)}px 0px`,

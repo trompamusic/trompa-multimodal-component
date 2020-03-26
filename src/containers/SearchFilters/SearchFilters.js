@@ -7,6 +7,7 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import ListItem from '@material-ui/core/ListItem/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText/ListItemText';
+import Collapse from '@material-ui/core/Collapse';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,6 +15,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import MusicFileIcon from '../../components/Icons/MusicFileIcon';
 import FilterIcon from '../../components/Icons/FilterIcon';
@@ -23,7 +25,8 @@ import styles from './SearchFilters.styles';
 
 class SearchFilters extends Component {
   state = {
-    open: false,
+    open      : false,
+    typeIsOpen: true,
   };
 
   filters = [
@@ -55,20 +58,20 @@ class SearchFilters extends Component {
   ];
 
   renderMobileDrawer = (selectedCategory, setCategory, searchResults, counts, total, filterTypes) => {
-    const { classes, t } = this.props;
-    const { open }       = this.state;
+    const { classes, t }        = this.props;
+    const { openMobileFilters } = this.state;
 
     return (
       <SwipeableDrawer
-        open={open}
-        onOpen={() => this.setState({ open: true })}
-        onClose={() => this.setState({ open: false })}
+        open={openMobileFilters}
+        onOpen={() => this.setState({ openMobileFilters: true })}
+        onClose={() => this.setState({ openMobileFilters: false })}
       >
         <div className={classes.drawer}>
           <div>
             <div className={classes.drawerHeader}>
               <Typography className={classes.header}>{t('filterBy')}</Typography>
-              <IconButton onClick={() => this.setState({ open: false })} aria-label="close drawer">
+              <IconButton className={classes.close} onClick={() => this.setState({ openMobileFilters: false })} aria-label="close drawer">
                 <CloseIcon />
               </IconButton>
             </div>
@@ -78,9 +81,9 @@ class SearchFilters extends Component {
           <div>
             <Button
               className={classes.button}
-              onClick={() => this.setState({ open: false })}
+              onClick={() => this.setState({ openMobileFilters: false })}
             >
-              {t('results', { count: total })}
+              {`${total} ${t('results')}`}
             </Button>
           </div>
         </div>
@@ -146,7 +149,7 @@ class SearchFilters extends Component {
             <Hidden mdUp>
               <Button
                 className={classes.button}
-                onClick={() => this.setState({ open: true })}
+                onClick={() => this.setState({ openMobileFilters: true })}
               >
                 <FilterIcon className={classes.buttonIcon} />
                 {`${t('filter')} ${total} ${t('results')}`}

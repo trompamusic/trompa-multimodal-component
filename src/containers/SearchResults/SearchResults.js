@@ -26,7 +26,7 @@ class SearchResults extends Component {
       if (customRenderPerson) {
         return customRenderPerson.renderTemplate(item);
       }
-    
+
       if (customRenderAll) {
         return customRenderAll.renderTemplate(item);
       }
@@ -48,7 +48,7 @@ class SearchResults extends Component {
       if (customRenderMusicComposition) {
         return customRenderMusicComposition.renderTemplate(item);
       }
-      
+
       if (customRenderAll) {
         return customRenderAll.renderTemplate(item);
       }
@@ -70,7 +70,7 @@ class SearchResults extends Component {
       if (customRenderDigitalDocument) {
         return customRenderDigitalDocument.renderTemplate(item);
       }
-        
+
       if (customRenderAll) {
         return customRenderAll.renderTemplate(item);
       }
@@ -92,7 +92,7 @@ class SearchResults extends Component {
       if (customRenderVideoObject) {
         return customRenderVideoObject.renderTemplate(item);
       }
-        
+
       if (customRenderAll) {
         return customRenderAll.renderTemplate(item);
       }
@@ -191,7 +191,7 @@ class SearchResults extends Component {
 
     return (
       <SearchContext.Consumer>
-        {({ searchPhrase, selectedCategory, setCategory, searchResults, counts, total, disableFilters, renderResult }) => (
+        {({ searchPhrase, searchTags, selectedCategory, setCategory, searchResults, counts, total, disableFilters, renderResult }) => (
           <Grid className={classes.root}>
             {!disableFilters ? (
               <Grid xs={12} md={3} item>
@@ -210,7 +210,7 @@ class SearchResults extends Component {
               {this.renderTypeResults('DigitalDocument', selectedCategory, setCategory, searchResults, counts, disableFilters, renderResult)}
               {this.renderTypeResults('VideoObject', selectedCategory, setCategory, searchResults, counts, disableFilters, renderResult)}
               {total === 0 ? (
-                this.renderNoResults(searchPhrase, selectedCategory)
+                this.renderNoResults(searchTags.concat(searchPhrase).join(' '), selectedCategory)
               ) : null}
             </Grid>
           </Grid>
