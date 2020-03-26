@@ -5,7 +5,7 @@ import { setPrerenderReady, providers } from '../../utils';
 export const SearchContext = React.createContext({});
 
 class SearchProvider extends Component {
-  state = {
+  state = { 
     searchPhrase    : '',
     searchTags      : [],
     categories      : ['Person', 'MusicComposition', 'DigitalDocument', 'VideoObject'],
@@ -31,14 +31,15 @@ class SearchProvider extends Component {
   };
 
   runQuery = () => {
-    const { client } = this.props;
+    const { client }                               = this.props;
+    const { searchPhrase, searchTags, categories } = this.state;
 
     client
       .query({
         query    : SEARCH_QUERY,
         variables: {
-          searchPhrase: this.state.searchPhrase,
-          categories  : this.state.categories,
+          searchPhrase: searchTags.concat(searchPhrase).join(' '),
+          categories  : categories,
         },
       })
       .then(data => {
