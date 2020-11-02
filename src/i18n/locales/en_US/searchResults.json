@@ -2,6 +2,7 @@
   "results": "{{count}} result",
   "results_plural": "{{count}} results",
   "types": {
+    "AudioObject": "Audio",
     "Person": "Person",
     "Person_plural": "People",
     "MusicComposition": "Composition",

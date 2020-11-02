@@ -1,31 +1,15 @@
 import React, { Component } from 'react';
-import gql from 'graphql-tag';
-import { setPrerenderReady, providers } from '../../utils';
-import {
-  SEARCH_PERSONS_QUERY,
-  SEARCH_MUSIC_COMPOSITION_QUERY,
-  SEARCH_DIGITAL_DOCUMENT_QUERY,
-  SEARCH_VIDEO_OBJECT_QUERY,
-} from '../../queries/queries';
-
+import { setPrerenderReady } from '../../utils';
 export const SearchContext = React.createContext({});
 
 class SearchProvider extends Component {
   state = {
-    searchPhrase    : '',
-    searchTags      : [],
-    categories      : this.props.filterTypes,
-    selectedCategory: 'all',
-    searchResults   : {},
-    counts          : {},
-    total           : 0,
-  };
-
-  categorySearchQueries = {
-    'Person'          : SEARCH_PERSONS_QUERY,
-    'MusicComposition': SEARCH_MUSIC_COMPOSITION_QUERY,
-    'DigitalDocument' : SEARCH_DIGITAL_DOCUMENT_QUERY,
-    'VideoObject'     : SEARCH_VIDEO_OBJECT_QUERY,
+    loading      : true,
+    searchPhrase : '',
+    searchResults: [],
+    filtersState : {},
+    filters      : [],
+    total        : 0,
   };
 
   componentDidMount() {
@@ -33,73 +17,70 @@ class SearchProvider extends Component {
     this.runQuery();
   }
 
-  setCategory = (event, category) => {
-    this.setState({ selectedCategory: category });
-  };
-
-  handleSearchSubmit = (event, searchPhrase, searchTags) => {
+  search = searchPhrase => {
     this.setState({ searchPhrase });
-    this.setState({ searchTags });
-    this.runQuery();
+
+    return this.runQuery();
   };
 
-  runQuery = () => {
-    const { client }                               = this.props;
-    const { searchPhrase, searchTags, categories } = this.state;
+  buildFilterState = filters => {
+    const filterState = this.state.filtersState;
 
-    client
-      .query({
-        query    : this.SEARCH_QUERY,
-        variables: {
-          searchPhrase: searchTags.concat(searchPhrase).join(' '),
-          categories  : categories,
-        },
-      })
-      .then(data => {
-        const searchResults = data.data || {};
+    return filters.reduce((acc, filter) => {
+      acc[filter.name] = filterState[filter.name] || {
+        filter,
+        query   : '',
+        selected: [],
+      };
 
-        const counts = Object.keys(searchResults).reduce((acc, value) => {
-          acc[value] = searchResults[value].length;
+      return acc;
+    }, {});
+  };
 
-          return acc;
-        }, {});
+  runQuery = async () => {
+    this.setState({ loading: true });
 
-        const total = Object.keys(counts).reduce((acc, value) => {
-          return acc + counts[value];
-        }, 0);
+    const searchResults = await this.props.config.buildSearchResults(this.props.client, this.state.searchPhrase, this.state.filtersState);
 
-        if (this.props.filterTypes.length === 1) {
-          this.setState({ selectedCategory: this.props.filterTypes[0] });
-        }
-
-        this.setState({ searchResults, counts, total });
+    if (searchResults) {
+      this.setState({
+        filters      : searchResults.filters,
+        filtersState : this.buildFilterState(searchResults.filters),
+        total        : searchResults.total,
+        searchResults: searchResults.flattenedResults,
       });
+    }
+
+    this.setState({ loading: false });
+  };
+
+  updateFilter = (filter, filterSearchPhrase = '', selected = []) => {
+    const filtersState =  { ...this.state.filtersState };
+
+    if (!filtersState[filter.name]) {
+      filtersState[filter.name] = {
+        search  : filterSearchPhrase,
+        selected: selected,
+        filter,
+      };
+    } else {
+      filtersState[filter.name].search   = filterSearchPhrase;
+      filtersState[filter.name].selected = selected;
+    }
+
+    this.setState({ filtersState });
+    this.runQuery();
   };
 
   render() {
     const { children } = this.props;
 
     return (
-      <SearchContext.Provider
-        value={{
-          ...this.state,
-          disableFilters    : this.props.disableFilters,
-          filterTypes       : this.props.filterTypes,
-          renderResult      : this.props.renderResult,
-          handleSearchSubmit: this.handleSearchSubmit,
-          setCategory       : this.setCategory,
-        }}
-      >
+      <SearchContext.Provider value={{ ...this.state, search: this.search, updateFilter: this.updateFilter }}>
         {children}
       </SearchContext.Provider>
     );
   }
-
-  SEARCH_QUERY = gql`
-  query ($searchPhrase: String!, $first: Int = 50) {
-    ${this.state.categories.map(category => this.categorySearchQueries[category])}
-  }
-`;
 }
 
-export default providers(SearchProvider);
+export default SearchProvider;

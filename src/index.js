@@ -9,31 +9,26 @@ import theme from './theme';
 import i18n from './i18n';
 import { getApolloClient } from './client';
 import NavBar from './containers/NavBar';
+import SearchConfig from './search/SearchConfig';
+import * as searchTypes from './search/types';
 
-export class MultiModalComponent extends Component {
+class MultiModalComponent extends Component {
   static propTypes = {
-    uri           : PropTypes.string,
-    disableFilters: PropTypes.bool,
-    filterTypes   : PropTypes.arrayOf(PropTypes.string),
-    renderResult  : PropTypes.arrayOf(PropTypes.object),
-    onResultClick : PropTypes.func,
+    config       : PropTypes.instanceOf(SearchConfig).isRequired,
+    uri          : PropTypes.string,
+    onResultClick: PropTypes.func,
   };
 
   static defaultProps = {
-    uri           : 'https://api-test.trompamusic.eu',
-    disableFilters: false,
-    filterTypes   : ['Person', 'MusicComposition', 'DigitalDocument', 'VideoObject'],
-    renderResult  : [],
-    onResultClick : () => true,
+    uri          : 'https://api-test.trompamusic.eu',
+    onResultClick: () => true,
   };
 
   constructor(props) {
     super(props);
 
-    this.client         = getApolloClient(this.props.uri);
-    this.disableFilters = this.props.disableFilters;
-    this.filterTypes    = this.props.filterTypes;
-    this.renderResult   = this.props.renderResult;
+    this.client = getApolloClient(this.props.uri);
+    this.config = this.props.config;
   }
 
   render() {
@@ -41,12 +36,7 @@ export class MultiModalComponent extends Component {
       <ApolloProvider client={this.client}>
         <MuiThemeProvider theme={theme}>
           <I18nextProvider i18n={i18n}>
-            <SearchProvider 
-              client={this.client} 
-              disableFilters={this.disableFilters}
-              filterTypes={this.filterTypes}
-              renderResult={this.renderResult}
-            >
+            <SearchProvider client={this.client} config={this.config}>
               <NavBar />
               <Search onResultClick={this.props.onResultClick} />
             </SearchProvider>
@@ -56,3 +46,9 @@ export class MultiModalComponent extends Component {
     );
   }
 }
+
+export {
+  MultiModalComponent,
+  SearchConfig,
+  searchTypes,
+};

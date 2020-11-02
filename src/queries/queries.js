@@ -8,7 +8,7 @@ export const SEARCH_PERSONS_QUERY = `
 `;
 
 export const SEARCH_MUSIC_COMPOSITION_QUERY = `
-  MusicComposition (filter: { name_contains: $searchPhrase }, first: $first) {
+  MusicComposition (filter: { OR: [{ creator_contains: $searchPhrase }, { name_contains: $searchPhrase }] }, first: $first) {
     name
     creator
     source

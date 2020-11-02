@@ -3,3 +3,24 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+header {
+  padding: 24px;
+}
+
+header > h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+header > button {
+  appearance: none;
+  background-color: #387fe5;
+  color: #fff;
+  outline: none;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  margin-right: 16px;
+  cursor: pointer;
+}

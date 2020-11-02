@@ -16,6 +16,7 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     [breakpoints.down('sm')]: {
       margin: 0,
     },
+    position  : 'relative',
     margin    : spacing(2),
     marginTop : 0,
     marginLeft: spacing(3),

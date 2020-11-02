@@ -3,6 +3,9 @@ const overrides = {
     input: {
       padding: 14,
     },
+    adornedEnd: {
+      paddingRight: 6,
+    },
   },
 };
 
