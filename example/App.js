@@ -38,7 +38,7 @@ const MultiModalComponentSelect = ({ config }) => {
   );
 };
 
-const searchConfig1 = new SearchConfig({
+const uc1Config = new SearchConfig({
   searchTypes: [searchTypes.DigitalDocument],
   fixedFilter: {
     workExample_some: {
@@ -47,7 +47,7 @@ const searchConfig1 = new SearchConfig({
   },
 });
 
-const searchConfig2 = new SearchConfig({
+const uc2Config = new SearchConfig({
   searchTypes: [searchTypes.AudioObject],
   fixedFilter: {
     creator_starts_with: 'https://www.voiceful.io',
@@ -55,30 +55,49 @@ const searchConfig2 = new SearchConfig({
   },
 });
 
-const searchConfig3 = new SearchConfig({
+const uc3Config = new SearchConfig({
   searchTypes: [searchTypes.DigitalDocument],
   fixedFilter: {
     workExample_some: { identifier: '56667d40-aa92-4106-a97e-9b28656c56e3' },
   },
 });
 
+const ex1Config = new SearchConfig({
+  searchTypes: [searchTypes.Person],
+});
+
+const ex2Config = new SearchConfig({
+  searchTypes: [searchTypes.AudioObject, searchTypes.VideoObject],
+});
+
 const App = () => {
   return (
     <section className="section">
       <Paper style={{ padding: 16, backgroundColor: '#f1f1f1' }} color="red" variant="outlined">
-        <Typography variant="h6" gutterBottom>Use case 1:</Typography>
+        <Typography variant="h6" gutterBottom>Use cases:</Typography>
         <BlockQuote>
           Give me all scores with synth audios: I can find musical scores (DigitalDocument) with associated synthesized audios (AudioObject with creator: “https://www.voiceful.io/”).
         </BlockQuote>
-        <MultiModalComponentSelect config={searchConfig1} />
+        <MultiModalComponentSelect config={uc1Config} />
         <BlockQuote>
           I can find synthesized audios (AudioObject with creator: “https://www.voiceful.io/”) for a given score, DigitalDocument with id: “x”
         </BlockQuote>
-        <MultiModalComponentSelect config={searchConfig2} />
+        <MultiModalComponentSelect config={uc2Config} />
         <BlockQuote>
           I have this synth audio, give me the score from which it was created: I can find musical score (DigitalDocument) from which a synthesized audio, AudioObject with creator: “https://www.voiceful.io/”, was created.
         </BlockQuote>
-        <MultiModalComponentSelect config={searchConfig3} />
+        <MultiModalComponentSelect config={uc3Config} />
+      </Paper>
+      <Paper style={{ padding: 16, backgroundColor: '#f1f1f1' }} color="red" variant="outlined">
+        <Typography variant="h6" gutterBottom>Examples:</Typography>
+        <BlockQuote>
+          As a user I want to be able to find a single type (Person) with related facets and filters.
+        </BlockQuote>
+        <MultiModalComponentSelect config={ex1Config} />
+        <BlockQuote>
+          As a user I want to be able to find multiple types (AudioObject and VideoObject) with related facets and filters.
+        </BlockQuote>
+        <MultiModalComponentSelect config={ex2Config} />
       </Paper>
     </section>
   );
