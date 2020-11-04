@@ -1,3 +1,19 @@
+<a name="1.0.0-alpha1"></a>
+# [1.0.0-alpha1](https://github.com/Videodock/trompa-multimodal-component/compare/v0.4.0...v1.0.0-alpha1) (2020-11-04)
+
+
+### Features
+
+* **project:** add new search mechanism ([edc4583](https://github.com/Videodock/trompa-multimodal-component/commit/edc4583))
+* **project:** update search mechanism to to support use-cases ([2c9cb01](https://github.com/Videodock/trompa-multimodal-component/commit/2c9cb01))
+
+
+### BREAKING CHANGES
+
+* **project:** this commit changes the MultiModalComponent props.
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/Videodock/trompa-multimodal-component/compare/v0.3.1...v0.4.0) (2020-03-26)
 
