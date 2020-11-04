@@ -35,8 +35,8 @@ export class NavBar extends Component {
           </div>
           <div className={classes.searchContainer}>
             <SearchContext.Consumer>
-              {({ searchPhrase, searchTags, handleSearchSubmit }) => (
-                <SearchBar onSubmit={(event, searchPhrase, searchTags) => handleSearchSubmit(event, searchPhrase, searchTags)} />
+              {({ search }) => (
+                <SearchBar onSubmit={(event, searchPhrase, searchTags) => search(searchPhrase, searchTags)} />
               )}
             </SearchContext.Consumer>
           </div>

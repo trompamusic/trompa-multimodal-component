@@ -16,6 +16,7 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     [breakpoints.down('sm')]: {
       margin: 0,
     },
+    position  : 'relative',
     margin    : spacing(2),
     marginTop : 0,
     marginLeft: spacing(3),
@@ -27,7 +28,7 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     marginBottom: spacing(2.25),
   },
   resultsTotal: {
-    color                   : palette.common.darkGrey,
+    color                   : palette.text.secondary,
     fontSize                : typography.pxToRem(14),
     [breakpoints.down('sm')]: {
       display: 'none',
@@ -35,7 +36,7 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
   },
   resultsCount: {
     fontSize: typography.pxToRem(14),
-    color   : palette.common.darkGrey,
+    color   : palette.text.secondary,
   },
   noResultsHeader: {
     [breakpoints.down('md')]: {
@@ -60,7 +61,7 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
   button: {
     fontSize     : typography.pxToRem(14),
     textTransform: 'none',
-    color        : palette.common.blue,
+    color        : palette.primary.main,
     padding      : `${spacing()}px ${spacing()}px ${spacing()}px ${spacing(2)}px`,
   },
   buttonIcon: {

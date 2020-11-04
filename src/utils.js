@@ -27,9 +27,26 @@ export const setPrerenderReady = status => (window.prerenderReady = status);
 export const getUrlHostName = url => {
   const match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
 
-  if ( match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
+  if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
     return match[2];
   }
 
   return null;
 };
+
+export function debounce(func, wait, immediate) {
+  let timeout;
+
+  return function () {
+    let context = this, args = arguments;
+    let later   = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    let callNow = immediate && !timeout;
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}

@@ -1,6 +1,7 @@
 export default ({ spacing, palette, breakpoints }) => ({
   root: {
     backgroundColor: palette.common.white,
+    width          : '100%',
   },
   toolbar: {
     [breakpoints.down('md')]: {

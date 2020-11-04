@@ -1,3 +1,5 @@
+import { fade } from '@material-ui/core';
+
 export default ({ spacing, typography, palette, breakpoints }) => ({
   root: {
     [breakpoints.down('sm')]: {
@@ -7,7 +9,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
       },
     },
     '&:hover': {
-      backgroundColor: palette.common.transparentBlack,
+      backgroundColor: fade(palette.common.black, 0.04),
     },
     display      : 'flex',
     flexDirection: 'column',
@@ -37,7 +39,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
   },
   resultsCount: {
     fontSize  : typography.pxToRem(14),
-    color     : palette.common.darkGrey,
+    color     : fade(palette.common.black, 0.6),
     marginLeft: spacing(0.5),
   },
   results: {
@@ -58,11 +60,11 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     flexDirection: 'column',
   },
   typeIcon: {
-    color   : palette.common.darkBlack,
+    color   : fade(palette.common.black, 0.7),
     fontSize: typography.pxToRem(24),
   },
   typeText: {
-    color   : palette.common.darkBlack,
+    color   : fade(palette.common.black, 0.7),
     fontSize: typography.pxToRem(12),
   },
   infoContainer: {
@@ -81,7 +83,7 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
     flex: 1,
   },
   sourceIcon: {
-    color      : palette.common.darkBlack,
+    color      : fade(palette.common.black, 0.7),
     fontSize   : typography.pxToRem(18),
     marginRight: spacing(0.5),
   },

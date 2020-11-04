@@ -6,7 +6,7 @@ export default ({ palette, spacing }) => ({
     width: '100%',
   },
   searchIcon: {
-    color: palette.secondary.contrastText,
+    color: palette.text.primary,
   },
   tagsContainer: {
     display: 'flex',
