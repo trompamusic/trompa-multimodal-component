@@ -12,7 +12,6 @@ import { SearchContext } from '../SearchProvider/SearchProvider';
 import SearchFilters from '../SearchFilters';
 import SearchResult from '../../components/SearchResult';
 import styles from './SearchResults.styles';
-import { CircularProgress } from '@material-ui/core';
 
 class SearchResults extends Component {
   renderTypeResult(typeName, item) {

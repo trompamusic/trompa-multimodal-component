@@ -21,6 +21,9 @@ export default ({ spacing, typography, palette }) => ({
     padding : 4,
     fontSize: typography.pxToRem(12),
   },
+  filterInputAdornedEnd: {
+    paddingRight: 4,
+  },
   checkbox: {
     paddingTop   : 2,
     paddingBottom: 2,

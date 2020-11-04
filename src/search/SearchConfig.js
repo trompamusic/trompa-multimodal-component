@@ -1,12 +1,12 @@
 import { generateFilter } from './filters';
 
 class SearchConfig {
-  searchTypes = [];
-  fixedFilter = undefined;
+  searchTypes = undefined;
+  filter = undefined;
 
   constructor({ searchTypes, fixedFilter }) {
     this.searchTypes = searchTypes || [];
-    this.fixedFilter = fixedFilter;
+    this.filter      = fixedFilter || {};
   }
 
   async buildFilters(client, filtersState, searchTypeResults) {
@@ -67,22 +67,28 @@ class SearchConfig {
   }
 
   async performSearch(searchType, client, query, filtersState) {
-    const { data: { allResults } } = await client.query({
-      query    : searchType.searchAllQuery,
-      variables: {
-        query,
-      },
-    });
+    let allResults = [];
+
+    if (query) {
+      const { data } = await client.query({
+        query    : searchType.searchAllQuery,
+        variables: {
+          query,
+        },
+      });
+
+      allResults = data.allResults;
+    }
 
     const { data: { results } } = await client.query({
       query    : searchType.searchQuery,
       variables: {
-        filter: generateFilter(query, allResults, filtersState, this.fixedFilter),
+        filter: generateFilter(query, allResults, filtersState, this.filter),
       },
     });
 
     return {
-      typename: 'AudioObject',
+      typename: searchType.name,
       total   : results.length,
       allResults,
       results,
@@ -90,19 +96,29 @@ class SearchConfig {
   }
 
   async buildSearchResults(client, query, filtersState) {
+    const typeFilterState   = filtersState['Type'];
     const searchTypeResults = await Promise.all(this.searchTypes
       .filter(searchType => {
-        if (!filtersState['Type']) {
-          return true;
-        }
-
-        return filtersState['Type'].selected.length === 0 || filtersState['Type'].selected.includes(searchType.name);
+        return !typeFilterState || typeFilterState.selected.length === 0 || typeFilterState.selected.includes(searchType.name);
       })
       .map(searchType => this.performSearch(searchType, client, query, filtersState)));
 
-    const flattenedResults = searchTypeResults.reduce((acc, typeResult) => {
-      return acc.concat(typeResult.results);
-    }, []);
+    const searchScores = Object.fromEntries(searchTypeResults
+      .reduce((acc, typeResult) => {
+        return acc.concat(typeResult.allResults);
+      }, [])
+      .map(item => [item.identifier, item._searchScore]));
+
+    const flattenedResults = searchTypeResults
+      .reduce((acc, typeResult) => {
+        return acc.concat(typeResult.results);
+      }, [])
+      .map(item => {
+        item._searchScore = searchScores[item.identifier];
+
+        return item;
+      })
+      .sort((a, b) => b._searchScore - a._searchScore);
 
     const total = searchTypeResults.reduce((acc, typeResult) => {
       return acc + typeResult.total;

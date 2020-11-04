@@ -68,8 +68,14 @@ class SearchFilter extends Component {
 
   render() {
     const { classes, filter } = this.props;
-    const selectedCount       = this.state.selectedOptions.length;
-    const selectedDictionary  = Object.fromEntries(this.state.selectedOptions.map(value => [value, true]));
+
+    // there are no options
+    if (!filter || !filter.options.length) {
+      return null;
+    }
+
+    const selectedCount      = this.state.selectedOptions.length;
+    const selectedDictionary = Object.fromEntries(this.state.selectedOptions.map(value => [value, true]));
 
     return (
       <div className={classes.root} key={filter.name}>
@@ -79,6 +85,7 @@ class SearchFilter extends Component {
             className={classes.filterTextField}
             inputProps={{ className: classes.filterInput }}
             InputProps={{
+              classes     : { adornedEnd: classes.filterInputAdornedEnd },
               endAdornment: this.state.searchValue.length > 0 && (
                 <InputAdornment position="end">
                   <IconButton size="small" onClick={this.clearInputValue}>

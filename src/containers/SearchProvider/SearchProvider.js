@@ -17,6 +17,13 @@ class SearchProvider extends Component {
     this.runQuery();
   }
 
+  componentDidUpdate(prevProps) {
+    // configuration changed
+    if (this.props.config !== prevProps.config) {
+      this.search('');
+    }
+  }
+
   search = searchPhrase => {
     this.setState({ searchPhrase });
 

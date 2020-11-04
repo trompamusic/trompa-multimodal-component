@@ -15,14 +15,14 @@ export default ({ spacing, palette, typography, breakpoints }) => ({
   dropDownIcon: {
     marginRight: 0,
     minWidth   : typography.pxToRem(18),
-    color      : palette.common.darkBlack,
+    color      : palette.text.primary,
   },
   selectText: {
     [breakpoints.down('sm')]: {
       width: 80,
     },
     padding : 0,
-    color   : palette.common.darkBlack,
+    color   : palette.text.primary,
     width   : 175,
     '& span': {
       fontSize  : 14,

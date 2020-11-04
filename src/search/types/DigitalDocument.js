@@ -9,8 +9,8 @@ class DigitalDocument {
   }];
 
   static searchAllQuery = gql`
-    query($query: String!) {
-      allResults: searchMetadataText(onTypes: [DigitalDocument], onFields: [title], substring: $query) {
+    query($query: String!, $first: Int = 9999) {
+      allResults: searchMetadataText(onTypes: [DigitalDocument], onFields: [title], substring: $query, first: $first) {
         ... on DigitalDocument {
           identifier
           name
