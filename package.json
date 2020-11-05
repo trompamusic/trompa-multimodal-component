@@ -1,6 +1,6 @@
 {
   "name": "trompa-multimodal-component",
-  "version": "1.0.0-alpha1",
+  "version": "1.0.0-alpha2",
   "description": "The Multimodal Component for React applications",
   "author": {
     "name": "CodeKarl",
@@ -73,9 +73,9 @@
     "cross-env": "^5.1.4",
     "css-loader": "^3.6.0",
     "eslint": "^6.6.0",
+    "eslint-config-react-app": "^6.0.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-react": "^6.0.0",
-    "eslint-config-react-app": "^6.0.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-node": "^7.0.1",

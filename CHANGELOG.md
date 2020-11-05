@@ -1,3 +1,13 @@
+<a name="1.0.0-alpha2"></a>
+# [1.0.0-alpha2](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.0-alpha1...v1.0.0-alpha2) (2020-11-05)
+
+
+### Bug Fixes
+
+* **project:** add material ui as peer dependency ([8c22422](https://github.com/Videodock/trompa-multimodal-component/commit/8c22422))
+
+
+
 <a name="1.0.0-alpha1"></a>
 # [1.0.0-alpha1](https://github.com/Videodock/trompa-multimodal-component/compare/v0.4.0...v1.0.0-alpha1) (2020-11-04)
 
