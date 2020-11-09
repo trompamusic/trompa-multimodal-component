@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
+import { debounce } from 'throttle-debounce';
 import styles from './SearchFilter.styles';
 
 class SearchFilter extends Component {
@@ -17,15 +18,14 @@ class SearchFilter extends Component {
     selectedOptions: [],
   };
 
+  onChangeDebounced = debounce(300, false, (searchValue, selectedOptions) => this.props.onChange(searchValue, selectedOptions));
+
   handleSearchChange = event => {
-    const { onChange } = this.props;
     const searchValue  = event.currentTarget.value;
 
     this.setState({ searchValue });
 
-    requestAnimationFrame(() => {
-      onChange(searchValue, this.state.selectedOptions.map(item => item.identifier));
-    });
+    this.onChangeDebounced(searchValue, this.state.selectedOptions.map(item => item.identifier));
   };
 
   handleCheckboxChange = event => {
@@ -40,37 +40,26 @@ class SearchFilter extends Component {
     }
 
     this.setState({ selectedOptions });
-
-    requestAnimationFrame(() => {
-      this.props.onChange(this.state.searchValue, selectedOptions);
-    });
+    this.onChangeDebounced(this.state.searchValue, selectedOptions);
   };
 
   clearSelectedOptions = event => {
     event.preventDefault();
 
     this.setState({ selectedOptions: [] });
-
-    requestAnimationFrame(() => {
-      this.props.onChange(this.state.searchValue, []);
-    });
+    this.onChangeDebounced(this.state.searchValue, []);
   };
 
   clearInputValue = () => {
-    const { onChange } = this.props;
-
     this.setState({ searchValue: '' });
-
-    requestAnimationFrame(() => {
-      onChange('', this.state.selectedOptions);
-    });
+    this.onChangeDebounced('', this.state.selectedOptions);
   };
 
   render() {
     const { classes, filter } = this.props;
 
     // there are no options
-    if (!filter || !filter.options.length) {
+    if (!filter) {
       return null;
     }
 
