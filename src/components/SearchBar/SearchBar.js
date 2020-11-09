@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
-import { debounce } from "throttle-debounce";
+import { debounce } from 'throttle-debounce';
 import { withTranslation } from 'react-i18next';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -14,7 +14,8 @@ class SearchBar extends Component {
   };
 
   static propTypes = {
-    onSubmit: PropTypes.func,
+    onSubmit       : PropTypes.func,
+    placeholderText: PropTypes.string,
   };
 
   static defaultProps = {};
@@ -34,13 +35,13 @@ class SearchBar extends Component {
   handleSubmitDebounced = debounce(250, this.handleSubmit);
 
   render() {
-    const { t, classes } = this.props;
+    const { t, classes, placeholderText } = this.props;
 
     return (
       <div className={classes.root}>
         <form onSubmit={this.handleSubmit}>
           <TextField
-            placeholder={t('search_placeholder')}
+            placeholder={placeholderText}
             type="text"
             value={this.state.searchPhrase}
             onChange={this.handleChange}

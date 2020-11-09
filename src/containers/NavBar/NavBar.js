@@ -17,7 +17,7 @@ export class NavBar extends Component {
   static defaultProps = {};
 
   render() {
-    const { classes } = this.props;
+    const { classes, placeholderText } = this.props;
 
     return (
       <AppBar className={classes.root} position="static">
@@ -36,7 +36,7 @@ export class NavBar extends Component {
           <div className={classes.searchContainer}>
             <SearchContext.Consumer>
               {({ search }) => (
-                <SearchBar onSubmit={(event, searchPhrase, searchTags) => search(searchPhrase, searchTags)} />
+                <SearchBar placeholderText={placeholderText} onSubmit={(event, searchPhrase, searchTags) => search(searchPhrase, searchTags)} />
               )}
             </SearchContext.Consumer>
           </div>

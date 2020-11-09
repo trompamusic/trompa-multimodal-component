@@ -39,6 +39,7 @@ class Example extends Component {
     return (
       <MultiModalComponent
         config={searchConfig}
+        placeholderText="Search for all music compositions..."
         onResultClick={node => console.log('User has clicked on:', node)}
       />
     )
@@ -52,6 +53,7 @@ class Example extends Component {
 |------|------|---------------|-------------|----------|
 | **searchConfig** | SearchConfig | undefined  | An instance of the SearchConfig class | Yes |
 | **onResultClick** | Function | function(**result**: *Object*) { }  | Callback when the user clicks on a result. | No |
+| **placeholderText** | String | Enter a search phrase... | Placeholder text for the search input | No |
 
 ## License
 

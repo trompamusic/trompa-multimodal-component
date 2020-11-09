@@ -24,7 +24,7 @@ class SearchResults extends Component {
           icon={AccountCircleIcon}
           variant="default"
           type={typeName}
-          heading={item.jobTitle ? item.jobTitle : t('emptyResults.noRole')}
+          heading={item.subject || item.jobTitle || t('emptyResults.noRole')}
           title={item.name}
           source={item.source}
           onClick={() => onResultClick(item)}

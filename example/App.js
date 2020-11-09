@@ -13,7 +13,7 @@ const BlockQuote = ({ children }) => {
   );
 };
 
-const MultiModalComponentSelect = ({ config }) => {
+const MultiModalComponentSelect = ({ config, placeholderText }) => {
   const [open, setOpen]         = useState(false);
   const [selected, setSelected] = useState();
 
@@ -28,6 +28,7 @@ const MultiModalComponentSelect = ({ config }) => {
       <Dialog PaperProps={{ style: { width: '100%' } }} open={open} keepMounted={false} onClose={() => setOpen(false)} maxWidth="md">
         <MultiModalComponent
           config={config}
+          placeholderText={placeholderText}
           onResultClick={item => {
             setSelected(item);
             setOpen(false);
@@ -86,11 +87,11 @@ const App = () => {
         <BlockQuote>
           As a user I want to be able to find a single type (Person) with related facets and filters.
         </BlockQuote>
-        <MultiModalComponentSelect config={ex1Config} />
+        <MultiModalComponentSelect config={ex1Config} placeholderText="Search for Persons in the CE" />
         <BlockQuote>
           As a user I want to be able to find multiple types (AudioObject and VideoObject) with related facets and filters.
         </BlockQuote>
-        <MultiModalComponentSelect config={ex2Config} />
+        <MultiModalComponentSelect config={ex2Config} placeholderText="Search for Music and Video recordings in the CE" />
         <BlockQuote>
           As a user I want to be able to find music compositions with related facets and filters.
         </BlockQuote>
@@ -98,22 +99,22 @@ const App = () => {
         <BlockQuote>
           As a user I want to be able to find scores with related facets and filters.
         </BlockQuote>
-        <MultiModalComponentSelect config={ex4Config} />
+        <MultiModalComponentSelect config={ex4Config} placeholderText="Search for scores" />
       </Paper>
       <Paper style={{ padding: 16, backgroundColor: '#f1f1f1', marginBottom: 64 }} color="red" variant="outlined">
         <Typography variant="h6" gutterBottom>Use cases:</Typography>
         <BlockQuote>
           Give me all scores with synth audios: I can find musical scores (DigitalDocument) with associated synthesized audios (AudioObject with creator: “https://www.voiceful.io/”).
         </BlockQuote>
-        <MultiModalComponentSelect config={uc1Config} />
+        <MultiModalComponentSelect config={uc1Config} placeholderText="Search for scores with associated synthesized audios" />
         <BlockQuote>
           I can find synthesized audios (AudioObject with creator: “https://www.voiceful.io/”) for a given score, DigitalDocument with id: “x”
         </BlockQuote>
-        <MultiModalComponentSelect config={uc2Config} />
+        <MultiModalComponentSelect config={uc2Config} placeholderText="Search for audio recordings for a given score" />
         <BlockQuote>
           I have this synth audio, give me the score from which it was created: I can find musical score (DigitalDocument) from which a synthesized audio, AudioObject with creator: “https://www.voiceful.io/”, was created.
         </BlockQuote>
-        <MultiModalComponentSelect config={uc3Config} />
+        <MultiModalComponentSelect config={uc3Config} placeholderText="Search for a score" />
       </Paper>
     </section>
   );
