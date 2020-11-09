@@ -70,10 +70,37 @@ const ex2Config = new SearchConfig({
   searchTypes: [searchTypes.AudioObject, searchTypes.VideoObject],
 });
 
+const ex3Config = new SearchConfig({
+  searchTypes: [searchTypes.MusicComposition],
+});
+
+const ex4Config = new SearchConfig({
+  searchTypes: [searchTypes.DigitalDocument],
+});
+
 const App = () => {
   return (
     <section className="section">
-      <Paper style={{ padding: 16, backgroundColor: '#f1f1f1' }} color="red" variant="outlined">
+      <Paper style={{ padding: 16, backgroundColor: '#f1f1f1', marginBottom: 64 }} color="red" variant="outlined">
+        <Typography variant="h6" gutterBottom>Examples:</Typography>
+        <BlockQuote>
+          As a user I want to be able to find a single type (Person) with related facets and filters.
+        </BlockQuote>
+        <MultiModalComponentSelect config={ex1Config} />
+        <BlockQuote>
+          As a user I want to be able to find multiple types (AudioObject and VideoObject) with related facets and filters.
+        </BlockQuote>
+        <MultiModalComponentSelect config={ex2Config} />
+        <BlockQuote>
+          As a user I want to be able to find music compositions with related facets and filters.
+        </BlockQuote>
+        <MultiModalComponentSelect config={ex3Config} />
+        <BlockQuote>
+          As a user I want to be able to find scores with related facets and filters.
+        </BlockQuote>
+        <MultiModalComponentSelect config={ex4Config} />
+      </Paper>
+      <Paper style={{ padding: 16, backgroundColor: '#f1f1f1', marginBottom: 64 }} color="red" variant="outlined">
         <Typography variant="h6" gutterBottom>Use cases:</Typography>
         <BlockQuote>
           Give me all scores with synth audios: I can find musical scores (DigitalDocument) with associated synthesized audios (AudioObject with creator: “https://www.voiceful.io/”).
@@ -87,17 +114,6 @@ const App = () => {
           I have this synth audio, give me the score from which it was created: I can find musical score (DigitalDocument) from which a synthesized audio, AudioObject with creator: “https://www.voiceful.io/”, was created.
         </BlockQuote>
         <MultiModalComponentSelect config={uc3Config} />
-      </Paper>
-      <Paper style={{ padding: 16, backgroundColor: '#f1f1f1' }} color="red" variant="outlined">
-        <Typography variant="h6" gutterBottom>Examples:</Typography>
-        <BlockQuote>
-          As a user I want to be able to find a single type (Person) with related facets and filters.
-        </BlockQuote>
-        <MultiModalComponentSelect config={ex1Config} />
-        <BlockQuote>
-          As a user I want to be able to find multiple types (AudioObject and VideoObject) with related facets and filters.
-        </BlockQuote>
-        <MultiModalComponentSelect config={ex2Config} />
       </Paper>
     </section>
   );
