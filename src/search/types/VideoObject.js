@@ -2,6 +2,8 @@ import gql from 'graphql-tag';
 import DigitalDocument from './DigitalDocument';
 
 class VideoObject {
+  static name = 'VideoObject';
+
   static filters = [{
     onProperty: 'exampleOfWork',
     name      : 'Score',

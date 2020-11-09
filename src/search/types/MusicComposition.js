@@ -2,6 +2,8 @@ import gql from 'graphql-tag';
 import Person from './Person';
 
 class MusicComposition {
+  static name = 'MusicComposition';
+
   static filters = [{
     onProperty: 'author',
     name      : 'Composer',

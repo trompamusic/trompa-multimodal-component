@@ -2,6 +2,8 @@ import gql from 'graphql-tag';
 import Person from './Person';
 
 class DigitalDocument {
+  static name = 'DigitalDocument';
+
   static filters = [{
     onProperty: 'author',
     name      : 'Composer',

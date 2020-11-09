@@ -2,6 +2,8 @@ import gql from 'graphql-tag';
 import DigitalDocument from './DigitalDocument';
 
 class AudioObject {
+  static name = 'AudioObject';
+
   static filters = [{
     onProperty: 'exampleOfWork',
     name      : 'Score',

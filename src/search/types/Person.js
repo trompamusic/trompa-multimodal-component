@@ -1,6 +1,8 @@
 import gql from 'graphql-tag';
 
 class Person {
+  static name = 'Person';
+
   static filters = [{
     onProperty: 'birthPlace',
     name      : 'Birthplace',
