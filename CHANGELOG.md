@@ -1,3 +1,20 @@
+<a name="1.0.0-alpha3"></a>
+# [1.0.0-alpha3](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.0-alpha2...v1.0.0-alpha3) (2020-11-09)
+
+
+### Bug Fixes
+
+* **project:** add name property to search types ([49b22be](https://github.com/Videodock/trompa-multimodal-component/commit/49b22be))
+* **project:** fix filter disappearing when list is empty ([849f483](https://github.com/Videodock/trompa-multimodal-component/commit/849f483))
+
+
+### Features
+
+* **project:** add birthplace filter to person search type ([8bd0c9f](https://github.com/Videodock/trompa-multimodal-component/commit/8bd0c9f))
+* **project:** allow custom placeholder text ([010d113](https://github.com/Videodock/trompa-multimodal-component/commit/010d113))
+
+
+
 <a name="1.0.0-alpha2"></a>
 # [1.0.0-alpha2](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.0-alpha1...v1.0.0-alpha2) (2020-11-05)
 
