@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { debounce } from 'throttle-debounce';
-import { withTranslation } from 'react-i18next';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import styles from './SearchBar.styles';
@@ -35,7 +34,7 @@ class SearchBar extends Component {
   handleSubmitDebounced = debounce(250, this.handleSubmit);
 
   render() {
-    const { t, classes, placeholderText } = this.props;
+    const { classes, placeholderText } = this.props;
 
     return (
       <div className={classes.root}>
@@ -66,4 +65,4 @@ class SearchBar extends Component {
   }
 }
 
-export default withTranslation('navbar')(withStyles(styles)(SearchBar));
+export default withStyles(styles)(SearchBar);
