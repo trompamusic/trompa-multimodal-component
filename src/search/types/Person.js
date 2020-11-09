@@ -1,12 +1,16 @@
 import gql from 'graphql-tag';
+import Place from './Place';
 
 class Person {
   static name = 'Person';
 
   static filters = [{
+    onProperty: 'subject',
+    name      : 'Role',
+  }, {
     onProperty: 'birthPlace',
     name      : 'Birthplace',
-    filter    : null,
+    searchType: Place,
   }];
 
   static searchAllQuery = gql`
@@ -15,6 +19,7 @@ class Person {
         ... on Person {
           identifier
           name
+          subject
           _searchScore
         }
       }
@@ -28,6 +33,7 @@ class Person {
         ... on Person {
           identifier
           name
+          subject
           creator
           source
           jobTitle

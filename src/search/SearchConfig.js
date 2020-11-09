@@ -67,18 +67,12 @@ class SearchConfig {
   }
 
   async performSearch(searchType, client, query, filtersState) {
-    let allResults = [];
-
-    if (query) {
-      const { data } = await client.query({
-        query    : searchType.searchAllQuery,
-        variables: {
-          query,
-        },
-      });
-
-      allResults = data.allResults;
-    }
+    const { data: { allResults } } = await client.query({
+      query    : searchType.searchAllQuery,
+      variables: {
+        query,
+      },
+    });
 
     const { data: { results } } = await client.query({
       query    : searchType.searchQuery,
@@ -125,6 +119,8 @@ class SearchConfig {
     }, 0);
 
     const filters = await this.buildFilters(client, filtersState, searchTypeResults);
+
+    console.log(filters);
 
     return {
       filters,
