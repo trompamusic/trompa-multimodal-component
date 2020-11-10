@@ -22,6 +22,7 @@ If you're using Yarn:
 yarn add trompa-multimodal-component
 ```
 
+### Material-UI
 The MultiModal Component uses the peer dependency MaterialUI, so make sure you have it installed as well.
 
 NPM:
@@ -29,7 +30,7 @@ NPM:
 npm install @material-ui/core @material-ui/icons
 ```
 
-YARN:
+Yarn:
 ```bash
 yarn add @material-ui/core @material-ui/icons
 ```
