@@ -85,7 +85,7 @@ const searchConfig = new SearchConfig({
 
 #### Currently supported searchTypes
 ```jsx
-const searchTypes = ['AudioObject','DigitalDocument' 'Person', 'MusicComposition', 'VideoObject'];
+const searchTypes = ['AudioObject', 'DigitalDocument', 'Person', 'MusicComposition', 'VideoObject'];
 ```
 
 ## License
