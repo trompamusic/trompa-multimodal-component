@@ -18,7 +18,7 @@ class SearchResult extends Component {
     return (
       <Link className={classes.resultSource} href={source} target="_blank" color="inherit">
         <ImageIcon className={classes.sourceIcon} />
-        <Typography className={classes.source}>
+        <Typography className={classes.source} noWrap>
           {getUrlHostName(source)}
         </Typography>
       </Link>

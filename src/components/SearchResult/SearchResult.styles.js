@@ -72,8 +72,10 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
       display      : 'flex',
       flexDirection: 'column',
     },
-    width  : '100%',
-    padding: `${spacing(2)}px ${spacing(2)}px ${spacing(1.5)}px ${spacing(2)}px`,
+    width   : '100%',
+    padding : `${spacing(2)}px ${spacing(2)}px ${spacing(1.5)}px ${spacing(2)}px`,
+    flex    : 1,
+    minWidth: 0,
   },
   info: {
     display      : 'flex',
@@ -89,12 +91,13 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
   },
   resultSource: {
     [breakpoints.down('sm')]: {
-      marginTop: spacing(2),
+      marginTop: spacing(1),
     },
     display   : 'flex',
     alignItems: 'center',
     alignSelf : 'flex-start',
     color     : palette.text.primary,
+    maxWidth  : '100%',
   },
   source: {
     fontSize: typography.pxToRem(16),
@@ -106,5 +109,6 @@ export default ({ spacing, typography, palette, breakpoints }) => ({
   title: {
     fontSize  : typography.pxToRem(20),
     fontWeight: 'bold',
+    lineHeight: typography.pxToRem(18),
   },
 });
