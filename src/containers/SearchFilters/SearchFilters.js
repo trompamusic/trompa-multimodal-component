@@ -26,6 +26,7 @@ class SearchFilters extends Component {
         open={openMobileFilters}
         onOpen={() => this.setState({ openMobileFilters: true })}
         onClose={() => this.setState({ openMobileFilters: false })}
+        keepMounted
       >
         <div className={classes.drawer}>
           <div>
