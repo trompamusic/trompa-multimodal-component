@@ -1,3 +1,14 @@
+<a name="1.0.0-alpha4"></a>
+# [1.0.0-alpha4](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.0-alpha3...v1.0.0-alpha4) (2020-11-12)
+
+
+### Bug Fixes
+
+* **search:** fix title and source overlapping parent ([b745c7f](https://github.com/Videodock/trompa-multimodal-component/commit/b745c7f))
+* **search:** keep filters drawer mounted to prevent state loss ([faa34f9](https://github.com/Videodock/trompa-multimodal-component/commit/faa34f9))
+
+
+
 <a name="1.0.0-alpha3"></a>
 # [1.0.0-alpha3](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.0-alpha2...v1.0.0-alpha3) (2020-11-09)
 
