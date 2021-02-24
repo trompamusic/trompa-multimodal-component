@@ -39,11 +39,6 @@ export default {
     resolve({
       preferBuiltins: false,
     }),
-    commonjs({
-      namedExports: {
-        'react-is'                  : ['isFragment', 'ForwardRef'],
-        'subscriptions-transport-ws': ['SubscriptionClient'],
-      },
-    }),
+    commonjs(),
   ],
 };
