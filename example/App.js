@@ -15,7 +15,7 @@ const BlockQuote = ({ children }) => {
   );
 };
 
-const MultiModalComponentSelect = ({ config, placeholderText, production }) => {
+const MultiModalComponentSelect = ({ dataTestId, config, placeholderText, production }) => {
   const [open, setOpen]         = useState(false);
   const [selected, setSelected] = useState();
 
@@ -23,7 +23,7 @@ const MultiModalComponentSelect = ({ config, placeholderText, production }) => {
     <React.Fragment>
       <div className="mmc-select">
         <Typography className="mmc-select-value">{selected ? selected.name : 'No selection'}</Typography>
-        <Button variant="contained" size="small" color="primary" onClick={() => setOpen(true)}>
+        <Button data-test-id={dataTestId} variant="contained" size="small" color="primary" onClick={() => setOpen(true)}>
           Select
         </Button>
       </div>
@@ -103,7 +103,7 @@ const App = () => {
         <BlockQuote>
           As a user I want to be able to find a single type (Person) with related facets and filters.
         </BlockQuote>
-        <MultiModalComponentSelect config={ex1Config} placeholderText="Search for Persons in the CE" production={production} />
+        <MultiModalComponentSelect dataTestId="select-person-modal" config={ex1Config} placeholderText="Search for Persons in the CE" production={production} />
         <BlockQuote>
           As a user I want to be able to find multiple types (AudioObject and VideoObject) with related facets and filters.
         </BlockQuote>
