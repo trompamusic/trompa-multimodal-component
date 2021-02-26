@@ -1,3 +1,7 @@
+# [1.0.0](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.0-alpha4...v1.0.0) (2021-02-26)
+
+
+
 # [1.0.0-alpha4](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.0-alpha3...v1.0.0-alpha4) (2020-11-12)
 
 
