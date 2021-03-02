@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.0...v1.0.1) (2021-03-02)
+
+
+### Bug Fixes
+
+* **project:** remove engines from package.json ([c410f85](https://github.com/Videodock/trompa-multimodal-component/commit/c410f8593d542fcc4098da51f2d8f888fc7061c8))
+
+
+
 # [1.0.0](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.0-alpha4...v1.0.0) (2021-02-26)
 
 
