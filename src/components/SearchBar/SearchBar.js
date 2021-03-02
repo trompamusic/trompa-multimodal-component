@@ -42,6 +42,7 @@ class SearchBar extends Component {
           <TextField
             placeholder={placeholderText}
             type="text"
+            name="search"
             value={this.state.searchPhrase}
             onChange={this.handleChange}
             className={classes.textField}
