@@ -16,6 +16,12 @@ exports.config = {
       show   : true,
       browser: 'chromium',
     },
+    ResembleHelper: {
+      require         : "codeceptjs-resemblehelper",
+      screenshotFolder: "./tests/output/",
+      baseFolder      : "./tests/screenshots/base/",
+      diffFolder      : "./tests/screenshots/diff/",
+    },
   },
   include: {
     I: './steps_file.js',
