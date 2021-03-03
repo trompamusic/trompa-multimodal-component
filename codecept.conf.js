@@ -8,8 +8,8 @@ setHeadlessWhen(process.env.HEADLESS);
 setWindowSize(1024, 768);
 
 exports.config = {
-  tests  : './*_test.js',
-  output : './output',
+  tests  : './end-to-end/*_test.js',
+  output : './end-to-end/screenshots/output',
   helpers: {
     Playwright: {
       url    : 'http://localhost:5050',
@@ -18,9 +18,9 @@ exports.config = {
     },
     ResembleHelper: {
       require         : "codeceptjs-resemblehelper",
-      screenshotFolder: "./tests/output/",
-      baseFolder      : "./tests/screenshots/base/",
-      diffFolder      : "./tests/screenshots/diff/",
+      screenshotFolder: "./end-to-end/screenshots/output/",
+      baseFolder      : "./end-to-end/screenshots/base/",
+      diffFolder      : "./end-to-end/screenshots/diff/",
     },
   },
   include: {
