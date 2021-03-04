@@ -33,11 +33,14 @@ Scenario('Selects composition from modal', ({ I }) => {
 });
 
 Scenario('Opens composition source link from modal', ({ I }) => {
+  I.closeOtherTabs();
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.click('cpdl.org', locators.firstSearchResult);
-  I.amOnPage('http://www.cpdl.org/wiki/index.php/%27Tis_by_thy_strength_the_mountains_stand_(Thomas_Clark)');
+  I.switchToNextTab();
+  I.grabCurrentUrl();
+  I.seeInCurrentUrl('http://www.cpdl.org/wiki/index.php/%27Tis_by_thy_strength_the_mountains_stand_(Thomas_Clark)');
 });
 
 Scenario('Gives results that match query within modal', ({ I }) => {

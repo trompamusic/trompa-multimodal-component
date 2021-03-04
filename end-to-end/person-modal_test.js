@@ -47,11 +47,14 @@ Scenario('Selects person from modal', ({ I }) => {
 });
 
 Scenario('Opens person source link from modal', ({ I }) => {
+  I.closeOtherTabs();
   I.amOnPage('/');
   I.click('Select', locators.selectPersonModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.click('cpdl.org', locators.firstSearchResult);
-  I.amOnPage('https://cpdl.org/wiki/index.php/Charles_Steggall');
+  I.switchToNextTab();
+  I.grabCurrentUrl();
+  I.seeInCurrentUrl('https://cpdl.org/wiki/index.php/Charles_Steggall');
 });
 
 Scenario('Gives results that match query within modal', ({ I }) => {
@@ -61,9 +64,8 @@ Scenario('Gives results that match query within modal', ({ I }) => {
   I.click('Select', locators.selectPersonModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.fillField('search', 'Prein');
-  I.waitForElement('//h6[contains(text(), "2 results")]', secondsToWait);
+  I.waitForElement('//h6[contains(text(), "1 result")]', secondsToWait);
   I.see('Christian Prein');
-  I.see('Josef Preindl');
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 });

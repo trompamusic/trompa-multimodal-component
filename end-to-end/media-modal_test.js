@@ -41,11 +41,14 @@ Scenario('Selects media from modal', ({ I }) => {
 });
 
 Scenario('Opens media source link from modal', ({ I }) => {
+  I.closeOtherTabs();
   I.amOnPage('/');
   I.click('Select', locators.selectMediaModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.click('muziekweb.nl', locators.firstSearchResult);
-  I.amOnPage('https://www.muziekweb.nl/Embed/JK196103-0002');
+  I.switchToNextTab();
+  I.grabCurrentUrl();
+  I.seeInCurrentUrl('https://www.muziekweb.nl/Embed/JK196103-0002');
 });
 
 Scenario('Gives results that match query within modal', ({ I }) => {

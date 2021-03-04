@@ -16,4 +16,9 @@ module.exports = {
     firstSearchResult   : 'div[data-test-id=first-search-result]',
     headerInitialResults: '//h6[contains(text(), "50 results")]',
   },
+  scoreModalLocators: {
+    selectScoreModal    : 'button[data-test-id=select-score-modal]',
+    headerInitialResults: '//h6[contains(text(), "50 results")]',
+    firstSearchResult   : 'div[data-test-id=first-search-result]',
+  },
 };
