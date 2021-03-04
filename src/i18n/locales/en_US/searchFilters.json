@@ -1,27 +1,20 @@
 {
-  "filterBy": "Filter by",
-  "filter": "Filter",
-  "type": "Type",
-  "result": "result",
-  "results": "results",
-  "filterMenu": {
+  "show_results": "Filter {{count}} result",
+  "show_results_plural": "Filter {{count}} results",
+  "total_results": "{{count}} result",
+  "total_results_plural": "{{count}} results",
+  "filters": {
     "all": "All",
     "people": "People",
+    "composer": "Composer",
     "compositions": "Compositions",
-    "scores": "Scores",
+    "score": "Score",
+    "role": "Role",
+    "birthplace": "Birthplace",
+    "format": "Format",
     "annotations": "Annotations",
     "videos": "Videos",
-    "tracks": "Tracks"
-  },
-  "people": "People",
-  "peopleSubFilters": {
-    "composer": "Composer",
-    "musician": "Musician",
-    "conductor": "Conductor"
-  },
-  "compositions": "Compositions",
-  "articles": "Articles",
-  "organizations": "Organizations",
-  "products": "Products",
-  "places": "Places"
+    "tracks": "Tracks",
+    "type": "Type"
+  }
 }

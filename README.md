@@ -54,8 +54,11 @@ class Example extends Component {
     return (
       <MultiModalComponent
         config={searchConfig}
-        placeholderText="Search for all music compositions..."
         onResultClick={node => console.log('User has clicked on:', node)}
+        i18n={{
+          'en-US': { searchBar: { placeholder_text: 'Search for all music compositions...' } },
+          'nl-NL': { searchBar: { placeholder_text: 'Zoek voor alle muziek composities...' } },
+        }}
       />
     )
   }
@@ -81,7 +84,8 @@ const searchConfig = new SearchConfig({
 |------|------|---------------|-------------|----------|
 | **searchConfig** | SearchConfig | undefined  | An instance of the SearchConfig class | Yes |
 | **onResultClick** | Function | function(**result**: *Object*) { }  | Callback when the user clicks on a result. | No |
-| **placeholderText** | String | Enter a search phrase... | Placeholder text for the search input | No |
+| **placeholderText (deprecated, use i18n)** | String | Enter a search phrase... | Placeholder text for the search input | No |
+| **i18n** | Object | undefined | Override translations | No |
 
 #### Currently supported searchTypes
 ```jsx

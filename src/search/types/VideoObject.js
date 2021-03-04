@@ -6,11 +6,11 @@ class VideoObject {
 
   static filters = [{
     onProperty: 'exampleOfWork',
-    name      : 'Score',
+    name      : 'score',
     searchType: DigitalDocument,
   }, {
     onProperty: 'format',
-    name      : 'Format',
+    name      : 'format',
   }];
 
   static searchAllQuery = gql`

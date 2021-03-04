@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { I18nextProvider } from 'react-i18next';
+import { I18nextProvider, withTranslation } from 'react-i18next';
 import * as PropTypes from 'prop-types';
 import { ApolloProvider } from 'react-apollo';
 import SearchProvider from './containers/SearchProvider';
 import { Search } from './containers/Search';
-import i18n from './i18n';
+import { getI18n } from './i18n';
 import { getApolloClient } from './client';
 import NavBar from './containers/NavBar';
 import SearchConfig from './search/SearchConfig';
@@ -15,27 +15,33 @@ class MultiModalComponent extends Component {
     uri            : PropTypes.string,
     onResultClick  : PropTypes.func,
     placeholderText: PropTypes.string,
+    i18n           : PropTypes.shape({
+      'nl-NL': PropTypes.object,
+      'en-US': PropTypes.object,
+    }),
   };
 
   static defaultProps = {
-    uri            : 'https://api-test.trompamusic.eu',
-    onResultClick  : () => true,
-    placeholderText: 'Enter your search phrase...',
+    uri          : 'https://api-test.trompamusic.eu',
+    onResultClick: () => true,
   };
 
   constructor(props) {
     super(props);
 
     this.client = getApolloClient(this.props.uri);
+    this.i18n   = getI18n(props.i18n);
   }
 
   render() {
+    const { config, placeholderText, onResultClick } = this.props;
+
     return (
       <ApolloProvider client={this.client}>
-        <I18nextProvider i18n={i18n}>
-          <SearchProvider client={this.client} config={this.props.config}>
-            <NavBar placeholderText={this.props.placeholderText} />
-            <Search onResultClick={this.props.onResultClick} />
+        <I18nextProvider i18n={this.i18n}>
+          <SearchProvider client={this.client} config={config}>
+            <NavBar placeholderText={placeholderText} />
+            <Search onResultClick={onResultClick} />
           </SearchProvider>
         </I18nextProvider>
       </ApolloProvider>

@@ -9,13 +9,13 @@ import MultiModalComponent, { SearchConfig, searchTypes } from '../src/index';
 
 const BlockQuote = ({ children }) => {
   return (
-    <div style={{ backgroundColor: '#fff', borderLeft: `6px solid rgb(63 81 181)`, padding: 16, marginBottom: 8 }} >
+    <div style={{ backgroundColor: '#fff', borderLeft: `6px solid rgb(63 81 181)`, padding: 16, marginBottom: 8 }}>
       <Typography variant="caption">{children}</Typography>
     </div>
   );
 };
 
-const MultiModalComponentSelect = ({ config, placeholderText, production }) => {
+const MultiModalComponentSelect = ({ config, i18n, placeholderText, production }) => {
   const [open, setOpen]         = useState(false);
   const [selected, setSelected] = useState();
 
@@ -32,6 +32,7 @@ const MultiModalComponentSelect = ({ config, placeholderText, production }) => {
           uri={production ? 'https://api.trompamusic.eu' : 'https://api-test.trompamusic.eu'}
           config={config}
           placeholderText={placeholderText}
+          i18n={i18n}
           onResultClick={item => {
             setSelected(item);
             setOpen(false);
@@ -103,7 +104,14 @@ const App = () => {
         <BlockQuote>
           As a user I want to be able to find a single type (Person) with related facets and filters.
         </BlockQuote>
-        <MultiModalComponentSelect config={ex1Config} placeholderText="Search for Persons in the CE" production={production} />
+        <MultiModalComponentSelect
+          config={ex1Config}
+          i18n={{
+            'en-US': { searchBar: { placeholder_text: 'Search for Persons in the CE' } },
+            'nl-NL': { searchBar: { placeholder_text: 'Zoek naar Personen in de CE' } },
+          }}
+          production={production}
+        />
         <BlockQuote>
           As a user I want to be able to find multiple types (AudioObject and VideoObject) with related facets and filters.
         </BlockQuote>

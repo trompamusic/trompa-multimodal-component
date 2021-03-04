@@ -120,8 +120,6 @@ class SearchConfig {
 
     const filters = await this.buildFilters(client, filtersState, searchTypeResults);
 
-    console.log(filters);
-
     return {
       filters,
       flattenedResults,
