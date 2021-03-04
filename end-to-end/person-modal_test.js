@@ -76,6 +76,7 @@ Scenario('All relevant source links display in modal', ({ I }) => {
   I.amOnPage('/');
   I.click('Select', locators.selectPersonModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
+  I.see('viaf.org');
   I.fillField('search', 'Giache');
   I.waitForElement('//h6[contains(text(), "7 results")]', secondsToWait);
   I.see('cpdl.org');
@@ -83,6 +84,10 @@ Scenario('All relevant source links display in modal', ({ I }) => {
   I.see('imslp.org');
   I.see('isni.org');
   I.see('id.loc.gov');
+  I.fillField('search', 'Beatles');
+  I.waitForElement('//h6[contains(text(), "9 results")]', secondsToWait);
+  I.see('wikidata.org');
+  I.see('en.wikipedia.org');
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 });
