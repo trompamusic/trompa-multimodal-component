@@ -20,6 +20,29 @@ Scenario('Loads home page', ({ I }) => {
   I.see('No selection');
 });
 
+Scenario('Language switcher initially loads English', ({ I }) => {
+  const screenshotPath = "person_modal_language_switcher_loaded.png";
+
+  I.amOnPage('/');
+  I.click('Select', locators.selectPersonModal);
+  I.see('English');
+  I.saveScreenshot(screenshotPath);
+  I.seeVisualDiff(screenshotPath, visualDiffOptions);
+});
+
+Scenario('Language switcher can select Dutch language', ({ I }) => {
+  const screenshotPath = "person_modal_language_switcher_dutch_selected.png";
+
+  I.amOnPage('/');
+  I.click('Select', locators.selectPersonModal);
+  I.click('English', { xpath: '//header//li[1]' });
+  I.click('Dutch', { xpath: '//ul//li[2]' });
+  I.see('Nederlands');
+
+  I.saveScreenshot(screenshotPath);
+  I.seeVisualDiff(screenshotPath, visualDiffOptions);
+});
+
 Scenario('Opens person modal with expected content', ({ I }) => {
   const screenshotPath = "person_modal_loaded.png";
 

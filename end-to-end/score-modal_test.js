@@ -28,6 +28,29 @@ Scenario('Opens score modal with expected content', ({ I }) => {
   I.see('cpdl.org', locators.firstSearchResult);
 });
 
+Scenario('Language switcher initially loads English', ({ I }) => {
+  const screenshotPath = "score_modal_language_switcher_loaded.png";
+
+  I.amOnPage('/');
+  I.click('Select', locators.selectScoreModal);
+  I.see('English');
+  I.saveScreenshot(screenshotPath);
+  I.seeVisualDiff(screenshotPath, visualDiffOptions);
+});
+
+Scenario('Language switcher can select Dutch language', ({ I }) => {
+  const screenshotPath = "score_modal_language_switcher_dutch_selected.png";
+
+  I.amOnPage('/');
+  I.click('Select', locators.selectScoreModal);
+  I.click('English', { xpath: '//header//li[1]' });
+  I.click('Dutch', { xpath: '//ul//li[2]' });
+  I.see('Nederlands');
+
+  I.saveScreenshot(screenshotPath);
+  I.seeVisualDiff(screenshotPath, visualDiffOptions);
+});
+
 Scenario('Selects score from modal', ({ I }) => {
   const screenshotPath = "home_score_modal_selected_.png";
 

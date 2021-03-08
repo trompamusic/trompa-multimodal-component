@@ -35,6 +35,29 @@ Scenario('Opens media modal with expected content', ({ I }) => {
   I.see('muziekweb.nl', locators.firstSearchResult);
 });
 
+Scenario('Language switcher initially loads English', ({ I }) => {
+  const screenshotPath = "media_modal_language_switcher_loaded.png";
+
+  I.amOnPage('/');
+  I.click('Select', locators.selectMediaModal);
+  I.see('English');
+  I.saveScreenshot(screenshotPath);
+  I.seeVisualDiff(screenshotPath, visualDiffOptions);
+});
+
+Scenario('Language switcher can select Dutch language', ({ I }) => {
+  const screenshotPath = "media_modal_language_switcher_dutch_selected.png";
+
+  I.amOnPage('/');
+  I.click('Select', locators.selectMediaModal);
+  I.click('English', { xpath: '//header//li[1]' });
+  I.click('Dutch', { xpath: '//ul//li[2]' });
+  I.see('Nederlands');
+
+  I.saveScreenshot(screenshotPath);
+  I.seeVisualDiff(screenshotPath, visualDiffOptions);
+});
+
 Scenario('Selects media from modal', ({ I }) => {
   const screenshotPath = "home_media_modal_selected_.png";
 
