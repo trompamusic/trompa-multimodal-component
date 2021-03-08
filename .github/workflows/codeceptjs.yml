@@ -1,0 +1,43 @@
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  e2e-tests:
+    strategy:
+      matrix:
+        os:
+          - macos-10.15
+          - windows-2019
+        browser:
+          - chrome
+          - firefox
+          - safari
+        exclude:
+          - os: windows-2019
+            browser: safari 
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: microsoft/playwright-github-action@v1
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn --prefer-offline
+
+      - name: Run tests
+        run: yarn test:local:${{matrix.browser}}
