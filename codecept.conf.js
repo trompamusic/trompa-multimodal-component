@@ -1,11 +1,10 @@
-const { setHeadlessWhen, setWindowSize } = require('@codeceptjs/configure');
+const { setHeadlessWhen } = require('@codeceptjs/configure');
 
-// turn on headless mode with HEADLESS=true environment variable
-// export HEADLESS=true && npx codeceptjs run
+/*
+Turn on headless mode with HEADLESS=true environment variable.
+export HEADLESS=true && npx codeceptjs run
+*/
 setHeadlessWhen(process.env.HEADLESS);
-
-// set window size for any helper: Puppeteer, WebDriver, TestCafe
-setWindowSize(1024, 768);
 
 exports.config = {
   tests  : './end-to-end/*_test.js',

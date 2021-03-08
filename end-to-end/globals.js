@@ -1,5 +1,5 @@
 module.exports = {
-  secondsToWait           : 10,
+  secondsToWait           : 45,
   visualDiffOptions       : { tolerance: 1, prepareBaseImage: true },
   compositionModalLocators: {
     selectCompositionModal: 'button[data-test-id=select-composition-modal]',

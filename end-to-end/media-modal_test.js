@@ -2,8 +2,17 @@ const { secondsToWait, visualDiffOptions, mediaModalLocators: locators } = requi
 
 Feature('Media modal');
 
+let currentBrowser;
+
 Scenario('Opens media modal with expected content', ({ I }) => {
   const screenshotPath = "media_modal_loaded.png";
+
+  I.usePlaywrightTo('Detect current browser', async ({ browser }) => {
+    const browserObject = await browser;
+
+    currentBrowser = browserObject._initializer.name;
+    console.log('Current browser is:', currentBrowser);
+  });
 
   I.amOnPage('/');
   I.click('Select', locators.selectMediaModal);
@@ -17,8 +26,6 @@ Scenario('Opens media modal with expected content', ({ I }) => {
   I.see('VideoObject');
   I.see('Score');
   I.see('10 catches');
-  I.see('5 Hymnen');
-  I.see('9 Adventsmotetten');
   I.say('audio/wav');
   I.say('audio/aac');
   I.say('xml');

@@ -2,8 +2,17 @@ const { secondsToWait, visualDiffOptions, personModalLocators: locators } = requ
 
 Feature('Person modal');
 
+let currentBrowser;
+
 Scenario('Loads home page', ({ I }) => {
   const screenshotPath = "home_loaded.png";
+
+  I.usePlaywrightTo('Detect current browser', async ({ browser }) => {
+    const browserObject = await browser;
+
+    currentBrowser = browserObject._initializer.name;
+    console.log('Current browser is:', currentBrowser);
+  });
 
   I.amOnPage('/');
   I.saveScreenshot(screenshotPath);
@@ -25,8 +34,8 @@ Scenario('Opens person modal with expected content', ({ I }) => {
   I.see('Composer');
   I.see('Pianist');
   I.see('Birthplace');
-  I.see('Bologna');
-  I.see('Palermo');
+  I.see('Brugge');
+  I.see('Linz');
   I.say('First result:');
   I.see('Person', locators.firstSearchResult);
   I.see('Unknown role', locators.firstSearchResult);
@@ -173,10 +182,10 @@ Scenario('Filters results with birthplace filter within modal', ({ I }) => {
   I.amOnPage('/');
   I.click('Select', locators.selectPersonModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.checkOption('Palermo');
+  I.checkOption('Brugge');
   I.waitForElement('//h6[contains(text(), "1 result")]', secondsToWait);
   I.see('1 selected');
-  I.see('Alessandro Scarlatti');
+  I.see('Arnold von Bruck');
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 });
@@ -187,10 +196,8 @@ Scenario('Narrows down birthplace filters with filter search box within modal', 
   I.amOnPage('/');
   I.click('Select', locators.selectPersonModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.fillField('search-filter', 'Bologna');
-  I.dontSee('Palermo');
-  I.dontSee('Napoli');
-  I.dontSee('Roeselare');
+  I.fillField('search-filter', 'Brugge');
+  I.dontSee('Linz');
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 });

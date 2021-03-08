@@ -24,7 +24,12 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "test:e2e": "npx codeceptjs run --steps",
+    "test:chrome": "npx codeceptjs run -c codecept.chrome.conf.js",
+    "test:firefox": "npx codeceptjs run -c codecept.firefox.conf.js",
+    "test:safari": "npx codeceptjs run -c codecept.safari.conf.js",
+    "test:local:chrome": "concurrently --kill-others --success first -n \"server,test\" \"cross-env NODE_ENV=development webpack-dev-server -d --progress --colors\" \"wait-on http://localhost:5050 && yarn test:chrome\"",
+    "test:local:firefox": "concurrently --kill-others --success first -n \"server,test\" \"cross-env NODE_ENV=development webpack-dev-server -d --progress --colors\" \"wait-on http://localhost:5050 && yarn test:firefox\"",
+    "test:local:safari": "concurrently --kill-others --success first -n \"server,test\" \"cross-env NODE_ENV=development webpack-dev-server -d --progress --colors\" \"wait-on http://localhost:5050 && yarn test:safari\"",
     "build": "yarn schema && rollup -c",
     "build:example": "cross-env NODE_ENV=production webpack",
     "start": "yarn schema && rollup -c -w",
@@ -128,6 +133,7 @@
     "classnames": "^2.2.6",
     "codeceptjs": "^3.0.5",
     "codeceptjs-resemblehelper": "^1.9.3",
+    "concurrently": "^6.0.0",
     "eslint-plugin-codeceptjs": "^1.3.0",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
@@ -136,6 +142,7 @@
     "react-apollo": "^3.1.3",
     "react-i18next": "^11.3.0",
     "react-jss": "^10.0.3",
-    "throttle-debounce": "^2.1.0"
+    "throttle-debounce": "^2.1.0",
+    "wait-on": "^5.2.1"
   }
 }

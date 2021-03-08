@@ -2,8 +2,17 @@ const { secondsToWait, visualDiffOptions, scoreModalLocators: locators } = requi
 
 Feature('Score modal');
 
+let currentBrowser;
+
 Scenario('Opens score modal with expected content', ({ I }) => {
   const screenshotPath = "score_modal_loaded.png";
+
+  I.usePlaywrightTo('Detect current browser', async ({ browser }) => {
+    const browserObject = await browser;
+
+    currentBrowser = browserObject._initializer.name;
+    console.log('Current browser is:', currentBrowser);
+  });
 
   I.amOnPage('/');
   I.click('Select', locators.selectScoreModal);
@@ -13,7 +22,6 @@ Scenario('Opens score modal with expected content', ({ I }) => {
 
   I.see('50 results');
   I.see('Composer');
-  I.see('Henry Purcell');
   I.see('Score', locators.firstSearchResult);
   I.see('Edmund Gooch', locators.firstSearchResult);
   I.see('Tis by thy strength the mountains stand', locators.firstSearchResult);
@@ -38,9 +46,16 @@ Scenario('Opens and closes source image link from modal', async ({ I }) => {
   I.click('Select', locators.selectScoreModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.click('cpdl.org', locators.firstSearchResult);
-  I.switchToNextTab();
-  I.grabCurrentUrl();
-  I.seeInCurrentUrl('about:blank');
+  if(currentBrowser === 'chromium') {
+    I.switchToNextTab();
+    I.grabCurrentUrl();
+    I.seeInCurrentUrl('about:blank');
+  }
+  if(currentBrowser === 'webkit') {
+    I.switchToNextTab();
+    I.grabCurrentUrl();
+    I.seeInCurrentUrl('https://www.cpdl.org/wiki/images/7/71/ClarT-TisByThyStrength.mxl');
+  }
 });
 
 Scenario('Gives results that match query within modal', ({ I }) => {
@@ -50,7 +65,7 @@ Scenario('Gives results that match query within modal', ({ I }) => {
   I.click('Select', locators.selectScoreModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.fillField('search', 'Adieu');
-  I.waitForElement('//h6[contains(text(), "32 results")]', secondsToWait);
+  I.waitForElement('//h6[contains(text(), "33 results")]', secondsToWait);
   I.see('Adieu! sweet love, adieu');
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
@@ -67,7 +82,7 @@ Scenario('Removing filters works as expected', ({ I }) => {
   I.amOnPage('/');
   I.click('Select', locators.selectScoreModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.checkOption('Henry Purcell');
+  I.checkOption('Christian Prein');
   I.waitForElement('//p[contains(text(), "sorry")]', secondsToWait);
   I.click('clear');
   I.waitForElement('//h6[contains(text(), "50 results")]', secondsToWait);
@@ -79,9 +94,8 @@ Scenario('Adding multiple filters works as expected', ({ I }) => {
   I.amOnPage('/');
   I.click('Select', locators.selectScoreModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-
-  I.checkOption('Henry Purcell');
-  I.checkOption('Antonio Caldara');
+  I.checkOption('Christian Prein');
+  I.checkOption('Charles King');
   I.waitForElement('//p[contains(text(), "sorry")]', secondsToWait);
   I.see('2 selected');
   I.saveScreenshot(screenshotPath);

@@ -2,8 +2,17 @@ const { secondsToWait, visualDiffOptions, compositionModalLocators: locators } =
 
 Feature('Composition modal');
 
+let currentBrowser;
+
 Scenario('Opens composition modal with expected content', ({ I }) => {
   const screenshotPath = "composition_modal_loaded.png";
+
+  I.usePlaywrightTo('Detect current browser', async ({ browser }) => {
+    const browserObject = await browser;
+
+    currentBrowser = browserObject._initializer.name;
+    console.log('Current browser is:', currentBrowser);
+  });
 
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
@@ -50,7 +59,7 @@ Scenario('Gives results that match query within modal', ({ I }) => {
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.fillField('search', 'Adieu');
-  I.waitForElement('//h6[contains(text(), "42 results")]', secondsToWait);
+  I.waitForElement('//h6[contains(text(), "48 results")]', secondsToWait);
   I.see('Adieu! sweet love, adieu');
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
@@ -70,10 +79,10 @@ Scenario('Filters results with composer filter within modal', ({ I }) => {
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.checkOption('Francis Melville');
-  I.waitForElement('//h6[contains(text(), "1 result")]', secondsToWait);
+  I.checkOption('Christian Prein');
+  I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
   I.see('1 selected');
-  I.see('A Cradle Song');
+  I.see('sorry');
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 });
@@ -84,11 +93,11 @@ Scenario('Gives results that match query and applied filter within modal', ({ I 
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.checkOption('Francis Melville');
+  I.checkOption('Christian Prein');
   I.fillField('search', 'Cradle');
-  I.waitForElement('//h6[contains(text(), "1 result")]', secondsToWait);
+  I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
   I.see('1 selected');
-  I.see('A Cradle Song');
+  I.see('sorry');
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 });
@@ -97,8 +106,8 @@ Scenario('Removing filters works as expected', ({ I }) => {
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.checkOption('Francis Melville');
-  I.waitForElement('//h6[contains(text(), "1 result")]', secondsToWait);
+  I.checkOption('Christian Prein');
+  I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
   I.click('clear');
   I.waitForElement('//h6[contains(text(), "50 results")]', secondsToWait);
 });
@@ -110,9 +119,9 @@ Scenario('Adding multiple filters works as expected', ({ I }) => {
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
 
-  I.checkOption('Francis Melville');
-  I.checkOption('Pierre de Manchicourt');
-  I.waitForElement('//h6[contains(text(), "38 results")]', secondsToWait);
+  I.checkOption('Christian Prein');
+  I.checkOption('Charles King');
+  I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
   I.see('2 selected');
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
@@ -124,9 +133,8 @@ Scenario('Narrows down composer filters with filter search box within modal', ({
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.fillField('search-filter', 'Francis');
-  I.dontSee('Joachim Kelecom');
-  I.dontSee('Antonio Caldara');
+  I.fillField('search-filter', 'Christian');
+  I.dontSee('Charles King');
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 });
