@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.1...v1.1.0) (2021-03-09)
+
+
+### Features
+
+* **project:** update translations and make them customizable ([64ad73a](https://github.com/Videodock/trompa-multimodal-component/commit/64ad73aedbe6ecfa0933ecb0a9a14fb67a598d1c))
+
+
+
 ## [1.0.1](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.0...v1.0.1) (2021-03-02)
 
 
