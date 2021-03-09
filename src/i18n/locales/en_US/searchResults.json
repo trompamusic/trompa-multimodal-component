@@ -12,27 +12,6 @@
     "VideoObject": "Video",
     "VideoObject_plural": "Videos"
   },
-  "personResult": {
-    "person": "Person",
-    "personLower": "person",
-    "people": "People"
-  },
-  "compositionResult": {
-    "composition": "Composition",
-    "compositionLower": "composition",
-    "compositions": "Compositions"
-  },
-  "scoreResult": {
-    "score": "Score",
-    "scoreLower": "score",
-    "scores": "Scores",
-    "publisherInfo": "Publisher Info"
-  },
-  "videoResult": {
-    "video": "Video",
-    "videoLower": "video",
-    "videos": "Videos"
-  },
   "emptyResults": {
     "noResults": "We're sorry! We couldn't find results for \"{{searchPhrase}}\"",
     "noResultsCategory": "We're sorry! We couldn't find a {{type}} for \"{{searchPhrase}}\"",

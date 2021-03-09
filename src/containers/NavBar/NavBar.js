@@ -17,7 +17,14 @@ export class NavBar extends Component {
   static defaultProps = {};
 
   render() {
-    const { classes, placeholderText } = this.props;
+    const { classes, placeholderText, t } = this.props;
+
+    let searchPlaceholderText = placeholderText;
+
+    // make the placeholderText prop backwards compatible. If given, use it.
+    if (!searchPlaceholderText) {
+      searchPlaceholderText = t('placeholder_text');
+    }
 
     return (
       <AppBar className={classes.root} position="static">
@@ -36,7 +43,7 @@ export class NavBar extends Component {
           <div className={classes.searchContainer}>
             <SearchContext.Consumer>
               {({ search }) => (
-                <SearchBar placeholderText={placeholderText} onSubmit={(event, searchPhrase, searchTags) => search(searchPhrase, searchTags)} />
+                <SearchBar placeholderText={searchPlaceholderText} onSubmit={(event, searchPhrase, searchTags) => search(searchPhrase, searchTags)} />
               )}
             </SearchContext.Consumer>
           </div>
@@ -48,6 +55,6 @@ export class NavBar extends Component {
 
 export default providers(
   NavBar,
-  withTranslation('navbar'),
+  withTranslation('searchBar'),
   withStyles(styles),
 );

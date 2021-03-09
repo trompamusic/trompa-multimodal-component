@@ -10,6 +10,7 @@ import Link from '@material-ui/core/Link';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import { debounce } from 'throttle-debounce';
+import { withTranslation } from 'react-i18next';
 import styles from './SearchFilter.styles';
 
 class SearchFilter extends Component {
@@ -56,7 +57,7 @@ class SearchFilter extends Component {
   };
 
   render() {
-    const { classes, filter } = this.props;
+    const { classes, filter, t, i18n } = this.props;
 
     // there are no options
     if (!filter) {
@@ -68,7 +69,9 @@ class SearchFilter extends Component {
 
     return (
       <div className={classes.root} key={filter.name}>
-        <Typography className={classes.type} gutterBottom>{filter.name}</Typography>
+        <Typography className={classes.type} gutterBottom>
+          {i18n.exists(`searchFilters:filters.${filter.name}`) ? t(`searchFilters:filters.${filter.name}`) : filter.name}
+        </Typography>
         {filter.searchType ? (
           <TextField
             className={classes.filterTextField}
@@ -124,4 +127,4 @@ class SearchFilter extends Component {
   }
 }
 
-export default withStyles(styles)(SearchFilter);
+export default withTranslation('searchFilters')(withStyles(styles)(SearchFilter));
