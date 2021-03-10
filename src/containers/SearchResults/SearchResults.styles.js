@@ -21,51 +21,11 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     marginTop : 0,
     marginLeft: spacing(3),
   },
-  category: {
-    fontWeight: 'bold',
-  },
-  resultsHeader: {
-    marginBottom: spacing(2.25),
-  },
   resultsTotal: {
     color                   : palette.text.secondary,
     fontSize                : typography.pxToRem(14),
     [breakpoints.down('sm')]: {
       display: 'none',
     },
-  },
-  resultsCount: {
-    fontSize: typography.pxToRem(14),
-    color   : palette.text.secondary,
-  },
-  noResultsHeader: {
-    [breakpoints.down('md')]: {
-      fontSize: typography.pxToRem(22),
-    },
-    fontSize  : typography.pxToRem(24),
-    fontWeight: 'bold',
-  },
-  searchTipsHeader: {
-    marginTop : spacing(3),
-    fontSize  : typography.pxToRem(20),
-    fontWeight: 'bold',
-  },
-  searchTips: {
-    margin     : 0,
-    paddingLeft: spacing(3),
-    '& li'     : {
-      fontSize  : typography.pxToRem(16),
-      fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
-    },
-  },
-  button: {
-    fontSize     : typography.pxToRem(14),
-    textTransform: 'none',
-    color        : palette.primary.main,
-    padding      : `${spacing()}px ${spacing()}px ${spacing()}px ${spacing(2)}px`,
-  },
-  buttonIcon: {
-    fontSize  : typography.pxToRem(18),
-    marginLeft: spacing(0.5),
   },
 });
