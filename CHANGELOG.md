@@ -1,3 +1,21 @@
+# [1.2.0](https://github.com/Videodock/trompa-multimodal-component/compare/v1.1.0...v1.2.0) (2021-03-11)
+
+
+### Bug Fixes
+
+* **project:** align mui with styles import ([402558d](https://github.com/Videodock/trompa-multimodal-component/commit/402558db463958d38a1f88ff27c8a61d6861f7d1))
+* **project:** fix console warning ([77c5a1f](https://github.com/Videodock/trompa-multimodal-component/commit/77c5a1f93f286ddd171435843823dee0eed18274))
+* **project:** remove filters from modals ([7cd00aa](https://github.com/Videodock/trompa-multimodal-component/commit/7cd00aaed50f9043529b3ab300e2688a2cb338e1))
+* **search:** edit search results container ([293c278](https://github.com/Videodock/trompa-multimodal-component/commit/293c27888f7f3459db23842f4d0ac514219fdfca))
+
+
+### Features
+
+* **search:** add search results component ([0b246dd](https://github.com/Videodock/trompa-multimodal-component/commit/0b246dd488925af31ec49a886938bd047bbe9a96))
+* **search:** add search tips component ([4baaab9](https://github.com/Videodock/trompa-multimodal-component/commit/4baaab9e10a0d6215392c86356d72a855736e5a6))
+
+
+
 # [1.1.0](https://github.com/Videodock/trompa-multimodal-component/compare/v1.0.1...v1.1.0) (2021-03-09)
 
 
