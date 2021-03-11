@@ -6,10 +6,10 @@ import styles from './Search.styles';
 
 export class Search extends Component {
   render() {
-    const { onResultClick } = this.props;
+    const { onResultClick, renderSearchResult } = this.props;
 
     return (
-      <SearchResults onResultClick={onResultClick} />
+      <SearchResults onResultClick={onResultClick} renderSearchResult={renderSearchResult} />
     );
   }
 }

@@ -41,7 +41,11 @@ class SearchResults extends Component {
   }, this.state.debouncePeriod);
 
   renderTypeResult(typeName, item) {
-    const { onResultClick, t } = this.props;
+    const { onResultClick, renderSearchResult, t } = this.props;
+
+    if (typeof renderSearchResult === 'function') {
+      return renderSearchResult(typeName, item, onResultClick);
+    }
 
     switch (typeName) {
     case 'Person':
@@ -103,7 +107,15 @@ class SearchResults extends Component {
         />
       );
     default:
-      return null;
+      return (
+        <SearchResult
+          variant="default"
+          type={typeName}
+          title={item.title || item.name}
+          source={item.source}
+          onClick={() => onResultClick(item)}
+        />
+      );
     }
   }
 

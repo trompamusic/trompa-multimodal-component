@@ -5,7 +5,41 @@ import Dialog from '@material-ui/core/Dialog';
 import Paper from '@material-ui/core/Paper';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import MultiModalComponent, { SearchConfig, searchTypes } from '../src/index';
+import gql from 'graphql-tag';
+import MultiModalComponent, { SearchConfig, searchTypes, SearchResult } from '../src/index';
+
+class CustomType {
+  static name = 'SoftwareApplication';
+
+  static filters = [];
+
+  static searchAllQuery = gql`
+    query($query: String!, $first: Int = 9999) {
+      allResults: searchMetadataText(onTypes: [SoftwareApplication], onFields: [title], substring: $query, first: $first) {
+        ... on SoftwareApplication {
+          identifier
+          format
+          _searchScore
+        }
+      }
+    }
+  `;
+
+  static searchQuery = gql`
+    query($filter: _SoftwareApplicationFilter) {
+      results: SoftwareApplication(filter: $filter, first: 50) {
+        __typename
+        ... on SoftwareApplication {
+          identifier
+          name
+          title
+          creator
+          source
+        }
+      }
+    }
+  `;
+}
 
 const BlockQuote = ({ children }) => {
   return (
@@ -15,7 +49,7 @@ const BlockQuote = ({ children }) => {
   );
 };
 
-const MultiModalComponentSelect = ({ config, i18n, placeholderText, production }) => {
+const MultiModalComponentSelect = ({ config, i18n, placeholderText, production, renderSearchResult }) => {
   const [open, setOpen]         = useState(false);
   const [selected, setSelected] = useState();
 
@@ -32,6 +66,7 @@ const MultiModalComponentSelect = ({ config, i18n, placeholderText, production }
           uri={production ? 'https://api.trompamusic.eu' : 'https://api-test.trompamusic.eu'}
           config={config}
           placeholderText={placeholderText}
+          renderSearchResult={renderSearchResult}
           i18n={i18n}
           onResultClick={item => {
             setSelected(item);
@@ -83,6 +118,10 @@ const ex4Config = new SearchConfig({
   searchTypes: [searchTypes.DigitalDocument],
 });
 
+const ex5Config = new SearchConfig({
+  searchTypes: [CustomType],
+});
+
 const App = () => {
   const [production, setProduction] = useState(false);
 
@@ -124,6 +163,15 @@ const App = () => {
           As a user I want to be able to find scores with related facets.
         </BlockQuote>
         <MultiModalComponentSelect config={ex4Config} placeholderText="Search for scores" production={production} />
+        <BlockQuote>
+          As a user I want to be able to find software applications using a custom type.
+        </BlockQuote>
+        <MultiModalComponentSelect
+          config={ex5Config}
+          placeholderText="Search for software applications"
+          production={production}
+          renderSearchResult={(type, item) => <SearchResult type="SOFTWARE" title={item.title} variant="default" />}
+        />
       </Paper>
       <Paper style={{ padding: 16, backgroundColor: '#f1f1f1', marginBottom: 64 }} color="red" variant="outlined">
         <Typography variant="h6" gutterBottom>Use cases:</Typography>
