@@ -110,13 +110,6 @@ class SearchResults extends Component {
   render() {
     const { t, classes, total, loading, searchResults, searchPhrase, renderResult } = this.props;
 
-    // if(loading || this.state.showLoading) {
-    //   return (
-    //     <div className={classes.loading}>
-    //       <CircularProgress className={classes.spinner} size={45} />
-    //     </div>);
-    // }
-
     if (searchResults.length === 0 && !this.state.showLoading && !loading) {
       return <SearchTips searchPhrase={searchPhrase} />;
     }
