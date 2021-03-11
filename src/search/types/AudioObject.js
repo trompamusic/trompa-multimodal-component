@@ -32,6 +32,7 @@ class AudioObject {
         ... on AudioObject {
           identifier
           name
+          title
           creator
           source
         }

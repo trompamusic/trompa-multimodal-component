@@ -32,6 +32,7 @@ class VideoObject {
         ... on VideoObject {
           identifier
           name
+          title
           creator
           source
         }

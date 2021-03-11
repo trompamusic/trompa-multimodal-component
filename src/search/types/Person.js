@@ -33,6 +33,7 @@ class Person {
         ... on Person {
           identifier
           name
+          title
           subject
           creator
           source

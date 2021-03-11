@@ -28,6 +28,7 @@ class MusicComposition {
         ... on MusicComposition {
           identifier
           name
+          title
           creator
           source
         }

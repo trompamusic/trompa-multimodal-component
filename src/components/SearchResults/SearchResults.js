@@ -51,7 +51,7 @@ class SearchResults extends Component {
           variant="default"
           type={typeName}
           heading={item.subject || item.jobTitle || t('emptyResults.noRole')}
-          title={item.name}
+          title={item.title || item.name}
           source={item.source}
           onClick={() => onResultClick(item)}
         />
@@ -63,7 +63,7 @@ class SearchResults extends Component {
           variant="default"
           type={typeName}
           heading={item.creator}
-          title={item.name}
+          title={item.title || item.name}
           source={item.source}
           onClick={() => onResultClick(item)}
         />
@@ -75,7 +75,7 @@ class SearchResults extends Component {
           variant="default"
           type={typeName}
           heading={`${item.creator} • ${item.name}`}
-          title={item.name}
+          title={item.title || item.name}
           source={item.source}
           onClick={() => onResultClick(item)}
         />
@@ -86,7 +86,7 @@ class SearchResults extends Component {
           icon={MusicNoteIcon}
           variant="default"
           type={typeName}
-          title={item.name}
+          title={item.title || item.name}
           source={item.source}
           onClick={() => onResultClick(item)}
         />
@@ -97,7 +97,7 @@ class SearchResults extends Component {
           icon={VideoCamIcon}
           variant="default"
           type={typeName}
-          title={item.name}
+          title={item.title || item.name}
           source={item.source}
           onClick={() => onResultClick(item)}
         />
