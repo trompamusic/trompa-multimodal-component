@@ -185,6 +185,10 @@ CustomType.searchQuery = gql`
 
 If you want to change the rendered result, you can use the `renderSearchResult` prop to use a custom function. This function should return a valid JSX object.
 
+You can use the `SearchResult` component to quickly customise or add a custom search result. However, you can return any
+custom styled component. Make sure to pass the onClick function so that the trompa-multimodal-component can handle this
+event accordingly.
+
 ```jsx
 import React, { Component } from 'react'
 import MultiModalComponent, { SearchConfig, searchTypes, SearchResult } from 'trompa-multimodal-component'
@@ -199,6 +203,8 @@ const renderSearchResult = (type, item, onClick) => {
   //   <div onClick={onClick}>{item.title}</div>
   // );
 
+  // If you conditionally return a search result, make sure to always fallback to a default search result like the
+  // following line.
   return <SearchResult title={item.title} variant="default" onClick={onClick} />
 };
 
