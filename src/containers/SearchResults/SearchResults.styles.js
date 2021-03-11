@@ -13,13 +13,8 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     minHeight  : '80.75vh',
   },
   resultsContainer: {
-    [breakpoints.down('sm')]: {
-      margin: 0,
-    },
-    position  : 'relative',
-    margin    : spacing(2),
-    marginTop : 0,
-    marginLeft: spacing(3),
+    position: 'relative',
+    width   : '100%',
   },
   resultsTotal: {
     color                   : palette.text.secondary,

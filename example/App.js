@@ -102,7 +102,7 @@ const App = () => {
       <Paper style={{ padding: 16, backgroundColor: '#f1f1f1', marginBottom: 64 }} color="red" variant="outlined">
         <Typography variant="h6" gutterBottom>Examples:</Typography>
         <BlockQuote>
-          As a user I want to be able to find a single type (Person) with related facets and filters.
+          As a user I want to be able to find a single type (Person) with related facets.
         </BlockQuote>
         <MultiModalComponentSelect
           config={ex1Config}
@@ -113,15 +113,15 @@ const App = () => {
           production={production}
         />
         <BlockQuote>
-          As a user I want to be able to find multiple types (AudioObject and VideoObject) with related facets and filters.
+          As a user I want to be able to find multiple types (AudioObject and VideoObject) with related facets.
         </BlockQuote>
         <MultiModalComponentSelect config={ex2Config} placeholderText="Search for Music and Video recordings in the CE" production={production} />
         <BlockQuote>
-          As a user I want to be able to find music compositions with related facets and filters.
+          As a user I want to be able to find music compositions with related facets.
         </BlockQuote>
         <MultiModalComponentSelect config={ex3Config} production={production} />
         <BlockQuote>
-          As a user I want to be able to find scores with related facets and filters.
+          As a user I want to be able to find scores with related facets.
         </BlockQuote>
         <MultiModalComponentSelect config={ex4Config} placeholderText="Search for scores" production={production} />
       </Paper>
