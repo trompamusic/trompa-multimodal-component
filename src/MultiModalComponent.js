@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { I18nextProvider, withTranslation } from 'react-i18next';
+import { I18nextProvider } from 'react-i18next';
 import * as PropTypes from 'prop-types';
 import { ApolloProvider } from 'react-apollo';
 import SearchProvider from './containers/SearchProvider';
