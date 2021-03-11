@@ -9,7 +9,6 @@ import VideoCamIcon from '@material-ui/icons/Videocam';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import { providers } from '../../utils';
 import { SearchContext } from '../SearchProvider/SearchProvider';
-import SearchFilters from '../SearchFilters';
 import SearchResult from '../../components/SearchResult';
 import styles from './SearchResults.styles';
 
@@ -108,7 +107,6 @@ class SearchResults extends Component {
             {t('searchTips.searchTips')}
           </Typography>
           <ul className={classes.searchTips}>
-            <li>{t('searchTips.tryOtherFilter')}</li>
             <li>{t('searchTips.doubleCheck')}</li>
             <li>{t('searchTips.tryAnother')}</li>
             <li>{t('searchTips.lessSpecific')}</li>
@@ -125,10 +123,8 @@ class SearchResults extends Component {
       <SearchContext.Consumer>
         {({ searchPhrase, searchResults, counts, total, allTotal, loading }) => (
           <Grid className={classes.root}>
-            <Grid xs={12} md={3} item>
-              <SearchFilters />
-            </Grid>
-            <Grid xs={12} md={9} className={classes.resultsContainer} item>
+
+            <Grid xs={12} className={classes.resultsContainer} item>
               <Typography
                 variant="subtitle1"
                 className={classes.resultsTotal}
