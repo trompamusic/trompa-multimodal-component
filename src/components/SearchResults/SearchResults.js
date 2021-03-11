@@ -17,20 +17,20 @@ class SearchResults extends Component {
   state = {
     isSearching   : false,
     showLoading   : false,
-    debouncePeriod: 3000,
+    debouncePeriod: 1500,
   };
 
   componentDidUpdate(prevProps, prevState) {
     const hasPreviousResults = prevProps.searchResults.length > 0;
     const hasCurrentResults  = this.props.searchResults.length > 0;
 
-    if(!prevState.isSearching && hasPreviousResults && !hasCurrentResults) {
+    if (!prevState.isSearching && hasPreviousResults && !hasCurrentResults) {
       this.setState({ isSearching: true });
       this.setState({ showLoading: true });
       this.debounceSearchTips();
     }
 
-    if(prevState.isSearching && !hasPreviousResults && !hasCurrentResults) {
+    if (prevState.isSearching && !hasPreviousResults && !hasCurrentResults) {
       this.debounceSearchTips();
     }
   }
@@ -110,14 +110,14 @@ class SearchResults extends Component {
   render() {
     const { t, classes, total, loading, searchResults, searchPhrase, renderResult } = this.props;
 
-    if(loading || this.state.showLoading) {
-      return (
-        <div className={classes.loading}>
-          <CircularProgress className={classes.spinner} size={45} />
-        </div>);
-    }
+    // if(loading || this.state.showLoading) {
+    //   return (
+    //     <div className={classes.loading}>
+    //       <CircularProgress className={classes.spinner} size={45} />
+    //     </div>);
+    // }
 
-    if(searchResults.length === 0) {
+    if (searchResults.length === 0 && !this.state.showLoading && !loading) {
       return <SearchTips searchPhrase={searchPhrase} />;
     }
 
@@ -130,6 +130,11 @@ class SearchResults extends Component {
           {t('results', { count: total })}
         </Typography>
         <div style={{ marginBottom: 16 }}>
+          {(loading || this.state.showLoading) ? (
+            <div className={classes.loading}>
+              <CircularProgress className={classes.spinner} size={45} />
+            </div>
+          ) : null}
           <Grid spacing={1} container>
             {searchResults.map(item => (
               <Grid key={item.identifier} xs={12} sm={12} item>

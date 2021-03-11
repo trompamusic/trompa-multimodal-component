@@ -7,7 +7,15 @@ export default ({ palette, typography, breakpoints, spacing }) => ({
     },
   },
   loading: {
-    marginTop: spacing(2),
+    position      : 'absolute',
+    top           : 0,
+    left          : 0,
+    width         : '100%',
+    height        : 400,
+    marginTop     : spacing(2),
+    display       : 'flex',
+    alignItems    : 'center',
+    justifyContent: 'center',
   },
   spinner: {
     color: palette.text.secondary,
