@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/Videodock/trompa-multimodal-component/compare/v1.2.0...v1.2.1) (2021-03-11)
+
+
+### Bug Fixes
+
+* **project:** show 50 best matching results ([d46f833](https://github.com/Videodock/trompa-multimodal-component/commit/d46f833bf1ba155b6186ffe59935f57881a15118))
+
+
+
 # [1.2.0](https://github.com/Videodock/trompa-multimodal-component/compare/v1.1.0...v1.2.0) (2021-03-11)
 
 
