@@ -26,7 +26,7 @@ class SearchResult extends Component {
   };
 
   render() {
-    const { classes, variant, type, heading, title, body, source, onClick, icon: Icon, t } = this.props;
+    const { classes, variant, type, heading, title, body, source, onClick, icon: Icon, t, i18n } = this.props;
 
     const rootClassName = classNames(classes.root, {
       [classes.variantDefault]: variant === 'default',
@@ -42,7 +42,7 @@ class SearchResult extends Component {
         <Avatar className={classes.type}>
           {Icon ? <Icon className={classes.typeIcon} /> : null}
           <Typography className={classes.typeText}>
-            {t(`types.${type}`)}
+            {i18n.exists(`types.${type}`) ? t(`types.${type}`) : type}
           </Typography>
         </Avatar>
         <div className={classes.infoContainer}>

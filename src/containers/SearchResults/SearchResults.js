@@ -8,7 +8,7 @@ import styles from './SearchResults.styles';
 
 class SearchResults extends Component {
   render() {
-    const { classes, onResultClick } = this.props;
+    const { classes, onResultClick, renderSearchResult } = this.props;
 
     return (
       <SearchContext.Consumer>
@@ -22,6 +22,7 @@ class SearchResults extends Component {
                   searchResults={searchResults}
                   searchPhrase={searchPhrase}
                   onResultClick={onResultClick}
+                  renderSearchResult={renderSearchResult}
                 />
               </div>
             </div>
