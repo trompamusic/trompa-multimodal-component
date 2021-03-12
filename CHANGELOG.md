@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/Videodock/trompa-multimodal-component/compare/v1.2.1...v1.3.0) (2021-03-12)
+
+
+### Features
+
+* **project:** add custom search result render prop ([85b1a2b](https://github.com/Videodock/trompa-multimodal-component/commit/85b1a2b5f03bccbe866224d5148101eb5d6784eb))
+
+
+
 ## [1.2.1](https://github.com/Videodock/trompa-multimodal-component/compare/v1.2.0...v1.2.1) (2021-03-11)
 
 
