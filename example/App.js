@@ -122,6 +122,10 @@ const ex5Config = new SearchConfig({
   searchTypes: [CustomType],
 });
 
+const ex6Config = new SearchConfig({
+  searchTypes: [CustomType, searchTypes.MusicComposition],
+});
+
 const App = () => {
   const [production, setProduction] = useState(false);
 
@@ -170,7 +174,22 @@ const App = () => {
           config={ex5Config}
           placeholderText="Search for software applications"
           production={production}
-          renderSearchResult={(type, item) => <SearchResult type="SOFTWARE" title={item.title} variant="default" />}
+          renderSearchResult={(type, item, onClick) => <SearchResult type="SOFTWARE" title={item.title} variant="default" onClick={() => onClick(item)} />}
+        />
+        <BlockQuote>
+          As a developer I want to be able to customise the search results
+        </BlockQuote>
+        <MultiModalComponentSelect
+          config={ex6Config}
+          placeholderText="Search for software applications and MusicCompositions"
+          production={production}
+          renderSearchResult={(type, item, onClick) => {
+            if (type === CustomType.name) {
+              return <div onClick={() => onClick(item)}>CustomType: {item.title}</div>;
+            }
+
+            return <div onClick={() => onClick(item)}>MusicComposition: {item.title}</div>;
+          }}
         />
       </Paper>
       <Paper style={{ padding: 16, backgroundColor: '#f1f1f1', marginBottom: 64 }} color="red" variant="outlined">

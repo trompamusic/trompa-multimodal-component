@@ -200,12 +200,12 @@ const searchConfig = new SearchConfig({
 const renderSearchResult = (type, item, onClick) => {
   // You can return custom JSX
   // return (
-  //   <div onClick={onClick}>{item.title}</div>
+  //   <div onClick={() => onClick(item)}>{item.title}</div>
   // );
 
   // If you conditionally return a search result, make sure to always fallback to a default search result like the
   // following line.
-  return <SearchResult title={item.title} variant="default" onClick={onClick} />
+  return <SearchResult title={item.title} variant="default" onClick={() => onClick(item)} />
 };
 
 class Example extends Component {
