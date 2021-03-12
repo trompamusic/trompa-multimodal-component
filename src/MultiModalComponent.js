@@ -37,6 +37,16 @@ class MultiModalComponent extends Component {
   render() {
     const { config, placeholderText, onResultClick, renderSearchResult } = this.props;
 
+    // renderSearchResult is defined, but it is not a function
+    if (!!renderSearchResult && typeof renderSearchResult !== 'function') {
+      console.error(`MultiModalComponent: \`renderSearchResult\` should be a function but is type \`${typeof renderSearchResult}\``);
+    }
+
+    // onResultClick is defined, but is not a function
+    if (!!onResultClick && typeof onResultClick !== 'function') {
+      console.error(`MultiModalComponent: \`onResultClick\` should be a function but is type \`${typeof onResultClick}\``);
+    }
+
     return (
       <ApolloProvider client={this.client}>
         <I18nextProvider i18n={this.i18n}>

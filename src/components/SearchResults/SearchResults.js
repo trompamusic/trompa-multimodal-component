@@ -40,11 +40,19 @@ class SearchResults extends Component {
     this.setState({ isSearching: false });
   }, this.state.debouncePeriod);
 
+  handleResultClick = (...args) => {
+    const { onResultClick } = this.props;
+
+    if (typeof onResultClick === 'function') {
+      return onResultClick(...args);
+    }
+  }
+
   renderTypeResult(typeName, item) {
-    const { onResultClick, renderSearchResult, t } = this.props;
+    const { renderSearchResult, t } = this.props;
 
     if (typeof renderSearchResult === 'function') {
-      return renderSearchResult(typeName, item, onResultClick);
+      return renderSearchResult(typeName, item, this.handleResultClick);
     }
 
     switch (typeName) {
@@ -57,7 +65,7 @@ class SearchResults extends Component {
           heading={item.subject || item.jobTitle || t('emptyResults.noRole')}
           title={item.title || item.name}
           source={item.source}
-          onClick={() => onResultClick(item)}
+          onClick={() => this.handleResultClick(item)}
         />
       );
     case 'MusicComposition':
@@ -69,7 +77,7 @@ class SearchResults extends Component {
           heading={item.creator}
           title={item.title || item.name}
           source={item.source}
-          onClick={() => onResultClick(item)}
+          onClick={() => this.handleResultClick(item)}
         />
       );
     case 'DigitalDocument':
@@ -81,7 +89,7 @@ class SearchResults extends Component {
           heading={`${item.creator} • ${item.name}`}
           title={item.title || item.name}
           source={item.source}
-          onClick={() => onResultClick(item)}
+          onClick={() => this.handleResultClick(item)}
         />
       );
     case 'AudioObject':
@@ -92,7 +100,7 @@ class SearchResults extends Component {
           type={typeName}
           title={item.title || item.name}
           source={item.source}
-          onClick={() => onResultClick(item)}
+          onClick={() => this.handleResultClick(item)}
         />
       );
     case 'VideoObject':
@@ -103,7 +111,7 @@ class SearchResults extends Component {
           type={typeName}
           title={item.title || item.name}
           source={item.source}
-          onClick={() => onResultClick(item)}
+          onClick={() => this.handleResultClick(item)}
         />
       );
     default:
@@ -113,7 +121,7 @@ class SearchResults extends Component {
           type={typeName}
           title={item.title || item.name}
           source={item.source}
-          onClick={() => onResultClick(item)}
+          onClick={() => this.handleResultClick(item)}
         />
       );
     }
