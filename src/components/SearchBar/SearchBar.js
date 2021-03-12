@@ -31,7 +31,7 @@ class SearchBar extends Component {
     this.props.onSubmit(event, searchPhrase, searchTags);
   };
 
-  handleSubmitDebounced = debounce(250, this.handleSubmit);
+  handleSubmitDebounced = debounce(350, this.handleSubmit);
 
   render() {
     const { classes, placeholderText } = this.props;

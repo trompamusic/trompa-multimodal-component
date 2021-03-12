@@ -24,6 +24,7 @@ class Place {
         ... on Place {
           identifier
           name
+          title
           creator
           source
         }

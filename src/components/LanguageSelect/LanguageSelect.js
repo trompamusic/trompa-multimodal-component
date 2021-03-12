@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Hidden from '@material-ui/core/Hidden';
 import { withTranslation } from 'react-i18next';
-import i18next from 'i18next';
 import { MenuItem, ListItemIcon, Menu } from '@material-ui/core';
 import ListItemText from '@material-ui/core/ListItemText';
 import usFlag from '../Icons/flags/en_US.svg';
@@ -24,7 +23,7 @@ class LanguageSelect extends Component {
 
   handleChange = country => {
     this.setState({ country });
-    i18next.changeLanguage(country);
+    this.props.i18n.changeLanguage(country);
     this.setState({ selectOpen: false });
   };
 

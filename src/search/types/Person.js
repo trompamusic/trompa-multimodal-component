@@ -6,10 +6,10 @@ class Person {
 
   static filters = [{
     onProperty: 'subject',
-    name      : 'Role',
+    name      : 'role',
   }, {
     onProperty: 'birthPlace',
-    name      : 'Birthplace',
+    name      : 'birthplace',
     searchType: Place,
   }];
 
@@ -33,6 +33,7 @@ class Person {
         ... on Person {
           identifier
           name
+          title
           subject
           creator
           source

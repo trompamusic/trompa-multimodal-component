@@ -13,19 +13,8 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     minHeight  : '80.75vh',
   },
   resultsContainer: {
-    [breakpoints.down('sm')]: {
-      margin: 0,
-    },
-    position  : 'relative',
-    margin    : spacing(2),
-    marginTop : 0,
-    marginLeft: spacing(3),
-  },
-  category: {
-    fontWeight: 'bold',
-  },
-  resultsHeader: {
-    marginBottom: spacing(2.25),
+    position: 'relative',
+    width   : '100%',
   },
   resultsTotal: {
     color                   : palette.text.secondary,
@@ -33,39 +22,5 @@ export default ({ breakpoints, spacing, palette, typography }) => ({
     [breakpoints.down('sm')]: {
       display: 'none',
     },
-  },
-  resultsCount: {
-    fontSize: typography.pxToRem(14),
-    color   : palette.text.secondary,
-  },
-  noResultsHeader: {
-    [breakpoints.down('md')]: {
-      fontSize: typography.pxToRem(22),
-    },
-    fontSize  : typography.pxToRem(24),
-    fontWeight: 'bold',
-  },
-  searchTipsHeader: {
-    marginTop : spacing(3),
-    fontSize  : typography.pxToRem(20),
-    fontWeight: 'bold',
-  },
-  searchTips: {
-    margin     : 0,
-    paddingLeft: spacing(3),
-    '& li'     : {
-      fontSize  : typography.pxToRem(16),
-      fontFamily: '"Open Sans", Helvetica, Arial, sans-serif',
-    },
-  },
-  button: {
-    fontSize     : typography.pxToRem(14),
-    textTransform: 'none',
-    color        : palette.primary.main,
-    padding      : `${spacing()}px ${spacing()}px ${spacing()}px ${spacing(2)}px`,
-  },
-  buttonIcon: {
-    fontSize  : typography.pxToRem(18),
-    marginLeft: spacing(0.5),
   },
 });

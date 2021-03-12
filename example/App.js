@@ -5,17 +5,51 @@ import Dialog from '@material-ui/core/Dialog';
 import Paper from '@material-ui/core/Paper';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import MultiModalComponent, { SearchConfig, searchTypes } from '../src/index';
+import gql from 'graphql-tag';
+import MultiModalComponent, { SearchConfig, searchTypes, SearchResult } from '../src/index';
+
+class CustomType {
+  static name = 'SoftwareApplication';
+
+  static filters = [];
+
+  static searchAllQuery = gql`
+    query($query: String!, $first: Int = 9999) {
+      allResults: searchMetadataText(onTypes: [SoftwareApplication], onFields: [title], substring: $query, first: $first) {
+        ... on SoftwareApplication {
+          identifier
+          format
+          _searchScore
+        }
+      }
+    }
+  `;
+
+  static searchQuery = gql`
+    query($filter: _SoftwareApplicationFilter) {
+      results: SoftwareApplication(filter: $filter, first: 50) {
+        __typename
+        ... on SoftwareApplication {
+          identifier
+          name
+          title
+          creator
+          source
+        }
+      }
+    }
+  `;
+}
 
 const BlockQuote = ({ children }) => {
   return (
-    <div style={{ backgroundColor: '#fff', borderLeft: `6px solid rgb(63 81 181)`, padding: 16, marginBottom: 8 }} >
+    <div style={{ backgroundColor: '#fff', borderLeft: `6px solid rgb(63 81 181)`, padding: 16, marginBottom: 8 }}>
       <Typography variant="caption">{children}</Typography>
     </div>
   );
 };
 
-const MultiModalComponentSelect = ({ dataTestId, config, placeholderText, production }) => {
+const MultiModalComponentSelect = ({ config, i18n, placeholderText, production, renderSearchResult }) => {
   const [open, setOpen]         = useState(false);
   const [selected, setSelected] = useState();
 
@@ -23,7 +57,7 @@ const MultiModalComponentSelect = ({ dataTestId, config, placeholderText, produc
     <React.Fragment>
       <div className="mmc-select">
         <Typography className="mmc-select-value">{selected ? selected.name : 'No selection'}</Typography>
-        <Button data-test-id={dataTestId} variant="contained" size="small" color="primary" onClick={() => setOpen(true)}>
+        <Button variant="contained" size="small" color="primary" onClick={() => setOpen(true)}>
           Select
         </Button>
       </div>
@@ -32,6 +66,8 @@ const MultiModalComponentSelect = ({ dataTestId, config, placeholderText, produc
           uri={production ? 'https://api.trompamusic.eu' : 'https://api-test.trompamusic.eu'}
           config={config}
           placeholderText={placeholderText}
+          renderSearchResult={renderSearchResult}
+          i18n={i18n}
           onResultClick={item => {
             setSelected(item);
             setOpen(false);
@@ -82,6 +118,14 @@ const ex4Config = new SearchConfig({
   searchTypes: [searchTypes.DigitalDocument],
 });
 
+const ex5Config = new SearchConfig({
+  searchTypes: [CustomType],
+});
+
+const ex6Config = new SearchConfig({
+  searchTypes: [CustomType, searchTypes.MusicComposition],
+});
+
 const App = () => {
   const [production, setProduction] = useState(false);
 
@@ -101,21 +145,52 @@ const App = () => {
       <Paper style={{ padding: 16, backgroundColor: '#f1f1f1', marginBottom: 64 }} color="red" variant="outlined">
         <Typography variant="h6" gutterBottom>Examples:</Typography>
         <BlockQuote>
-          As a user I want to be able to find a single type (Person) with related facets and filters.
+          As a user I want to be able to find a single type (Person) with related facets.
         </BlockQuote>
-        <MultiModalComponentSelect dataTestId="select-person-modal" config={ex1Config} placeholderText="Search for Persons in the CE" production={production} />
+        <MultiModalComponentSelect
+          config={ex1Config}
+          i18n={{
+            'en-US': { searchBar: { placeholder_text: 'Search for Persons in the CE' } },
+            'nl-NL': { searchBar: { placeholder_text: 'Zoek naar Personen in de CE' } },
+          }}
+          production={production}
+        />
         <BlockQuote>
-          As a user I want to be able to find multiple types (AudioObject and VideoObject) with related facets and filters.
+          As a user I want to be able to find multiple types (AudioObject and VideoObject) with related facets.
         </BlockQuote>
         <MultiModalComponentSelect dataTestId="select-media-modal" config={ex2Config} placeholderText="Search for Music and Video recordings in the CE" production={production} />
         <BlockQuote>
-          As a user I want to be able to find music compositions with related facets and filters.
+          As a user I want to be able to find music compositions with related facets.
         </BlockQuote>
         <MultiModalComponentSelect dataTestId="select-composition-modal" config={ex3Config} production={production} />
         <BlockQuote>
-          As a user I want to be able to find scores with related facets and filters.
+          As a user I want to be able to find scores with related facets.
         </BlockQuote>
-        <MultiModalComponentSelect dataTestId="select-score-modal" config={ex4Config} placeholderText="Search for scores" production={production} />
+        <MultiModalComponentSelect config={ex4Config} placeholderText="Search for scores" production={production} />
+        <BlockQuote>
+          As a user I want to be able to find software applications using a custom type.
+        </BlockQuote>
+        <MultiModalComponentSelect
+          config={ex5Config}
+          placeholderText="Search for software applications"
+          production={production}
+          renderSearchResult={(type, item, onClick) => <SearchResult type="SOFTWARE" title={item.title} variant="default" onClick={() => onClick(item)} />}
+        />
+        <BlockQuote>
+          As a developer I want to be able to customise the search results
+        </BlockQuote>
+        <MultiModalComponentSelect
+          config={ex6Config}
+          placeholderText="Search for software applications and MusicCompositions"
+          production={production}
+          renderSearchResult={(type, item, onClick) => {
+            if (type === CustomType.name) {
+              return <div onClick={() => onClick(item)}>CustomType: {item.title}</div>;
+            }
+
+            return <div onClick={() => onClick(item)}>MusicComposition: {item.title}</div>;
+          }}
+        />
       </Paper>
       <Paper style={{ padding: 16, backgroundColor: '#f1f1f1', marginBottom: 64 }} color="red" variant="outlined">
         <Typography variant="h6" gutterBottom>Use cases:</Typography>

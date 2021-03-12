@@ -6,7 +6,7 @@ class DigitalDocument {
 
   static filters = [{
     onProperty: 'author',
-    name      : 'Composer',
+    name      : 'composer',
     searchType: Person,
   }];
 

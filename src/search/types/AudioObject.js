@@ -6,11 +6,11 @@ class AudioObject {
 
   static filters = [{
     onProperty: 'exampleOfWork',
-    name      : 'Score',
+    name      : 'score',
     searchType: DigitalDocument,
   }, {
     onProperty: 'format',
-    name      : 'Format',
+    name      : 'format',
   }];
 
   static searchAllQuery = gql`
@@ -32,6 +32,7 @@ class AudioObject {
         ... on AudioObject {
           identifier
           name
+          title
           creator
           source
         }

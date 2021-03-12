@@ -6,7 +6,7 @@ class MusicComposition {
 
   static filters = [{
     onProperty: 'author',
-    name      : 'Composer',
+    name      : 'composer',
     searchType: Person,
   }];
 
@@ -28,6 +28,7 @@ class MusicComposition {
         ... on MusicComposition {
           identifier
           name
+          title
           creator
           source
         }

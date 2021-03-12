@@ -1,0 +1,20 @@
+{
+  "show_results": "Filter {{count}} resultaat",
+  "show_results_plural": "Filter {{count}} resultaten",
+  "total_results": "{{count}} resultaat",
+  "total_results_plural": "{{count}} resultaten",
+  "filters": {
+    "all": "All",
+    "people": "Personen",
+    "composer": "Componist",
+    "compositions": "Composities",
+    "score": "Partituur",
+    "role": "Rol",
+    "birthplace": "Geboorteplaats",
+    "format": "Formaat",
+    "annotations": "Annotaties",
+    "videos": "Videos",
+    "tracks": "Nummers",
+    "type": "Type"
+  }
+}

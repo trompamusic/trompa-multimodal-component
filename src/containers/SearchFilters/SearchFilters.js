@@ -42,7 +42,7 @@ class SearchFilters extends Component {
               className={classes.button}
               onClick={() => this.setState({ openMobileFilters: false })}
             >
-              {`${total} ${t('results')}`}
+              {t('total_results', { count: total })}
             </Button>
           </div>
         </div>
@@ -78,7 +78,7 @@ class SearchFilters extends Component {
                 onClick={() => this.setState({ openMobileFilters: true })}
               >
                 <FilterIcon className={classes.buttonIcon} />
-                {`${t('filter')} ${total} ${t('results')}`}
+                {t('show_results', { count: total })}
               </Button>
               {this.renderMobileDrawer(filters, filtersState, updateFilter, total)}
             </Hidden>

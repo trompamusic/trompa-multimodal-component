@@ -8,7 +8,8 @@ This project is part of the [TROMPA project](https://trompamusic.eu).
 
 ## Installation
 
-Assuming you already have a React application, the easiest way to start using the Multimodal Component, is to install it via NPM or Yarn.
+Assuming you already have a React application, the easiest way to start using the Multimodal Component, is to install it
+via NPM or Yarn.
 
 If you're using NPM:
 
@@ -23,23 +24,25 @@ yarn add trompa-multimodal-component
 ```
 
 ### Material-UI
+
 The MultiModal Component uses the peer dependency MaterialUI, so make sure you have it installed as well.
 
 NPM:
+
 ```bash
 npm install @material-ui/core @material-ui/icons
 ```
 
 Yarn:
+
 ```bash
 yarn add @material-ui/core @material-ui/icons
 ```
 
-
-
 ## Usage
 
-This is a basic usage example. There will be more examples after more options have been added to the Multimodal Component.
+This is a basic usage example. There will be more examples after more options have been added to the Multimodal
+Component.
 
 ```jsx
 import React, { Component } from 'react'
@@ -50,12 +53,15 @@ const searchConfig = new SearchConfig({
 });
 
 class Example extends Component {
-  render () {
+  render() {
     return (
       <MultiModalComponent
         config={searchConfig}
-        placeholderText="Search for all music compositions..."
         onResultClick={node => console.log('User has clicked on:', node)}
+        i18n={{
+          'en-US': { searchBar: { placeholder_text: 'Search for all music compositions...' } },
+          'nl-NL': { searchBar: { placeholder_text: 'Zoek voor alle muziek composities...' } },
+        }}
       />
     )
   }
@@ -81,11 +87,142 @@ const searchConfig = new SearchConfig({
 |------|------|---------------|-------------|----------|
 | **searchConfig** | SearchConfig | undefined  | An instance of the SearchConfig class | Yes |
 | **onResultClick** | Function | function(**result**: *Object*) { }  | Callback when the user clicks on a result. | No |
-| **placeholderText** | String | Enter a search phrase... | Placeholder text for the search input | No |
+| **renderSearchResult** | Function | function(**type**: *String*, **item**: *Object*, **onResultClick**: *function*) { } | Custom render function for search results. | No |
+| **placeholderText (deprecated, use i18n)** | String | Enter a search phrase... | Placeholder text for the search input | No |
+| **i18n** | Object | undefined | Override translations | No |
 
 #### Currently supported searchTypes
+
 ```jsx
 const searchTypes = ['AudioObject', 'DigitalDocument', 'Person', 'MusicComposition', 'VideoObject'];
+```
+
+#### Custom searchTypes
+
+A custom search type can also be used. This can be either a Class or Object with at least the following properties:
+name, filters, searchAllQuery and searchQuery.
+
+For example to create a custom search type for SoftwareApplications;
+
+```js
+import gql from 'graphql-tag';
+
+class CustomType {
+  static name = 'SoftwareApplication';
+
+  static filters = [];
+
+  static searchAllQuery = gql`
+    query($query: String!, $first: Int = 9999) {
+      allResults: searchMetadataText(onTypes: [SoftwareApplication], onFields: [title], substring: $query, first: $first) {
+        ... on SoftwareApplication {
+          identifier
+          format
+          _searchScore
+        }
+      }
+    }
+  `;
+
+  static searchQuery = gql`
+    query($filter: _SoftwareApplicationFilter) {
+      results: SoftwareApplication(filter: $filter, first: 50) {
+        __typename
+        ... on SoftwareApplication {
+          identifier
+          name
+          title
+          creator
+          source
+        }
+      }
+    }
+  `;
+}
+```
+
+If your setup doesn't
+support [static class properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties), you can define the
+properties like this as well:
+
+```js
+class CustomType {
+}
+
+// or const CustomType = {}
+
+CustomType.name = 'SoftwareApplication';
+CustomType.filters = [];
+CustomType.searchAllQuery = gql`
+    query($query: String!, $first: Int = 9999) {
+      allResults: searchMetadataText(onTypes: [SoftwareApplication], onFields: [title], substring: $query, first: $first) {
+        ... on SoftwareApplication {
+          identifier
+          format
+          _searchScore
+        }
+      }
+    }
+  `;
+
+CustomType.searchQuery = gql`
+    query($filter: _SoftwareApplicationFilter) {
+      results: SoftwareApplication(filter: $filter, first: 50) {
+        __typename
+        ... on SoftwareApplication {
+          identifier
+          name
+          title
+          creator
+          source
+        }
+      }
+    }
+  `;
+```
+
+#### Custom result
+
+If you want to change the rendered result, you can use the `renderSearchResult` prop to use a custom function. This function should return a valid JSX object.
+
+You can use the `SearchResult` component to quickly customise or add a custom search result. However, you can return any
+custom styled component. Make sure to pass the onClick function so that the trompa-multimodal-component can handle this
+event accordingly.
+
+```jsx
+import React, { Component } from 'react'
+import MultiModalComponent, { SearchConfig, searchTypes, SearchResult } from 'trompa-multimodal-component'
+
+const searchConfig = new SearchConfig({
+  searchTypes: [searchTypes.MusicComposition],
+});
+
+const renderSearchResult = (type, item, onClick) => {
+  // You can return custom JSX
+  // return (
+  //   <div onClick={() => onClick(item)}>{item.title}</div>
+  // );
+
+  // If you conditionally return a search result, make sure to always fallback to a default search result like the
+  // following line.
+  return <SearchResult title={item.title} variant="default" onClick={() => onClick(item)} />
+};
+
+class Example extends Component {
+  render() {
+    return (
+      <MultiModalComponent
+        config={searchConfig}
+        onResultClick={node => console.log('User has clicked on:', node)}
+        renderSearchResult={renderSearchResult}
+        i18n={{
+          'en-US': { searchBar: { placeholder_text: 'Search for all music compositions...' } },
+          'nl-NL': { searchBar: { placeholder_text: 'Zoek voor alle muziek composities...' } },
+        }}
+      />
+    )
+  }
+}
 ```
 
 ## License

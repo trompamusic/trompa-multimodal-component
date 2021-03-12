@@ -1,28 +1,34 @@
 {
-  "results": "totale resultaten",
-  "personResult": {
-    "person": "Persoon",
-    "people": "Personen"
-  },
-  "compositionResult": {
-    "composition": "Compositie",
-    "compositions": "Composities"
-  },
-  "scoreResult": {
-    "score": "Partituur",
-    "scores": "Partituren"
-  },
-  "videoResult": {
-    "video": "Video",
-    "videos": "Videos"
+  "results": "{{count}} resultaat",
+  "results_plural": "{{count}} resultaten",
+  "types": {
+    "AudioObject": "Audio",
+    "Person": "Persoon",
+    "Person_plural": "Personen",
+    "MusicComposition": "Compositie",
+    "MusicComposition_plural": "Composities",
+    "DigitalDocument": "Partituur",
+    "DigitalDocument_plural": "Partituren",
+    "VideoObject": "Video",
+    "VideoObject_plural": "Videos"
   },
   "emptyResults": {
-    "noRole": "Unknown role",
-    "noDescription": "Geen descriptie.",
-    "noComposer": "Onbekende componist",
-    "noTitle": "Onbekende titel",
-    "noName": "Onbekende naam",
-    "noSource": "Onbekende bron"
+    "noResults": "Onze excuses! We konden geen resultaten vinden voor \"{{searchPhrase}}\"",
+    "noResultsCategory": "Onze excuses! We konden geen {{type}} vinden voor \"{{searchPhrase}}\"",
+    "noRole": "Rol onbekend",
+    "noDescription": "Beschrijving onbekend",
+    "noComposer": "Componist onbekend",
+    "noTitle": "Titel onbekend",
+    "noName": "Naam onbekend",
+    "noSource": "Bron onbekend",
+    "noPublisher": "Uitgever onbekend"
   },
-  "showMore": "Laat meer zien"
+  "searchTips": {
+    "searchTips": "Zoek tips",
+    "tryOtherFilter": "Probeer een andere filter",
+    "doubleCheck": "Controleer je spelling",
+    "tryAnother": "Probeer een ander woord",
+    "lessSpecific": "Probeer minder specifiek te zijn"
+  },
+  "showMore": "Toon meer"
 }

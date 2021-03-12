@@ -15,7 +15,13 @@ export const generateFilter = (query, allResults, filtersState, fixedFilter) => 
     });
 
   if (query) {
-    filters.push({ identifier_in: allResults.map(item => item.identifier ) });
+    // get the 50 best matching results
+    const includedIdentifiers = allResults
+      .sort((a, b) => b._searchScore - a._searchScore)
+      .map(item => item.identifier)
+      .slice(0, 50);
+
+    filters.push({ identifier_in: includedIdentifiers });
   }
 
   // fixed filter from config
