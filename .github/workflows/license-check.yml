@@ -1,4 +1,4 @@
-name: Licenses check
+name: Check licenses
 on: [push]
 jobs:
   check-licenses:
@@ -13,7 +13,8 @@ jobs:
         name: Save license output to file
       - run: cat license-output.txt
         name: Print license output to console
-      - run: if grep -q All green! "license-output.txt"; then
-             echo "found"
+      - run: if grep -q All green! "license-output.txt";\
+             then \
+             echo "found";\
              fi
         name: Confirm all licenses to be open-source
