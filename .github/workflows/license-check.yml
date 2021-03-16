@@ -1,21 +1,13 @@
-name: License check
+name: Open source license check
 on: [push]
 jobs:
-  check-non-open-source-licenses:
+  check-licenses:
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.check.outputs.test }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: yarn add -D js-green-licenses
-      - id: check
-        run: yarn jsgl --local ./
-  assert-if-non-open-source-licenses-are-present:
-    runs-on: ubuntu-latest
-    needs: check-non-open-source-licenses
-    steps:
-      - run: echo ${{needs.check-non-open-source-licenses.outputs.output1}}
-
-
-
+      - run: yarn add js-green-licenses
+      - uses: actions/download-artifact@v2
+        with:
+          name: check-licenses-output
+      - run: yarn jsgl --local ./
