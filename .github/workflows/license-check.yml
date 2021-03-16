@@ -1,4 +1,4 @@
-name: Check licenses open source
+name: Check licenses
 on: [push]
 jobs:
   check-licenses:
@@ -8,4 +8,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: yarn add js-green-licenses
+        name: Install js-green-licenses
       - run: yarn jsgl --local ./
+        name: Check if all licenses are open source
