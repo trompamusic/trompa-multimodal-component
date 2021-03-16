@@ -1,10 +1,12 @@
 name: license-check
 on: [push]
 jobs:
-  check-bats-version:
+  check-non-open-source-licenses:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: npm install -g bats
-      - run: bats -v
+      - run: yarn jsgl --local ./
+
+
+
