@@ -2,7 +2,7 @@ name: Check licenses
 on: [push]
 jobs:
   check-licenses:
-    name: Check if all licenses are open source
+    name: Check if all open source
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -10,4 +10,4 @@ jobs:
       - run: yarn add js-green-licenses
         name: Install js-green-licenses
       - run: yarn jsgl --local ./
-        name: Check if all licenses are open source
+        name: Assert if all licenses are open source
