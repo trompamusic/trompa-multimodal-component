@@ -5,7 +5,7 @@ on: [push]
 jobs:
   check-non-open-source-licenses:
     runs-on: ubuntu-latest
-     outputs:
+    outputs:
       output1: ${{ steps.check.outputs.test }}
     steps:
       - uses: actions/checkout@v2
