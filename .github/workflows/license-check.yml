@@ -1,17 +1,17 @@
-name: Unallowed licenses check
+name: Licenses
 on: [push]
 jobs:
   check-licenses:
-    name: Check for unallowed licenses
+    name: Confirm open-source licenses
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: yarn add js-green-licenses
-        name: Install js-green-licenses dependency
-      - run: yarn jsgl --local ./ > check-licenses-output.txt
-        name: Check for unallowed licenses and save output to file
-      - run: cat check-licenses-output.txt
-        name: Prints result of unallowed licenses check to console
-      - run: find "All green!" check-licenses-output.txt && echo All licences are allowed!
-        name: Confirms unallowed licenses
+        name: Install license checker
+      - run: yarn jsgl --local ./ > license-checker-output.txt
+        name: Save license checker output to file
+      - run: cat license-checker-output.txt
+        name: Print license checker output to console
+      - run: if grep -q All green! "license-checker-output.txt"; then # SomeString was found fi
+        name: Check if all licenses pass
