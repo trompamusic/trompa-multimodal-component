@@ -2,7 +2,7 @@ name: Check licenses
 on: [push]
 jobs:
   check-licenses:
-    name: Confirm all open-source
+    name: Confirm if all open-source
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -12,5 +12,5 @@ jobs:
         name: Save license output to file
       - run: cat license-output.txt
         name: Print license output to console
-      - run: grep -q "All green!" "license-output.txt"; \ then echo that is true; fi
-        name: Confirm all open-source
+      - run: grep -q "All green!" "license-output.txt"; \ then echo that is true; \ fi
+        name: Confirm if all open-source
