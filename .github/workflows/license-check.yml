@@ -8,10 +8,4 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: yarn add js-green-licenses
-      - run: yarn jsgl --local ./ > license-output.txt
-        name: Save license output to file
-      - run: cat license-output.txt
-        name: Print license output to console
-      - name: "Confirm all licenses are open source"
-        run: |
-          grep -q "All green!" "license-output.txt" | cat license-output.txt"
+      - run: yarn jsgl --local ./
