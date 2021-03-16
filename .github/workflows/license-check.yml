@@ -13,3 +13,5 @@ jobs:
         name: Check for unallowed licenses and save output to file
       - run: cat check-licenses-output.txt
         name: Prints result of unallowed licenses check to console
+      - run: find "All green!" check-licenses-output.txt && echo All licences are allowed!
+        name: Confirms unallowed licenses
