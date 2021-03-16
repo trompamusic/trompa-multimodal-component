@@ -1,4 +1,4 @@
-name: Open source license check
+name: License open-source check
 on: [push]
 jobs:
   check-licenses:
@@ -12,5 +12,7 @@ jobs:
         name: Save license output to file
       - run: cat license-output.txt
         name: Print license output to console
-      - run: if \ grep -q "All green!" "license-output.txt"; \ then echo that is true; \ fi
-        name: XXX
+      - name: "Success scenario"
+        run: |
+          # Workflow failes because grep exits with 1
+          echo "All green!" | grep -q "All green!" "license-output.txt"
