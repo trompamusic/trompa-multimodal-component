@@ -1,6 +1,4 @@
 name: License check
-description: Check for production dependencies that have an disallowed license
-author: Demmy Honore de Vries
 on: [push]
 jobs:
   check-non-open-source-licenses:
