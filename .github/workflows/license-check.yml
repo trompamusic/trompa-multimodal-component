@@ -2,12 +2,12 @@ name: Open source license check
 on: [push]
 jobs:
   check-licenses:
+    name: Check for unallowed licenses
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: yarn add js-green-licenses
-      - uses: actions/download-artifact@v2
-        with:
-          name: check-licenses-output
-      - run: yarn jsgl --local ./
+        name: Install js-green-licenses dependency
+      - run: yarn jsgl --local ./ > check-licenses-output.txt
+        name: Check for unallowed licenses and write output to check-licenses-output.txt
