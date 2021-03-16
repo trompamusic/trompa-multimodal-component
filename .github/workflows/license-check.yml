@@ -15,3 +15,6 @@ jobs:
       - name: "Success scenario"
         run: |
           grep -q "All green!" "license-output.txt" | echo "All green!"
+      - name: "Success scenario inverted"
+        run: |
+          ! grep -q "All green!" "license-output.txt" | echo "All green!"
