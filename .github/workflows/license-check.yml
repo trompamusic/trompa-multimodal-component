@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: npm install [--save-dev] js-green-licenses
+      - run: npm install js-green-licenses
       - run: yarn jsgl --local
 
 
