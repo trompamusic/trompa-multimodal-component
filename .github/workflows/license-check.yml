@@ -2,16 +2,18 @@ name: Licenses check
 on: [push]
 jobs:
   check-licenses:
-    name: Confirm all open-source
+    name: Confirm all licenses to be open-source
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: yarn add js-green-licenses
         name: Install license checker
-      - run: yarn jsgl --local ./ > license-checker-output.txt
-        name: Save license checker output to file
-      - run: cat license-checker-output.txt
-        name: Print license checker output to console
-      - run: if grep -R "All green!" "./license-checker-output.txt" then echo "found" else echo "not found"
-        name: Confirm that all licenses are open-source
+      - run: yarn jsgl --local ./ > license-output.txt
+        name: Save license output to file
+      - run: cat license-output.txt
+        name: Print license output to console
+      - run: if grep -q All green! "license-output.txt"; then
+             echo "found"
+             fi
+        name: Confirm all licenses to be open-source
