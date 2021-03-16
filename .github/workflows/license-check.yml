@@ -1,8 +1,8 @@
-name: License open-source check
+name: License open source check
 on: [push]
 jobs:
   check-licenses:
-    name: Confirm if all licenses are open-source
+    name: Check if all licenses are open source
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,5 +14,4 @@ jobs:
         name: Print license output to console
       - name: "Success scenario"
         run: |
-          # Workflow failes because grep exits with 1
-          echo "All green!" | grep -q "All green!" "license-output.txt"
+          grep -q "All green!" "license-output.txt" | echo "All green!"
