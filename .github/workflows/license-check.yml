@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: check-non-open-source-licenses
     steps:
-      - run: echo ${{needs.job1.outputs.output1}}
+      - run: echo ${{needs.check-non-open-source-licenses.outputs.output1}}
 
 
 
