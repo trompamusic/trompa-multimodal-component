@@ -1,8 +1,8 @@
-name: Licenses
+name: License checker
 on: [push]
 jobs:
   check-licenses:
-    name: Confirm open-source licenses
+    name: Confirm that all licenses are open-source
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -13,5 +13,5 @@ jobs:
         name: Save license checker output to file
       - run: cat license-checker-output.txt
         name: Print license checker output to console
-      - run: if grep -q All green! "license-checker-output.txt"; then # SomeString was found fi
-        name: Check if all licenses pass
+      - run: if grep -R "All green!" "./license-checker-output.txt"; then echo "found" else echo "not found" fi
+        name: Confirm that all licenses are open-source
