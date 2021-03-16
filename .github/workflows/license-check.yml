@@ -10,4 +10,7 @@ jobs:
       - run: yarn add js-green-licenses
         name: Install js-green-licenses dependency
       - run: yarn jsgl --local ./ > check-licenses-output.txt
-        name: Check for unallowed licenses and write output to check-licenses-output.txt
+        name: Check for unallowed licenses and save output
+      - run: |
+          value=`cat check-licenses-output.txt`
+          echo $value > check-licenses-output.txt
