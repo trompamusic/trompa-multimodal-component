@@ -1,9 +1,5 @@
 const { setHeadlessWhen } = require('@codeceptjs/configure');
 
-/*
-Turn on headless mode with HEADLESS=true environment variable.
-export HEADLESS=true && npx codeceptjs run
-*/
 setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
@@ -17,9 +13,12 @@ exports.config = {
     },
     ResembleHelper: {
       require         : "codeceptjs-resemblehelper",
-      screenshotFolder: "./automatic-tests/output/firefox/screenshots",
       baseFolder      : "./automatic-tests/output/firefox/screenshots/base",
       diffFolder      : "./automatic-tests/output/firefox/screenshots/diff",
+      prepareBaseImage: true,
+      plugins         : {
+        allure: {},
+      },
     },
   },
   include: {
@@ -30,8 +29,9 @@ exports.config = {
   name     : 'trompa-multimodal-component-auto-test',
   plugins  : {
     allure: {
-      enabled  : true,
-      outputDir: "./automatic-tests/output/firefox/allure-results",
+      enabled                   : true,
+      enableScreenshotDiffPlugin: true,
+      outputDir                 : "./automatic-tests/output/firefox/allure-results",
     },
     screenshotOnFail: {
       enabled: true,
