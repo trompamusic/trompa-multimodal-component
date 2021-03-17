@@ -1,0 +1,785 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1615984401317' stop='1615984454977'>
+    <name>Person modal:</name>
+    <title>Person modal:</title>
+    <test-cases>
+        <test-case start='1615984401317' status='passed' stop='1615984403274'>
+            <name>Loads home page</name>
+            <title>Loads home page</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984401319' status='passed' stop='1615984401319'>
+                    <name>I use playwright to "Detect current browser", async ({ browser }) => {
+                        const browserObject = await browser;
+                    
+                        currentBrowser = browserObject._initializer.name;
+                        console.log('Current browser is:', currentBrowser);
+                      }</name>
+                    <title>I use playwright to "Detect current browser", async ({ browser }) => {
+                        const browserObject = await browser;
+                    
+                        currentBrowser = browserObject._initializer.name;
+                        console.log('Current browser is:', currentBrowser);
+                      }</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984401319' status='passed' stop='1615984403140'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984403140' status='passed' stop='1615984403176'>
+                    <name>I save screenshot "home_loaded.png"</name>
+                    <title>I save screenshot "home_loaded.png"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984403177' status='passed' stop='1615984403266'>
+                    <name>I see visual diff "home_loaded.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</name>
+                    <title>I see visual diff "home_loaded.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984403266' status='passed' stop='1615984403274'>
+                    <name>I see "No selection"</name>
+                    <title>I see "No selection"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+        <test-case start='1615984403279' status='passed' stop='1615984405254'>
+            <name>Language switcher initially loads English</name>
+            <title>Language switcher initially loads English</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984403280' status='passed' stop='1615984404709'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984404709' status='passed' stop='1615984405039'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984405039' status='passed' stop='1615984405095'>
+                    <name>I see "English"</name>
+                    <title>I see "English"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984405095' status='passed' stop='1615984405153'>
+                    <name>I save screenshot "person_modal_language_switcher_loaded.png"</name>
+                    <title>I save screenshot "person_modal_language_switcher_loaded.png"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984405153' status='passed' stop='1615984405254'>
+                    <name>I see visual diff "person_modal_language_switcher_loaded.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</name>
+                    <title>I see visual diff "person_modal_language_switcher_loaded.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+        <test-case start='1615984405294' status='passed' stop='1615984409349'>
+            <name>Language switcher can select Dutch language</name>
+            <title>Language switcher can select Dutch language</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984405297' status='passed' stop='1615984406822'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984406822' status='passed' stop='1615984407204'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984407204' status='passed' stop='1615984408045'>
+                    <name>I click "English", {"xpath":"//header//li[1]"}</name>
+                    <title>I click "English", {"xpath":"//header//li[1]"}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984408045' status='passed' stop='1615984409194'>
+                    <name>I click "Dutch", {"xpath":"//ul//li[2]"}</name>
+                    <title>I click "Dutch", {"xpath":"//ul//li[2]"}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984409194' status='passed' stop='1615984409206'>
+                    <name>I see "Nederlands"</name>
+                    <title>I see "Nederlands"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984409206' status='passed' stop='1615984409254'>
+                    <name>I save screenshot "person_modal_language_switcher_dutch_selected.png"</name>
+                    <title>I save screenshot "person_modal_language_switcher_dutch_selected.png"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984409254' status='passed' stop='1615984409349'>
+                    <name>I see visual diff "person_modal_language_switcher_dutch_selected.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</name>
+                    <title>I see visual diff "person_modal_language_switcher_dutch_selected.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+        <test-case start='1615984409359' status='failed' stop='1615984413097'>
+            <name>Opens person modal with expected content</name>
+            <title>Opens person modal with expected content</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984409361' status='passed' stop='1615984411029'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984411029' status='passed' stop='1615984411388'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984411389' status='passed' stop='1615984412646'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984412646' status='passed' stop='1615984412746'>
+                    <name>I save screenshot "person_modal_loaded.png"</name>
+                    <title>I save screenshot "person_modal_loaded.png"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984412746' status='passed' stop='1615984412841'>
+                    <name>I see visual diff "person_modal_loaded.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</name>
+                    <title>I see visual diff "person_modal_loaded.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984412841' status='passed' stop='1615984412922'>
+                    <name>I see "50 results"</name>
+                    <title>I see "50 results"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984412922' status='failed' stop='1615984413096'>
+                    <name>I see "Role"</name>
+                    <title>I see "Role"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='e4f426d6-72f5-4c85-92bd-b28125d06f8a-attachment.png' type='image/png' size='76944'/>
+            </attachments>
+            <failure>
+                <message></message>
+                <stack-trace>undefined</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984413218' status='failed' stop='1615984416227'>
+            <name>Selects person from modal</name>
+            <title>Selects person from modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984413221' status='passed' stop='1615984414709'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984414709' status='passed' stop='1615984415035'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984415035' status='passed' stop='1615984416219'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984416219' status='failed' stop='1615984416226'>
+                    <name>I click "Charles Steggall", "div[data-test-id=first-search-result]"</name>
+                    <title>I click "Charles Steggall", "div[data-test-id=first-search-result]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='a3ec3b7c-ccc0-4351-adc5-cb76971c089b-attachment.png' type='image/png' size='76944'/>
+            </attachments>
+            <failure>
+                <message>Element "div[data-test-id=first-search-result]" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Element "div[data-test-id=first-search-result]" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright.proceedClick (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2175:5)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984416327' status='failed' stop='1615984419778'>
+            <name>Opens person source link from modal</name>
+            <title>Opens person source link from modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984416329' status='passed' stop='1615984416329'>
+                    <name>I close other tabs </name>
+                    <title>I close other tabs </title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984416329' status='passed' stop='1615984417958'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984417958' status='passed' stop='1615984418318'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984418319' status='passed' stop='1615984419639'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984419639' status='failed' stop='1615984419777'>
+                    <name>I click "cpdl.org", "div[data-test-id=first-search-result]"</name>
+                    <title>I click "cpdl.org", "div[data-test-id=first-search-result]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='dfc53f15-6b82-4d14-a178-563a03a20e16-attachment.png' type='image/png' size='76944'/>
+            </attachments>
+            <failure>
+                <message>Element "div[data-test-id=first-search-result]" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Element "div[data-test-id=first-search-result]" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright.proceedClick (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2175:5)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984419952' status='passed' stop='1615984424101'>
+            <name>Gives results that match query within modal</name>
+            <title>Gives results that match query within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984419953' status='passed' stop='1615984421374'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984421374' status='passed' stop='1615984421685'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984421685' status='passed' stop='1615984422892'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984422892' status='passed' stop='1615984423184'>
+                    <name>I fill field "search", "Prein"</name>
+                    <title>I fill field "search", "Prein"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984423185' status='passed' stop='1615984423942'>
+                    <name>I wait for element "//h6[contains(text(), "1 result")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "1 result")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984423942' status='passed' stop='1615984423953'>
+                    <name>I see "Christian Prein"</name>
+                    <title>I see "Christian Prein"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984423953' status='passed' stop='1615984423994'>
+                    <name>I save screenshot "person_modal_with_person_searched.png"</name>
+                    <title>I save screenshot "person_modal_with_person_searched.png"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984423994' status='passed' stop='1615984424101'>
+                    <name>I see visual diff "person_modal_with_person_searched.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</name>
+                    <title>I see visual diff "person_modal_with_person_searched.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+        <test-case start='1615984424151' status='passed' stop='1615984429751'>
+            <name>All relevant source links display in modal</name>
+            <title>All relevant source links display in modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984424155' status='passed' stop='1615984425719'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984425719' status='passed' stop='1615984426421'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984426422' status='passed' stop='1615984427525'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984427525' status='passed' stop='1615984427535'>
+                    <name>I see "viaf.org"</name>
+                    <title>I see "viaf.org"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984427535' status='passed' stop='1615984427795'>
+                    <name>I fill field "search", "Giache"</name>
+                    <title>I fill field "search", "Giache"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984427795' status='passed' stop='1615984428585'>
+                    <name>I wait for element "//h6[contains(text(), "7 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "7 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984428585' status='passed' stop='1615984428612'>
+                    <name>I see "cpdl.org"</name>
+                    <title>I see "cpdl.org"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984428612' status='passed' stop='1615984428620'>
+                    <name>I see "musicbrainz.org"</name>
+                    <title>I see "musicbrainz.org"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984428620' status='passed' stop='1615984428627'>
+                    <name>I see "imslp.org"</name>
+                    <title>I see "imslp.org"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984428627' status='passed' stop='1615984428646'>
+                    <name>I see "isni.org"</name>
+                    <title>I see "isni.org"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984428646' status='passed' stop='1615984428666'>
+                    <name>I see "id.loc.gov"</name>
+                    <title>I see "id.loc.gov"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984428666' status='passed' stop='1615984428979'>
+                    <name>I fill field "search", "Beatles"</name>
+                    <title>I fill field "search", "Beatles"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984428979' status='passed' stop='1615984429567'>
+                    <name>I wait for element "//h6[contains(text(), "9 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "9 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984429567' status='passed' stop='1615984429577'>
+                    <name>I see "wikidata.org"</name>
+                    <title>I see "wikidata.org"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984429577' status='passed' stop='1615984429609'>
+                    <name>I see "en.wikipedia.org"</name>
+                    <title>I see "en.wikipedia.org"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984429609' status='passed' stop='1615984429655'>
+                    <name>I save screenshot "person_modal_with_multiple_source_links.png"</name>
+                    <title>I save screenshot "person_modal_with_multiple_source_links.png"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984429655' status='passed' stop='1615984429751'>
+                    <name>I see visual diff "person_modal_with_multiple_source_links.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</name>
+                    <title>I see visual diff "person_modal_with_multiple_source_links.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+        <test-case start='1615984429757' status='failed' stop='1615984433074'>
+            <name>Filters results with composer filter within modal</name>
+            <title>Filters results with composer filter within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984429759' status='passed' stop='1615984431670'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984431670' status='passed' stop='1615984431982'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984431982' status='passed' stop='1615984433062'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984433062' status='failed' stop='1615984433074'>
+                    <name>I check option "Composer"</name>
+                    <title>I check option "Composer"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='eb837057-ebf5-4304-8a06-1fababc33ffb-attachment.png' type='image/png' size='76944'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "Composer" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "Composer" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984433131' status='failed' stop='1615984436187'>
+            <name>Filters results with pianist filter within modal</name>
+            <title>Filters results with pianist filter within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984433133' status='passed' stop='1615984434561'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984434561' status='passed' stop='1615984434991'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984434991' status='passed' stop='1615984436158'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984436158' status='failed' stop='1615984436187'>
+                    <name>I check option "Pianist"</name>
+                    <title>I check option "Pianist"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='175c2f53-a1d6-44b3-a2df-903e108bbc54-attachment.png' type='image/png' size='76944'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "Pianist" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "Pianist" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984436274' status='failed' stop='1615984439855'>
+            <name>Gives results that match query and applied filter within modal</name>
+            <title>Gives results that match query and applied filter within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984436276' status='passed' stop='1615984438288'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984438288' status='passed' stop='1615984438597'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984438597' status='passed' stop='1615984439825'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984439825' status='failed' stop='1615984439855'>
+                    <name>I check option "Composer"</name>
+                    <title>I check option "Composer"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='bbc7cbaa-d257-4756-9c8b-11d3baed8afe-attachment.png' type='image/png' size='76944'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "Composer" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "Composer" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984439909' status='failed' stop='1615984444710'>
+            <name>Removing multiple filters works as expected</name>
+            <title>Removing multiple filters works as expected</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984439910' status='passed' stop='1615984441373'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984441373' status='passed' stop='1615984441748'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984441748' status='passed' stop='1615984443013'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984443013' status='passed' stop='1615984443681'>
+                    <name>I fill field "search", "Piotr"</name>
+                    <title>I fill field "search", "Piotr"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984443681' status='passed' stop='1615984444672'>
+                    <name>I wait for element "//h6[contains(text(), "4 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "4 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984444672' status='failed' stop='1615984444710'>
+                    <name>I check option "Composer"</name>
+                    <title>I check option "Composer"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='350dcf98-b889-4ff0-b8e6-ade6f301570d-attachment.png' type='image/png' size='59982'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "Composer" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "Composer" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984444780' status='failed' stop='1615984448785'>
+            <name>Adding multiple filters works as expected</name>
+            <title>Adding multiple filters works as expected</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984444782' status='passed' stop='1615984446279'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984446279' status='passed' stop='1615984446595'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984446595' status='passed' stop='1615984447708'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984447708' status='passed' stop='1615984447962'>
+                    <name>I fill field "search", "Piotr"</name>
+                    <title>I fill field "search", "Piotr"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984447962' status='passed' stop='1615984448752'>
+                    <name>I wait for element "//h6[contains(text(), "4 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "4 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984448752' status='failed' stop='1615984448785'>
+                    <name>I check option "Composer"</name>
+                    <title>I check option "Composer"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='0ba403d1-de46-40e2-be98-35f4f1723fbd-attachment.png' type='image/png' size='59958'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "Composer" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "Composer" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984448877' status='failed' stop='1615984451885'>
+            <name>Filters results with birthplace filter within modal</name>
+            <title>Filters results with birthplace filter within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984448878' status='passed' stop='1615984450362'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984450362' status='passed' stop='1615984450687'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984450687' status='passed' stop='1615984451870'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984451870' status='failed' stop='1615984451885'>
+                    <name>I check option "Brugge"</name>
+                    <title>I check option "Brugge"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='656fec64-e220-4a6d-a65f-ef89ee026735-attachment.png' type='image/png' size='76944'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "Brugge" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "Brugge" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984451940' status='failed' stop='1615984454916'>
+            <name>Narrows down birthplace filters with filter search box within modal</name>
+            <title>Narrows down birthplace filters with filter search box within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984451941' status='passed' stop='1615984453363'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984453363' status='passed' stop='1615984453681'>
+                    <name>I click "Select", "button[data-test-id=select-person-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-person-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984453681' status='passed' stop='1615984454808'>
+                    <name>I wait for element "//h6[contains(text(), "50 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "50 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984454808' status='failed' stop='1615984454916'>
+                    <name>I fill field "search-filter", "Brugge"</name>
+                    <title>I fill field "search-filter", "Brugge"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='d01a24c0-b2e5-47ba-bb36-57c75513dff6-attachment.png' type='image/png' size='76944'/>
+            </attachments>
+            <failure>
+                <message>Field "search-filter" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Field "search-filter" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright.fillField (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1202:5)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

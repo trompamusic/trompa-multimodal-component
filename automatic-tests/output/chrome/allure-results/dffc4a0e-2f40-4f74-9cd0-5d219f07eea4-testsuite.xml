@@ -1,0 +1,705 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1615984052702' stop='1615984070140'>
+    <name>Media modal:</name>
+    <title>Media modal:</title>
+    <test-cases>
+        <test-case start='1615984052702' status='failed' stop='1615984053905'>
+            <name>Opens media modal with expected content</name>
+            <title>Opens media modal with expected content</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984052704' status='passed' stop='1615984052705'>
+                    <name>I use playwright to "Detect current browser", async ({ browser }) => {
+                        const browserObject = await browser;
+                    
+                        currentBrowser = browserObject._initializer.name;
+                        console.log('Current browser is:', currentBrowser);
+                      }</name>
+                    <title>I use playwright to "Detect current browser", async ({ browser }) => {
+                        const browserObject = await browser;
+                    
+                        currentBrowser = browserObject._initializer.name;
+                        console.log('Current browser is:', currentBrowser);
+                      }</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984052705' status='passed' stop='1615984053023'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984053023' status='passed' stop='1615984053261'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984053261' status='passed' stop='1615984053508'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984053508' status='passed' stop='1615984053781'>
+                    <name>I save screenshot "media_modal_loaded.png"</name>
+                    <title>I save screenshot "media_modal_loaded.png"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984053781' status='passed' stop='1615984053891'>
+                    <name>I see visual diff "media_modal_loaded.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</name>
+                    <title>I see visual diff "media_modal_loaded.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984053891' status='passed' stop='1615984053898'>
+                    <name>I see "18 results"</name>
+                    <title>I see "18 results"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984053898' status='failed' stop='1615984053905'>
+                    <name>I see "Type"</name>
+                    <title>I see "Type"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='4e4f3677-3387-4e7a-bd56-aae1fa22c0d9-attachment.png' type='image/png' size='89828'/>
+            </attachments>
+            <failure>
+                <message></message>
+                <stack-trace>undefined</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984054173' status='passed' stop='1615984055300'>
+            <name>Language switcher initially loads English</name>
+            <title>Language switcher initially loads English</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984054175' status='passed' stop='1615984054491'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984054491' status='passed' stop='1615984054734'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984054734' status='passed' stop='1615984054740'>
+                    <name>I see "English"</name>
+                    <title>I see "English"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984054740' status='passed' stop='1615984055190'>
+                    <name>I save screenshot "media_modal_language_switcher_loaded.png"</name>
+                    <title>I save screenshot "media_modal_language_switcher_loaded.png"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984055190' status='passed' stop='1615984055300'>
+                    <name>I see visual diff "media_modal_language_switcher_loaded.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</name>
+                    <title>I see visual diff "media_modal_language_switcher_loaded.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+        <test-case start='1615984055305' status='passed' stop='1615984056911'>
+            <name>Language switcher can select Dutch language</name>
+            <title>Language switcher can select Dutch language</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984055306' status='passed' stop='1615984055627'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984055627' status='passed' stop='1615984055861'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984055861' status='passed' stop='1615984056249'>
+                    <name>I click "English", {"xpath":"//header//li[1]"}</name>
+                    <title>I click "English", {"xpath":"//header//li[1]"}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984056249' status='passed' stop='1615984056514'>
+                    <name>I click "Dutch", {"xpath":"//ul//li[2]"}</name>
+                    <title>I click "Dutch", {"xpath":"//ul//li[2]"}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984056514' status='passed' stop='1615984056521'>
+                    <name>I see "Nederlands"</name>
+                    <title>I see "Nederlands"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984056521' status='passed' stop='1615984056798'>
+                    <name>I save screenshot "media_modal_language_switcher_dutch_selected.png"</name>
+                    <title>I save screenshot "media_modal_language_switcher_dutch_selected.png"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984056798' status='passed' stop='1615984056911'>
+                    <name>I see visual diff "media_modal_language_switcher_dutch_selected.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</name>
+                    <title>I see visual diff "media_modal_language_switcher_dutch_selected.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+        <test-case start='1615984056921' status='failed' stop='1615984057743'>
+            <name>Selects media from modal</name>
+            <title>Selects media from modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984056923' status='passed' stop='1615984057258'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984057258' status='passed' stop='1615984057500'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984057500' status='passed' stop='1615984057740'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984057740' status='failed' stop='1615984057743'>
+                    <name>I click "JK196103-0002", "div[data-test-id=first-search-result]"</name>
+                    <title>I click "JK196103-0002", "div[data-test-id=first-search-result]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='408818bb-dc85-4441-a6c4-3467f20d10e2-attachment.png' type='image/png' size='89828'/>
+            </attachments>
+            <failure>
+                <message>Element "div[data-test-id=first-search-result]" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Element "div[data-test-id=first-search-result]" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright.proceedClick (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2175:5)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984058023' status='failed' stop='1615984058783'>
+            <name>Opens media source link from modal</name>
+            <title>Opens media source link from modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984058024' status='passed' stop='1615984058024'>
+                    <name>I close other tabs </name>
+                    <title>I close other tabs </title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984058024' status='passed' stop='1615984058351'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984058351' status='passed' stop='1615984058590'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984058591' status='passed' stop='1615984058779'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984058780' status='failed' stop='1615984058783'>
+                    <name>I click "muziekweb.nl", "div[data-test-id=first-search-result]"</name>
+                    <title>I click "muziekweb.nl", "div[data-test-id=first-search-result]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='a7c57a58-15f5-4d30-9d39-0b8640a68a3f-attachment.png' type='image/png' size='89828'/>
+            </attachments>
+            <failure>
+                <message>Element "div[data-test-id=first-search-result]" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Element "div[data-test-id=first-search-result]" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright.proceedClick (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2175:5)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984059056' status='passed' stop='1615984060872'>
+            <name>Gives results that match query within modal</name>
+            <title>Gives results that match query within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984059058' status='passed' stop='1615984059373'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984059373' status='passed' stop='1615984059603'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984059603' status='passed' stop='1615984059807'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984059807' status='passed' stop='1615984060061'>
+                    <name>I fill field "search", "Soprano"</name>
+                    <title>I fill field "search", "Soprano"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984060061' status='passed' stop='1615984060502'>
+                    <name>I wait for element "//h6[contains(text(), "1 result")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "1 result")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984060502' status='passed' stop='1615984060508'>
+                    <name>I see "El Rossinyol - Soprano voice"</name>
+                    <title>I see "El Rossinyol - Soprano voice"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984060508' status='passed' stop='1615984060760'>
+                    <name>I save screenshot "media_modal_with_media_searched.png"</name>
+                    <title>I save screenshot "media_modal_with_media_searched.png"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984060760' status='passed' stop='1615984060872'>
+                    <name>I see visual diff "media_modal_with_media_searched.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</name>
+                    <title>I see visual diff "media_modal_with_media_searched.png", {"tolerance":1,"prepareBaseImage":true,"outputSettings":{}}</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+        <test-case start='1615984060877' status='passed' stop='1615984061655'>
+            <name>All relevant source links display in modal</name>
+            <title>All relevant source links display in modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984060878' status='passed' stop='1615984061202'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984061202' status='passed' stop='1615984061445'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984061445' status='passed' stop='1615984061643'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984061644' status='passed' stop='1615984061650'>
+                    <name>I see "muziekweb.nl"</name>
+                    <title>I see "muziekweb.nl"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984061650' status='passed' stop='1615984061655'>
+                    <name>I see "youtube.com"</name>
+                    <title>I see "youtube.com"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+        <test-case start='1615984061660' status='failed' stop='1615984062431'>
+            <name>Filters results with audio object filter within modal</name>
+            <title>Filters results with audio object filter within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984061663' status='passed' stop='1615984061985'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984061985' status='passed' stop='1615984062221'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984062221' status='passed' stop='1615984062423'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984062423' status='failed' stop='1615984062430'>
+                    <name>I check option "AudioObject"</name>
+                    <title>I check option "AudioObject"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='6b412ad9-43c7-46df-8d01-bb7db16d357b-attachment.png' type='image/png' size='89828'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "AudioObject" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "AudioObject" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984062705' status='failed' stop='1615984063499'>
+            <name>Filters results with video object filter within modal</name>
+            <title>Filters results with video object filter within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984062707' status='passed' stop='1615984063027'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984063027' status='passed' stop='1615984063272'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984063272' status='passed' stop='1615984063492'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984063492' status='failed' stop='1615984063499'>
+                    <name>I check option "VideoObject"</name>
+                    <title>I check option "VideoObject"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='aa1aae81-fb98-4f8a-9e28-653013a193a7-attachment.png' type='image/png' size='89828'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "VideoObject" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "VideoObject" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984063773' status='failed' stop='1615984064545'>
+            <name>Gives results that match query and applied filter within modal</name>
+            <title>Gives results that match query and applied filter within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984063774' status='passed' stop='1615984064096'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984064096' status='passed' stop='1615984064342'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984064342' status='passed' stop='1615984064538'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984064538' status='failed' stop='1615984064545'>
+                    <name>I check option "AudioObject"</name>
+                    <title>I check option "AudioObject"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='399035b0-7ffd-421a-830d-cbcb6bcc61c4-attachment.png' type='image/png' size='89828'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "AudioObject" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "AudioObject" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984064821' status='failed' stop='1615984065615'>
+            <name>Removing filters works as expected</name>
+            <title>Removing filters works as expected</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984064823' status='passed' stop='1615984065144'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984065144' status='passed' stop='1615984065404'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984065405' status='passed' stop='1615984065605'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984065605' status='failed' stop='1615984065615'>
+                    <name>I check option "VideoObject"</name>
+                    <title>I check option "VideoObject"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='85b809d8-9448-4f01-a9b7-1ea2fe4add4e-attachment.png' type='image/png' size='89828'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "VideoObject" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "VideoObject" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984065890' status='failed' stop='1615984066672'>
+            <name>Adding multiple filters works as expected</name>
+            <title>Adding multiple filters works as expected</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984065891' status='passed' stop='1615984066210'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984066211' status='passed' stop='1615984066460'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984066460' status='passed' stop='1615984066662'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984066662' status='failed' stop='1615984066672'>
+                    <name>I check option "AudioObject"</name>
+                    <title>I check option "AudioObject"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='7a5a1549-69bb-4489-906a-a454adc1bc98-attachment.png' type='image/png' size='89828'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "AudioObject" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "AudioObject" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984066939' status='failed' stop='1615984067718'>
+            <name>Filters results with score filter gives no result within modal</name>
+            <title>Filters results with score filter gives no result within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984066941' status='passed' stop='1615984067262'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984067262' status='passed' stop='1615984067508'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984067508' status='passed' stop='1615984067712'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984067712' status='failed' stop='1615984067718'>
+                    <name>I check option "10 catches"</name>
+                    <title>I check option "10 catches"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='aef1f26f-b069-4c11-9752-05fbbfa38c4d-attachment.png' type='image/png' size='89828'/>
+            </attachments>
+            <failure>
+                <message>page.$$: Error while parsing selector "10 catches"</message>
+                <stack-trace>page.$$: Error while parsing selector "10 catches"Error
+                    at Object.captureStackTrace (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/playwright/lib/utils/stackTrace.js:48:19)
+                    at Connection.sendMessageToServer (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/playwright/lib/client/connection.js:69:48)
+                    at Proxy.&lt;anonymous> (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/playwright/lib/client/channelOwner.js:64:61)
+                    at /Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/playwright/lib/client/frame.js:227:42
+                    at Frame._wrapApiCall (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/playwright/lib/client/channelOwner.js:77:34)
+                    at Frame.$$ (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/playwright/lib/client/frame.js:226:21)
+                    at /Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/playwright/lib/client/page.js:259:60
+                    at Page._attributeToPage (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/playwright/lib/client/page.js:231:20)
+                    at Page.$$ (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/playwright/lib/client/page.js:259:21)
+                    at Playwright.findElements (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2168:18)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984067988' status='failed' stop='1615984068827'>
+            <name>Narrows down score filters with filter search box within modal</name>
+            <title>Narrows down score filters with filter search box within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984067989' status='passed' stop='1615984068310'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984068310' status='passed' stop='1615984068555'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984068555' status='passed' stop='1615984068779'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984068779' status='failed' stop='1615984068826'>
+                    <name>I fill field "search-filter", "liederen"</name>
+                    <title>I fill field "search-filter", "liederen"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='ce221887-91d1-4911-919f-f63a88c42c1b-attachment.png' type='image/png' size='89828'/>
+            </attachments>
+            <failure>
+                <message>Field "search-filter" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Field "search-filter" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright.fillField (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1202:5)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1615984069089' status='failed' stop='1615984069872'>
+            <name>Filters results with format xml filter within modal</name>
+            <title>Filters results with format xml filter within modal</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1615984069091' status='passed' stop='1615984069417'>
+                    <name>I am on page "/"</name>
+                    <title>I am on page "/"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984069417' status='passed' stop='1615984069657'>
+                    <name>I click "Select", "button[data-test-id=select-media-modal]"</name>
+                    <title>I click "Select", "button[data-test-id=select-media-modal]"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984069658' status='passed' stop='1615984069864'>
+                    <name>I wait for element "//h6[contains(text(), "18 results")]", 45</name>
+                    <title>I wait for element "//h6[contains(text(), "18 results")]", 45</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1615984069864' status='failed' stop='1615984069872'>
+                    <name>I check option "xml"</name>
+                    <title>I check option "xml"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Last Seen Screenshot' source='16112929-8534-4e1a-aa80-41f2ce9b0f54-attachment.png' type='image/png' size='89828'/>
+            </attachments>
+            <failure>
+                <message>Checkbox or radio "xml" was not found by text|CSS|XPath</message>
+                <stack-trace>Error: Checkbox or radio "xml" was not found by text|CSS|XPath
+                    at new ElementNotFound (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/errors/ElementNotFound.js:14:11)
+                    at assertElementExists (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:2423:11)
+                    at Playwright._locateCheckable (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:851:5)
+                    at async Playwright.checkOption (/Users/demmyhonoredevries/Code/VIDEODOCK/trompa-multimodal-component/node_modules/codeceptjs/lib/helper/Playwright.js:1096:17)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

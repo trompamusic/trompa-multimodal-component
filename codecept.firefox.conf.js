@@ -7,8 +7,8 @@ export HEADLESS=true && npx codeceptjs run
 setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
-  tests  : './end-to-end/*_test.js',
-  output : './end-to-end/screenshots/output/firefox',
+  tests  : './automatic-tests/*_test.js',
+  output : './automatic-tests/output/firefox',
   helpers: {
     Playwright: {
       url    : 'http://localhost:5050',
@@ -17,9 +17,9 @@ exports.config = {
     },
     ResembleHelper: {
       require         : "codeceptjs-resemblehelper",
-      screenshotFolder: "./end-to-end/screenshots/output/firefox",
-      baseFolder      : "./end-to-end/screenshots/base/firefox",
-      diffFolder      : "./end-to-end/screenshots/diff/firefox",
+      screenshotFolder: "./automatic-tests/output/firefox/screenshots",
+      baseFolder      : "./automatic-tests/output/firefox/screenshots/base",
+      diffFolder      : "./automatic-tests/output/firefox/screenshots/diff",
     },
   },
   include: {
@@ -29,12 +29,9 @@ exports.config = {
   mocha    : {},
   name     : 'trompa-multimodal-component-auto-test',
   plugins  : {
-    pauseOnFail    : {},
-    retryFailedStep: {
-      enabled: true,
-    },
-    tryTo: {
-      enabled: true,
+    allure: {
+      enabled  : true,
+      outputDir: "./automatic-tests/output/firefox/allure-results",
     },
     screenshotOnFail: {
       enabled: true,
