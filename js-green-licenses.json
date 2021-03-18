@@ -1,0 +1,9 @@
+{
+    "greenLicenses": [
+        "Apache-2.0",
+        "BSD-3-Clause",
+        "0BSD",
+        "MIT"
+    ],
+    "packageAllowlist": []
+}
