@@ -44,14 +44,13 @@ jobs:
         run: yarn test:local:${{matrix.browser}}
 
       - name: Run Allure
-        if: always()
+        if: ${{ always() }}
         run: yarn test:${{matrix.browser}}:report:generate
 
       - name: Export Allure report
-        if: always()
+        if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
           name: allure-report-${{matrix.os}}-${{matrix.browser}}
           retention-days: 30
           path: automatic-tests/output/allure/${{matrix.browser}}/report
-
