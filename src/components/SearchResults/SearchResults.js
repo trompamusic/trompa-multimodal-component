@@ -148,9 +148,9 @@ class SearchResults extends Component {
               <CircularProgress className={classes.spinner} size={45} />
             </div>
           ) : null}
-          <Grid spacing={1} container>
+          <Grid spacing={1} role="list" container>
             {searchResults.map((item, index) => (
-              <Grid data-test-id={index === 0 ? 'first-search-result' : null} key={item.identifier} xs={12} sm={12} item>
+              <Grid data-test-id={index === 0 ? 'first-search-result' : null}  role="listitem" key={item.identifier} xs={12} sm={12} item>
                 {this.renderTypeResult(item.__typename, item, renderResult)}
               </Grid>
             ))}
