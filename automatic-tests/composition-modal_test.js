@@ -1,10 +1,10 @@
-const { secondsToWait, visualDiffOptions, compositionModalLocators: locators } = require('./config/globals');
+const { secondsToWait, visualDiffOptions, compositionModalLocators: locators, byRole, getUrlHostName } = require('./config/globals');
 
 Feature('Composition modal');
 
 let currentBrowser;
 
-Scenario('Opens composition modal with expected content', ({ I }) => {
+Scenario('Opens composition modal with expected content', async ({ I }) => {
   const screenshotPath = "composition_modal_loaded.png";
 
   I.usePlaywrightTo('Detect current browser', async ({ browser }) => {
@@ -14,19 +14,24 @@ Scenario('Opens composition modal with expected content', ({ I }) => {
     console.log('Current browser is:', currentBrowser);
   });
 
+  const response                                     = await I.sendQuery(searchQuery);
+  const { title, name, __typename, creator, source } = response.data.data.results[0];
+
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
-
   I.see('50 results');
-  I.see('Composer');
-  I.see('Henry Purcell');
-  I.see('Composition', locators.firstSearchResult);
-  I.see('Thomas Clark', locators.firstSearchResult);
-  I.see('Tis by thy strength the mountains stand', locators.firstSearchResult);
-  I.see('cpdl.org', locators.firstSearchResult);
+
+  within(byRole('listitem'), () => {
+    I.see(title);
+    I.see(name);
+    I.see(__typename);
+    I.see(creator);
+    I.seeElementInDOM(locate('a')
+      .withAttr({ href: source }));
+  });
 });
 
 Scenario('Language switcher initially loads English', ({ I }) => {
@@ -52,112 +57,138 @@ Scenario('Language switcher can select Dutch language', ({ I }) => {
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 });
 
-Scenario('Selects composition from modal', ({ I }) => {
+Scenario('Selects composition from modal', async ({ I }) => {
   const screenshotPath = "composition_modal_selected_.png";
+
+  const response        = await I.sendQuery(searchQuery);
+  const { title, name } = response.data.data.results[0];
 
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.click('Tis by thy strength the mountains stand', locators.firstSearchResult);
+  I.click(locate({ css: '[role=listitem]' }).withText(title));
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
-  I.see('Tis by thy strength the mountains stand');
+  I.see(name);
 });
 
-Scenario('Opens composition source link from modal', ({ I }) => {
+Scenario('Opens composition source link from modal', async ({ I }) => {
+  const response   = await I.sendQuery(searchQuery);
+  const { source } = response.data.data.results[0];
+
   I.closeOtherTabs();
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.click('cpdl.org', locators.firstSearchResult);
+  I.click(getUrlHostName(source));
+  I.wait(2);
   I.switchToNextTab();
   I.grabCurrentUrl();
-  I.seeInCurrentUrl('http://www.cpdl.org/wiki/index.php/%27Tis_by_thy_strength_the_mountains_stand_(Thomas_Clark)');
+  I.seeInCurrentUrl(source);
 });
 
-Scenario('Gives results that match query within modal', ({ I }) => {
+Scenario('Gives results that match query within modal', async ({ I }) => {
   const screenshotPath = "composition_modal_with_composition_searched.png";
 
+  const response        = await I.sendQuery(searchQuery);
+  const { title, name } = response.data.data.results[0];
+
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.fillField('search', 'Adieu');
-  I.waitForElement('//h6[contains(text(), "48 results")]', secondsToWait);
-  I.see('Adieu! sweet love, adieu');
+  I.fillField('search', name);
+  I.see(title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 });
 
-Scenario('All relevant source links display in modal', ({ I }) => {
-  I.amOnPage('/');
-  I.click('Select', locators.selectCompositionModal);
-  I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.see('cpdl.org');
-  I.see('en.wikipedia.org');
-});
-
-Scenario('Filters results with composer filter within modal', ({ I }) => {
-  const screenshotPath = "composition_modal_with_composer_filter_selected.png";
+Scenario('All relevant source links display in modal', async ({ I }) => {
+  const response   = await I.sendQuery(searchQuery);
+  const { source } = response.data.data.results[0];
 
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.checkOption('Christian Prein');
-  I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
-  I.see('1 selected');
-  I.see('sorry');
-  I.saveScreenshot(screenshotPath);
-  I.seeVisualDiff(screenshotPath, visualDiffOptions);
+  I.see(getUrlHostName(source));
 });
 
-Scenario('Gives results that match query and applied filter within modal', ({ I }) => {
-  const screenshotPath = "composition_modal_with_composition_searched_and_filter_selected.png";
+// Scenario('Filters results with composer filter within modal', ({ I }) => {
+//   const screenshotPath = "composition_modal_with_composer_filter_selected.png";
 
-  I.amOnPage('/');
-  I.click('Select', locators.selectCompositionModal);
-  I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.checkOption('Christian Prein');
-  I.fillField('search', 'Cradle');
-  I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
-  I.see('1 selected');
-  I.see('sorry');
-  I.saveScreenshot(screenshotPath);
-  I.seeVisualDiff(screenshotPath, visualDiffOptions);
-});
+//   I.amOnPage('/');
+//   I.click('Select', locators.selectCompositionModal);
+//   I.waitForElement(locators.headerInitialResults, secondsToWait);
+//   I.checkOption('Christian Prein');
+//   I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
+//   I.see('1 selected');
+//   I.see('sorry');
+//   I.saveScreenshot(screenshotPath);
+//   I.seeVisualDiff(screenshotPath, visualDiffOptions);
+// });
 
-Scenario('Removing filters works as expected', ({ I }) => {
-  I.amOnPage('/');
-  I.click('Select', locators.selectCompositionModal);
-  I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.checkOption('Christian Prein');
-  I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
-  I.click('clear');
-  I.waitForElement('//h6[contains(text(), "50 results")]', secondsToWait);
-});
+// Scenario('Gives results that match query and applied filter within modal', ({ I }) => {
+//   const screenshotPath = "composition_modal_with_composition_searched_and_filter_selected.png";
 
-Scenario('Adding multiple filters works as expected', ({ I }) => {
-  const screenshotPath = "composition_modal_with_multiple_filters_selected.png";
+//   I.amOnPage('/');
+//   I.click('Select', locators.selectCompositionModal);
+//   I.waitForElement(locators.headerInitialResults, secondsToWait);
+//   I.checkOption('Christian Prein');
+//   I.fillField('search', 'Cradle');
+//   I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
+//   I.see('1 selected');
+//   I.see('sorry');
+//   I.saveScreenshot(screenshotPath);
+//   I.seeVisualDiff(screenshotPath, visualDiffOptions);
+// });
 
-  I.amOnPage('/');
-  I.click('Select', locators.selectCompositionModal);
-  I.waitForElement(locators.headerInitialResults, secondsToWait);
+// Scenario('Removing filters works as expected', ({ I }) => {
+//   I.amOnPage('/');
+//   I.click('Select', locators.selectCompositionModal);
+//   I.waitForElement(locators.headerInitialResults, secondsToWait);
+//   I.checkOption('Christian Prein');
+//   I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
+//   I.click('clear');
+//   I.waitForElement('//h6[contains(text(), "50 results")]', secondsToWait);
+// });
 
-  I.checkOption('Christian Prein');
-  I.checkOption('Charles King');
-  I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
-  I.see('2 selected');
-  I.saveScreenshot(screenshotPath);
-  I.seeVisualDiff(screenshotPath, visualDiffOptions);
-});
+// Scenario('Adding multiple filters works as expected', ({ I }) => {
+//   const screenshotPath = "composition_modal_with_multiple_filters_selected.png";
 
-Scenario('Narrows down composer filters with filter search box within modal', ({ I }) => {
-  const screenshotPath = "composition_modal_with_composer_filter_search_box_used.png";
+//   I.amOnPage('/');
+//   I.click('Select', locators.selectCompositionModal);
+//   I.waitForElement(locators.headerInitialResults, secondsToWait);
 
-  I.amOnPage('/');
-  I.click('Select', locators.selectCompositionModal);
-  I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.fillField('search-filter', 'Christian');
-  I.dontSee('Charles King');
-  I.saveScreenshot(screenshotPath);
-  I.seeVisualDiff(screenshotPath, visualDiffOptions);
-});
+//   I.checkOption('Christian Prein');
+//   I.checkOption('Charles King');
+//   I.waitForElement('//h6[contains(text(), "0 results")]', secondsToWait);
+//   I.see('2 selected');
+//   I.saveScreenshot(screenshotPath);
+//   I.seeVisualDiff(screenshotPath, visualDiffOptions);
+// });
+
+// Scenario('Narrows down composer filters with filter search box within modal', ({ I }) => {
+//   const screenshotPath = "composition_modal_with_composer_filter_search_box_used.png";
+
+//   I.amOnPage('/');
+//   I.click('Select', locators.selectCompositionModal);
+//   I.waitForElement(locators.headerInitialResults, secondsToWait);
+//   I.fillField('search-filter', 'Christian');
+//   I.dontSee('Charles King');
+//   I.saveScreenshot(screenshotPath);
+//   I.seeVisualDiff(screenshotPath, visualDiffOptions);
+// });
+
+const searchQuery = `
+    query($filter: _MusicCompositionFilter) {
+      results: MusicComposition(filter: $filter, first: 50) {
+        __typename
+        ... on MusicComposition {
+          identifier
+          name
+          title
+          creator
+          source
+        }
+      }
+    }
+  `;

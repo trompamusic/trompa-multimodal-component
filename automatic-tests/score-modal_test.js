@@ -1,10 +1,10 @@
-const { secondsToWait, visualDiffOptions, scoreModalLocators: locators } = require('./config/globals');
+const { secondsToWait, visualDiffOptions, scoreModalLocators: locators, getUrlHostName, byRole } = require('./config/globals');
 
 Feature('Score modal');
 
 let currentBrowser;
 
-Scenario('Opens score modal with expected content', ({ I }) => {
+Scenario('Opens score modal with expected content', async ({ I }) => {
   const screenshotPath = "score_modal_loaded.png";
 
   I.usePlaywrightTo('Detect current browser', async ({ browser }) => {
@@ -14,6 +14,9 @@ Scenario('Opens score modal with expected content', ({ I }) => {
     console.log('Current browser is:', currentBrowser);
   });
 
+  const response                                     = await I.sendQuery(searchQuery);
+  const { title, name, __typename, creator, source } = response.data.data.results[0];
+
   I.amOnPage('/');
   I.click('Select', locators.selectScoreModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
@@ -21,11 +24,15 @@ Scenario('Opens score modal with expected content', ({ I }) => {
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 
   I.see('50 results');
-  I.see('Composer');
-  I.see('Score', locators.firstSearchResult);
-  I.see('Edmund Gooch', locators.firstSearchResult);
-  I.see('Tis by thy strength the mountains stand', locators.firstSearchResult);
-  I.see('cpdl.org', locators.firstSearchResult);
+
+  within(byRole('listitem'), () => {
+    I.see(title);
+    I.see(name);
+    I.see(__typename);
+    I.see(creator);
+    I.seeElementInDOM(locate('a')
+      .withAttr({ href: source }));
+  });
 });
 
 Scenario('Language switcher initially loads English', ({ I }) => {
@@ -51,79 +58,81 @@ Scenario('Language switcher can select Dutch language', ({ I }) => {
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 });
 
-Scenario('Selects score from modal', ({ I }) => {
+Scenario('Selects score from modal', async ({ I }) => {
   const screenshotPath = "home_score_modal_selected_.png";
+
+  const response        = await I.sendQuery(searchQuery);
+  const { title, name } = response.data.data.results[0];
 
   I.amOnPage('/');
   I.click('Select', locators.selectScoreModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.click('Tis by thy strength the mountains stand', locators.firstSearchResult);
+  I.click(locate({ css: '[role=listitem]' }).withText(title));
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
-  I.see('Tis by thy strength the mountains stand');
+  I.see(name);
 });
 
 Scenario('Opens and closes source image link from modal', async ({ I }) => {
+  const response   = await I.sendQuery(searchQuery);
+  const { source } = response.data.data.results[0];
+  
   I.closeOtherTabs();
   I.amOnPage('/');
   I.click('Select', locators.selectScoreModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.click('cpdl.org', locators.firstSearchResult);
-  if(currentBrowser === 'chromium') {
-    I.switchToNextTab();
-    I.grabCurrentUrl();
-    I.seeInCurrentUrl('about:blank');
-  }
-  if(currentBrowser === 'webkit') {
-    I.switchToNextTab();
-    I.grabCurrentUrl();
-    I.seeInCurrentUrl('https://www.cpdl.org/wiki/images/7/71/ClarT-TisByThyStrength.mxl');
-  }
+  I.click(getUrlHostName(source));
+  I.wait(2);
 });
 
-Scenario('Gives results that match query within modal', ({ I }) => {
+Scenario('Gives results that match query within modal', async ({ I }) => {
   const screenshotPath = "score_modal_with_score_searched.png";
 
+  const response        = await I.sendQuery(searchQuery);
+  const { title, name } = response.data.data.results[0];
+
   I.amOnPage('/');
   I.click('Select', locators.selectScoreModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.fillField('search', 'Adieu');
-  I.waitForElement('//h6[contains(text(), "33 results")]', secondsToWait);
-  I.see('Adieu! sweet love, adieu');
+  I.fillField('search', name);
+  I.see(title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 });
 
-Scenario('All relevant source links display in modal', ({ I }) => {
-  I.amOnPage('/');
-  I.click('Select', locators.selectScoreModal);
-  I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.see('cpdl.org');
-});
-
-Scenario('Removing filters works as expected', ({ I }) => {
-  I.amOnPage('/');
-  I.click('Select', locators.selectScoreModal);
-  I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.checkOption('Christian Prein');
-  I.waitForElement('//p[contains(text(), "sorry")]', secondsToWait);
-  I.click('clear');
-  I.waitForElement('//h6[contains(text(), "50 results")]', secondsToWait);
-});
-
-Scenario('Adding multiple filters works as expected', ({ I }) => {
-  const screenshotPath = "score_modal_with_multiple_filters_selected.png";
+Scenario('All relevant source links display in modal', async ({ I }) => {
+  const response   = await I.sendQuery(searchQuery);
+  const { source } = response.data.data.results[0];
 
   I.amOnPage('/');
   I.click('Select', locators.selectScoreModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.checkOption('Christian Prein');
-  I.checkOption('Charles King');
-  I.waitForElement('//p[contains(text(), "sorry")]', secondsToWait);
-  I.see('2 selected');
-  I.saveScreenshot(screenshotPath);
-  I.seeVisualDiff(screenshotPath, visualDiffOptions);
+  I.see(getUrlHostName(source));
 });
+
+// Scenario('Removing filters works as expected', ({ I }) => {
+//   I.amOnPage('/');
+//   I.click('Select', locators.selectScoreModal);
+//   I.waitForElement(locators.headerInitialResults, secondsToWait);
+//   I.checkOption('Christian Prein');
+//   I.waitForElement('//p[contains(text(), "sorry")]', secondsToWait);
+//   I.click('clear');
+//   I.waitForElement('//h6[contains(text(), "50 results")]', secondsToWait);
+// });
+
+// Scenario('Adding multiple filters works as expected', ({ I }) => {
+//   const screenshotPath = "score_modal_with_multiple_filters_selected.png";
+
+//   I.amOnPage('/');
+//   I.click('Select', locators.selectScoreModal);
+//   I.waitForElement(locators.headerInitialResults, secondsToWait);
+//   I.checkOption('Christian Prein');
+//   I.checkOption('Charles King');
+//   I.waitForElement('//p[contains(text(), "sorry")]', secondsToWait);
+//   I.see('2 selected');
+//   I.saveScreenshot(screenshotPath);
+//   I.seeVisualDiff(screenshotPath, visualDiffOptions);
+// });
 
 /*
 Below tests are commented out because score modal test data misses link to composer(=author) filter
@@ -170,3 +179,18 @@ Below tests are commented out because score modal test data misses link to compo
 //   I.saveScreenshot(screenshotPath);
 //   I.seeVisualDiff(screenshotPath, visualDiffOptions);
 // });
+
+const searchQuery = `
+query($filter: _DigitalDocumentFilter) {
+  results: DigitalDocument(filter: $filter, first: 50) {
+    __typename
+    ... on DigitalDocument {
+      identifier
+      name
+      title
+      creator
+      source
+    }
+  }
+}
+`;

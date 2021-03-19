@@ -8,7 +8,7 @@ exports.config = {
   helpers: {
     Playwright: {
       url    : 'http://localhost:5050',
-      show   : false,
+      show   : true,
       browser: 'chromium',
     },
     ResembleHelper: {
@@ -19,6 +19,9 @@ exports.config = {
       plugins         : {
         allure: {},
       },
+    },
+    GraphQL: {
+      endpoint: 'https://api-test.trompamusic.eu',
     },
   },
   include: {

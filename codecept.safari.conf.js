@@ -20,6 +20,9 @@ exports.config = {
         allure: {},
       },
     },
+    GraphQL: {
+      endpoint: 'https://api-test.trompamusic.eu',
+    },
   },
   include: {
     I: './steps_file.js',
