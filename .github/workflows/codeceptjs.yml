@@ -72,11 +72,14 @@ jobs:
         with:
           path: artifacts
 
-      - name: List directories
-        run: ls -al
+      - name: Generate Allure report
+        uses: afiore/action-allure-report@v0.1.0
+        with:
+          results-dir: artifacts/*
+          report-dir: allure-results
 
-      - name: List directories
-        run: ls -al artifacts
-
-      - name: List directories
-        run: ls -al automatic-tests/output/*/allure-results
+      - name: Upload Allure Test Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: Allure Report
+          path: allure-results
