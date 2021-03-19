@@ -1,6 +1,16 @@
 module.exports = {
-  secondsToWait           : 15,
-  visualDiffOptions       : { tolerance: 1, prepareBaseImage: true },
+  secondsToWait    : 15,
+  visualDiffOptions: { tolerance: 1, prepareBaseImage: true },
+  byRole           : role => ({ css: `[role=${role}] ` }),
+  getUrlHostName   : url => {
+    const match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+  
+    if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
+      return match[2];
+    }
+  
+    return null;
+  },
   compositionModalLocators: {
     selectCompositionModal: 'button[data-test-id=select-composition-modal]',
     headerInitialResults  : '//h6[contains(text(), "50 results")]',
