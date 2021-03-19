@@ -28,3 +28,4 @@ yarn-error.log*
 # allure
 automatic-tests/output/allure/*/report
 automatic-tests/output/*/allure-results/
+/allure-report

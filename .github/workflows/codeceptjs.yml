@@ -4,6 +4,7 @@ on:
       - master
 jobs:
   e2e-tests:
+    continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
@@ -16,7 +17,7 @@ jobs:
           - safari
         exclude:
           - os: windows-2019
-            browser: safari 
+            browser: safari
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -42,15 +43,40 @@ jobs:
 
       - name: Run tests
         run: yarn test:local:${{matrix.browser}}
+        env:
+          OS: ${{matrix.os}}
+          BROWSER: ${{matrix.browser}}
 
-      - name: Run Allure
-        if: ${{ always() }}
-        run: yarn test:${{matrix.browser}}:report:generate
+      - name: Run tests
+        run: node scripts/editAllureResults.js
+        env:
+          OS: ${{matrix.os}}
+          BROWSER: ${{matrix.browser}}
 
-      - name: Export Allure report
-        if: ${{ always() }}
+      - name: Upload Allure Test Results
+        if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: allure-report-${{matrix.os}}-${{matrix.browser}}
-          retention-days: 30
-          path: automatic-tests/output/allure/${{matrix.browser}}/report
+          name: Allure results (${{ matrix.os }} ${{ matrix.browser }})
+          path: automatic-tests/${{matric.os}}-${{matric.browser}}/allure-results
+
+  publish-allure-results:
+    name: "Publish Allure Tests Results"
+    needs: e2e-tests
+    runs-on: ubuntu-latest
+    if: success() || failure()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+
+      - name: List directories
+        run: ls -al
+
+      - name: List directories
+        run: ls -al artifacts
+
+      - name: List directories
+        run: ls -al automatic-tests/output/*/allure-results
