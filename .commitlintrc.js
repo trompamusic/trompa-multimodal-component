@@ -3,6 +3,7 @@ module.exports = {
   rules  : {
     'scope-enum': [
       2, 'always', [
+        'e2e',
         'example',
         'project',
         'navbar',
