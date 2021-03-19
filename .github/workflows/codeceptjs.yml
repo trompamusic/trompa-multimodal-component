@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Allure results (${{ matrix.os }} ${{ matrix.browser }})
-          path: automatic-tests/${{matrix.os}}-${{matrix.browser}}/allure-results
+          path: automatic-tests/output/${{matrix.os}}-${{matrix.browser}}/allure-results
 
   publish-allure-results:
     name: "Publish Allure Tests Results"
