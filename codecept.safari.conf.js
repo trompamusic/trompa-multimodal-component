@@ -7,9 +7,10 @@ exports.config = {
   output : './automatic-tests/output/safari',
   helpers: {
     Playwright: {
-      url    : 'http://localhost:5050',
-      show   : false,
-      browser: 'webkit',
+      url          : 'http://localhost:5050',
+      show         : false,
+      browser      : 'webkit',
+      waitForAction: 2000,
     },
     ResembleHelper: {
       require   : "codeceptjs-resemblehelper",

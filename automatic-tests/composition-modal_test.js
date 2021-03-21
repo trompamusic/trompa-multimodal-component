@@ -99,6 +99,7 @@ Scenario('Gives results that match query within modal', async ({ I }) => {
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.fillField('search', name);
+  I.wait(1);
   I.see(title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);

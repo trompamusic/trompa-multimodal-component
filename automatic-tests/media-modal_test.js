@@ -99,7 +99,8 @@ Scenario('Gives results that match query within modal', async ({ I }) => {
   I.amOnPage('/');
   I.click('Select', locators.selectMediaModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.fillField('search', name);
+  I.fillField('search', title);
+  I.wait(2);
   I.see(title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);

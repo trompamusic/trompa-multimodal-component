@@ -108,6 +108,7 @@ Scenario('Gives results that match query within modal', async ({ I }) => {
   I.click('Select', locators.selectPersonModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.fillField('search', name);
+  I.wait(1);
   I.see(title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
@@ -123,9 +124,11 @@ Scenario('All relevant source links display in modal', async ({ I }) => {
   I.click('Select', locators.selectPersonModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.fillField('search', first.name);
+  I.wait(1);
   I.see(first.title);
 
   I.fillField('search', second.name);
+  I.wait(1);
   I.see(second.title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
