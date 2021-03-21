@@ -12,10 +12,11 @@ exports.config = {
       browser: 'webkit',
     },
     ResembleHelper: {
-      require         : "codeceptjs-resemblehelper",
-      baseFolder      : "./automatic-tests/output/safari/screenshots/base",
+      require   : "codeceptjs-resemblehelper",
+      baseFolder: "./automatic-tests/output/safari/screenshots/base",
+      
       diffFolder      : "./automatic-tests/output/safari/screenshots/diff",
-      prepareBaseImage: true,
+      prepareBaseImage: false,
       plugins         : {
         allure: {},
       },

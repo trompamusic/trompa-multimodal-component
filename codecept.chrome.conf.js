@@ -15,7 +15,7 @@ exports.config = {
       require         : "codeceptjs-resemblehelper",
       baseFolder      : "./automatic-tests/output/chrome/screenshots/base",
       diffFolder      : "./automatic-tests/output/chrome/screenshots/diff",
-      prepareBaseImage: true,
+      prepareBaseImage: false,
       plugins         : {
         allure: {},
       },

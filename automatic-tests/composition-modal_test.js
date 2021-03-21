@@ -51,6 +51,7 @@ Scenario('Language switcher can select Dutch language', ({ I }) => {
   I.click('Select', locators.selectCompositionModal);
   I.click('English', { xpath: '//header//li[1]' });
   I.click('Dutch', { xpath: '//ul//li[2]' });
+  I.wait(2);
   I.see('Nederlands');
 
   I.saveScreenshot(screenshotPath);
@@ -67,6 +68,7 @@ Scenario('Selects composition from modal', async ({ I }) => {
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.click(locate({ css: '[role=listitem]' }).withText(title));
+  I.wait(1);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
   I.see(name);

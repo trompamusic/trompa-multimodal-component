@@ -39,6 +39,7 @@ Scenario('Language switcher initially loads English', ({ I }) => {
 
   I.amOnPage('/');
   I.click('Select', locators.selectMediaModal);
+  I.wait(2);
   I.see('English');
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
@@ -51,6 +52,7 @@ Scenario('Language switcher can select Dutch language', ({ I }) => {
   I.click('Select', locators.selectMediaModal);
   I.click('English', { xpath: '//header//li[1]' });
   I.click('Dutch', { xpath: '//ul//li[2]' });
+  I.wait(2);
   I.see('Nederlands');
 
   I.saveScreenshot(screenshotPath);
@@ -67,6 +69,7 @@ Scenario('Selects media from modal', async ({ I }) => {
   I.click('Select', locators.selectMediaModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.click(locate({ css: '[role=listitem]' }).withText(title));
+  I.wait(1);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
   I.see(name);
