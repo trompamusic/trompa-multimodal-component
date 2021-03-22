@@ -68,7 +68,7 @@ Scenario('Selects composition from modal', async ({ I }) => {
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.click(locate({ css: '[role=listitem]' }).withText(title));
-  I.wait(1);
+  I.wait(2);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
   I.see(name);
@@ -99,7 +99,7 @@ Scenario('Gives results that match query within modal', async ({ I }) => {
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.fillField('search', name);
-  I.wait(1);
+  I.wait(2);
   I.see(title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);

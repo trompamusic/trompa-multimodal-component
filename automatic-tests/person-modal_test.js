@@ -77,7 +77,7 @@ Scenario('Selects person from modal', async ({ I }) => {
   I.click('Select', locators.selectPersonModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.click(locate({ css: '[role=listitem]' }).withText(title));
-  I.wait(1);
+  I.wait(2);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
   I.see(name);
@@ -108,7 +108,7 @@ Scenario('Gives results that match query within modal', async ({ I }) => {
   I.click('Select', locators.selectPersonModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.fillField('search', name);
-  I.wait(1);
+  I.wait(2);
   I.see(title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
@@ -124,11 +124,11 @@ Scenario('All relevant source links display in modal', async ({ I }) => {
   I.click('Select', locators.selectPersonModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.fillField('search', first.name);
-  I.wait(1);
+  I.wait(2);
   I.see(first.title);
 
   I.fillField('search', second.name);
-  I.wait(1);
+  I.wait(2);
   I.see(second.title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);

@@ -69,7 +69,7 @@ Scenario('Selects media from modal', async ({ I }) => {
   I.click('Select', locators.selectMediaModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
   I.click(locate({ css: '[role=listitem]' }).withText(title));
-  I.wait(1);
+  I.wait(2);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
   I.see(name);
