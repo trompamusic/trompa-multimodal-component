@@ -49,6 +49,7 @@ jobs:
           BROWSER: ${{matrix.browser}}
 
       - name: Alter allure results with OS and Browser
+        if: always()
         run: node scripts/editAllureResults.js
         env:
           OS: ${{matrix.os}}
