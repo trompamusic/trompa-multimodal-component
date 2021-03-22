@@ -27,6 +27,7 @@
     "test:local:firefox": "concurrently --kill-others --success first -n \"server,test\" \"cross-env NODE_ENV=development webpack-dev-server -d --progress --colors\" \"wait-on http://localhost:5050 && yarn test:firefox\"",
     "test:local:safari": "concurrently --kill-others --success first -n \"server,test\" \"cross-env NODE_ENV=development webpack-dev-server -d --progress --colors\" \"wait-on http://localhost:5050 && yarn test:safari\"",
     "test:allure:report": "allure generate --clean `ls -d automatic-tests/output/*/allure-results` -o ./allure-report",
+    "test:allure:reports": "allure generate --clean `ls -d artifacts/*` -o ./allure-report",
     "build": "yarn schema && rollup -c",
     "build:example": "cross-env NODE_ENV=production webpack",
     "start": "yarn schema && rollup -c -w",
