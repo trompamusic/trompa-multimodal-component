@@ -40,7 +40,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn --prefer-offline
+        run: yarn --prefer-offline --network-timeout 1000000
 
       - name: Run tests
         run: yarn test:local:${{matrix.browser}}
@@ -48,7 +48,7 @@ jobs:
           OS: ${{matrix.os}}
           BROWSER: ${{matrix.browser}}
 
-      - name: Run tests
+      - name: Alter allure results with OS and Browser
         run: node scripts/editAllureResults.js
         env:
           OS: ${{matrix.os}}
