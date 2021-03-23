@@ -8,7 +8,7 @@ exports.config = {
   helpers: {
     Playwright: {
       url    : 'http://localhost:5050',
-      show   : true,
+      show   : false,
       browser: 'chromium',
     },
     ResembleHelper: {

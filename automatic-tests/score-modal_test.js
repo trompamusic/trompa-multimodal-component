@@ -91,14 +91,15 @@ Scenario('Opens and closes source image link from modal', async ({ I }) => {
 Scenario('Gives results that match query within modal', async ({ I }) => {
   const screenshotPath = "score_modal_with_score_searched.png";
 
-  const response        = await I.sendQuery(searchQuery);
-  const { title, name } = response.data.data.results[0];
+  const response  = await I.sendQuery(searchQuery);
+  const { title } = response.data.data.results[0];
 
   I.amOnPage('/');
   I.click('Select', locators.selectScoreModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.fillField('search', name);
-  I.wait(2);
+  I.fillField('search', title.replace(/-/g, " "));;
+
+  I.waitForElement(locate({ css: '[role=listitem]' }).withText(title), secondsToWait);
   I.see(title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);

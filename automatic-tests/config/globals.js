@@ -1,5 +1,5 @@
 module.exports = {
-  secondsToWait    : 15,
+  secondsToWait    : 30,
   visualDiffOptions: { tolerance: 10, prepareBaseImage: false },
   byRole           : role => ({ css: `[role=${role}] ` }),
   getUrlHostName   : url => {

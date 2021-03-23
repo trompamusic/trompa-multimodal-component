@@ -93,14 +93,15 @@ Scenario('Opens media source link from modal',async  ({ I }) => {
 Scenario('Gives results that match query within modal', async ({ I }) => {
   const screenshotPath = "media_modal_with_media_searched.png";
 
-  const response        = await I.sendQuery(searchQuery);
-  const { title, name } = response.data.data.results[0];
+  const response  = await I.sendQuery(searchQuery);
+  const { title } = response.data.data.results[0];
 
   I.amOnPage('/');
   I.click('Select', locators.selectMediaModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.fillField('search', title);
-  I.wait(2);
+  I.fillField('search', title.replace(/-/g, ""));;
+
+  I.waitForElement(locate({ css: '[role=listitem]' }).withText(title.replace(/-/g, "")), secondsToWait);
   I.see(title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);

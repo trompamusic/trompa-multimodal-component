@@ -98,8 +98,9 @@ Scenario('Gives results that match query within modal', async ({ I }) => {
   I.amOnPage('/');
   I.click('Select', locators.selectCompositionModal);
   I.waitForElement(locators.headerInitialResults, secondsToWait);
-  I.fillField('search', name);
-  I.wait(2);
+  I.fillField('search', name.replace(/-/g, ""));
+
+  I.waitForElement(locate({ css: '[role=listitem]' }).withText(title), secondsToWait);
   I.see(title);
   I.saveScreenshot(screenshotPath);
   I.seeVisualDiff(screenshotPath, visualDiffOptions);
