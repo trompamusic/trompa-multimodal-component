@@ -17,7 +17,7 @@ exports.config = {
       baseFolder: "./automatic-tests/output/safari/screenshots/base",
       
       diffFolder      : "./automatic-tests/output/safari/screenshots/diff",
-      prepareBaseImage: false,
+      prepareBaseImage: true,
       plugins         : {
         allure: {},
       },

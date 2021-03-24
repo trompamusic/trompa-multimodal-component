@@ -1,6 +1,6 @@
 module.exports = {
   secondsToWait    : 30,
-  visualDiffOptions: { tolerance: 15, prepareBaseImage: false },
+  visualDiffOptions: { tolerance: 15, prepareBaseImage: true },
   byRole           : role => ({ css: `[role=${role}] ` }),
   getUrlHostName   : url => {
     const match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
