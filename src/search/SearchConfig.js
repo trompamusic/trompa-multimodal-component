@@ -70,22 +70,28 @@ class SearchConfig {
     const { data: { allResults } } = await client.query({
       query    : searchType.searchAllQuery,
       variables: {
-        query,
+        query: searchType.preprocessQuery ? searchType.preprocessQuery(query) : query,
       },
     });
+
+    let processedAllResults;
+
+    if (searchType.processSearchResult) {
+      processedAllResults = searchType.processSearchResult(allResults);
+    }
 
     const { data: { results } } = await client.query({
       query    : searchType.searchQuery,
       variables: {
-        filter: generateFilter(query, allResults, filtersState, this.filter),
+        filter: generateFilter(query, processedAllResults, filtersState, this.filter),
       },
     });
 
     return {
-      typename: searchType.name,
-      total   : results.length,
-      allResults,
-      results,
+      typename  : searchType.name,
+      total     : searchType.processSearchResult ? searchType.processSearchResult(results).length : results.length,
+      allResults: processedAllResults,
+      results   : searchType.processSearchResult ? searchType.processSearchResult(results) : results,
     };
   }
 
