@@ -74,9 +74,9 @@ class SearchConfig {
       },
     });
 
-    let processedAllResults;
+    let processedAllResults = allResults;
 
-    if (searchType.processSearchResult) {
+    if (typeof searchType.processSearchResult === 'function') {
       processedAllResults = searchType.processSearchResult(allResults);
     }
 
@@ -87,11 +87,17 @@ class SearchConfig {
       },
     });
 
+    let processedResults = results;
+
+    if (typeof searchType.processSearchResult === 'function') {
+      processedResults = searchType.processSearchResult(results);
+    }
+
     return {
       typename  : searchType.name,
-      total     : searchType.processSearchResult ? searchType.processSearchResult(results).length : results.length,
+      total     : processedResults.length,
       allResults: processedAllResults,
-      results   : searchType.processSearchResult ? searchType.processSearchResult(results) : results,
+      results   : processedResults,
     };
   }
 

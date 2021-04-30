@@ -230,7 +230,7 @@ class Example extends Component {
 To start the example demo, run
 
 ```bash
-npm run start:example
+yarn start:example
 ```
 
 And visit http://localhost:5050 in a browser

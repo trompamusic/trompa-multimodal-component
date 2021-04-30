@@ -52,7 +52,7 @@ class PostprocessCustomType {
 
   static searchAllQuery = gql`
     query($query: String!) {
-      ItemList(identifier:"e91489d7-a776-40dd-8abf-0c934922bd99") {
+      allResults: ItemList(identifier:"e91489d7-a776-40dd-8abf-0c934922bd99") {
         identifier
         name
         itemListElement(filter:{name_regexp:$query}) {
@@ -65,10 +65,10 @@ class PostprocessCustomType {
 
   static searchQuery = gql`
     query($filter: _ThingInterfaceFilter) {
-      ItemList(identifier:"e91489d7-a776-40dd-8abf-0c934922bd99") {
+      results: ItemList(identifier:"e91489d7-a776-40dd-8abf-0c934922bd99") {
         identifier
         name
-        itemListElement(filter: $filter) {
+        itemListElement(filter: $filter, first: 50) {
           identifier
           name
         }
@@ -78,10 +78,8 @@ class PostprocessCustomType {
 
   static processSearchResult = result => {
     // Find the itemListElements of this ItemList, instead of a list of ItemLists
-    if (result) {
-      if (result.data.ItemList) {
-        return result.data.ItemList[0].itemListElement;
-      }
+    if (Array.isArray(result) && result[0]) {
+      return result[0].itemListElement;
     }
 
     return [];
