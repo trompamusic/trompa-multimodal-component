@@ -1,3 +1,20 @@
+# [1.4.0](https://github.com/Videodock/trompa-multimodal-component/compare/v1.3.0...v1.4.0) (2021-07-23)
+
+
+### Bug Fixes
+
+* upgrade graphql-tag from 2.11.0 to 2.12.1 ([01146be](https://github.com/Videodock/trompa-multimodal-component/commit/01146beb0e7e5599a955bb8c32ec6f5580fd49d9))
+
+
+### Features
+
+* **project:** add check licenses github workflow ([224a23d](https://github.com/Videodock/trompa-multimodal-component/commit/224a23dfff537dd4d1e0491cccbf1d3b1ae09dba))
+* **project:** add js-green-licenses dependency ([0311512](https://github.com/Videodock/trompa-multimodal-component/commit/0311512384f618dd46be7ec28bf85afd919ac9c0))
+* **project:** add js-green-licenses.json ([a38b652](https://github.com/Videodock/trompa-multimodal-component/commit/a38b652d5321ab2020f2cead84ecf321a3b8be3d))
+* **project:** postprocess results ([7b64b3c](https://github.com/Videodock/trompa-multimodal-component/commit/7b64b3cf67785783bdbf1ef6024bf364cba87891))
+
+
+
 # [1.3.0](https://github.com/Videodock/trompa-multimodal-component/compare/v1.2.1...v1.3.0) (2021-03-12)
 
 
