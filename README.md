@@ -225,6 +225,16 @@ class Example extends Component {
 }
 ```
 
+## Local development
+
+To start the example demo, run
+
+```bash
+yarn start:example
+```
+
+And visit http://localhost:5050 in a browser
+
 ## License
 
 Apache-2.0 ©

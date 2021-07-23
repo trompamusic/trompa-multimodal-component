@@ -41,6 +41,51 @@ class CustomType {
   `;
 }
 
+class PostprocessCustomType {
+  static name = 'MusicComposition';
+
+  static filters = [];
+
+  static preprocessQuery = query => {
+    return `(?i).*${query}.*`;
+  }
+
+  static searchAllQuery = gql`
+    query($query: String!) {
+      allResults: ItemList(identifier:"e91489d7-a776-40dd-8abf-0c934922bd99") {
+        identifier
+        name
+        itemListElement(filter:{name_regexp:$query}) {
+          identifier
+          name
+        }
+      }
+    }
+  `;
+
+  static searchQuery = gql`
+    query($filter: _ThingInterfaceFilter) {
+      results: ItemList(identifier:"e91489d7-a776-40dd-8abf-0c934922bd99") {
+        identifier
+        name
+        itemListElement(filter: $filter, first: 50) {
+          identifier
+          name
+        }
+      }
+    }
+  `;
+
+  static processSearchResult = result => {
+    // Find the itemListElements of this ItemList, instead of a list of ItemLists
+    if (Array.isArray(result) && result[0]) {
+      return result[0].itemListElement;
+    }
+
+    return [];
+  }
+}
+
 const BlockQuote = ({ children }) => {
   return (
     <div style={{ backgroundColor: '#fff', borderLeft: `6px solid rgb(63 81 181)`, padding: 16, marginBottom: 8 }}>
@@ -126,6 +171,10 @@ const ex6Config = new SearchConfig({
   searchTypes: [CustomType, searchTypes.MusicComposition],
 });
 
+const ex7Config = new SearchConfig({
+  searchTypes: [PostprocessCustomType],
+});
+
 const App = () => {
   const [production, setProduction] = useState(false);
 
@@ -191,6 +240,10 @@ const App = () => {
             return <div onClick={() => onClick(item)}>MusicComposition: {item.title}</div>;
           }}
         />
+        <BlockQuote>
+          As a developer I want to be able to post-process search results.
+        </BlockQuote>
+        <MultiModalComponentSelect config={ex7Config} production={production} />
       </Paper>
       <Paper style={{ padding: 16, backgroundColor: '#f1f1f1', marginBottom: 64 }} color="red" variant="outlined">
         <Typography variant="h6" gutterBottom>Use cases:</Typography>
