@@ -20,6 +20,14 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
+    "test:chrome": "npx codeceptjs run --plugins allure -c codecept.chrome.conf.js",
+    "test:firefox": "npx codeceptjs run --plugins allure -c codecept.firefox.conf.js",
+    "test:safari": "npx codeceptjs run --plugins allure -c codecept.safari.conf.js",
+    "test:local:chrome": "concurrently --kill-others --success first -n \"server,test\" \"cross-env NODE_ENV=development webpack-dev-server -d --progress --colors\" \"wait-on http://localhost:5050 && yarn test:chrome\"",
+    "test:local:firefox": "concurrently --kill-others --success first -n \"server,test\" \"cross-env NODE_ENV=development webpack-dev-server -d --progress --colors\" \"wait-on http://localhost:5050 && yarn test:firefox\"",
+    "test:local:safari": "concurrently --kill-others --success first -n \"server,test\" \"cross-env NODE_ENV=development webpack-dev-server -d --progress --colors\" \"wait-on http://localhost:5050 && yarn test:safari\"",
+    "test:allure:report": "allure generate --clean automatic-tests/output/*/allure-results -o ./allure-report",
+    "test:allure:reports": "allure generate --clean artifacts/* -o ./allure-report",
     "build": "yarn schema && rollup -c",
     "build:example": "cross-env NODE_ENV=production webpack",
     "start": "yarn schema && rollup -c -w",
@@ -60,6 +68,7 @@
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-url": "^6.0.0",
     "@svgr/rollup": "^5.5.0",
+    "allure-commandline": "^2.13.8",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-inline-json-import": "^0.3.2",
@@ -102,7 +111,8 @@
     "url-loader": "^4.1.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "xml2js": "^0.4.23"
   },
   "husky": {
     "hooks": {
@@ -122,13 +132,19 @@
     "apollo-client": "^2.6.8",
     "apollo-link-http": "^1.5.16",
     "classnames": "^2.2.6",
+    "codeceptjs": "^3.0.5",
+    "codeceptjs-resemblehelper": "^1.9.3",
+    "concurrently": "^6.0.0",
     "deepmerge": "^4.2.2",
+    "eslint-plugin-codeceptjs": "^1.3.0",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.12.1",
     "i18next": "^19.0.3",
+    "playwright": "^1.9.1",
     "react-apollo": "^3.1.3",
     "react-i18next": "^11.3.0",
     "react-jss": "^10.0.3",
-    "throttle-debounce": "^2.1.0"
+    "throttle-debounce": "^2.1.0",
+    "wait-on": "^5.2.1"
   }
 }

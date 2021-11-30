@@ -1,0 +1,103 @@
+name: End-to-end tests
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  e2e-tests:
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-10.15
+          - windows-2019
+        browser:
+          - chrome
+          - firefox
+          - safari
+        exclude:
+          - os: windows-2019
+            browser: safari
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: microsoft/playwright-github-action@v1
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn --prefer-offline --network-timeout 1000000
+
+      - name: Run tests
+        run: yarn test:local:${{matrix.browser}}
+        env:
+          OS: ${{matrix.os}}
+          BROWSER: ${{matrix.browser}}
+
+      - name: Alter allure results with OS and Browser
+        if: always()
+        run: node scripts/editAllureResults.js
+        env:
+          OS: ${{matrix.os}}
+          BROWSER: ${{matrix.browser}}
+
+      - name: Upload Allure Test Results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-results-${{matrix.os}}-${{matrix.browser}}
+          path: automatic-tests/output/${{matrix.os}}-${{matrix.browser}}/allure-results
+
+  publish-allure-results:
+    name: "Publish Allure Tests Results"
+    needs: e2e-tests
+    runs-on: ubuntu-latest
+    if: success() || failure()
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn --prefer-offline
+
+      - name: Generate Allure report
+        run: yarn test:allure:reports
+
+      - name: Upload Allure Test Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: Allure Report
+          path: allure-report

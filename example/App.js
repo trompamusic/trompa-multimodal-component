@@ -94,7 +94,7 @@ const BlockQuote = ({ children }) => {
   );
 };
 
-const MultiModalComponentSelect = ({ config, i18n, placeholderText, production, renderSearchResult }) => {
+const MultiModalComponentSelect = ({ dataTestId, config, i18n, placeholderText, production, renderSearchResult }) => {
   const [open, setOpen]         = useState(false);
   const [selected, setSelected] = useState();
 
@@ -102,7 +102,7 @@ const MultiModalComponentSelect = ({ config, i18n, placeholderText, production, 
     <React.Fragment>
       <div className="mmc-select">
         <Typography className="mmc-select-value">{selected ? selected.name : 'No selection'}</Typography>
-        <Button variant="contained" size="small" color="primary" onClick={() => setOpen(true)}>
+        <Button data-test-id={dataTestId} variant="contained" size="small" color="primary" onClick={() => setOpen(true)}>
           Select
         </Button>
       </div>
@@ -197,6 +197,7 @@ const App = () => {
           As a user I want to be able to find a single type (Person) with related facets.
         </BlockQuote>
         <MultiModalComponentSelect
+          dataTestId="select-person-modal"
           config={ex1Config}
           i18n={{
             'en-US': { searchBar: { placeholder_text: 'Search for Persons in the CE' } },
@@ -207,15 +208,15 @@ const App = () => {
         <BlockQuote>
           As a user I want to be able to find multiple types (AudioObject and VideoObject) with related facets.
         </BlockQuote>
-        <MultiModalComponentSelect config={ex2Config} placeholderText="Search for Music and Video recordings in the CE" production={production} />
+        <MultiModalComponentSelect dataTestId="select-media-modal" config={ex2Config} placeholderText="Search for Music and Video recordings in the CE" production={production} />
         <BlockQuote>
           As a user I want to be able to find music compositions with related facets.
         </BlockQuote>
-        <MultiModalComponentSelect config={ex3Config} production={production} />
+        <MultiModalComponentSelect dataTestId="select-composition-modal" config={ex3Config} production={production} />
         <BlockQuote>
           As a user I want to be able to find scores with related facets.
         </BlockQuote>
-        <MultiModalComponentSelect config={ex4Config} placeholderText="Search for scores" production={production} />
+        <MultiModalComponentSelect dataTestId="select-score-modal" config={ex4Config} placeholderText="Search for scores" production={production} />
         <BlockQuote>
           As a user I want to be able to find software applications using a custom type.
         </BlockQuote>

@@ -149,8 +149,8 @@ class SearchResults extends Component {
             </div>
           ) : null}
           <Grid spacing={1} container>
-            {searchResults.map(item => (
-              <Grid key={item.identifier} xs={12} sm={12} item>
+            {searchResults.map((item, index) => (
+              <Grid data-test-id={index === 0 ? 'first-search-result' : null} key={item.identifier} xs={12} sm={12} item>
                 {this.renderTypeResult(item.__typename, item, renderResult)}
               </Grid>
             ))}
