@@ -3,14 +3,14 @@
   "extensions": {
     "endpoints": {
       "Default Introspection Endpoint": {
-        "url": "http://api-test.trompamusic.eu",
+        "url": "https://api-test.trompamusic.eu",
         "introspect": true,
         "headers": {
           "user-agent": "JS GraphQL"
         }
       },
       "Default": {
-        "url": "http://api-test.trompamusic.eu",
+        "url": "https://api-test.trompamusic.eu",
         "headers": {
           "user-agent": "JS GraphQL"
         }

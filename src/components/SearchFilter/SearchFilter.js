@@ -77,6 +77,7 @@ class SearchFilter extends Component {
             className={classes.filterTextField}
             inputProps={{ className: classes.filterInput }}
             InputProps={{
+              name        : 'search-filter',
               classes     : { adornedEnd: classes.filterInputAdornedEnd },
               endAdornment: this.state.searchValue.length > 0 && (
                 <InputAdornment position="end">
